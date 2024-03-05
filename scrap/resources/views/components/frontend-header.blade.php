@@ -26,7 +26,7 @@
 <body>
 
     <!-- Preloader area start -->
-    {{-- <div id="loading">
+    <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
                 <div class="loading-icon text-center d-flex flex-column align-items-center justify-content-center">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Preloader area end -->
 
     <!-- Header area start here -->
@@ -44,7 +44,7 @@
                 <div class="header-top-wrp">
                     <div class="logo-menu">
                         <a href="index.html" class="logo">
-                            <img src="{{asset('frontend/theam/assets/images/logo/logo.svg')}}" alt="logo">
+                            <img src="{{asset('frontend/theam/assets/images/logo/logo.jpg')}}" height="50px" alt="logo">
                         </a>
                     </div>
                     <div class="d-flex align-items-center">
