@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\DoctorrecordController;
 
 
 // Frontend Routes
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 
 //user
