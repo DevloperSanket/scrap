@@ -119,7 +119,7 @@
                             <a class="text-white" href="{{route('contact')}}">Contact Us</a>
                         </li>
                         <li class="menu-btn">
-                            <a href="{{route('sell')}}"><span>Sell Now</span> <i class="fa-solid fa-angles-right"></i></a>
+                            <a href="{{route('login')}}"><span>Account</span> <i class="fa-solid fa-angles-right"></i></a>
                         </li>
                         <li class="menu_info ms-0">
                             <i class="fa-solid call_ico fa-phone-volume"></i>
