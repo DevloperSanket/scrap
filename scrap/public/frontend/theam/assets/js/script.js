@@ -850,3 +850,4 @@ CSS TABLE OF CONTENTS
 	new WOW().init();
 	// WOW Animatin area start here ***
 })(jQuery);
+

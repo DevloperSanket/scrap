@@ -1,59 +1,66 @@
 <x-frontend-header />
 <main>
     <!-- Banner area start here -->
-    <section class="banner-three banner-five">
-        <div class="swiper banner-three__slider banner-five__slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="slide-bg"
-                        data-background="{{ asset('frontend/theam/assets/images/banner/slider-4.jpg') }}"></div>
-                    <div class="container">
-                        <div class="banner-three__content banner-five__content">
-                            <h1 data-animation="fadeInUp" data-delay="1s">Scrap <strong>24</strong>x7</h1>
-                            <h1 data-animation="fadeInUp" data-delay="1.3s">The Healing Power <br> of Gardening</h1>
-                            <a href="about.html" class="btn-one-white mt-50" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Sell Now</span> <i class="fa-solid fa-angles-right"></i></a>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators mt-2">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner mb-3">
+                    <div class="carousel-item active">
+                        <img src="{{ asset('frontend/theam/assets/images/banner/slider-5.jpg') }}"
+                            class="d-block w-100 zoom-in-out" height="400px" alt="...">
+                        <div class="carousel-caption d-md-block slide-up">
+                            <h1 class="mb-2" style="color: orange"><strong class="">Scrap</strong> <span class="text-primary">24x7</span></h1>
+                            <h3 class="text-white mb-3">Some representative placeholder content for the first slide.</h3>
+                            <button class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('frontend/theam/assets/images/banner/slider-6.jpg') }}"
+                            class="d-block w-100 zoom-in-out" height="400px" alt="...">
+                        <div class="carousel-caption d-md-block slide-up">
+                            <h1 class="mb-2" style="color: orange"><strong class="">Scrap</strong> <span class="text-primary">24x7</span></h1>
+                            <h3 class="text-white mb-3">Some representative placeholder content for the first slide.</h3>
+                            <button class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('frontend/theam/assets/images/banner/slider-7.jpg') }}"
+                            class="d-block w-100 zoom-in-out" height="400" alt="...">
+                        <div class="carousel-caption d-md-block slide-up mb-2">
+                            <h1 class="mb-2" style="color: orange"><strong class="">Scrap</strong> <span class="text-primary">24x7</span></h1>
+                            <h3 class="text-white mb-3">Some representative placeholder content for the first slide.</h3>
+                            <button class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></button>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="slide-bg"
-                        data-background="{{ asset('frontend/theam/assets/images/banner/slider-5.jpg') }}"></div>
-                    <div class="container">
-                        <div class="banner-three__content banner-five__content">
-                            <h1 data-animation="fadeInUp" data-delay="1s">Scrap <strong>24</strong>x7</h1>
-                            <h1 data-animation="fadeInUp" data-delay="1.3s">The Healing Power <br> of Gardening</h1>
-                            <a href="about.html" class="btn-one-white mt-50" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Sell Now</span> <i class="fa-solid fa-angles-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-bg"
-                        data-background="{{ asset('frontend/theam/assets/images/banner/slider-6.jpg') }}"></div>
-                    <div class="container">
-                        <div class="banner-three__content banner-five__content">
-                            <h1 data-animation="fadeInUp" data-delay="1s">Scrap <strong>24</strong>x7</h1>
-                            <h1 data-animation="fadeInUp" data-delay="1.3s">The Healing Power <br> of Gardening</h1>
-                            <a href="about.html" class="btn-one-white mt-50" data-animation="fadeInUp"
-                                data-delay="1.8s"><span>Sell Now</span> <i class="fa-solid fa-angles-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-        <div class="banner-five__arry-btn">
-            <button class="arry-prev mb-15 banner-five__arry-prev"><i class="fa-light fa-chevron-left"></i></button>
-            <button class="arry-next banner-five__arry-next"><i class="fa-light fa-chevron-right"></i></button>
-        </div>
-    </section>
+    </div>
     <!-- Banner area end here -->
 
     <!-- View area start here -->
     <section class="blog-two view-area pb-70 pt-65">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInDown" data-wow-duration="1.2s" data-wow-delay=".2s">
+                <div class="col-lg-4 col-md-6 wow fadeInDown slide-up-blog" data-wow-duration="1.2s" data-wow-delay=".2s">
                     <div class="donation__item card blog-two__item bor view__item border border-success">
                         <div class="blog-two__image mb-30">
                             <div class="text-center">
@@ -69,7 +76,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInDown" data-wow-duration="1.4s" data-wow-delay=".4s">
+                <div class="col-lg-4 col-md-6 wow fadeInDown slide-up-blog" data-wow-duration="1.4s" data-wow-delay=".4s">
                     <div class="donation__item card blog-two__item bor view__item border border-success">
                         <div class="blog-two__image mb-30">
                             <div class="text-center">
@@ -87,11 +94,11 @@
                                 class="fa-solid fa-arrow-right"></i></a> --}}
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInDown" data-wow-duration="1.6s" data-wow-delay=".6s">
+                <div class="col-lg-4 col-md-6 wow fadeInDown slide-up-blog" data-wow-duration="1.6s" data-wow-delay=".6s">
                     <div class="donation__item card blog-two__item bor view__item border border-success">
                         <div class="blog-two__image mb-30">
                             <div class="text-center">
-                                <img src="{{ asset('frontend/theam/assets/images/about-sell/best-price.png') }}"
+                                <img  src="{{ asset('frontend/theam/assets/images/about-sell/best-price.png') }}"
                                     alt="image" height="100px" width="80px">
                             </div>
                         </div>
@@ -116,9 +123,11 @@
             <div class="blog__head-wrp mb-65">
                 <div class="section-header m-0">
                     <h5 class="wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s"><img
-                            src="{{ asset('frontend/theam/assets/images/icon/leaf.svg') }}" alt="image">Over Scrap
+                            src="{{ asset('frontend/theam/assets/images/icon/leaf.svg') }}" alt="image">Over
+                        Scrap
                     </h5>
-                    <h2 class="wow fadeInUp mt-5" data-wow-duration="1.4s" data-wow-delay=".4s">Lets see over type of
+                    <h2 class="wow fadeInUp mt-5" data-wow-duration="1.4s" data-wow-delay=".4s">Lets see over type
+                        of
                         <span style="color:#4baf47">scrap</span>
                     </h2>
                 </div>
@@ -202,18 +211,19 @@
         <div class="donation__wrp">
             <div class="section-header text-center">
                 <h5 class="text-white wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s"><img
-                        src="{{ asset('frontend/theam/assets/images/icon/leaf-light.svg') }}" alt="image"> OPEN
+                        src="{{ asset('frontend/theam/assets/images/icon/leaf-light.svg') }}" alt="image">
+                    OPEN
                     DONATION
                 </h5>
                 <h2 class="text-white wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".4s">
-                    Donate Here <br>
+                    Donate Here
                     for future</h2>
-                    {{-- <button class="btn btn-outline-light text-primary text-center mt-5">Donate Now</button> --}}
-                    <a class="btn btn-outline-light text-dark text-center mt-5" href="#">Donate Now</a>
+                {{-- <button class="btn btn-outline-light text-primary text-center mt-5">Donate Now</button> --}}
+                <a class="btn btn-outline-light text-dark text-center mt-5" href="#">Donate Now</a>
             </div>
 
-            
-            
+
+
             {{-- <div class="swiper donation-five__slider">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -321,7 +331,8 @@
                             src="{{ asset('frontend/theam/assets/images/icon/leaf.svg') }}" alt="image"> our
                         client’s feedback
                     </h5>
-                    <h2 class="wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".4s">Scrap 24x7, loves people</h2>
+                    <h2 class="wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".4s">Scrap 24x7, loves
+                        people</h2>
                 </div>
                 <div class="dot-wrp wow fadeInUp mt-5 mt-sm-0" data-wow-duration="1.6s" data-wow-delay=".6s">
                     <div class="dot testimonial__dot"></div>
@@ -334,7 +345,8 @@
                             <div class="testimonial__item-head">
                                 <div class="testimonial__item-head-info">
                                     <div class="testimonial__item-head-info-image">
-                                        <img src="{{asset('frontend/theam/assets/images/testimonial/01.png')}}" alt="image">
+                                        <img src="{{ asset('frontend/theam/assets/images/testimonial/01.png') }}"
+                                            alt="image">
                                     </div>
                                     <div class="testimonial__item-head-info-con">
                                         <h3>Kenneth S. Fisher</h3>

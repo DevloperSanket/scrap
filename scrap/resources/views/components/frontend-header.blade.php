@@ -46,7 +46,7 @@
                 <div class="header-top-wrp">
                     <div class="logo-menu">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="50px"
+                            <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="50px" width="90px"
                                 alt="logo">
                         </a>
                     </div>

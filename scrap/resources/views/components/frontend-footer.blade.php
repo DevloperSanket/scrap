@@ -38,7 +38,7 @@
                          </ul>
                      </div>
                  </div>
-                 <div class="col-md-4 d-flex justify-content-center wow fadeInUp" data-wow-duration="1.6s" data-wow-delay=".6s">
+                 <div class="col-md-4 d-flex justify wow fadeInUp" data-wow-duration="1.6s" data-wow-delay=".6s">
                      <div class="footer__item">
                          <div class="footer__item-title">
                              <h4>Quick Link</h4>
@@ -73,7 +73,7 @@
              <div class="col-md-6 text-md-end">
                  <p>&copy; Copyright 2024 <a href="#0">scrap 24x7</a> All Rights Reserved</p>
              </div>
-             <div class="col-md-6 text-start">
+             <div class="col-md-6  text-justify-start">
                  <p>Designe by <a target="_blank" href="https://www.saveasweb.com">saveasweb.com</a></p>
              </div>
          </div>
@@ -102,6 +102,7 @@
  <script src="{{ asset('frontend/theam/assets/js/jquery.waypoints.js') }}"></script>
  <!-- Script Js -->
  <script src="{{ asset('frontend/theam/assets/js/script.js') }}"></script>
+ <script src="{{ asset('frontend/js/costome.js') }}"></script>
  </body>
 
  </html>
