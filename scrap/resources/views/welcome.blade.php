@@ -19,7 +19,7 @@
                         <div class="carousel-caption d-md-block slide-up">
                             <h1 class="mb-2" style="color: orange"><strong class="">Scrap</strong> <span class="text-primary">24x7</span></h1>
                             <h3 class="text-white mb-3">Some representative placeholder content for the first slide.</h3>
-                            <button class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></button>
+                            <a href="{{route('sell')}}" class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -28,7 +28,7 @@
                         <div class="carousel-caption d-md-block slide-up">
                             <h1 class="mb-2" style="color: orange"><strong class="">Scrap</strong> <span class="text-primary">24x7</span></h1>
                             <h3 class="text-white mb-3">Some representative placeholder content for the first slide.</h3>
-                            <button class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></button>
+                            <a href="{{route('sell')}}" class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -37,7 +37,7 @@
                         <div class="carousel-caption d-md-block slide-up mb-2">
                             <h1 class="mb-2" style="color: orange"><strong class="">Scrap</strong> <span class="text-primary">24x7</span></h1>
                             <h3 class="text-white mb-3">Some representative placeholder content for the first slide.</h3>
-                            <button class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></button>
+                            <a href="{{route('sell')}}" class="slider-btn">Sell Now <i class="fa-solid fa-angles-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                     </div>
                 </div>
                 <div class="text-end mt-2">
-                    <a class="text-success" href="#">All Scrap <i class="fa-light fa-chevron-right"></i></a>
+                    <a class="text-success" href="{{route('allscrap')}}">All Scrap <i class="fa-light fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -219,7 +219,7 @@
                     Donate Here
                     for future</h2>
                 {{-- <button class="btn btn-outline-light text-primary text-center mt-5">Donate Now</button> --}}
-                <a class="btn btn-outline-light text-dark text-center mt-5" href="#">Donate Now</a>
+                <a class="btn btn-outline-light text-dark text-center mt-5 slider-btn" href="{{route('sell')}}">Donate Now</a>
             </div>
 
 

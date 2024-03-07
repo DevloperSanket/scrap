@@ -18,9 +18,21 @@ class IndexController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function about()
     {
-        //
+        return view('frontend.about');
+    }
+
+    public function contact(){
+        return view('frontend.contact');
+    }
+
+    public function sell(){
+        return view('frontend.sell-scrap');
+    }
+
+    public function allscrap(){
+        return view('frontend.all-scrap');
     }
 
     /**

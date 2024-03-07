@@ -45,7 +45,7 @@
                              <span class="footer__item-title-line"></span><span class="footer__item-title-line2"></span>
                          </div>
                          <ul>
-                             <li class="pb-1"><a href="service-single.html"><i
+                             <li class="pb-1"><a href="{{route('sell')}}"><i
                                          class="fa-solid fa-chevron-right pe-1 primary-color"></i> Sell Scrap
                                  </a>
                              </li>

@@ -52,7 +52,7 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <ul class="info">
-                            <li><i class="fa-solid fa-paper-plane"></i> <a href="#0">help@ecleantech.org</a></li>
+                            <li><i class="fa-solid fa-paper-plane"></i> <a href="#0">help@cleantech.org</a></li>
                             <li class="bor-left ms-4 ps-4"><i class="fa-solid fa-location-dot"></i> <a href="#0">B
                                     224, Pranik chambers Sakinaka Junction ,
                                     Mumbai- 400 072</a>
@@ -89,7 +89,7 @@
                             <a class="text-white" href="{{ route('index') }}">Home</a>
                         </li>
                         <li>
-                            <a class="text-white" href="#">About Us</a>
+                            <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
                             <a id="mega-menu-btn" class="text-white" href="#">Services <i
@@ -113,10 +113,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="text-white" href="contact.html">Contact Us</a>
+                            <a class="text-white" href="{{route('allscrap')}}">All Scrap</a>
+                        </li>
+                        <li>
+                            <a class="text-white" href="{{route('contact')}}">Contact Us</a>
                         </li>
                         <li class="menu-btn">
-                            <a href="contact.html"><span>Sell Now</span> <i class="fa-solid fa-angles-right"></i></a>
+                            <a href="{{route('sell')}}"><span>Sell Now</span> <i class="fa-solid fa-angles-right"></i></a>
                         </li>
                         <li class="menu_info ms-0">
                             <i class="fa-solid call_ico fa-phone-volume"></i>
@@ -187,12 +190,12 @@
             layers above. Proper compaction of
             the subgrade is crucial to prevent settling and ensure long-term road stability.</p>
         <ul class="info py-4 mt-65 bor-top bor-bottom">
-            <li><i class="fa-solid primary-color fa-location-dot"></i> <a href="#0">example@example.com</a>
-            </li>
+            {{-- <li><i class="fa-solid primary-color fa-location-dot"></i> <a href="#0">example@example.com</a>
+            </li> --}}
             <li class="py-4"><i class="fa-solid primary-color fa-phone-volume"></i> <a
                     href="tel:+91 983 3526 722">+91 983 3526 722</a>
             </li>
-            <li><i class="fa-solid primary-color fa-paper-plane"></i> <a href="#0">info.company@gmail.com</a>
+            <li><i class="fa-solid primary-color fa-paper-plane"></i> <a href="#0">Help@Cleantech.Org</a>
             </li>
         </ul>
         <div class="social-icon mt-65">

@@ -31,6 +31,10 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login',[UserController::class,'signin']);
     Route::get('/register', [UserController::class, 'register'])->name('register');
     Route::post('/register', [UserController::class, 'store']);
+    Route::get('/about',[IndexController::class,'about'])->name('about');
+    Route::get('/contact',[IndexController::class,'contact'])->name('contact');
+    Route::get('/sell',[IndexController::class,'sell'])->name('sell');
+    Route::get('/allscrap',[IndexController::class,'allscrap'])->name('allscrap');
 });
 
 // Authenticated Routes
