@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="header-top-wrp">
                     <div class="logo-menu">
-                        <a href="index.html" class="logo">
+                        <a href="{{route('index')}}" class="logo">
                             <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="50px" width="90px"
                                 alt="logo">
                         </a>
