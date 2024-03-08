@@ -7,7 +7,8 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\DoctorrecordController;
-
+use App\Http\Controllers\Admin\ScrapcategoryController;
+use App\Models\ScrapCategories;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +46,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/doctor-create',[DoctorrecordController::class,'store'])->name('doctore.store');
     Route::get('data',[DoctorrecordController::class,'data'])->name('admin.data');
     Route::post('/changeStatus', [DoctorrecordController::class, 'changeStatus'])->name('doctor.status');
+
+    // scrap category
+    Route::get('/scrapcategory',[ScrapcategoryController::class,'index'])->name('scrapcategory.index');
+    Route::get('/scrapcreate',[ScrapcategoryController::class,'create'])->name('scrapcategory.create');
+    Route::post('/scrapcreate',[ScrapcategoryController::class,'store'])->name('scrapcategory.store');
+    Route::get('data',[ScrapcategoryController::class,'data'])->name('scrapcategory.record');
     Route::get('/signout',[UserController::class,'logout'])->name('signout');
 });

@@ -46,4 +46,8 @@ class User extends Authenticatable
     public function DoctorRecords(){
         return $this->hasMany(DoctorRecord::class);
     }
+
+    public function ScrapCategory(){
+        return $this->hasMany(ScrapCategories::class);
+    }
 }
