@@ -29,22 +29,25 @@ class ScrapcategoryController extends Controller
 
     public function data()
     {
-        $data = ScrapCategories::query();
+        $query = ScrapCategories::query();
 
-        return DataTables::of($data)
-            ->addColumn('name', function($row){
-                return $row->name;
+        return DataTables::eloquent($query)
+            ->addColumn('name', function ($doctorrecord) {
+                return $doctorrecord->name;
             })
-            ->addColumn('action', function ($row) {
+            
+            ->addColumn('action', function ($doctorrecord) {
                 $btn = '<a href="#" class="edit btn btn-primary btn-sm">Edit</a>';
                 return $btn;
             })
-            ->addColumn('status', function ($row) {
+            ->addColumn('status', function ($doctorrecord) {
                 $status = '<div class="form-check form-switch">
-               <input class="form-check-input" type="checkbox" ' . ($row->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $row->id . '" onchange="statusChange(' . $row->id . ')">
+               <input class="form-check-input" type="checkbox" ' . ($doctorrecord->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $doctorrecord->id . '" onchange="statusChange(' . $doctorrecord->id . ')">
             </div>';
                 return $status;
             })
+
+
             ->rawColumns(['action', 'status'])
             ->make(true);
     }

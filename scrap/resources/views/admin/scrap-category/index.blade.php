@@ -19,8 +19,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-3">
-                    <table id="datatable" class="table table-bordered data-table">
-                        <thead class="bg-light">
+                    {{-- <table id="datatable" class="table table-bordered data-table">
+                        <thead>
                             <tr>
                                 <th>#</th>
                                 <th> Scarp Name</th>
@@ -56,6 +56,27 @@
                                     </button>
                                 </td>
                             </tr> --}}
+                        {{-- </tbody>
+                    </table> --}} 
+                    <table id="users-table" class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
                         </tbody>
                     </table>
                 </div>
@@ -67,7 +88,7 @@
 <script type="text/javascript">
     $(function() {
         var i = 1;
-        var table = $('#datatable').DataTable({
+        var table = $('#users-table').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('scrapcategory.record') }}",

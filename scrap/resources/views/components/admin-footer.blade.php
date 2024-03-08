@@ -17,7 +17,7 @@
   <!-- Vendor JS Files -->
 
   <script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  {{-- <script src="{{asset('admin/assets/vendor/simple-datatables/simple-datatables.js')}}"></script> --}}
+  <script src="{{asset('admin/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
