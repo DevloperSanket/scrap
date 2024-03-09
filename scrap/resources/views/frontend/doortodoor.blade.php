@@ -1,20 +1,20 @@
 <x-frontend-header />
 <div class="container">
     <div class="row">
-        <div class="col-md-12 mt-5">
-            <h3 class="text-decoration-underline slide-in-left">About Us</h3>
+        <div class="col-md-12 mt-5 slide-in-left">
+            <h3 class="text-decoration-underline">Door To Door <span style="color:#4baf47">Service</span></h3>
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row mt-4">
         <div class="col-md-6 slide-in-left">
-            <img class="img-thumbnail zoom-in-out" src="{{ asset('frontend/theam/assets/images/about-sell/about.jpg') }}" width="520px"
+            <img class="img-thumbnail zoom-in-out" src="{{ asset('frontend/theam/assets/images/service/door-service.jpg') }}" width="510px"
                 alt="">
         </div>
         <div class="col-md-6 slide-in-left">
             <p>
-            <h3>About  <span style="color:#4baf47">Over Work</span></h3>
+            <h3>We provide <span style="color:#4baf47">door to door service</span></h3>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, maxime quasi. Sequi non quam vero est saepe
             soluta adipisci ea expedita, dolores possimus accusamus placeat laboriosam et provident eligendi veniam in
             voluptates eius quidem. Consequatur libero ratione, autem ducimus, recusandae optio voluptatem corrupti
@@ -25,7 +25,7 @@
             neque.
             </p>
         </div>
-        <div class="col-md-12 slide-in-left">
+        <div class="col-md-12 slide-in-right">
             <p class="mt-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, perspiciatis. Cumque illum impedit qui
                 optio, et tempora asperiores eaque, accusantium veritatis ex quaerat sequi repellendus vero ipsum saepe
@@ -47,6 +47,12 @@
                 hic vero recusandae ipsam minima, neque minus cumque quas veritatis esse cupiditate, unde, commodi ea
                 eius accusantium! Nobis quia aliquam dignissimos distinctio, voluptate nostrum suscipit ducimus maiores
                 incidunt assumenda nemo cumque cupiditate eligendi excepturi exercitationem dolorum nam adipisci aut.
+                Deserunt harum architecto consectetur a esse sequi tempora eaque, consequuntur autem quibusdam nulla
+                itaque ratione, non odio. Beatae corporis facilis delectus, dolorem repellat laborum consectetur
+                laboriosam ab porro veritatis, voluptatum amet unde ratione enim sed. Numquam odio labore fuga impedit,
+                quam id? Laudantium sapiente sed quae nulla eius fuga repellendus, accusamus vero maxime incidunt esse
+                deserunt voluptatum magnam asperiores corporis exercitationem placeat velit molestias autem aperiam
+                facere mollitia veniam quia! Adipisci, est labore? Consequatur totam iusto sunt delectus perspiciatis
             </p>
         </div>
     </div>

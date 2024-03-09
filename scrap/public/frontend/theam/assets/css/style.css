@@ -7905,12 +7905,13 @@ input {
 
 @keyframes slideUp {
   0% {
-      transform: translateY(50px);
-      opacity: 0;
+    transform: translateY(50px);
+    opacity: 0;
   }
+
   100% {
-      transform: translateY(0);
-      opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -7922,7 +7923,7 @@ input {
   text-align: center;
 }
 
-.slider-btn{
+.slider-btn {
   padding: 15px 20px;
   font-weight: 600;
   color: white;
@@ -7934,9 +7935,9 @@ input {
   overflow: hidden;
 }
 
-.slider-btn:hover{
-background-color: #4baf47;
-color: white;
+.slider-btn:hover {
+  background-color: #4baf47;
+  color: white;
 }
 
 .slide-up-blog {
@@ -7946,55 +7947,136 @@ color: white;
 
 @keyframes slideUpBlog {
   0% {
-      transform: translateY(100%);
-      opacity: 0;
+    transform: translateY(100%);
+    opacity: 0;
   }
+
   100% {
-      transform: translateY(0);
-      opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 .gradient-custom {
   background: -webkit-linear-gradient(left, #7872ce, #7872ce);
-  }
-  
-  .card-custom {
+}
+
+.card-custom {
   border-bottom-left-radius: 10% 50%;
   border-top-left-radius: 10% 50%;
-  background-color: #4baf47 ;
-  }
-  
-  
-  .input-custom {
-  background-color: white ;
-  }
-  
-  .white-text {
+  background-color: #4baf47;
+}
+
+
+.input-custom {
+  background-color: white;
+}
+
+.white-text {
   color: hsl(52, 0%, 98%);
-  font-weight: 100 ;
+  font-weight: 100;
   font-size: 14px;
-  }
-  
-  .back-button {
+}
+
+.back-button {
   background-color: hsl(52, 0%, 98%);
   font-weight: 700;
-  color: black ;
-  margin-top: 50px ;
+  color: black;
+  margin-top: 50px;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+/* css added by sanket start */
+
+.slide-in-left {
+  animation: slideInLeft 1s ease forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
   }
 
-  .divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-.h-custom {
-height: calc(100% - 73px);
+
+.slide-in-right {
+  animation: slideInRight 1s ease forwards;
 }
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
 }
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.zoom-in-out {
+  transition: transform 0.3s ease;
+}
+
+.zoom-in-out:hover {
+  animation: zoomIn 0.3s ease forwards;
+}
+
+.zoom-in-out:not(:hover) {
+  animation: zoomOut 0.2s ease forwards;
+}
+
+.save-green {
+  width: 100%;
+  height: 390px;
+}
+
+.list-group-item.active {
+  background-color: #d4edda; /* Use the desired success color */
+  border-color: #c3e6cb; /* Use a slightly darker shade for the border */
+  color: #155724; /* Use a contrasting text color */
+}
+/* css added by sanket end */

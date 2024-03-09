@@ -136,21 +136,21 @@
                                 <div class="row g-4 justify-content-between">
                                     <div class="col-md-4">
                                         <div class="mega-menu__item">
-                                            <h6><a class="text-dark" href="#">Door To Door Scrap Collection</a>
+                                            <h6><a class="text-dark" href="{{route('doortodoor')}}">Door To Door Scrap Collection</a>
                                             </h6>
-                                            <h6><a class="text-dark" href="#">Packaging Scrap</a></h6>
-                                            <h6><a class="text-dark" href="#">Construction Scrap</a></h6>
-                                            <h6><a class="text-dark" href="#">IT Scrap</a></h6>
+                                            <h6><a class="text-dark" href="{{route('packaging')}}">Packaging Scrap</a></h6>
+                                            <h6><a class="text-dark" href="{{route('cunstruction')}}">Construction Scrap</a></h6>
+                                            <h6><a class="text-dark" href="{{route('itscrap')}}">IT Scrap</a></h6>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mega-menu__item">
                                             <div class="mega-menu__item">
-                                                <h6><a class="text-dark" href="#">Collage Institution Scrap</a>
+                                                <h6><a class="text-dark" href="{{route('collage')}}">Collage Institution Scrap</a>
                                                 </h6>
-                                                <h6><a class="text-dark" href="#">Bank/Office Scrap</a></h6>
-                                                <h6><a class="text-dark" href="#">Goverment Scrap</a></h6>
-                                                <h6><a class="text-dark" href="#">Socity/Residential Scrap</a>
+                                                <h6><a class="text-dark" href="{{route('bank-scrap')}}">Bank/Office Scrap</a></h6>
+                                                <h6><a class="text-dark" href="{{route('gov-scrap')}}">Goverment Scrap</a></h6>
+                                                <h6><a class="text-dark" href="{{route('socity-scrap')}}">Socity/Residential Scrap</a>
                                                 </h6>
                                             </div>
                                         </div>

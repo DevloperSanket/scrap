@@ -57,7 +57,7 @@
                                          class="fa-solid fa-chevron-right pe-1 primary-color"></i> Donation
                                  </a>
                              </li>
-                             <li><a href="service-single.html"><i
+                             <li><a href="{{route('savegreen')}}"><i
                                          class="fa-solid fa-chevron-right pe-1 primary-color"></i> Save Green
                                      House
                                  </a>

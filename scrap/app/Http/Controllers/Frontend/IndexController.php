@@ -35,6 +35,41 @@ class IndexController extends Controller
         return view('frontend.all-scrap');
     }
 
+    public function doortodoor(){
+        return view('frontend.doortodoor');
+    }
+
+    public function packaging(){
+        return view('frontend.packaging');
+    }
+
+    public function cunstruction(){
+        return view('frontend.cunstruction');
+    }
+
+    public function itscrap(){
+        return view('frontend.itscrap');
+    }
+
+    public function collage(){
+        return view('frontend.collage');
+    }
+
+    public function bankscrap(){
+        return view('frontend.bank-scrap');
+    }
+
+    public function gov(){
+        return view('frontend.gov');
+    }
+
+    public function socity(){
+        return view('frontend.socity');
+    }
+
+    public function savegreen(){
+        return view('frontend.save-green');
+    }
     /**
      * Store a newly created resource in storage.
      */

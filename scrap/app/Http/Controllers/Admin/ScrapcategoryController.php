@@ -27,22 +27,22 @@ class ScrapcategoryController extends Controller
         return view('admin.scrap-category.form');
     }
 
-    public function data()
+    public function scrapdata()
     {
         $query = ScrapCategories::query();
 
-        return DataTables::eloquent($query)
-            ->addColumn('name', function ($doctorrecord) {
-                return $doctorrecord->name;
+        return Datatables::of($query)
+            ->addColumn('name', function ($query) {
+                return $query->name;
             })
             
-            ->addColumn('action', function ($doctorrecord) {
+            ->addColumn('action', function ($query) {
                 $btn = '<a href="#" class="edit btn btn-primary btn-sm">Edit</a>';
                 return $btn;
             })
-            ->addColumn('status', function ($doctorrecord) {
+            ->addColumn('status', function ($query) {
                 $status = '<div class="form-check form-switch">
-               <input class="form-check-input" type="checkbox" ' . ($doctorrecord->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $doctorrecord->id . '" onchange="statusChange(' . $doctorrecord->id . ')">
+               <input class="form-check-input text-center" type="checkbox" ' . ($query->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $query->id . '" onchange="ScrapStatusChange(' . $query->id . ')">
             </div>';
                 return $status;
             })
@@ -72,9 +72,15 @@ class ScrapcategoryController extends Controller
         $validatedData = $request->validate($rules, $messages);
 
         // Create a new ScrapCategories instance
+        $scrapCategory = new ScrapCategories;
+        
+
         $data = ScrapCategories::create([
             'name' => $validatedData['name'],
+            'status' => '1',
         ]);
+
+        
 
         // Return a JSON response
         return response()->json([
@@ -111,8 +117,18 @@ class ScrapcategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function scrapchangeStatus(Request $request)
     {
-        //
+        $id = $request->id;
+        $status = $request->status;
+        $query = ScrapCategories::where('id',$id)->update(['status'=>$status]);
+        if($query){
+            return response()->json([
+                'success'=> true,
+                'data'=>$query,
+                'message' => 'Status updated successfully'], 200);
+        }else{
+            return response()->json(['message' => 'Doctor record not found or status unchanged'], 404);
+        }
     }
 }

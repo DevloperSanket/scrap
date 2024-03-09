@@ -45,7 +45,7 @@
         <div class="container-fluid h-custom ">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5 pt-0">
-                    <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" class="img-fluid"
+                    <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="250px" width="300px" class="img-fluid"
                         alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 pt-5">

@@ -18,56 +18,17 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mt-3">
-                    {{-- <table id="datatable" class="table table-bordered data-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th> Scarp Name</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{-- <tr>
-                                <td>
-                                    1
-                                </td>
-                                
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
-                                            style="width: 45px; height: 45px" class="rounded-circle" />
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">John Doe</p>
-                                            <p class="text-muted mb-0">john.doe@gmail.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="badge bg-success rounded-pill d-inline">Active</span>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary btn-sm btn-rounded">
-                                        Edit
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm btn-rounded">
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr> --}}
-                        {{-- </tbody>
-                    </table> --}} 
+                <div class="col-md-12 mt-4">
                     <table id="users-table" class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>
+                                <th width="10px">
                                     Id
                                 </th>
-                                <th>
+                                <th width="10px">
                                     Action
                                 </th>
-                                <th>
+                                <th width="10px">
                                     Status
                                 </th>
                                 <th>
@@ -116,41 +77,42 @@
 
     });
 
-    // function statusChange(doctorId) {
-    //     var checkbox = document.querySelector('input[data-id="' + doctorId + '"]');
-    //     var status = checkbox.checked ? 1 : 0;
-    //     var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-    //     $.ajax({
-    //         url: "{{ route('doctor.status') }}",
-    //         method: 'POST',
-    //         headers: {
-    //             'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
-    //         },
-    //         data: {
-    //             id: doctorId,
-    //             status: status
-    //         },
-    //         success: function(response) {
-    //             Swal.fire({
-    //                 icon: 'success',
-    //                 title: 'Success!',
-    //                 text: 'Status update successfully.'
-    //             });
-    //         },
-    //         error: function(xhr, status, error) {
-    //             if (xhr.status === 422) {
-    //                 var errors = xhr.responseJSON.errors;
-    //                 $.each(errors, function(key, value) {
-    //                     $('.' + key + '_error').text(value[0]);
-    //                 });
-    //             } else {
-    //                 Swal.fire({
-    //                     icon: 'error',
-    //                     title: 'Oops...',
-    //                     text: 'Something went wrong! Please try again later.'
-    //                 });
-    //             }
-    //         }
-    //     });
-    // }
+    function ScrapStatusChange(scrapId) {
+        console.log(scrapId);
+        var checkbox = document.querySelector('input[data-id="' + scrapId + '"]');
+        var status = checkbox.checked ? 1 : 0;
+        var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+        $.ajax({
+            url: "{{ route('scrapcategory.status') }}",
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            data: {
+                id: scrapId,
+                status: status
+            },
+            success: function(response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Status update successfully.'
+                });
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function(key, value) {
+                        $('.' + key + '_error').text(value[0]);
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! Please try again later.'
+                    });
+                }
+            }
+        });
+    }
 </script>
