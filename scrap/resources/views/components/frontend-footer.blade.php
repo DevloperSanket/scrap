@@ -49,7 +49,7 @@
                                          class="fa-solid fa-chevron-right pe-1 primary-color"></i> Sell Scrap
                                  </a>
                              </li>
-                             <li class="pb-1"><a href="service-single.html"><i
+                             <li class="pb-1"><a href="{{route('allscrap')}}"><i
                                          class="fa-solid fa-chevron-right pe-1 primary-color"></i> Crap Price
                                  </a>
                              </li>

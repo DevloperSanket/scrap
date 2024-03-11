@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-4">
-            <h3>Sell Your Scrap</h3>
+            <h3>Sell Scrap Directly</h3>
         </div>
 
         <div class="row mt-3 mx-3 gradient-custom" style="margin-top:25px ;">
