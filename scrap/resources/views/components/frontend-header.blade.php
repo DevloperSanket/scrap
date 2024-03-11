@@ -76,7 +76,7 @@
                     </div>
                     <div class="logo-menu d-block d-xl-none">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('frontend/theam/assets/images/logo/logo-light.svg') }}" alt="logo">
+                            <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" alt="logo" style="height: 50px;">
                         </a>
                     </div>
                     <div class="header-bar d-xl-none">

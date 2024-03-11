@@ -7884,6 +7884,9 @@ input {
 
 /* new slider for  */
 
+
+/* sanket css start */
+
 .zoom-in-out {
   animation: zoomInOut 10s infinite alternate;
 }
@@ -7958,13 +7961,15 @@ input {
 }
 
 .gradient-custom {
-  background: -webkit-linear-gradient(left, #7872ce, #7872ce);
+  background: -webkit-linear-gradient(left, #7d77d4, #d3d1f5);
+  height: 450px;
 }
 
 .card-custom {
   border-bottom-left-radius: 10% 50%;
   border-top-left-radius: 10% 50%;
-  background-color: #4baf47;
+  background-color: #4aac47;
+  height: 450px;
 }
 
 
@@ -8075,8 +8080,10 @@ input {
 }
 
 .list-group-item.active {
-  background-color: #d4edda; /* Use the desired success color */
-  border-color: #c3e6cb; /* Use a slightly darker shade for the border */
-  color: #155724; /* Use a contrasting text color */
+  background-color: #d4edda; 
+  border-color: #c3e6cb; 
+  color: #155724; 
 }
+
+
 /* css added by sanket end */

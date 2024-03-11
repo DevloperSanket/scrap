@@ -1,86 +1,85 @@
 <x-frontend-header />
-<div class="container">
-    <div class="row">
-        <div class="col-12 mt-4">
-            <h3>Sell Scrap Directly</h3>
-        </div>
+<section class="p-2" style="background-color: #eee;">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 10px;">
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-        <div class="row mt-3 mx-3 gradient-custom" style="margin-top:25px ;">
-            <div class="col-md-3">
-              <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
-                <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="90px" alt="Logo">
-                <h3 class="mt-3 text-white">Welcome</h3>
-                <p class="white-text">You are 30 seconds away from compleating your order!</p>
-              </div>
-              {{-- <div class="text-center">
-                <button type="submit" class="btn btn-white btn-rounded back-button">Go back</button>
-              </div> --}}
-          
-          
-            </div>
-            <div class="col-md-9 justify-content-center">
-              <div class="card card-custom pb-4">
-                <div class="card-body mt-0 mx-5">
-                  <div class="text-center mb-3 pb-2 mt-3">
-                    <h4 style="color: white ;">Scrap Details</h4>
-                  </div>
-          
-                  <form class="mb-0">
-          
-                    <div class="row mb-4">
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form9Example1" class="form-control input-custom" />
-                          <label class="form-label text-white" for="form9Example1">First name</label>
+                                <p class="text-center h1 fw-bold">Sell <span style="color:rgb(52, 170, 52)">Scrap</span></p>
+
+                                <form class="mx-1 mx-md-4">
+                                    <div class="d-flex flex-row align-items-center mb-3">
+                                        <div class="form-outline flex-fill">
+                                            <input type="text" id="form3Example1c" class="form-control"
+                                                name="name" placeholder="Enter Name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="email" id="form3Example3c" class="form-control"
+                                                name="email" placeholder="Enter Email">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="city" id="form3Example4c" class="form-control"
+                                                name="city" placeholder="Enter City" />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example4c" class="form-control"
+                                                name="pincode" placeholder="Enter Pincode" />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+                                        <div class="form-outline flex-fill">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Select Scrap Type</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+                                        <div class="form-outline flex-fill mb-0">
+                                          <label class="form-label" for="form3Example4cd">Select Scrap Images (Optional) </label>
+                                            <input type="file" id="form3Example4c" class="form-control"
+                                                name="file[]" placeholder="Enter Pincode" />
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-3">
+                                      <div class="form-outline flex-fill mb-0">
+                                          <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
+                                      </div>
+                                  </div>
+
+                                    <div class="d-flex justify-content-center mx-4">
+                                        <button type="button" class="btn btn-success">Submit</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" class="img-fluid"
+                                    alt="Sample image" style="height: 220px;">
+                            </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form9Example2" class="form-control input-custom" />
-                          <label class="form-label text-white" for="form9Example2">Last name</label>
-                        </div>
-                      </div>
                     </div>
-                    <div class="row mb-4">
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form9Example3" class="form-control input-custom" />
-                          <label class="form-label text-white" for="form9Example3">City</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form9Example4" class="form-control input-custom" />
-                          <label class="form-label text-white" for="form9Example4">Zip</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form9Example6" class="form-control input-custom" />
-                          <label class="form-label text-white" for="form9Example6">Address</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="email" id="typeEmail" class="form-control input-custom" />
-                          <label class="form-label text-white" for="typeEmail">Email</label>
-                        </div>
-                      </div>
-                    </div>
-          
-                    <div class="float-end ">
-                      <!-- Submit button -->
-                      <button type="submit" class="btn text-white btn-rounded"
-                        style="background-color: #7872ce;">Sell Scrap</button>
-                    </div>
-          
-                  </form>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     </div>
-</div>
+</section>
 <x-frontend-footer />

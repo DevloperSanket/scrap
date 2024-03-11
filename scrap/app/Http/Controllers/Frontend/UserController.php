@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Redirect;
+
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
@@ -30,6 +30,9 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
+            'city'=> 'required',
+            'pincode'=> 'required',
+            'address'=> 'required',
             'password' => 'required'
         ];
 
@@ -38,6 +41,9 @@ class UserController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Please Enter Valid Email Address',
             'email.unique' => 'Email already in use',
+            'city.required' => 'City is required',
+            'pincode.required'=> 'Pincode is required',
+            'address.required'=> 'Address is required',
             'password.required' => 'Password is required'
         ];
         $validateData = $request->validate($rules,$message);
