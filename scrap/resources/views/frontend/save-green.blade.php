@@ -23,16 +23,20 @@
                 <a class="list-group-item list-group-item-action" id="list-support-list" data-bs-toggle="list"
                     href="#list-supports" role="tab" aria-controls="list-supports">Support Sustainable Products</a>
 
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
-                    href="#list-messages" role="tab" aria-controls="list-messages">Plant Trees</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-                    href="#list-settings" role="tab" aria-controls="list-settings">Minimize Plastic Use</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-                    href="#list-settings" role="tab" aria-controls="list-settings">Advocate for Change</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-                    href="#list-settings" role="tab" aria-controls="list-settings">Educate Others</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-                    href="#list-settings" role="tab" aria-controls="list-settings">Lead by Example</a>
+                <a class="list-group-item list-group-item-action" id="list-plants-list" data-bs-toggle="list"
+                    href="#list-plants" role="tab" aria-controls="list-plants">Plant Trees</a>
+
+                <a class="list-group-item list-group-item-action" id="list-plastics-list" data-bs-toggle="list"
+                    href="#list-plastics" role="tab" aria-controls="list-plastics">Minimize Plastic Use</a>
+
+                <a class="list-group-item list-group-item-action" id="list-changes-list" data-bs-toggle="list"
+                    href="#list-changes" role="tab" aria-controls="list-changes">Advocate for Change</a>
+
+                <a class="list-group-item list-group-item-action" id="list-others-list" data-bs-toggle="list"
+                    href="#list-others" role="tab" aria-controls="list-others">Educate Others</a>
+
+                <a class="list-group-item list-group-item-action" id="list-leads-list" data-bs-toggle="list"
+                    href="#list-leads" role="tab" aria-controls="list-leads">Lead by Example</a>
             </div>
         </div>
         <div class="col-md-8">
@@ -94,7 +98,7 @@
                     transportation and supports local economies. By supporting sustainable products, individuals
                     contribute to a greener economy and a healthier planet for future generations.
                 </div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div class="tab-pane fade" id="list-plants" role="tabpanel" aria-labelledby="list-plants-list">
                     <b>Planting Trees</b> Trees play a crucial role in mitigating climate change and preserving biodiversity.
                     By planting trees, individuals contribute to carbon sequestration, as trees absorb carbon dioxide
                     and release oxygen, helping to offset greenhouse gas emissions. Trees also provide habitat for
@@ -105,7 +109,7 @@
                     Through collective efforts to plant trees, communities can create greener, healthier environments
                     and combat the impacts of climate change.
                 </div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div class="tab-pane fade" id="list-plastics" role="tabpanel" aria-labelledby="list-plastics-list">
                     <b>Minimizing Plastic Use</b> Reducing plastic consumption is essential for mitigating pollution and
                     protecting marine ecosystems. Individuals can minimize plastic use by opting for reusable
                     alternatives such as stainless steel water bottles, cloth shopping bags, and glass food containers.
@@ -117,7 +121,7 @@
                     individuals contribute to cleaner oceans, healthier ecosystems, and a more sustainable future for
                     all.
                 </div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div class="tab-pane fade" id="list-changes" role="tabpanel" aria-labelledby="list-changes-list">
                     <b>Advocating for Change</b> Speaking out for environmental policies and initiatives is crucial for
                     driving systemic change and addressing pressing environmental issues. Individuals can advocate for
                     change by engaging with policymakers, joining advocacy groups, and participating in grassroots
@@ -129,7 +133,7 @@
                     change. By advocating for policies that prioritize environmental protection and sustainability,
                     individuals play a vital role in shaping a better future for the planet and future generations.
                 </div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div class="tab-pane fade" id="list-others" role="tabpanel" aria-labelledby="list-others-list">
                     <b>Educating Others</b> Sharing knowledge about environmental issues and sustainable practices is
                     essential for fostering widespread awareness and behavior change. Individuals can educate others
                     through workshops, presentations, and online platforms, highlighting the importance of topics such
@@ -141,7 +145,7 @@
                     individuals contribute to building a more environmentally conscious society and creating positive
                     change for the planet.
                 </div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                <div class="tab-pane fade" id="list-leads" role="tabpanel" aria-labelledby="list-leads-list">
                     <b>Leading by Example</b> Demonstrating sustainable practices in our own lives inspires others to follow
                     suit and contributes to a culture of environmental stewardship. By incorporating eco-friendly habits
                     such as recycling, conserving energy and water, and reducing waste, individuals set a positive
@@ -153,7 +157,6 @@
                     responsibility for the planet and empowers individuals to make a meaningful difference in preserving
                     the environment for future generations.
                 </div>
-
             </div>
         </div>
     </div>
