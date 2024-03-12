@@ -1,5 +1,5 @@
  <!-- Footer area start here -->
- <footer class="footer" style="background-color: rgba(231, 228, 228, 0.685)">
+ <footer class="footer" style="background-color: rgba(231, 228, 228, 0.685);margin-top:30px;">
      <div class="container">
          <div class="pt-50 pb-50 ">
              <div class="row g-4 ">
