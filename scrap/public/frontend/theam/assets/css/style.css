@@ -7888,16 +7888,16 @@ input {
 /* sanket css start */
 
 .zoom-in-out {
-  animation: zoomInOut 10s infinite alternate;
+  animation: zoomInOut 3s infinite alternate;
 }
 
 @keyframes zoomInOut {
   0% {
-    transform: scale(1);
+    transform: scale(15);
   }
 
   100% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
 
@@ -8071,7 +8071,7 @@ input {
 }
 
 .zoom-in-out:not(:hover) {
-  animation: zoomOut 0.2s ease forwards;
+  animation: zoomOut 0.5s ease forwards;
 }
 
 .save-green {
@@ -8083,6 +8083,11 @@ input {
   background-color: #d4edda; 
   border-color: #c3e6cb; 
   color: #155724; 
+}
+.image-scrap{
+  padding-bottom: 400px;
+  margin-left: 100px;
+  margin-bottom: 50px;
 }
 
 
