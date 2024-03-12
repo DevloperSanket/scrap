@@ -37,7 +37,7 @@
             <div class="">
                 <div class="card-body">
                     <img class="rounded" src="{{ asset('frontend/theam/assets/images/contact/location1.png') }}"
-                        width="35px" alt="">
+                        width="30px" alt="">
                     <h4 class="mt-3">
                         Address
                     </h4>

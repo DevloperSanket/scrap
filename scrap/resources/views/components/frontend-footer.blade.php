@@ -1,5 +1,5 @@
  <!-- Footer area start here -->
- <footer class="footer bg-image" data-background="{{ asset('assets/images/bg/footer-bg.jpg') }}">
+ <footer class="footer" style="background-color: rgba(231, 228, 228, 0.685)">
      <div class="container">
          <div class="pt-50 pb-50 ">
              <div class="row g-4 ">

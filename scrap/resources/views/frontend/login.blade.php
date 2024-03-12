@@ -1,5 +1,5 @@
 <x-frontend-header />
-<div class="container">
+<div class="container mb-5">
     <section class="border-bottom pb-5">
         <div class="container-fluid h-custom ">
             <div class="row d-flex justify-content-center align-items-center h-100">

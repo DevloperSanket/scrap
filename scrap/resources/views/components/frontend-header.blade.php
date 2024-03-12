@@ -95,21 +95,14 @@
                             <a id="mega-menu-btn" class="text-white" href="#">Services <i
                                     class="fas fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li class="d-block d-xl-none"><a href="project.html">Our Project 01</a></li>
-                                <li class="d-block d-xl-none"><a href="project-2.html">Our Project 02</a></li>
-                                <li class="d-block d-xl-none"><a href="project-single.html">Project Details</a></li>
-                                <li class="d-block d-xl-none"><a href="donation.html">Donation 01</a></li>
-                                <li class="d-block d-xl-none"><a href="donation-2.html">Donation 02</a></li>
-                                <li class="d-block d-xl-none"><a href="donation-single.html">Donation Details</a></li>
-                                <li class="d-block d-xl-none"><a href="event.html">Events 01</a></li>
-                                <li class="d-block d-xl-none"><a href="event-2.html">Events 01</a></li>
-                                <li class="d-block d-xl-none"><a href="event-single.html">Events Details</a></li>
-                                <li class="d-block d-xl-none"><a href="team.html">Our Teams 01</a></li>
-                                <li class="d-block d-xl-none"><a href="team-2.html">Our Teams 02</a></li>
-                                <li class="d-block d-xl-none"><a href="team-single.html">Our Teams Details</a></li>
-                                <li class="d-block d-xl-none"><a href="faq.html">FAQ</a></li>
-                                <li class="d-block d-xl-none"><a href="login.html">Login / Register</a></li>
-                                <li class="d-block d-xl-none"><a href="error.html">404 Error</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('doortodoor')}}">Door To Door Scrap Collection</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Packaging Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('cunstruction')}}">Construction Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('itscrap')}}">IT Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('collage')}}">Collage Institution Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('bank-scrap')}}">Bank/Office Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('gov-scrap')}}">Goverment Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Socity/Residential Scrap</a></li>
                             </ul>
                         </li>
                         <li>

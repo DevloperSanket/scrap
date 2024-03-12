@@ -1,5 +1,5 @@
 <x-frontend-header />
-<section class="p-2" style="background-color: #eee;">
+<section class="p-2" >
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-lg-12 col-xl-11">
