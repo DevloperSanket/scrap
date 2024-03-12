@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <div class="mega-menu__item">
                                             <div class="mega-menu__item">
                                                 <h6><a class="text-dark" href="#">Door To Door Scrap
@@ -161,7 +161,7 @@
                                                         Collection</a></h6>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

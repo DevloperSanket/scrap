@@ -22,19 +22,17 @@
             suscipit similique amet accusantium minus ipsum! Ipsam tempore illo totam sit non eos maiores et modi
             </p>
         </div>
-        <div class="col-md-6 slide-in-right mt-3">
+        <div class="col-md-12 slide-in-right mt-3">
             <p class="mt-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, perspiciatis. Cumque illum impedit qui
                 optio, et tempora asperiores eaque, accusantium veritatis ex quaerat sequi repellendus vero ipsum saepe
                 voluptates. Nisi nostrum ullam totam quibusdam molestiae alias iure sit odio! Quia ad veniam dolor
-                quaerat reprehenderit quae voluptate, iusto dicta corporis facilis velit vel aut, repellat inventore et.
-                Suscipit, nulla repellat ipsa, iste distinctio quos consequatur numquam veritatis in amet sed!
             </p>
         </div>
-        <div class="col-md-6 slide-in-right mt-5">
+        {{-- <div class="col-md-6 slide-in-right mt-5">
             <img class="img-thumbnail zoom-in-out" src="{{ asset('frontend/theam/assets/images/about-sell/about.jpg') }}" width="520px"
                 alt="">
-        </div>
+        </div> --}}
     </div>
 </div>
 <x-frontend-footer />
