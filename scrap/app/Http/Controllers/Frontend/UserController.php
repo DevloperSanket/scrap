@@ -48,7 +48,9 @@ class UserController extends Controller
         ];
         $validateData = $request->validate($rules,$message);
 
+        dd($request);
         $user = New User;
+        $user->role = $validateData['role'];
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
         $user->city = $validateData['city'];

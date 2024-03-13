@@ -18,6 +18,7 @@
                     <h3 class="mb-3">Create Account</h3>
                     <form method="post" action="{{ route('register') }}">
                         @csrf
+                        <input type="hidden" value="2" name="role">
                         <!-- Name input -->
                         <div class="form-outline mb-3">
                             <input type="text" id="form3Example3" name="name" class="form-control"
