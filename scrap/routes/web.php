@@ -44,6 +44,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/gov', [IndexController::class,'gov'])->name('gov-scrap');
     Route::get('/socity', [IndexController::class,'socity'])->name('socity-scrap');
     Route::get('/savegreen', [IndexController::class,'savegreen'])->name('savegreen');
+    Route::get('/service',[IndexController::class,'service'])->name('service');
 });
 
 // Authenticated Routes

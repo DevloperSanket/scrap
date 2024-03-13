@@ -78,7 +78,7 @@
                             <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
-                            <a id="mega-menu-btn" class="text-white" href="#">Services
+                            <a id="mega-menu-btn" class="text-white" href="{{route('service')}}">Services
                                 {{-- <i class="fas fa-chevron-down"></i> --}}
                             </a>
                             <ul class="sub-menu">
