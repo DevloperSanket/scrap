@@ -51,6 +51,9 @@ class UserController extends Controller
         $user = New User;
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
+        $user->city = $validateData['city'];
+        $user->pincode = $validateData['pincode'];
+        $user->address = $validateData['address'];
         $user->password = Hash::make($validateData['password']);
         $user->save();
         if(Auth::attempt($request->only('email','password'))){
