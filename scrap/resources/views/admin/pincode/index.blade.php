@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Scrap Categories</li>
+                <li class="breadcrumb-item active">Pincode</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12 text-end">
-                <a href="{{ route('scrapcategory.create') }}" class="btn btn-primary ">Create</a>
+                <a href="{{ route('pincode.create') }}" class="btn btn-primary ">Add</a>
             </div>
         </div>
 
@@ -32,7 +32,13 @@
                                     Status
                                 </th>
                                 <th>
-                                    Name
+                                    City
+                                </th>
+                                <th>
+                                    Area
+                                </th>
+                                <th>
+                                    Pincode
                                 </th>
                             </tr>
                         </thead>

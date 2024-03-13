@@ -37,9 +37,12 @@ class ScrapcategoryController extends Controller
             })
             
             ->addColumn('action', function ($query) {
-                $btn = '<a href="#" class="edit btn btn-primary btn-sm">Edit</a>';
-                return $btn;
+                $editButton = '<a href="' . route('scrapcategory.edit', $query->id) . '" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
+                $deleteButton = '<a class="delete btn btn-danger btn-sm" onclick="deletefunction(' . $query->id .')"><i class="bi bi-trash3"></i></a>';
+            
+                return $editButton . ' ' . $deleteButton;
             })
+            
             ->addColumn('status', function ($query) {
                 $status = '<div class="form-check form-switch">
                <input class="form-check-input text-center" type="checkbox" ' . ($query->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $query->id . '" onchange="ScrapStatusChange(' . $query->id . ')">
@@ -103,15 +106,43 @@ class ScrapcategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $category_edit = ScrapCategories::find($id);
+        // dd($category_edit);
+        return view('admin.scrap-category.edit',compact('category_edit'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        
+        $updatedata = ScrapCategories::find($request->id);
+        // dd( $updatedata);
+        $updatedata->name = $request->input('name');
+
+        $updatedata->save();
+
+         // Return a JSON response
+         return response()->json([
+            'success' => true,
+            'data' => $updatedata,
+            'message' => 'Category Updated successfully',
+        ]);
+    }
+    public function delete(Request $request)
+    {
+        // dd($request);
+        $deleterecord = ScrapCategories::find($request->id);
+        // dd($deleterecord);
+        $deleterecord->delete();
+        
+          return response()->json([
+            'success' => true,
+            'data' => $deleterecord,
+            'message' => 'Category Deleted successfully',
+        ]);
     }
 
     /**

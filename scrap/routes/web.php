@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\DoctorrecordController;
 use App\Http\Controllers\Admin\ScrapcategoryController;
+use App\Http\Controllers\Admin\PincodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/scrapcreate', [ScrapcategoryController::class, 'store'])->name('scrapcategory.store');
     Route::get('scrapdata', [ScrapcategoryController::class, 'scrapdata'])->name('scrapcategory.record');
     Route::post('/scrapchangeStatus', [ScrapcategoryController::class, 'scrapchangeStatus'])->name('scrapcategory.status');
+    Route::get('/edit-scrap/{id}', [ScrapcategoryController::class, 'edit'])->name('scrapcategory.edit');
+    Route::post('/update-scrap', [ScrapcategoryController::class, 'update'])->name('scrapcategory.update');
+    Route::post('/delete-scrap', [ScrapcategoryController::class, 'delete'])->name('scrapcategory.delete');
+
+    // pincode 
+    Route::get('/pincode', [PincodeController::class, 'index'])->name('pincode.index');
+    // Route::get('/pincodecreate', [PincodeController::class, 'create'])->name('pincode.create');
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
 });
