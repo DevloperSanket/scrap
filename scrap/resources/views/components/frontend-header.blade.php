@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/theam/frontend/theam/assets/css/nice-select.css') }}">
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('frontend/theam/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{asset('frontend/theam/assets/css/index.css')}}">
 </head>
 
 <body>
@@ -32,10 +33,10 @@
             <div id="loading-center-absolute">
                 <div class="loading-icon text-center d-flex flex-column align-items-center justify-content-center">
                     <img class="loading-logo" src="{{ asset('frontend/theam/assets/images/preloader.svg') }}"
-                        alt="icon">
-                </div>
-            </div>
-        </div>
+    alt="icon">
+    </div>
+    </div>
+    </div>
     </div> --}}
     <!-- Preloader area end -->
 
@@ -46,8 +47,7 @@
                 <div class="header-top-wrp">
                     <div class="logo-menu">
                         <a href="{{route('index')}}" class="logo">
-                            <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="50px" width="90px"
-                                alt="logo">
+                            <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" height="50px" width="90px" alt="logo">
                         </a>
                     </div>
                     <div class="d-flex align-items-center">
@@ -92,8 +92,7 @@
                             <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
-                            <a id="mega-menu-btn" class="text-white" href="#">Services <i
-                                    class="fas fa-chevron-down"></i></a>
+                            <a id="mega-menu-btn" class="text-white" href="#">Services <i class="fas fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <li class="d-block d-xl-none"><a href="{{route('doortodoor')}}">Door To Door Scrap Collection</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Packaging Scrap</a></li>
@@ -185,8 +184,7 @@
         <ul class="info py-4 mt-65 bor-top bor-bottom">
             {{-- <li><i class="fa-solid primary-color fa-location-dot"></i> <a href="#0">example@example.com</a>
             </li> --}}
-            <li class="py-4"><i class="fa-solid primary-color fa-phone-volume"></i> <a
-                    href="tel:+91 983 3526 722">+91 983 3526 722</a>
+            <li class="py-4"><i class="fa-solid primary-color fa-phone-volume"></i> <a href="tel:+91 983 3526 722">+91 983 3526 722</a>
             </li>
             <li><i class="fa-solid primary-color fa-paper-plane"></i> <a href="#0">Help@Cleantech.Org</a>
             </li>

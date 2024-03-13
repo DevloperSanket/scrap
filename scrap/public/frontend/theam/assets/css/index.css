@@ -1,0 +1,38 @@
+/* css add by Mahesh Start */
+.card-img-top {
+    padding: 10px;
+}
+
+.contact_main {
+    height: 170px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.contact_h3 {
+    font-size: 35px;
+    padding-bottom: 7px;
+    padding-top: 30px;
+}
+.contact_box {
+    background-color: #f7f7f7;
+    padding: 30px;
+    border-radius: 10px;
+    /* height: 610px; */
+}
+.contact_box1 {
+    background: #4baf48;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    height: 402px;
+    margin-top: 10px;
+}
+.contact_box2 {
+    padding: 50px;
+}
+.contact-area-text {
+    padding-left: 25px;
+    padding-top: 10px;
+    margin-top: -40px;
+}
+/* css add by Mahesh end */
