@@ -1,8 +1,8 @@
 <x-frontend-header />
-<section style="background-color: #f8f9fb;">
+<section style="background-color: #f8f9fb;" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mt-5 text-center">
+            <div class="col-md-12 mt-5">
                 <h5 class="slide-in-left h2"><span style="color:#4baf47">About Us</span></h5>
             </div>
         </div>
@@ -11,7 +11,7 @@
         <div class="row mt-4">
 
             <div class="col-md-6 slide-in-left">
-                <div class="text-center">
+                <div class="text-left">
                     <h2>Welcome To Scrap 24x7</h2>
                     <p style="sans-serif;">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, maxime quasi. Sequi non quam vero est saepe
@@ -23,8 +23,8 @@
                         accusantium minus ipsum! Ipsam tempore illo totam sit non eos maiores et modi
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, quidem.
                     </p>
-                    <div class="text-center">
-                        <a href="#" class="btn btn-outline-success mt-4">Sell Scrap</a>
+                    <div>
+                        <a href="{{route('sell')}}" class="btn btn-outline-success mt-4">Sell Scrap</a>
                     </div>
                 </div>
             </div>

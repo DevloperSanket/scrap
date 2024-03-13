@@ -1,5 +1,5 @@
 <x-frontend-header />
-<section style="background-color: #f8f9fb;" class="mb-5">
+<section style="background-color: #f8f9fb;" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 slide-in-left">

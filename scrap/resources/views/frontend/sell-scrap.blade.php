@@ -1,5 +1,5 @@
 <x-frontend-header />
-<section class="p-2" >
+<section class="py-5" >
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-lg-12 col-xl-11">
@@ -71,9 +71,8 @@
 
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                                <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" class="img-fluid"
-                                    alt="Sample image" style="height: 220px;">
+                                <img src="{{ asset('frontend/theam/assets/images/logo/scrap2.jpg') }}" class="img-fluid"
+                                    alt="Sample image" style="height: 400px;">
                             </div>
                         </div>
                     </div>
