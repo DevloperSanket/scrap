@@ -16,10 +16,10 @@
                         @endif
                     </span>
                     <h3 class="mb-3">Create Account</h3>
-                    <form method="post" action="{{ route('register') }}" id="registerId">
+                    <form method="post" action="{{ route('register') }}">
                         @csrf
                         <!-- Name input -->
-                        <div class="form-outline ">
+                        <div class="form-outline mb-3">
                             <input type="text" id="form3Example3" name="name" class="form-control"
                                 placeholder="Enter your name" />
                             @error('name')
@@ -27,36 +27,57 @@
                                     {{ $message }}
                                 </p>
                             @enderror
-                            
+
                         </div>
-                        <div class="form-outline">
+                        <div class="form-outline mb-3">
                             <input type="email" id="form3Example3" name="email" class="form-control"
                                 placeholder="Enter your email address" />
-                                <span class="text-danger error-text email_error"></span>
+                            @error('email')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        <div class="form-outline ">
+                        <div class="form-outline mb-3">
                             <input type="text" id="form3Example3" name="city" class="form-control"
                                 placeholder="Enter your city" />
-                                <span class="text-danger error-text city_error"></span>
+                            @error('city')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        <div class="form-outline ">
+                        <div class="form-outline mb-3">
                             <input type="text" id="form3Example3" name="pincode" class="form-control"
                                 placeholder="Enter your pincode" />
-                                <span class="text-danger error-text pincode_error"></span>
+                            @error('pincode')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        <div class="form-outline">
+                        <div class="form-outline mb-3">
                             <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
-                            <span class="text-danger error-text address_error"></span>
+                            @error('address')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        <div class="form-outline">
+                        <div class="form-outline mb-3">
                             <div class="input-group">
                                 <input type="password" id="form3Example4" name="password" class="form-control"
                                     placeholder="Enter password" />
-                                <span class="input-group-text toggle-password"><i class="fa-sharp fa-solid fa-eye-slash"></i></span>
+                                <span class="input-group-text toggle-password"><i
+                                        class="fa-sharp fa-solid fa-eye-slash"></i></span>
                             </div>
-                            <span class="text-danger error-text password_error"></span>
+                            @error('password')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        <div class="text-center text-lg-start mt-4">
+                        <div class="text-center text-lg-start">
                             <button type="submit" class="btn btn-success"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
                             <p class="small fw-bold mt-1 pt-1 mb-0">Allready have an account? <a
@@ -69,42 +90,3 @@
     </section>
 </div>
 <x-frontend-footer />
-<script>
-    $(document).ready(function() {
-        $('#registerId').submit(function(e) {
-            e.preventDefault();
-            $('.error-text').text('');
-            var formData = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "{{ route('register') }}",
-                data: formData,
-                success: function(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: 'Form submitted successfully.'
-                    })
-                    .then(() => {
-                        window.location.href = "{{ route('dashboard') }}";
-                    });
-                    $('#registerId')[0].reset();
-                },
-                error: function(xhr, status, error) {
-                    if (xhr.status === 422) {
-                        var errors = xhr.responseJSON.errors;
-                        $.each(errors, function(key, value) {
-                            $('.' + key + '_error').text(value[0]);
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Something went wrong! Please try again later.'
-                        });
-                    }
-                }
-            });
-        });
-    });
-</script>

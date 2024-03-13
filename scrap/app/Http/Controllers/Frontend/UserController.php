@@ -56,11 +56,6 @@ class UserController extends Controller
         if(Auth::attempt($request->only('email','password'))){
             return redirect('dashboard')->withSuccess('You have signed-in');
         }
-        return response()->json([
-            'success' => true,
-            'data' => $user,
-            'message' => 'Registered Successfully!',
-        ]);
     }
 
     public function signin(Request $request){
