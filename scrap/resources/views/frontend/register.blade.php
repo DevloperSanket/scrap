@@ -22,7 +22,12 @@
                         <div class="form-outline ">
                             <input type="text" id="form3Example3" name="name" class="form-control"
                                 placeholder="Enter your name" />
-                                <span class="text-danger error-text name_error"></span>
+                            @error('name')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                            
                         </div>
                         <div class="form-outline">
                             <input type="email" id="form3Example3" name="email" class="form-control"

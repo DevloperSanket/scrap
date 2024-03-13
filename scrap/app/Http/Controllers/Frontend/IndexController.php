@@ -70,6 +70,10 @@ class IndexController extends Controller
     public function savegreen(){
         return view('frontend.save-green');
     }
+
+    public function service(){
+        return view('frontend.service');
+    }
     /**
      * Store a newly created resource in storage.
      */
