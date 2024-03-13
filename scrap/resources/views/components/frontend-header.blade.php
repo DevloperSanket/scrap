@@ -92,8 +92,9 @@
                             <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
-                            <a id="mega-menu-btn" class="text-white" href="#">Services <i
-                                    class="fas fa-chevron-down"></i></a>
+                            <a id="mega-menu-btn" class="text-white" href="#">Services 
+                                {{-- <i class="fas fa-chevron-down"></i> --}}
+                                </a>
                             <ul class="sub-menu">
                                 <li class="d-block d-xl-none"><a href="{{route('doortodoor')}}">Door To Door Scrap Collection</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Packaging Scrap</a></li>
@@ -123,7 +124,7 @@
                         </li>
                     </ul>
                     <!-- Mega menu area start here -->
-                    <div class="mega-menu-area d-none d-xl-block">
+                    {{-- <div class="mega-menu-area d-none d-xl-block">
                         <div class="container">
                             <div class="mega-menu">
                                 <div class="row g-4 justify-content-between">
@@ -148,7 +149,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-4">
+                                    <div class="col-md-4">
                                         <div class="mega-menu__item">
                                             <div class="mega-menu__item">
                                                 <h6><a class="text-dark" href="#">Door To Door Scrap
@@ -161,11 +162,11 @@
                                                         Collection</a></h6>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Mega menu area end here -->
                 </div>
             </div>
