@@ -65,5 +65,39 @@
     animation-delay: 0ms;
     animation-name: fadeInLeft;
 }
+.product-form {
+    margin-top: -30px;
+    padding: 15px;
+    padding-bottom: 20px;
+}
+/* call icon css start */
+.txt {
+    color: white;
+    padding: 0px;
+}
+.theme-btn1 {
+    background-color: #222222;
+    padding: 5px 20px 5px 20px !important;
+    border-radius: 30px;
+}
+/*  call icon css end */
+/* whatsup icon css start */
+.theme-btn2 {
+    background-color: #56ad38;
+    padding: 5px 20px 5px 20px !important;
+    border-radius: 30px;
+}
+.txt1 {
+    color: white;
+    padding: 0px;
+}
 
+/* whatsup icon css end */
+/* buy icon css start */
+.theme-btn3 {
+    background-color: #222222;
+    padding: 5px 20px 5px 20px !important;
+    border-radius: 30px;
+}
+/* buy icon css end */
 /* css add by Mahesh end */

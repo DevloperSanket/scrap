@@ -2,8 +2,8 @@
 <section class="scrap-sectioin">
     <div class="container py-5">
         <div class="row">
-            <div class="col-12">
-                <h3 class="text-decoration-underline">All Scrap</h3>
+            <div class="col-lg-12 text-center">
+                <h3 class="text-decoration-underline">Rates Of <span style="color: #56ad38;">All Scrap</span> </h3>
             </div>
         </div>
     </div>
@@ -18,6 +18,11 @@
                         <h6 class="card-title font-weight-bold text-center">Cotton Clothes</h6>
                         <h5 class="card-title font-weight-bold text-center">₹4/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -28,6 +33,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">MLP - Plastic</h6>
                         <h5 class="card-title font-weight-bold text-center">₹4/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -40,6 +50,11 @@
                         <h6 class="card-title font-weight-bold text-center">Newspaper</h6>
                         <h5 class="card-title font-weight-bold text-center">₹13/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -50,6 +65,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Carton (Corrugated Box)</h6>
                         <h5 class="card-title font-weight-bold text-center">₹10/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -62,6 +82,11 @@
                         <h6 class="card-title font-weight-bold text-center">Oil Daba (Maximum Qty-5)</h6>
                         <h5 class="card-title font-weight-bold text-center">₹24/- NOS</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -72,6 +97,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Notebooks / Books</h6>
                         <h5 class="card-title font-weight-bold text-center">₹10/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -84,6 +114,11 @@
                         <h6 class="card-title font-weight-bold text-center">Office Papers</h6>
                         <h5 class="card-title font-weight-bold text-center">₹10/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -94,6 +129,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Magazine</h6>
                         <h5 class="card-title font-weight-bold text-center">₹8/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -106,6 +146,11 @@
                         <h6 class="card-title font-weight-bold text-center">Heavy Iron</h6>
                         <h5 class="card-title font-weight-bold text-center">₹25/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -116,6 +161,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Vehicle Scrap</h6>
                         <h5 class="card-title font-weight-bold text-center">₹0/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -128,6 +178,11 @@
                         <h6 class="card-title font-weight-bold text-center">Mix Plastic</h6>
                         <h5 class="card-title font-weight-bold text-center">₹12/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -138,6 +193,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Stainless Steel</h6>
                         <h5 class="card-title font-weight-bold text-center">₹40/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -150,6 +210,11 @@
                         <h6 class="card-title font-weight-bold text-center">Aluminium</h6>
                         <h5 class="card-title font-weight-bold text-center">₹115/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -160,6 +225,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Copper</h6>
                         <h5 class="card-title font-weight-bold text-center">₹380/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -172,6 +242,11 @@
                         <h6 class="card-title font-weight-bold text-center">Brass</h6>
                         <h5 class="card-title font-weight-bold text-center">₹330/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -182,6 +257,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Washing Machine</h6>
                         <h5 class="card-title font-weight-bold text-center">₹24/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -194,6 +274,11 @@
                         <h6 class="card-title font-weight-bold text-center">Refrigerator</h6>
                         <h5 class="card-title font-weight-bold text-center">₹24/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -204,6 +289,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Computer Full Sate</h6>
                         <h5 class="card-title font-weight-bold text-center">₹350/- NOS</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -216,6 +306,11 @@
                         <h6 class="card-title font-weight-bold text-center">Microwave</h6>
                         <h5 class="card-title font-weight-bold text-center">₹24/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -226,6 +321,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Printer/Scanner</h6>
                         <h5 class="card-title font-weight-bold text-center">₹24/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -238,6 +338,11 @@
                         <h6 class="card-title font-weight-bold text-center">Pipes</h6>
                         <h5 class="card-title font-weight-bold text-center">₹13/- KG</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -248,6 +353,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Air Conditioner (AC)</h6>
                         <h5 class="card-title font-weight-bold text-center">₹0/- NOS</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -260,6 +370,11 @@
                         <h6 class="card-title font-weight-bold text-center">TV</h6>
                         <h5 class="card-title font-weight-bold text-center">₹130/- NOS</h5>
                     </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -270,6 +385,11 @@
                     <div class="card-body">
                         <h6 class="card-title font-weight-bold text-center">Tyres</h6>
                         <h5 class="card-title font-weight-bold text-center">₹4/- KG</h5>
+                    </div>
+                    <div class="product-form">
+                        <a href="tel:+919833526722" class="theme-btn theme-btn1 btn-style-eight"><span class="txt"><i class="fa fa-phone fa-2x"></i></span></a>
+                        <a href="https://wa.me/+919833526722?text=I+Want+Sell+My+Cotton+Clothes+Scrap" class="theme-btn theme-btn2 btn-style-eight" style="background-color: #56ad38;padding: 5px 20px 5px 20px!important"><span class="txt1"><i class="fa-brands fa-whatsapp fa-2x"></i></span></a>
+                        <a href="{{route('sell')}}" class="theme-btn theme-btn3 btn-style-eight"><span class="txt"><i class="fa fa-shopping-cart fa-2x"></i></span></a>
                     </div>
                 </div>
             </div>
