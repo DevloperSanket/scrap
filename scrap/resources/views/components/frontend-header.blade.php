@@ -26,20 +26,6 @@
 </head>
 
 <body>
-
-    <!-- Preloader area start -->
-    {{-- <div id="loading">
-        <div id="loading-center">
-            <div id="loading-center-absolute">
-                <div class="loading-icon text-center d-flex flex-column align-items-center justify-content-center">
-                    <img class="loading-logo" src="{{ asset('frontend/theam/assets/images/preloader.svg') }}"
-    alt="icon">
-    </div>
-    </div>
-    </div>
-    </div> --}}
-    <!-- Preloader area end -->
-
     <!-- Header area start here -->
     <header class="header header-five">
         <div class="header-top d-none d-lg-block">
@@ -92,13 +78,9 @@
                             <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
-<<<<<<< HEAD
-                            <a id="mega-menu-btn" class="text-white" href="#">Services 
+                            <a id="mega-menu-btn" class="text-white" href="#">Services
                                 {{-- <i class="fas fa-chevron-down"></i> --}}
-                                </a>
-=======
-                            <a id="mega-menu-btn" class="text-white" href="#">Services <i class="fas fa-chevron-down"></i></a>
->>>>>>> 8130a16964e45ca0c0af841fe6c1a9a6ac9bcf4e
+                            </a>
                             <ul class="sub-menu">
                                 <li class="d-block d-xl-none"><a href="{{route('doortodoor')}}">Door To Door Scrap Collection</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Packaging Scrap</a></li>
@@ -135,45 +117,45 @@
                                     <div class="col-md-4">
                                         <div class="mega-menu__item">
                                             <h6><a class="text-dark" href="{{route('doortodoor')}}">Door To Door Scrap Collection</a>
-                                            </h6>
-                                            <h6><a class="text-dark" href="{{route('packaging')}}">Packaging Scrap</a></h6>
-                                            <h6><a class="text-dark" href="{{route('cunstruction')}}">Construction Scrap</a></h6>
-                                            <h6><a class="text-dark" href="{{route('itscrap')}}">IT Scrap</a></h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mega-menu__item">
-                                            <div class="mega-menu__item">
-                                                <h6><a class="text-dark" href="{{route('collage')}}">Collage Institution Scrap</a>
-                                                </h6>
-                                                <h6><a class="text-dark" href="{{route('bank-scrap')}}">Bank/Office Scrap</a></h6>
-                                                <h6><a class="text-dark" href="{{route('gov-scrap')}}">Goverment Scrap</a></h6>
-                                                <h6><a class="text-dark" href="{{route('socity-scrap')}}">Socity/Residential Scrap</a>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mega-menu__item">
-                                            <div class="mega-menu__item">
-                                                <h6><a class="text-dark" href="#">Door To Door Scrap
-                                                        Collection</a></h6>
-                                                <h6><a class="text-dark" href="#">Door To Door Scrap
-                                                        Collection</a></h6>
-                                                <h6><a class="text-dark" href="#">Door To Door Scrap
-                                                        Collection</a></h6>
-                                                <h6><a class="text-dark" href="#">Door To Door Scrap
-                                                        Collection</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-                    <!-- Mega menu area end here -->
+                    </h6>
+                    <h6><a class="text-dark" href="{{route('packaging')}}">Packaging Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('cunstruction')}}">Construction Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('itscrap')}}">IT Scrap</a></h6>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="mega-menu__item">
+                    <div class="mega-menu__item">
+                        <h6><a class="text-dark" href="{{route('collage')}}">Collage Institution Scrap</a>
+                        </h6>
+                        <h6><a class="text-dark" href="{{route('bank-scrap')}}">Bank/Office Scrap</a></h6>
+                        <h6><a class="text-dark" href="{{route('gov-scrap')}}">Goverment Scrap</a></h6>
+                        <h6><a class="text-dark" href="{{route('socity-scrap')}}">Socity/Residential Scrap</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mega-menu__item">
+                    <div class="mega-menu__item">
+                        <h6><a class="text-dark" href="#">Door To Door Scrap
+                                Collection</a></h6>
+                        <h6><a class="text-dark" href="#">Door To Door Scrap
+                                Collection</a></h6>
+                        <h6><a class="text-dark" href="#">Door To Door Scrap
+                                Collection</a></h6>
+                        <h6><a class="text-dark" href="#">Door To Door Scrap
+                                Collection</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div> --}}
+        <!-- Mega menu area end here -->
+        </div>
+        </div>
         </div>
     </header>
     <!-- Header area end here -->
