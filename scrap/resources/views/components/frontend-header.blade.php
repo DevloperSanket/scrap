@@ -92,13 +92,9 @@
                             <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
-<<<<<<< HEAD
-                            <a id="mega-menu-btn" class="text-white" href="#">Services 
+                            <a id="mega-menu-btn" class="text-white" href="{{route('service')}}">Services 
                                 {{-- <i class="fas fa-chevron-down"></i> --}}
                                 </a>
-=======
-                            <a id="mega-menu-btn" class="text-white" href="#">Services <i class="fas fa-chevron-down"></i></a>
->>>>>>> 8130a16964e45ca0c0af841fe6c1a9a6ac9bcf4e
                             <ul class="sub-menu">
                                 <li class="d-block d-xl-none"><a href="{{route('doortodoor')}}">Door To Door Scrap Collection</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Packaging Scrap</a></li>
