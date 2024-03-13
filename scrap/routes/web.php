@@ -66,8 +66,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/delete-scrap', [ScrapcategoryController::class, 'delete'])->name('scrapcategory.delete');
 
     // pincode 
-    Route::get('/pincode', [PincodeController::class, 'index'])->name('pincode.index');
-    // Route::get('/pincodecreate', [PincodeController::class, 'create'])->name('pincode.create');
+    Route::get('/pincode',[PincodeController::class,'index'])->name('pincode.index');
+    Route::get('/pincodecreate', [PincodeController::class, 'create'])->name('pincode.create');
+    Route::post('/pincodecreate', [PincodeController::class, 'store'])->name('pincode.store');
+    Route::get('pincodedata', [PincodeController::class, 'pincodedata'])->name('pincode.record');
+    Route::post('/pincodechangeStatus', [PincodeController::class, 'pincodechangeStatus'])->name('pincode.status');
+
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
 });
