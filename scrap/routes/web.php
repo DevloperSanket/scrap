@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\ScrapcategoryController;
 use App\Http\Controllers\Admin\PincodeController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,25 +36,25 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
     Route::get('/sell', [IndexController::class, 'sell'])->name('sell');
     Route::get('/allscrap', [IndexController::class, 'allscrap'])->name('allscrap');
-    Route::get('/doortodoor',[IndexController::class, 'doortodoor'])->name('doortodoor');
-    Route::get('/packaging',[IndexController::class, 'packaging'])->name('packaging');
-    Route::get('/cunstruction',[IndexController::class,'cunstruction'])->name('cunstruction');
+    Route::get('/doortodoor', [IndexController::class, 'doortodoor'])->name('doortodoor');
+    Route::get('/packaging', [IndexController::class, 'packaging'])->name('packaging');
+    Route::get('/cunstruction', [IndexController::class, 'cunstruction'])->name('cunstruction');
     Route::get('/itscrap', [IndexController::class, 'itscrap'])->name('itscrap');
     Route::get('/collage', [IndexController::class, 'collage'])->name('collage');
     Route::get('/bankscrap', [IndexController::class, 'bankscrap'])->name('bank-scrap');
-    Route::get('/gov', [IndexController::class,'gov'])->name('gov-scrap');
-    Route::get('/socity', [IndexController::class,'socity'])->name('socity-scrap');
-    Route::get('/savegreen', [IndexController::class,'savegreen'])->name('savegreen');
-    Route::get('/service',[IndexController::class,'service'])->name('service');
+    Route::get('/gov', [IndexController::class, 'gov'])->name('gov-scrap');
+    Route::get('/socity', [IndexController::class, 'socity'])->name('socity-scrap');
+    Route::get('/savegreen', [IndexController::class, 'savegreen'])->name('savegreen');
+    Route::get('/service', [IndexController::class, 'service'])->name('service');
 });
 
 // Authenticated Routes
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/showdata',[DashboardController::class,'showTable'])->name('dashboard.show');
-    Route::get('/show-table',[DashboardController::class,'data'])->name('dashboard-table');
-    Route::post('/changeuserStatus',[DashboardController::class,'changeUserStatus'])->name('statusChange');
+    Route::get('/showdata', [DashboardController::class, 'showTable'])->name('dashboard.show');
+    Route::get('/show-table', [DashboardController::class, 'data'])->name('dashboard-table');
+    Route::post('/changeuserStatus', [DashboardController::class, 'changeUserStatus'])->name('statusChange');
 
     // scrap category
     Route::get('/scrapcategory', [ScrapcategoryController::class, 'index'])->name('scrapcategory.index');
@@ -66,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/delete-scrap', [ScrapcategoryController::class, 'delete'])->name('scrapcategory.delete');
 
     // pincode 
-    Route::get('/pincode',[PincodeController::class,'index'])->name('pincode.index');
+    Route::get('/pincode', [PincodeController::class, 'index'])->name('pincode.index');
     Route::get('/pincodecreate', [PincodeController::class, 'create'])->name('pincode.create');
     Route::post('/pincodecreate', [PincodeController::class, 'store'])->name('pincode.store');
     Route::get('pincodedata', [PincodeController::class, 'pincodedata'])->name('pincode.record');
@@ -75,3 +76,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
 });
+
+//contact
+Route::post('/contact/send', [ContactController::class, 'sendEmail'])->name('contact.send');

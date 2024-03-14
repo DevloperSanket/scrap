@@ -69,6 +69,7 @@
     margin-top: -30px;
     padding: 15px;
     padding-bottom: 20px;
+    text-align: center;
 }
 /* call icon css start */
 .txt {
@@ -100,4 +101,11 @@
     border-radius: 30px;
 }
 /* buy icon css end */
+.theme-btn {
+    color: white;
+    background-color: #22943a;
+}
+.theme-btn:hover {
+    background-color: black;
+}
 /* css add by Mahesh end */

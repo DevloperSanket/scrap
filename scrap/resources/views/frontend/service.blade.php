@@ -11,32 +11,22 @@
         <h3 class="mb-3">Follow Some Steps To Save Envorment</h3>
         <div class="col-md-4 border border-0">
             <div class="list-group " id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-                    href="#list-home" role="tab" aria-controls="list-home">Reduce, Reuse, Recycle</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
-                    href="#list-profile" role="tab" aria-controls="list-profile">Conserve Water</a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
-                    href="#list-messages" role="tab" aria-controls="list-messages">Use Energy Wisely</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-                    href="#list-settings" role="tab" aria-controls="list-settings">Go Green in Transportation</a>
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Door To Door Scrap Collection</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Packaging Scrap</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Construction Scrap</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">IT Scrap</a>
 
-                <a class="list-group-item list-group-item-action" id="list-support-list" data-bs-toggle="list"
-                    href="#list-supports" role="tab" aria-controls="list-supports">Support Sustainable Products</a>
+                <a class="list-group-item list-group-item-action" id="list-support-list" data-bs-toggle="list" href="#list-supports" role="tab" aria-controls="list-supports">Collage Institution Scrap</a>
 
-                <a class="list-group-item list-group-item-action" id="list-plants-list" data-bs-toggle="list"
-                    href="#list-plants" role="tab" aria-controls="list-plants">Plant Trees</a>
+                <a class="list-group-item list-group-item-action" id="list-plants-list" data-bs-toggle="list" href="#list-plants" role="tab" aria-controls="list-plants">Bank/Office Scrap</a>
 
-                <a class="list-group-item list-group-item-action" id="list-plastics-list" data-bs-toggle="list"
-                    href="#list-plastics" role="tab" aria-controls="list-plastics">Minimize Plastic Use</a>
+                <a class="list-group-item list-group-item-action" id="list-plastics-list" data-bs-toggle="list" href="#list-plastics" role="tab" aria-controls="list-plastics">Goverment Scrap</a>
 
-                <a class="list-group-item list-group-item-action" id="list-changes-list" data-bs-toggle="list"
-                    href="#list-changes" role="tab" aria-controls="list-changes">Advocate for Change</a>
+                <a class="list-group-item list-group-item-action" id="list-changes-list" data-bs-toggle="list" href="#list-changes" role="tab" aria-controls="list-changes">Advocate for Change</a>
 
-                <a class="list-group-item list-group-item-action" id="list-others-list" data-bs-toggle="list"
-                    href="#list-others" role="tab" aria-controls="list-others">Educate Others</a>
+                <a class="list-group-item list-group-item-action" id="list-others-list" data-bs-toggle="list" href="#list-others" role="tab" aria-controls="list-others">Socity/Residential Scrap</a>
 
-                <a class="list-group-item list-group-item-action" id="list-leads-list" data-bs-toggle="list"
-                    href="#list-leads" role="tab" aria-controls="list-leads">Lead by Example</a>
+
             </div>
         </div>
         <div class="col-md-8">
@@ -64,7 +54,8 @@
                     practices. Conserving water not only helps protect ecosystems and aquatic habitats but also
                     contributes to energy savings and reduces the carbon footprint associated with water treatment and
                     distribution. Through collective efforts to conserve water, communities can ensure water security,
-                    resilience to droughts, and a healthier environment for all.</div>
+                    resilience to droughts, and a healthier environment for all.
+                </div>
                 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                     <b>Using Energy Wisely</b> Efficient energy usage is critical in combating climate change and safeguarding
                     our planet's resources. By adopting smart habits like turning off lights and appliances when not in
@@ -74,7 +65,8 @@
                     emissions and combating air pollution. Government incentives and programs can encourage
                     energy-saving initiatives on a broader scale, fostering a sustainable energy future. Together, these
                     efforts not only reduce energy costs for individuals and businesses but also promote environmental
-                    sustainability and climate resilience for generations to come.</div>
+                    sustainability and climate resilience for generations to come.
+                </div>
                 <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
                     <b>Going Green in Transportation</b> Transitioning to eco-friendly modes of transportation is vital for
                     reducing greenhouse gas emissions and combating climate change. Individuals can opt for walking,
