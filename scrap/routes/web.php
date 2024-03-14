@@ -48,7 +48,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 // Authenticated Routes
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth','superadmin'], function () {
     // Dashboard 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/showdata',[DashboardController::class,'showTable'])->name('dashboard.show');
@@ -74,4 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
+});
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
 });
