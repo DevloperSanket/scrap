@@ -35,4 +35,69 @@
     padding-top: 10px;
     margin-top: -40px;
 }
+
+.image1 {
+    opacity: 1;
+    display: block;
+    height: 180px;
+    width: 100%;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+.card-border {
+    border: 2px;
+    padding: 20px;
+    color: black;
+    margin-top: 5px;
+}
+.scrap-sectioin {
+    background-color: #f8f9fb;
+    padding-bottom: 50px;
+}
+.card-rounded {
+    border-radius: 15px;
+
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 15px;
+    visibility: visible;
+    animation-duration: 1500ms;
+    animation-delay: 0ms;
+    animation-name: fadeInLeft;
+}
+.product-form {
+    margin-top: -30px;
+    padding: 15px;
+    padding-bottom: 20px;
+}
+/* call icon css start */
+.txt {
+    color: white;
+    padding: 0px;
+}
+.theme-btn1 {
+    background-color: #222222;
+    padding: 5px 20px 5px 20px !important;
+    border-radius: 30px;
+}
+/*  call icon css end */
+/* whatsup icon css start */
+.theme-btn2 {
+    background-color: #56ad38;
+    padding: 5px 20px 5px 20px !important;
+    border-radius: 30px;
+}
+.txt1 {
+    color: white;
+    padding: 0px;
+}
+
+/* whatsup icon css end */
+/* buy icon css start */
+.theme-btn3 {
+    background-color: #222222;
+    padding: 5px 20px 5px 20px !important;
+    border-radius: 30px;
+}
+/* buy icon css end */
 /* css add by Mahesh end */

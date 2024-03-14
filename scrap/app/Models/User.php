@@ -24,6 +24,7 @@ class User extends Authenticatable
         'pincode',
         'address',
         'password',
+        'role',
     ];
 
     /**
@@ -35,6 +36,16 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role === 'superadmin';
+    }
 
     /**
      * The attributes that should be cast.

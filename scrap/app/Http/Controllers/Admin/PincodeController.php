@@ -73,9 +73,6 @@ class PincodeController extends Controller
 
         // Validate the request data
         $validatedData = $request->validate($rules, $messages);
-
-        // Create a new ScrapCategories instance
-        // $scrapCategory = new Pincode;
         
 
         $data = Pincode::create([
