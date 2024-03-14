@@ -6,8 +6,8 @@ use App\Http\Controllers\Frontend\UserController;
 
 use App\Http\Controllers\Admin\DashboardController;
 
-use App\Http\Controllers\Admin\DoctorrecordController;
 use App\Http\Controllers\Admin\ScrapcategoryController;
+use App\Http\Controllers\Admin\PincodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,12 +49,11 @@ Route::group(['middleware' => 'guest'], function () {
 
 // Authenticated Routes
 Route::group(['middleware' => 'auth'], function () {
+    // Dashboard 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/doctor', [DoctorrecordController::class, 'index'])->name('doctor.index');
-    Route::get('/doctor-create', [DoctorrecordController::class, 'create'])->name('doctor.create');
-    Route::post('/doctor-create', [DoctorrecordController::class, 'store'])->name('doctore.store');
-    Route::get('data', [DoctorrecordController::class, 'data'])->name('admin.data');
-    Route::post('/changeStatus', [DoctorrecordController::class, 'changeStatus'])->name('doctor.status');
+    Route::get('/showdata',[DashboardController::class,'showTable'])->name('dashboard.show');
+    Route::get('/show-table',[DashboardController::class,'data'])->name('dashboard-table');
+    Route::post('/changeuserStatus',[DashboardController::class,'changeUserStatus'])->name('statusChange');
 
     // scrap category
     Route::get('/scrapcategory', [ScrapcategoryController::class, 'index'])->name('scrapcategory.index');
@@ -62,6 +61,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/scrapcreate', [ScrapcategoryController::class, 'store'])->name('scrapcategory.store');
     Route::get('scrapdata', [ScrapcategoryController::class, 'scrapdata'])->name('scrapcategory.record');
     Route::post('/scrapchangeStatus', [ScrapcategoryController::class, 'scrapchangeStatus'])->name('scrapcategory.status');
+    Route::get('/edit-scrap/{id}', [ScrapcategoryController::class, 'edit'])->name('scrapcategory.edit');
+    Route::post('/update-scrap', [ScrapcategoryController::class, 'update'])->name('scrapcategory.update');
+    Route::post('/delete-scrap', [ScrapcategoryController::class, 'delete'])->name('scrapcategory.delete');
+
+    // pincode 
+    Route::get('/pincode',[PincodeController::class,'index'])->name('pincode.index');
+    Route::get('/pincodecreate', [PincodeController::class, 'create'])->name('pincode.create');
+    Route::post('/pincodecreate', [PincodeController::class, 'store'])->name('pincode.store');
+    Route::get('pincodedata', [PincodeController::class, 'pincodedata'])->name('pincode.record');
+    Route::post('/pincodechangeStatus', [PincodeController::class, 'pincodechangeStatus'])->name('pincode.status');
+
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
 });

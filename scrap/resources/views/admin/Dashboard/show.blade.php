@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Scrap Categories</li>
+                <li class="breadcrumb-item active">All Users</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
-            <div class="col-12 text-end">
-                <a href="{{ route('scrapcategory.create') }}" class="btn btn-primary ">Create</a>
+            <div class="col-12">
+                <h3>All Users</h3>
             </div>
         </div>
 
@@ -26,13 +26,22 @@
                                     Id
                                 </th>
                                 <th width="10px">
-                                    Action
-                                </th>
-                                <th width="10px">
                                     Status
                                 </th>
                                 <th>
                                     Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    City
+                                </th>
+                                <th>
+                                    Pincode
+                                </th>
+                                <th>
+                                    Address
                                 </th>
                             </tr>
                         </thead>
@@ -52,18 +61,18 @@
         var table = $('#users-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('scrapcategory.record') }}",
+            ajax: "{{ route('dashboard-table') }}",
             columns: [{
                     render: function(data, type, row, meta) {
                         return i++;
                     }
                 },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: true,
-                    searchable: true
-                },
+                // {
+                //     data: 'action',
+                //     name: 'action',
+                //     orderable: true,
+                //     searchable: true
+                // },
                 {
                     data: 'status',
                     name: 'status',
@@ -71,25 +80,40 @@
                 {
                     data: 'name',
                     name: 'name'
+                },
+                {
+                    data: 'email',
+                    name: 'email'
+                },
+                {
+                    data: 'city',
+                    name: 'city'
+                },
+                {
+                    data: 'pincode',
+                    name: 'pincode',
+                },
+                {
+                    data: 'address',
+                    name: 'address',
                 }
             ]
         });
 
     });
 
-    function ScrapStatusChange(scrapId) {
-        console.log(scrapId);
-        var checkbox = document.querySelector('input[data-id="' + scrapId + '"]');
+    function ScrapStatusChange(userId) {
+        var checkbox = document.querySelector('input[data-id="' + userId + '"]');
         var status = checkbox.checked ? 1 : 0;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('scrapcategory.status') }}",
+            url: "{{ route('statusChange') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             },
             data: {
-                id: scrapId,
+                id: userId,
                 status: status
             },
             success: function(response) {
@@ -97,46 +121,6 @@
                     icon: 'success',
                     title: 'Success!',
                     text: 'Status update successfully.'
-                });
-            },
-            error: function(xhr, status, error) {
-                if (xhr.status === 422) {
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function(key, value) {
-                        $('.' + key + '_error').text(value[0]);
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong! Please try again later.'
-                    });
-                }
-            }
-        });
-    }
-
-
-    function deletefunction(deleteId) {
-    console.log(deleteId);
-        var id = deleteId;
-        var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-        $.ajax({
-            url: "{{ route('scrapcategory.delete') }}",
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken
-            },
-            data: {
-                id: id,
-            },
-            success: function(response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Category Deleted successfully.'
-                }).then(() => {
-                    window.location.href = "{{ route('scrapcategory.index') }}";
                 });
             },
             error: function(xhr, status, error) {
