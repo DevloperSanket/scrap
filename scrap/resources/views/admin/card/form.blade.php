@@ -15,23 +15,13 @@
                 <div class="col-md-8 offset-md-2 mt-5">
                     <div class="card p-4 border border-3">
                         <div class="card-body">
-                            <h4 class="text-center">Create Pincode</h4>
-                            <form id="pincodeform">
+                            <h4 class="text-center">Create Category</h4>
+                            <form id="myForm">
                                 @csrf
                                 <div class="form-group mt-3">
-                                    <input type="text" name="city" class="form-control"
-                                        placeholder="Enter City Name">
-                                    <span class="text-danger error-text city_error"></span>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <input type="text" name="pincode" class="form-control"
-                                        placeholder="Enter Pincode">
-                                    <span class="text-danger error-text pincode_error"></span>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <input type="text" name="area" class="form-control"
-                                        placeholder="Enter Area Name">
-                                    <span class="text-danger error-text area_error"></span>
+                                    <input type="text" name="name" class="form-control"
+                                        placeholder="Enter Scrap Name">
+                                    <span class="text-danger error-text name_error"></span>
                                 </div>
                                 <div class="form-group mt-4 text-center">
                                     <button class="btn btn-primary">Submit</button>
@@ -47,13 +37,13 @@
 <x-admin-footer />
 <script>
     $(document).ready(function() {
-        $('#pincodeform').submit(function(e) {
+        $('#myForm').submit(function(e) {
             e.preventDefault();
             $('.error-text').text('');
             var formData = $(this).serialize();
             $.ajax({
                 type: "POST",
-                url: "{{ route('pincode.store') }}",
+                url: "{{ route('scrapcategory.store') }}",
                 data: formData,
                 success: function(response) {
                     Swal.fire({
@@ -61,9 +51,9 @@
                         title: 'Success!',
                         text: 'Form submitted successfully.'
                     }).then(() => {
-                        window.location.href = "{{ route('pincode.index') }}";
+                        window.location.href = "{{ route('scrapcategory.index') }}";
                     });
-                    $('#pincodeform')[0].reset();
+                    $('#myForm')[0].reset();
                 },
                 error: function(xhr, status, error) {
                     if (xhr.status === 422) {
