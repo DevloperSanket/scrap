@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PincodeController;
 use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\Admin\UserDashboardController;
+use App\Http\Controllers\Admin\SellScrapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,5 +84,9 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
 // Authenticated Routes for UserAdmin
 Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('userAdmin-dashboard',[UserDashboardController::class,'index'])->name('user.dashboard');
+
+    // sell scrap routes
+    Route::get('userAdmin-sellscrap',[SellScrapController::class,'index'])->name('scrap.index');
+    Route::get('userAdmin-create',[SellScrapController::class,'create'])->name('scrap.create');
 });
 

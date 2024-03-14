@@ -21,7 +21,7 @@
                     
                         <div class="card info-card sales-card">
                             <div class="card-body pb-0">
-                                <h5 class="card-title">Total Scrap Sell<span></span></h5>
+                                <h5 class="card-title">Total Scrap<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div
