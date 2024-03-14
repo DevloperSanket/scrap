@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use DataTables;
-use Yajra\DataTables\Contracts\DataTable;
 
 class DashboardController extends Controller
 {

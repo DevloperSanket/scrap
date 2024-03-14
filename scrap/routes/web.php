@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ScrapcategoryController;
 use App\Http\Controllers\Admin\PincodeController;
 
+use App\Http\Controllers\Admin\UserDashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +79,9 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
 });
 
 
-Route::middleware(['auth', 'admin'])->group(function () {
-
+Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
+    Route::get('userAdmin-dashboard',[UserDashboardController::class,'index'])->name('user.dashboard');
 });
+// Route::middleware(['auth', 'UserAdmin'])->group(function () {
+    
+// });
