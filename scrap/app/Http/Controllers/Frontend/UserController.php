@@ -48,14 +48,14 @@ class UserController extends Controller
         ];
         $validateData = $request->validate($rules,$message);
 
-        dd($request);
+        // dd($request);
         $user = New User;
-        $user->role = $validateData['role'];
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
         $user->city = $validateData['city'];
         $user->pincode = $validateData['pincode'];
         $user->address = $validateData['address'];
+        $user->role = $request->role;
         $user->password = Hash::make($validateData['password']);
         $user->save();
         if(Auth::attempt($request->only('email','password'))){
