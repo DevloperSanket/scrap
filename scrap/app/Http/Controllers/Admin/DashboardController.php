@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use DataTables;
-use Yajra\DataTables\Contracts\DataTable;
 
 class DashboardController extends Controller
 {
@@ -17,12 +16,14 @@ class DashboardController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $allregisterUser = User::count();
+            $allregisterUser = User::where('role',2)->count();
             // dd($allregisterUser);
 
-            $activeUser = User::where('status',1)->count();
+            $activeUser = User::where('status', 1)
+                       ->where('role', 2)
+                       ->count();
 
-            $deactiveUser = User::where('status',0)->count();
+            $deactiveUser = User::where('status',0)->where('role',2)->count();
             
             return view('admin.dashboard.index',compact('allregisterUser','activeUser','deactiveUser'));
         }
@@ -34,7 +35,7 @@ class DashboardController extends Controller
     }
 
     public function data(){
-        $users = User::query();
+        $users = User::where('role',2)->get();
 
         return DataTables::of($users)
         ->addColumn('name', function ($users) {

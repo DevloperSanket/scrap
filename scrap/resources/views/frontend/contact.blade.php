@@ -78,27 +78,25 @@
                 </div>
                 <div class="col-lg-6 mb-3 contact_box2">
                     <h3 class="mb-3">Send Enquiry</h3>
-                    <form class="row g-3">
+                    <form class="row g-3" method="POST" action="{{ route('contact.send') }}">
+                        @csrf
                         <div class="col-md-12">
-                            <!-- <label for="validationDefault01" class="form-label">Name</label> -->
-                            <input type="text" class="form-control" placeholder="Name" id="validationDefault01" required>
+                            <input type="text" class="form-control" placeholder="Name" name="name" required>
                         </div>
                         <div class="col-md-12">
-                            <!-- <label for="validationDefault02" class="form-label">Email</label> -->
-                            <input type="text" class="form-control" placeholder="Email" id="validationDefault02" required>
+                            <input type="email" class="form-control" placeholder="Email" name="email" required>
                         </div>
                         <div class="col-md-12">
-                            <!-- <label for="validationDefault02" class="form-label">Mobile</label> -->
-                            <input type="text" class="form-control" placeholder="Mobile No." id="validationDefault02" required>
+                            <input type="text" class="form-control" placeholder="Mobile No." name="mobile" required>
                         </div>
                         <div class="col-md-12">
-                            <!-- <label for="validationDefault02" class="form-label">Message</label> -->
-                            <textarea name="message" class="form-control" placeholder="Message" id="validationDefault02"></textarea>
+                            <textarea name="message" class="form-control" placeholder="Message" required></textarea>
                         </div>
                         <div class="col-12 text-center mt-5 mb-5">
                             <button class="btn btn-success" type="submit">Submit</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
