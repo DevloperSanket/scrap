@@ -83,8 +83,8 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="d-block d-xl-none"><a href="{{route('electronic-scrap')}}">Electronics Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Appliances Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('cunstruction')}}">Furniture Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('appliances')}}">Appliances Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('furniture')}}">Furniture Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('itscrap')}}">Paper Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('collage')}}">Plastics Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('bank-scrap')}}">Steel Scrap</a></li>
@@ -118,8 +118,8 @@
                                         <div class="mega-menu__item">
                                             <h6><a class="text-dark" href="{{route('electronic-scrap')}}">Electronics Scrap</a>
                     </h6>
-                    <h6><a class="text-dark" href="{{route('packaging')}}">Appliances Scrap</a></h6>
-                    <h6><a class="text-dark" href="{{route('cunstruction')}}">Furniture Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('appliances')}}">Appliances Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('furniture')}}">Furniture Scrap</a></h6>
                     <h6><a class="text-dark" href="{{route('itscrap')}}">Paper Scrap</a></h6>
                 </div>
             </div>
