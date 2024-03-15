@@ -51,4 +51,4 @@
         </div>
     </section>
 </main><!-- End #main -->
-<x-admin-footer />
+<x-admin-header />
