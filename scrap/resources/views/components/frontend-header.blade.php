@@ -88,8 +88,8 @@
                                 <li class="d-block d-xl-none"><a href="{{route('itscrap')}}">Paper Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('collage')}}">Plastics Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('bank-scrap')}}">Steel Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Iron Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Other Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('iron-scrap')}}">Iron Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="#">Other Scrap</a></li>
                             </ul>
                         </li>
                         <li>
@@ -129,8 +129,8 @@
                         <h6><a class="text-dark" href="{{route('collage')}}">Plastics Scrap</a>
                         </h6>
                         <h6><a class="text-dark" href="{{route('bank-scrap')}}">Steel Scrap</a></h6>
-                        <h6><a class="text-dark" href="{{route('gov-scrap')}}">Iron Scrap</a></h6>
-                        <h6><a class="text-dark" href="{{route('socity-scrap')}}">Other Scrap</a>
+                        <h6><a class="text-dark" href="{{route('iron-scrap')}}">Iron Scrap</a></h6>
+                        <h6><a class="text-dark" href="#">Other Scrap</a>
                         </h6>
                     </div>
                 </div>

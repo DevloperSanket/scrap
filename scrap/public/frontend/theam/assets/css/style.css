@@ -4913,6 +4913,7 @@ input {
 .mega-menu__item h6:hover {
     background-color: #4baf47;
 }
+
 /* .mega-menu__item ul li a {
   font-weight: 400;
   padding-top: 10px;
@@ -6349,27 +6350,15 @@ input {
     font-size: 18px;
 }
 
-.service-three__slider
-    .swiper-slide.swiper-slide-active
-    .service-three__item
-    .info,
-.animal-gallery__slider
-    .swiper-slide.swiper-slide-active
-    .service-three__item
-    .info {
+.service-three__slider .swiper-slide.swiper-slide-active .service-three__item .info,
+.animal-gallery__slider .swiper-slide.swiper-slide-active .service-three__item .info {
     opacity: 1;
     visibility: visible;
     transform: translateY(0px);
 }
 
-.service-three__slider
-    .swiper-slide.swiper-slide-active
-    .service-three__item
-    .stroke-number,
-.animal-gallery__slider
-    .swiper-slide.swiper-slide-active
-    .service-three__item
-    .stroke-number {
+.service-three__slider .swiper-slide.swiper-slide-active .service-three__item .stroke-number,
+.animal-gallery__slider .swiper-slide.swiper-slide-active .service-three__item .stroke-number {
     opacity: 1;
     visibility: visible;
     transform: translateY(0px);
@@ -6889,11 +6878,9 @@ input {
 }
 
 .project-banner__bg::before {
-    background: linear-gradient(
-        90deg,
-        #4baf47 0%,
-        rgba(75, 175, 71, 0) 100%
-    ) !important;
+    background: linear-gradient(90deg,
+            #4baf47 0%,
+            rgba(75, 175, 71, 0) 100%) !important;
 }
 
 .project-single__items-item {
@@ -6978,11 +6965,9 @@ input {
 }
 
 .donation::before {
-    background: linear-gradient(
-        106.76deg,
-        #4baf47 -0.48%,
-        rgba(75, 175, 71, 0) 100%
-    );
+    background: linear-gradient(106.76deg,
+            #4baf47 -0.48%,
+            rgba(75, 175, 71, 0) 100%);
 }
 
 .donation__wrp {
@@ -7270,11 +7255,9 @@ input {
 }
 
 .involve__bg::before {
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.52) 0%,
-        rgba(0, 0, 0, 0.72) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.52) 0%,
+            rgba(0, 0, 0, 0.72) 100%);
 }
 
 .involve__item {
@@ -8163,7 +8146,7 @@ input {
     padding: 0 20px;
 }
 
-.audio-player .controls > * {
+.audio-player .controls>* {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8218,7 +8201,7 @@ input {
     display: flex;
 }
 
-.audio-player .controls .time > * {
+.audio-player .controls .time>* {
     padding: 2px;
 }
 
@@ -8353,11 +8336,9 @@ input {
 }
 
 .subscribe-area::before {
-    background: linear-gradient(
-        98.88deg,
-        #4baf47 0%,
-        rgba(75, 175, 71, 0.3) 100%
-    );
+    background: linear-gradient(98.88deg,
+            #4baf47 0%,
+            rgba(75, 175, 71, 0.3) 100%);
 }
 
 .subscribe__shape {
@@ -10824,11 +10805,39 @@ input {
 }
 
 .list-group-item.active {
-  background-color: #d4edda; 
-  border-color: #c3e6cb; 
-  color: #155724; 
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
 }
 
+.iron-img {
+    background-image: url('../images/service/iron-scrap.jpg');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+
+.iron-img h3 {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+
+
+}
+
+.iron-third-box {
+    background-color: black;
+}
+
+
+
+
+.iron-box-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 /* css added by sanket end */
-
-

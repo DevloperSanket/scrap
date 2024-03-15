@@ -27,8 +27,10 @@
                                 <div class="form-group mt-3">
                                     {{-- <input type="file" name="image" id="fileUpload" class="form-control"> --}}
                                     {{-- <div id="image-holder"> </div> --}}
-                                    <input class="form-control" name="image" type="file" id="image-input" onchange="previewImage()">
-                                    <img id="output" src="" alt="preview Image" style="width: 100px; height:100px;">
+                                    <input class="form-control" name="image" type="file" id="image-input"
+                                        onchange="previewImage()">
+                                    <img id="output" src="" alt="preview Image"
+                                        style="width: 100px; height:100px;">
                                     <span class="text-danger error-text image_error"></span>
                                 </div>
 
@@ -90,41 +92,14 @@
     });
 
 
-
-    // function for image preview
-    // $("#fileUpload").on('change', function() {
-
-    //     if (typeof(FileReader) != "undefined") {
-
-    //         var image_holder = $("#image-holder");
-    //         image_holder.empty();
-
-    //         var reader = new FileReader();
-    //         reader.onload = function(e) {
-    //             $("<img />", {
-    //                 "src": e.target.result,
-    //         
-    //                 "class": "thumb-image",
-    //                 "style": "height:90px;width:110px;margin-top: 14px;"
-    //             }).appendTo(image_holder);
-
-    //         }
-    //         image_holder.show();
-    //         reader.readAsDataURL($(this)[0].files[0]);
-    //     } else {
-    //         alert("This browser does not support FileReader.");
-    //     }
-    // });
-
-
-function previewImage(){
- var input = document.getElementById('image-input');
- var preview = document.getElementById('output');
- var file = input.files[0];
- var reader = new FileReader();
- reader.onload = function(e){
-  preview.src = e.target.result;
- };
- reader.readAsDataURL(file);
-}
+    function previewImage() {
+        var input = document.getElementById('image-input');
+        var preview = document.getElementById('output');
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 </script>

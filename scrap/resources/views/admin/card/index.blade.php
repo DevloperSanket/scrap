@@ -81,6 +81,11 @@
                 {
                     data: 'image',
                     name: 'image',
+                    render: function(data, type, row, meta) {
+                        var imagePath = '{{asset('')}}' + data;
+                        return '<img src="' + imagePath +
+                            '" alt="Card Image" style="max-width: 100px; max-height: 50px;">';
+                    }
                 },
                 {
                     data: 'price',
@@ -132,7 +137,7 @@
 
 
     function deletefunction(deleteId) {
-    console.log(deleteId);
+        console.log(deleteId);
         var id = deleteId;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({

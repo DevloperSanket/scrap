@@ -46,7 +46,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/collage', [IndexController::class, 'collage'])->name('collage');
     Route::get('/bankscrap', [IndexController::class, 'bankscrap'])->name('bank-scrap');
     Route::get('/gov', [IndexController::class, 'gov'])->name('gov-scrap');
-    Route::get('/socity', [IndexController::class, 'socity'])->name('socity-scrap');
+    Route::get('/Ironscrap', [IndexController::class, 'Ironscrap'])->name('iron-scrap');
     Route::get('/savegreen', [IndexController::class, 'savegreen'])->name('savegreen');
     Route::get('/service', [IndexController::class, 'service'])->name('service');
     Route::post('/contact/send', [ContactController::class, 'sendEmail'])->name('contact.send');

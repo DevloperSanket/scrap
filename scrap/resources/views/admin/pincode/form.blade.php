@@ -24,14 +24,14 @@
                                     <span class="text-danger error-text city_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="pincode" class="form-control"
-                                        placeholder="Enter Pincode">
-                                    <span class="text-danger error-text pincode_error"></span>
-                                </div>
-                                <div class="form-group mt-3">
                                     <input type="text" name="area" class="form-control"
                                         placeholder="Enter Area Name">
                                     <span class="text-danger error-text area_error"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="text" name="pincode" class="form-control"
+                                        placeholder="Enter Pincode">
+                                    <span class="text-danger error-text pincode_error"></span>
                                 </div>
                                 <div class="form-group mt-4 text-center">
                                     <button class="btn btn-primary">Submit</button>
