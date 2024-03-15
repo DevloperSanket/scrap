@@ -8,8 +8,8 @@ use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\Admin\ScrapcategoryController;
 use App\Http\Controllers\Admin\PincodeController;
+use App\Http\Controllers\Admin\CardController;
 use App\Http\Controllers\ContactController;
-
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\SellScrapController;
 
@@ -76,6 +76,19 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::post('/pincodecreate', [PincodeController::class, 'store'])->name('pincode.store');
     Route::get('pincodedata', [PincodeController::class, 'pincodedata'])->name('pincode.record');
     Route::post('/pincodechangeStatus', [PincodeController::class, 'pincodechangeStatus'])->name('pincode.status');
+    Route::get('/edit-pincode/{id}', [PincodeController::class, 'edit'])->name('pincode.edit');
+    Route::post('/update-pincode', [PincodeController::class,'update'])->name('pincode.update');
+    Route::post('/delete-pincode', [PincodeController::class,'delete'])->name('pincode.delete');
+
+    
+    Route::get('/card', [CardController::class, 'index'])->name('card.index');
+    Route::get('/cardcreate', [CardController::class, 'create'])->name('card.create');
+    Route::post('/cardcreate', [CardController::class, 'store'])->name('card.store');
+    Route::get('/carddata', [CardController::class, 'carddata'])->name('card.record');
+    Route::post('/cardstatuschange', [CardController::class, 'cardstatuschange'])->name('card.status');
+    Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('card.edit');
+    Route::post('/update-card', [CardController::class, 'update'])->name('card.update');
+    Route::post('/delete-card', [CardController::class, 'delete'])->name('card.delete');
 
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');

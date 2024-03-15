@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class pincode extends Model
 {
-    use HasFactory;
+    protected $table = 'pincodes';
+
+    protected $fillable = ['city', 'area', 'pincode'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

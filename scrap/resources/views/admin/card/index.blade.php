@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Pincode</li>
+                <li class="breadcrumb-item active">Cards</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12 text-end">
-                <a href="{{ route('pincode.create') }}" class="btn btn-primary ">Add</a>
+                <a href="{{ route('card.create') }}" class="btn btn-primary ">Add</a>
             </div>
         </div>
 
@@ -32,13 +32,13 @@
                                     Status
                                 </th>
                                 <th>
-                                    City
+                                    Category Name
                                 </th>
                                 <th>
-                                    Area
+                                    Image
                                 </th>
                                 <th>
-                                    Pincode
+                                    Price
                                 </th>
                             </tr>
                         </thead>
@@ -58,7 +58,7 @@
         var table = $('#users-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('pincode.record') }}",
+            ajax: "{{ route('card.record') }}",
             columns: [{
                     render: function(data, type, row, meta) {
                         return i++;
@@ -75,29 +75,29 @@
                     name: 'status',
                 },
                 {
-                    data: 'city',
-                    name: 'city',
+                    data: 'category_id',
+                    name: 'category_id',
                 },
                 {
-                    data: 'area',
-                    name: 'area',
+                    data: 'image',
+                    name: 'image',
                 },
                 {
-                    data: 'pincode',
-                    name: 'pincode'
+                    data: 'price',
+                    name: 'price'
                 }
             ]
         });
 
     });
 
-    function pincodeStatusChange(scrapId) {
+    function cardStatusChange(scrapId) {
         console.log(scrapId);
         var checkbox = document.querySelector('input[data-id="' + scrapId + '"]');
         var status = checkbox.checked ? 1 : 0;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('pincode.status') }}",
+            url: "{{ route('card.status') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -136,7 +136,7 @@
         var id = deleteId;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('pincode.delete') }}",
+            url: "{{ route('card.delete') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -148,9 +148,9 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',
-                    text: 'Pincode Deleted successfully.'
+                    text: 'Card Deleted successfully.'
                 }).then(() => {
-                    window.location.href = "{{ route('pincode.index') }}";
+                    window.location.href = "{{ route('card.index') }}";
                 });
             },
             error: function(xhr, status, error) {

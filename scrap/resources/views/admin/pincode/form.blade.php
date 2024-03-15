@@ -15,8 +15,8 @@
                 <div class="col-md-8 offset-md-2 mt-5">
                     <div class="card p-4 border border-3">
                         <div class="card-body">
-                            <h4 class="text-center">Create Category</h4>
-                            <form id="myForm">
+                            <h4 class="text-center">Create Pincode</h4>
+                            <form id="pincodeform">
                                 @csrf
                                 <div class="form-group mt-3">
                                     <input type="text" name="city" class="form-control"
@@ -47,7 +47,7 @@
 <x-admin-footer />
 <script>
     $(document).ready(function() {
-        $('#myForm').submit(function(e) {
+        $('#pincodeform').submit(function(e) {
             e.preventDefault();
             $('.error-text').text('');
             var formData = $(this).serialize();
@@ -63,7 +63,7 @@
                     }).then(() => {
                         window.location.href = "{{ route('pincode.index') }}";
                     });
-                    $('#myForm')[0].reset();
+                    $('#pincodeform')[0].reset();
                 },
                 error: function(xhr, status, error) {
                     if (xhr.status === 422) {
