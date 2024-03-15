@@ -19,6 +19,7 @@ class SuperAdminSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'email' => 'super@gmail.com',
+            'mobile'=> '1234567890',
             'city' => 'Mumbai',
             'pincode' => '123456',
             'address' => 'Mumbai',

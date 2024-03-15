@@ -39,9 +39,9 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
     Route::get('/sell', [IndexController::class, 'sell'])->name('sell');
     Route::get('/allscrap', [IndexController::class, 'allscrap'])->name('allscrap');
-    Route::get('/doortodoor', [IndexController::class, 'doortodoor'])->name('doortodoor');
-    Route::get('/packaging', [IndexController::class, 'packaging'])->name('packaging');
-    Route::get('/cunstruction', [IndexController::class, 'cunstruction'])->name('cunstruction');
+    Route::get('/ElectronicScrap', [IndexController::class, 'ElectronicScrap'])->name('electronic-scrap');
+    Route::get('/appliances', [IndexController::class, 'appliances'])->name('appliances');
+    Route::get('/furniture', [IndexController::class, 'furniture'])->name('furniture');
     Route::get('/itscrap', [IndexController::class, 'itscrap'])->name('itscrap');
     Route::get('/collage', [IndexController::class, 'collage'])->name('collage');
     Route::get('/bankscrap', [IndexController::class, 'bankscrap'])->name('bank-scrap');

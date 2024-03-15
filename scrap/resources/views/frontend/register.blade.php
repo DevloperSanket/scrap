@@ -40,6 +40,15 @@
                             @enderror
                         </div>
                         <div class="form-outline mb-3">
+                            <input type="text" id="form3Example3" name="mobile" class="form-control"
+                                placeholder="Enter Contact Number" />
+                            @error('mobile')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+                        <div class="form-outline mb-3">
                             <input type="text" id="form3Example3" name="city" class="form-control"
                                 placeholder="Enter your city" />
                             @error('city')

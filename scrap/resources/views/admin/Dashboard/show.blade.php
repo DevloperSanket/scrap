@@ -35,6 +35,9 @@
                                     Email
                                 </th>
                                 <th>
+                                    Mobile
+                                </th>
+                                <th>
                                     City
                                 </th>
                                 <th>
@@ -84,6 +87,10 @@
                 {
                     data: 'email',
                     name: 'email'
+                },
+                {
+                    data: 'mobile',
+                    name: 'mobile'
                 },
                 {
                     data: 'city',

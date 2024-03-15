@@ -31,6 +31,7 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
+            'mobile' => 'required',
             'city' => 'required',
             'pincode' => 'required',
             'address' => 'required',
@@ -42,6 +43,7 @@ class UserController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Please Enter Valid Email Address',
             'email.unique' => 'Email already in use',
+            'mobile.required'=> 'Contact is required',
             'city.required' => 'City is required',
             'pincode.required' => 'Pincode is required',
             'address.required' => 'Address is required',
@@ -53,6 +55,7 @@ class UserController extends Controller
         $user = new User;
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
+        $user->mobile = $validateData['mobile'];
         $user->city = $validateData['city'];
         $user->pincode = $validateData['pincode'];
         $user->address = $validateData['address'];

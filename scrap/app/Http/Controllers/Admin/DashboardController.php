@@ -44,6 +44,9 @@ class DashboardController extends Controller
         ->addColumn('email', function ($users) {
             return $users->email;
         })
+        ->addColumn('mobile', function ($users) {
+            return $users->mobile;
+        })
         ->addColumn('city', function ($users) {
             return $users->city;
         })
@@ -59,7 +62,7 @@ class DashboardController extends Controller
         </div>';
             return $status;
         })
-        ->rawColumns(['action', 'status','name','email','city','pincode','address'])
+        ->rawColumns(['action', 'status','name','email','mobile','city','pincode','address'])
         ->make(true);
 
     }
