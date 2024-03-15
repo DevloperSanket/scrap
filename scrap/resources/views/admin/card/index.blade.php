@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">cards</li>
+                <li class="breadcrumb-item active">Cards</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12 text-end">
-                <a href="{{ route('card.create') }}" class="btn btn-primary ">Create</a>
+                <a href="{{ route('card.create') }}" class="btn btn-primary ">Add</a>
             </div>
         </div>
 
@@ -91,7 +91,7 @@
 
     });
 
-    function ScrapStatusChange(scrapId) {
+    function cardStatusChange(scrapId) {
         console.log(scrapId);
         var checkbox = document.querySelector('input[data-id="' + scrapId + '"]');
         var status = checkbox.checked ? 1 : 0;
@@ -148,7 +148,7 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',
-                    text: 'Category Deleted successfully.'
+                    text: 'Card Deleted successfully.'
                 }).then(() => {
                     window.location.href = "{{ route('card.index') }}";
                 });

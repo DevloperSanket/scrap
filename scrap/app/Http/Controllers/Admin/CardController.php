@@ -63,10 +63,11 @@ class CardController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
 
         $rules = [
             'categoryName' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'price' => 'required',
         ];
 
@@ -82,9 +83,19 @@ class CardController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName(); // Add current timestamp to the original filename
+            $imageName = time() . '_' . $image->getClientOriginalName();
             $image->storeAs('public/cards', $imageName);
         }
+
+       
+        // if ($request->hasfile('image')) {
+        //     $file = $request->file('image');
+        //     $extention = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extention;
+        //     $file->move('uploads/img', $filename);
+        //     $movie->img = $filename;
+        // }
+        // $movie->save();
 
 
         $data = Card::create([
@@ -103,8 +114,9 @@ class CardController extends Controller
 
     public function edit(string $id){
 
-        $category = ScrapCategories::find($id);
+        $category = ScrapCategories::get();
         $card_edit = Card::find($id);
+        // dd($card_edit);
         return view('admin.card.edit',compact('card_edit','category'));
 
     }

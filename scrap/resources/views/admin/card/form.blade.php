@@ -25,8 +25,10 @@
                                     @endforeach
                                 </select>
                                 <div class="form-group mt-3">
-                                    <input type="file" name="image" id="fileUpload" class="form-control">
-                                    <div id="image-holder"> </div>
+                                    {{-- <input type="file" name="image" id="fileUpload" class="form-control"> --}}
+                                    {{-- <div id="image-holder"> </div> --}}
+                                    <input class="form-control" name="image" type="file" id="image-input" onchange="previewImage()">
+                                    <img id="output" src="" alt="preview Image" style="width: 100px; height:100px;">
                                     <span class="text-danger error-text image_error"></span>
                                 </div>
 
@@ -47,42 +49,6 @@
 </main>
 <x-admin-footer />
 <script>
-    // $(document).ready(function() {
-    //     $('#myForm').submit(function(e) {
-    //         e.preventDefault();
-    //         $('.error-text').text('');
-    //         var formData = new FormData(this);
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "{{ route('card.store') }}",
-    //             data: formData,
-    //             success: function(response) {
-    //                 Swal.fire({
-    //                     icon: 'success',
-    //                     title: 'Success!',
-    //                     text: 'Form submitted successfully.'
-    //                 }).then(() => {
-    //                     window.location.href = "{{ route('card.index') }}";
-    //                 });
-    //                 $('#myForm')[0].reset();
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 if (xhr.status === 422) {
-    //                     var errors = xhr.responseJSON.errors;
-    //                     $.each(errors, function(key, value) {
-    //                         $('.' + key + '_error').text(value[0]);
-    //                     });
-    //                 } else {
-    //                     Swal.fire({
-    //                         icon: 'error',
-    //                         title: 'Oops...',
-    //                         text: 'Something went wrong! Please try again later.'
-    //                     });
-    //                 }
-    //             }
-    //         });
-    //     });
-    // });
     $(document).ready(function() {
         $('#myForm').submit(function(e) {
             e.preventDefault();
@@ -126,26 +92,39 @@
 
 
     // function for image preview
-    $("#fileUpload").on('change', function() {
+    // $("#fileUpload").on('change', function() {
 
-        if (typeof(FileReader) != "undefined") {
+    //     if (typeof(FileReader) != "undefined") {
 
-            var image_holder = $("#image-holder");
-            image_holder.empty();
+    //         var image_holder = $("#image-holder");
+    //         image_holder.empty();
 
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $("<img />", {
-                    "src": e.target.result,
-                    "class": "thumb-image",
-                    "style": "height:120px;width:145px;margin-10px 0px 0px 10px;"
-                }).appendTo(image_holder);
+    //         var reader = new FileReader();
+    //         reader.onload = function(e) {
+    //             $("<img />", {
+    //                 "src": e.target.result,
+    //         
+    //                 "class": "thumb-image",
+    //                 "style": "height:90px;width:110px;margin-top: 14px;"
+    //             }).appendTo(image_holder);
 
-            }
-            image_holder.show();
-            reader.readAsDataURL($(this)[0].files[0]);
-        } else {
-            alert("This browser does not support FileReader.");
-        }
-    });
+    //         }
+    //         image_holder.show();
+    //         reader.readAsDataURL($(this)[0].files[0]);
+    //     } else {
+    //         alert("This browser does not support FileReader.");
+    //     }
+    // });
+
+
+function previewImage(){
+ var input = document.getElementById('image-input');
+ var preview = document.getElementById('output');
+ var file = input.files[0];
+ var reader = new FileReader();
+ reader.onload = function(e){
+  preview.src = e.target.result;
+ };
+ reader.readAsDataURL(file);
+}
 </script>

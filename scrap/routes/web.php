@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::post('/update-pincode', [PincodeController::class,'update'])->name('pincode.update');
     Route::post('/delete-pincode', [PincodeController::class,'delete'])->name('pincode.delete');
 
+    
     Route::get('/card', [CardController::class, 'index'])->name('card.index');
     Route::get('/cardcreate', [CardController::class, 'create'])->name('card.create');
     Route::post('/cardcreate', [CardController::class, 'store'])->name('card.store');
