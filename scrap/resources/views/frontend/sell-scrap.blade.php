@@ -27,6 +27,14 @@
                                     <div class="d-flex flex-row align-items-center mb-3">
 
                                         <div class="form-outline flex-fill mb-0">
+                                            <input type="tetxt" id="form3Example4c" class="form-control"
+                                                name="number" placeholder="Enter Contact Number" />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+
+                                        <div class="form-outline flex-fill mb-0">
                                             <input type="city" id="form3Example4c" class="form-control"
                                                 name="city" placeholder="Enter City" />
                                         </div>

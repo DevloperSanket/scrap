@@ -1,9 +1,15 @@
 <x-frontend-header />
-<section style="background-color: #f8f9fb;" class="py-5">
+<section style="background-color: #f8f9fb;">
+<div class="container-fluid">
+    <img src="" alt="background-image">
+</div>
+</section>
+
+{{-- <section style="background-color: #f8f9fb;" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 slide-in-left">
-                <img class="zoom-in-out mt-4 text-end"
+                <img class=" mt-4 text-end"
                     src="{{ asset('frontend/theam/assets/images/service/door.jpg') }}" width="450px" height="300px"
                     alt="">
             </div>
@@ -32,5 +38,5 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <x-frontend-footer />

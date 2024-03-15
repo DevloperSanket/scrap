@@ -35,8 +35,8 @@ class IndexController extends Controller
         return view('frontend.all-scrap');
     }
 
-    public function doortodoor(){
-        return view('frontend.doortodoor');
+    public function ElectronicScrap(){
+        return view('frontend.electronic-scrap');
     }
 
     public function packaging(){

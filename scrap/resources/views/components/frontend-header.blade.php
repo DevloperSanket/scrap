@@ -78,18 +78,18 @@
                             <a class="text-white" href="{{route('about')}}">About Us</a>
                         </li>
                         <li>
-                            <a id="mega-menu-btn" class="text-white" href="{{route('service')}}">Services
-                                {{-- <i class="fas fa-chevron-down"></i> --}}
+                            <a id="mega-menu-btn" class="text-white" href="#">Services
+                                <i class="fas fa-chevron-d\own"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li class="d-block d-xl-none"><a href="{{route('doortodoor')}}">Door To Door Scrap Collection</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Packaging Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('cunstruction')}}">Construction Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('itscrap')}}">IT Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('collage')}}">Collage Institution Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('bank-scrap')}}">Bank/Office Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('gov-scrap')}}">Goverment Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Socity/Residential Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('electronic-scrap')}}">Electronics Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('packaging')}}">Appliances Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('cunstruction')}}">Furniture Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('itscrap')}}">Paper Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('collage')}}">Plastics Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('bank-scrap')}}">Steel Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Iron Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Other Scrap</a></li>
                             </ul>
                         </li>
                         <li>
@@ -110,27 +110,27 @@
                         </li>
                     </ul>
                     <!-- Mega menu area start here -->
-                    {{-- <div class="mega-menu-area d-none d-xl-block">
+                    <div class="mega-menu-area d-none d-xl-block">
                         <div class="container">
                             <div class="mega-menu">
                                 <div class="row g-4 justify-content-between">
                                     <div class="col-md-4">
                                         <div class="mega-menu__item">
-                                            <h6><a class="text-dark" href="{{route('doortodoor')}}">Door To Door Scrap Collection</a>
+                                            <h6><a class="text-dark" href="{{route('electronic-scrap')}}">Electronics Scrap</a>
                     </h6>
-                    <h6><a class="text-dark" href="{{route('packaging')}}">Packaging Scrap</a></h6>
-                    <h6><a class="text-dark" href="{{route('cunstruction')}}">Construction Scrap</a></h6>
-                    <h6><a class="text-dark" href="{{route('itscrap')}}">IT Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('packaging')}}">Appliances Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('cunstruction')}}">Furniture Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('itscrap')}}">Paper Scrap</a></h6>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="mega-menu__item">
                     <div class="mega-menu__item">
-                        <h6><a class="text-dark" href="{{route('collage')}}">Collage Institution Scrap</a>
+                        <h6><a class="text-dark" href="{{route('collage')}}">Plastics Scrap</a>
                         </h6>
-                        <h6><a class="text-dark" href="{{route('bank-scrap')}}">Bank/Office Scrap</a></h6>
-                        <h6><a class="text-dark" href="{{route('gov-scrap')}}">Goverment Scrap</a></h6>
-                        <h6><a class="text-dark" href="{{route('socity-scrap')}}">Socity/Residential Scrap</a>
+                        <h6><a class="text-dark" href="{{route('bank-scrap')}}">Steel Scrap</a></h6>
+                        <h6><a class="text-dark" href="{{route('gov-scrap')}}">Iron Scrap</a></h6>
+                        <h6><a class="text-dark" href="{{route('socity-scrap')}}">Other Scrap</a>
                         </h6>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
         </div>
         </div>
         </div>
-        </div> --}}
+        </div>
         <!-- Mega menu area end here -->
         </div>
         </div>
