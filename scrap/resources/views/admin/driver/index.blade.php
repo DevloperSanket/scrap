@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-4">
-                    <table id="users-table" class="table table-bordered data-table">
+                    <table id="driver-table" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th width="10px">
@@ -52,7 +52,7 @@
 <script type="text/javascript">
     $(function() {
         var i = 1;
-        var table = $('#users-table').DataTable({
+        var table = $('#driver-table').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('driver.record') }}",
@@ -76,7 +76,7 @@
                     name: 'name'
                 },
                 {
-                    date: 'mobile',
+                    data: 'mobile',
                     name: 'mobile'
                 }
             ]

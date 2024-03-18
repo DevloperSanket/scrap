@@ -72,7 +72,6 @@ class DriverController extends Controller
         $data = Driver::create([
             'name' => $validatedData['name'],
             'mobile' => $validatedData['mobile'],
-            'status' => '1',
         ]);
 
           // Return a JSON response

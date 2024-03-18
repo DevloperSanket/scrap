@@ -33,7 +33,7 @@
 
  <!-- Template Main JS File -->
  <script src="{{ 'admin/assets/js/main.js' }}"></script>
-
+ <script src="{{ 'admin/assets/js/costome.js' }}"></script>
  </body>
 
  </html>
