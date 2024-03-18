@@ -48,15 +48,15 @@ class IndexController extends Controller
     }
 
     public function itscrap(){
-        return view('frontend.itscrap');
+        return view('frontend.papar');
     }
 
     public function collage(){
-        return view('frontend.collage');
+        return view('frontend.plastic');
     }
 
     public function bankscrap(){
-        return view('frontend.bank-scrap');
+        return view('frontend.steel');
     }
 
     public function gov(){
