@@ -15,13 +15,7 @@ class Card extends Model
         return $this->belongsTo(User::class);
     }
 
-
-    // public function ScrapCategories() // Corrected method name
-    // {
-    //     return $this->belongsTo(ScrapCategories::class);
-    // }
-
-    public function scrapCategories() // Corrected method name
+    public function scrapCategories()
     {
         return $this->belongsTo(ScrapCategories::class, 'category_id');
     }

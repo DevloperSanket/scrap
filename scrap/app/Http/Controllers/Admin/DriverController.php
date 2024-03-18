@@ -83,4 +83,59 @@ class DriverController extends Controller
         ]);
 
     }
+
+    public function edit(string $id){
+
+        $driver_edit = Driver::find($id);
+        return view('admin.driver.edit',compact('driver_edit'));
+    }
+
+    public function update(Request $request){
+
+        $updatedata = Driver::find($request->id);
+
+        $updatedata->name = $request->input('name');
+        $updatedata->mobile = $request->input('mobile');
+
+        $updatedata->save();
+
+          // Return a JSON response
+          return response()->json([
+            'success' => true,
+            'data' => $updatedata,
+            'message' => 'Driver Updated successfully',
+        ]);
+    }
+
+    public function delete(Request $request)
+    {
+        // dd($request);
+        $deleterecord = Driver::find($request->id);
+        // dd($deleterecord);
+        $deleterecord->delete();
+        
+          return response()->json([
+            'success' => true,
+            'data' => $deleterecord,
+            'message' => 'Driver Deleted successfully',
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function DriverchangeStatus(Request $request)
+    {
+        $id = $request->id;
+        $status = $request->status;
+        $query = Driver::where('id',$id)->update(['status'=>$status]);
+        if($query){
+            return response()->json([
+                'success'=> true,
+                'data'=>$query,
+                'message' => 'Status updated successfully'], 200);
+        }else{
+            return response()->json(['message' => 'Record not found or status unchanged'], 404);
+        }
+    }
 }
