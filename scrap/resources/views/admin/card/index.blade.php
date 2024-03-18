@@ -75,8 +75,8 @@
                     name: 'status',
                 },
                 {
-                    data: 'name',
-                    name: 'name',
+                    data: 'category_id',
+                    name: 'category_id',
                 },
                 {
                     data: 'image',
