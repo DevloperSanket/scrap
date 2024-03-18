@@ -28,6 +28,7 @@
                                 <th width="10px">
                                     Status
                                 </th>
+                                <th widht="20px">Unique Id</th>
                                 <th>
                                     Name
                                 </th>
@@ -79,6 +80,10 @@
                 {
                     data: 'status',
                     name: 'status',
+                },
+                {
+                    data:'unique_id',
+                    name:'unique_id',
                 },
                 {
                     data: 'name',

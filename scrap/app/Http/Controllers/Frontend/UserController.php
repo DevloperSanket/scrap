@@ -62,6 +62,10 @@ class UserController extends Controller
         $user->address = $validateData['address'];
         $user->role = $request->role;
         $user->password = Hash::make($validateData['password']);
+
+        $unique_id = User::count()+1;
+        $user->unique_id = 'USR-' . str_pad($unique_id, 3, '0', STR_PAD_LEFT);
+        
         $user->save();
         // dd($user);
         if (Auth::attempt($request->only('email', 'password'))) {
