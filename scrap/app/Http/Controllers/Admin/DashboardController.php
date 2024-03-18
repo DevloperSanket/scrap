@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use DataTables;
+
 class DashboardController extends Controller
 {
     /**
@@ -13,57 +16,68 @@ class DashboardController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('admin.dashboard');
+            $allregisterUser = User::where('role',2)->count();
+            // dd($allregisterUser);
+
+            $activeUser = User::where('status', 1)
+                       ->where('role', 2)
+                       ->count();
+
+            $deactiveUser = User::where('status',0)->where('role',2)->count();
+            
+            return view('admin.dashboard.index',compact('allregisterUser','activeUser','deactiveUser'));
         }
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
-        
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function showTable(){
+        return view('admin.dashboard.show');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function data(){
+        $users = User::where('role',2)->get();
+
+        return DataTables::of($users)
+        ->addColumn('name', function ($users) {
+            return $users->name;
+        })
+        ->addColumn('email', function ($users) {
+            return $users->email;
+        })
+        ->addColumn('mobile', function ($users) {
+            return $users->mobile;
+        })
+        ->addColumn('city', function ($users) {
+            return $users->city;
+        })
+        ->addColumn('pincode', function ($users) {
+            return $users->pincode;
+        })
+        ->addColumn('address', function ($users) {
+            return $users->address;
+        })
+        ->addColumn('status', function ($users) {
+            $status = '<div class="form-check form-switch">
+           <input class="form-check-input text-center" type="checkbox" ' . ($users->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $users->id . '" onchange="ScrapStatusChange(' . $users->id . ')">
+        </div>';
+            return $status;
+        })
+        ->rawColumns(['action', 'status','name','email','mobile','city','pincode','address'])
+        ->make(true);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function changeUserStatus(Request $request){
+        $id = $request->id;
+        $status = $request->status;
+        $query = User::where('id',$id)->update(['status'=>$status]);
+        if($query){
+            return response()->json([
+                'success'=> true,
+                'data'=>$query,
+                'message' => 'Status updated successfully'], 200);
+        }else{
+            return response()->json(['message' => 'Doctor record not found or status unchanged'], 404);
+        }
     }
 }

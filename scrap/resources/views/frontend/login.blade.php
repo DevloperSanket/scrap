@@ -1,5 +1,5 @@
 <x-frontend-header />
-<div class="container">
+<div class="container mb-5">
     <section class="border-bottom pb-5">
         <div class="container-fluid h-custom ">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -46,7 +46,6 @@
                             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a
                                     href="{{ route('register') }}" class="link-danger">Register</a></p>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -54,4 +53,5 @@
 
     </section>
 </div>
-<x-frontend-footer />
+<x-frontend-footer/>
+

@@ -365,8 +365,9 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
-  margin-right: 6px;
+  max-height: 51px;
+  max-width: 120px;
+  margin-left: 40px;
 }
 
 .logo span {
@@ -1231,3 +1232,10 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+/* sanket css strat */
+.dashboard-record{
+  float: right;
+}
+
+/* sanket css end */

@@ -35,78 +35,44 @@ class IndexController extends Controller
         return view('frontend.all-scrap');
     }
 
-    public function doortodoor(){
-        return view('frontend.doortodoor');
+    public function ElectronicScrap(){
+        return view('frontend.electronic-scrap');
     }
 
-    public function packaging(){
-        return view('frontend.packaging');
+    public function appliances(){
+        return view('frontend.appliances');
     }
 
-    public function cunstruction(){
-        return view('frontend.cunstruction');
+    public function furniture(){
+        return view('frontend.furniture');
     }
 
     public function itscrap(){
-        return view('frontend.itscrap');
+        return view('frontend.papar');
     }
 
     public function collage(){
-        return view('frontend.collage');
+        return view('frontend.plastic');
     }
 
     public function bankscrap(){
-        return view('frontend.bank-scrap');
+        return view('frontend.steel');
     }
 
     public function gov(){
         return view('frontend.gov');
     }
 
-    public function socity(){
-        return view('frontend.socity');
+    public function Ironscrap(){
+        return view('frontend.iron');
     }
 
     public function savegreen(){
         return view('frontend.save-green');
     }
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function service(){
+        return view('frontend.service');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

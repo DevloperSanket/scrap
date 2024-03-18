@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
 
@@ -30,9 +31,10 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
-            'city'=> 'required',
-            'pincode'=> 'required',
-            'address'=> 'required',
+            'mobile' => 'required',
+            'city' => 'required',
+            'pincode' => 'required',
+            'address' => 'required',
             'password' => 'required'
         ];
 
@@ -41,35 +43,54 @@ class UserController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Please Enter Valid Email Address',
             'email.unique' => 'Email already in use',
+            'mobile.required'=> 'Contact is required',
             'city.required' => 'City is required',
-            'pincode.required'=> 'Pincode is required',
-            'address.required'=> 'Address is required',
+            'pincode.required' => 'Pincode is required',
+            'address.required' => 'Address is required',
             'password.required' => 'Password is required'
         ];
-        $validateData = $request->validate($rules,$message);
+        $validateData = $request->validate($rules, $message);
 
-        $user = New User;
+        // dd($request);
+        $user = new User;
         $user->name = $validateData['name'];
         $user->email = $validateData['email'];
+        $user->mobile = $validateData['mobile'];
+        $user->city = $validateData['city'];
+        $user->pincode = $validateData['pincode'];
+        $user->address = $validateData['address'];
+        $user->role = $request->role;
         $user->password = Hash::make($validateData['password']);
         $user->save();
-        if(Auth::attempt($request->only('email','password'))){
-            return redirect('dashboard')->withSuccess('You have signed-in');
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $user = Auth::user();
+            if ($user->role == 1) {
+                return redirect()->route('dashboard')->withSuccess('You have signed in.');
+            } else {
+                return redirect()->route('user.dashboard')->withSuccess('You have signed in.');
+            }
         }
     }
 
-    public function signin(Request $request){
-        // dd($request->all());
+    public function signin(Request $request)
+    {
         $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
-        // dd($request);
+
         $credentials = $request->only('email', 'password');
+
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                ->withSuccess('Signed in');
+            $user = Auth::user();
+
+            if ($user->role == 1) {
+                return redirect()->route('dashboard')->withSuccess('You have signed in.');
+            } else {
+                return redirect()->route('user.dashboard')->withSuccess('You have signed in.');
+            }
         }
+
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
@@ -105,14 +126,10 @@ class UserController extends Controller
         //
     }
 
-    public function logout(){
+    public function logout()
+    {
         Session::flush();
         Auth::logout();
         return Redirect('login');
     }
-
-
-  
-
-    
 }

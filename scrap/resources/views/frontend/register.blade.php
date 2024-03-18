@@ -1,5 +1,5 @@
 <x-frontend-header />
-<div class="container">
+<div class="container mb-5">
     <section class="border-bottom pb-5">
         <div class="container-fluid h-custom ">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -18,9 +18,9 @@
                     <h3 class="mb-3">Create Account</h3>
                     <form method="post" action="{{ route('register') }}">
                         @csrf
+                        <input type="hidden" value="2" name="role">
                         <!-- Name input -->
                         <div class="form-outline mb-3">
-                            {{-- <label class="form-label" for="form3Example3">Name</label> --}}
                             <input type="text" id="form3Example3" name="name" class="form-control"
                                 placeholder="Enter your name" />
                             @error('name')
@@ -28,10 +28,9 @@
                                     {{ $message }}
                                 </p>
                             @enderror
-                        </div>
 
+                        </div>
                         <div class="form-outline mb-3">
-                            {{-- <label class="form-label" for="form3Example3">Email</label> --}}
                             <input type="email" id="form3Example3" name="email" class="form-control"
                                 placeholder="Enter your email address" />
                             @error('email')
@@ -40,9 +39,16 @@
                                 </p>
                             @enderror
                         </div>
-
                         <div class="form-outline mb-3">
-                            {{-- <label class="form-label" for="form3Example3">City</label> --}}
+                            <input type="text" id="form3Example3" name="mobile" class="form-control"
+                                placeholder="Enter Contact Number" />
+                            @error('mobile')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+                        <div class="form-outline mb-3">
                             <input type="text" id="form3Example3" name="city" class="form-control"
                                 placeholder="Enter your city" />
                             @error('city')
@@ -51,9 +57,7 @@
                                 </p>
                             @enderror
                         </div>
-
                         <div class="form-outline mb-3">
-                            {{-- <label class="form-label" for="form3Example3">Pin Code</label> --}}
                             <input type="text" id="form3Example3" name="pincode" class="form-control"
                                 placeholder="Enter your pincode" />
                             @error('pincode')
@@ -63,7 +67,6 @@
                             @enderror
                         </div>
                         <div class="form-outline mb-3">
-                            {{-- <label class="form-label" for="form3Example3">Address</label> --}}
                             <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
                             @error('address')
                                 <p class="text-danger">
@@ -71,20 +74,20 @@
                                 </p>
                             @enderror
                         </div>
-
                         <div class="form-outline mb-3">
                             <div class="input-group">
                                 <input type="password" id="form3Example4" name="password" class="form-control"
                                     placeholder="Enter password" />
-                                <span class="input-group-text toggle-password"><i class="fa-sharp fa-solid fa-eye-slash"></i></span>
+                                <span class="input-group-text toggle-password"><i
+                                        class="fa-sharp fa-solid fa-eye-slash"></i></span>
                             </div>
                             @error('password')
-                                <span class="text-danger">
+                                <p class="text-danger">
                                     {{ $message }}
-                                </span>
+                                </p>
                             @enderror
                         </div>
-                        <div class="text-center text-lg-start mt-4">
+                        <div class="text-center text-lg-start">
                             <button type="submit" class="btn btn-success"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
                             <p class="small fw-bold mt-1 pt-1 mb-0">Allready have an account? <a

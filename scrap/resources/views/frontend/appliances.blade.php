@@ -1,46 +1,48 @@
 <x-frontend-header />
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 mt-5 slide-in-left">
-            <h3 class="text-decoration-underline">Socity Residential Scrap <span style="color:#4baf47">Service</span></h3>
-        </div>
-    </div>
+
+
+
+<div class="container-fluid bg-image-appliances1">
 </div>
-<div class="container">
+
+
+
+
+
+<div class="container mb-5">
     <div class="row mt-4">
         <div class="col-md-6 slide-in-left">
-            <img class="img-thumbnail mt-2 zoom-in-out" src="{{ asset('frontend/theam/assets/images/service/socity1.jpg') }}" width="530px"
+            <img class="img-thumbnail mt-2 zoom-in-out" src="{{ asset('frontend/theam/assets/images/service/it1.jpg') }}" width="530px"
                 alt="">
         </div>
         <div class="col-md-6 slide-in-left">
             <p>
-            <h3>We provide <span style="color:#4baf47">Socity Residential Scrap</span></h3>
+            <h2>We provide <span style="color:#4baf47">Appliances Scrap Service</span></h2>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, maxime quasi. Sequi non quam vero est saepe
             soluta adipisci ea expedita, dolores possimus accusamus placeat laboriosam et provident eligendi veniam in
             voluptates eius quidem. Consequatur libero ratione, autem ducimus, recusandae optio voluptatem corrupti
             aliquid molestiae pariatur sequi. Eligendi sunt odio ea repellat pariatur dolorum consectetur. Et dolorem,
-            suscipit similique amet accusantium minus ipsum! Ipsam tempore illo totam sit non eos maiores et modi
-            corrupti mollitia? Dolorem inventore praesentium, officiis eos unde itaque quia minus deleniti magnam, sequi
-            debitis maiores labore. Exercitationem neque eligendi sit nam ut distinctio velit earum ipsa.Exercitationem
-            neque.
             </p>
         </div>
-        <div class="col-md-6 mt-2 justify-content-center slide-in-right">
+        <div class="col-md-6 mt-4 justify-content-center slide-in-right">
+            <h2>Sell And <span style="color:#4baf47">Earn</span></h2>
             <p class="mt-4 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, perspiciatis. Cumque illum impedit qui
                 optio, et tempora asperiores eaque, accusantium veritatis ex quaerat sequi repellendus vero ipsum saepe
                 voluptates. Nisi nostrum ullam totam quibusdam molestiae alias iure sit odio! Quia ad veniam dolor
                 quaerat reprehenderit quae voluptate, iusto dicta corporis facilis velit vel aut, repellat inventore et.
-                Suscipit, nulla repellat ipsa, iste distinctio quos consequatur numquam veritatis in amet sed!
-                Voluptates rem quis molestiae vel fugit praesentium dicta. Minus velit quasi vel deserunt dolore
-                quibusdam explicabo. Eaque doloribus ratione quod recusandae debitis repudiandae voluptatem cumque
             </p>
         </div>
         <div class="col-md-6 mt-5 text-center slide-in-right">
-            <img class="img-thumbnail zoom-in-out" src="{{ asset('frontend/theam/assets/images/service/socity2.jpg') }}"
+            <img class="img-thumbnail zoom-in-out" src="{{ asset('frontend/theam/assets/images/service/it2.jpg') }}"
              height="300px" width="450px"
                 alt="">
         </div>
     </div>
+</div>
+
+
+<div class="container mt-5 mb-5 ml-2 ml-2 electronic-c">
+    <h3 class="text-center last">Think Before You Throw <br> Recycle...</h3>
 </div>
 <x-frontend-footer />

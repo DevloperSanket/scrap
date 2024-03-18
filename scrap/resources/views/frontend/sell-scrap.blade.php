@@ -1,5 +1,5 @@
 <x-frontend-header />
-<section class="p-2" style="background-color: #eee;">
+<section class="py-5" >
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-lg-12 col-xl-11">
@@ -8,8 +8,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                <p class="text-center h1 fw-bold">Sell <span style="color:rgb(52, 170, 52)">Scrap</span></p>
-
+                                <p class="text-center h1 fw-bold">Sell Scrap</p>
                                 <form class="mx-1 mx-md-4">
                                     <div class="d-flex flex-row align-items-center mb-3">
                                         <div class="form-outline flex-fill">
@@ -22,6 +21,14 @@
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="email" id="form3Example3c" class="form-control"
                                                 name="email" placeholder="Enter Email">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-3">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="tetxt" id="form3Example4c" class="form-control"
+                                                name="number" placeholder="Enter Contact Number" />
                                         </div>
                                     </div>
 
@@ -71,9 +78,8 @@
 
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                                <img src="{{ asset('frontend/theam/assets/images/logo/logo.png') }}" class="img-fluid"
-                                    alt="Sample image" style="height: 220px;">
+                                <img src="{{ asset('frontend/theam/assets/images/logo/scrap2.jpg') }}" class="img-fluid"
+                                    alt="Sample image" style="height: 400px;">
                             </div>
                         </div>
                     </div>

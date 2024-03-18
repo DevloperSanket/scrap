@@ -6,11 +6,11 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container mb-5">
     <div class="row mt-5">
-        <h3>Follow Some Steps To Save Envorment</h3>
+        <h3 class="mb-3">Follow Some Steps To Save Envorment</h3>
         <div class="col-md-4 border border-0">
-            <div class="list-group" id="list-tab" role="tablist">
+            <div class="list-group " id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
                     href="#list-home" role="tab" aria-controls="list-home">Reduce, Reuse, Recycle</a>
                 <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
