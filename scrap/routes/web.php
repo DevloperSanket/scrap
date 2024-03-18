@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ScrapcategoryController;
 use App\Http\Controllers\Admin\PincodeController;
 use App\Http\Controllers\Admin\CardController;
+use App\Http\Controllers\Admin\DriverController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\SellScrapController;
@@ -42,11 +43,11 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/ElectronicScrap', [IndexController::class, 'ElectronicScrap'])->name('electronic-scrap');
     Route::get('/appliances', [IndexController::class, 'appliances'])->name('appliances');
     Route::get('/furniture', [IndexController::class, 'furniture'])->name('furniture');
-    Route::get('/itscrap', [IndexController::class, 'itscrap'])->name('itscrap');
-    Route::get('/collage', [IndexController::class, 'collage'])->name('collage');
-    Route::get('/bankscrap', [IndexController::class, 'bankscrap'])->name('bank-scrap');
+    Route::get('/papar', [IndexController::class, 'papar'])->name('papar');
+    Route::get('/plastic', [IndexController::class, 'plastic'])->name('plastic');
+    Route::get('/steel', [IndexController::class, 'steel'])->name('steel');
     Route::get('/gov', [IndexController::class, 'gov'])->name('gov-scrap');
-    Route::get('/socity', [IndexController::class, 'socity'])->name('socity-scrap');
+    Route::get('/Ironscrap', [IndexController::class, 'Ironscrap'])->name('iron-scrap');
     Route::get('/savegreen', [IndexController::class, 'savegreen'])->name('savegreen');
     Route::get('/service', [IndexController::class, 'service'])->name('service');
     Route::post('/contact/send', [ContactController::class, 'sendEmail'])->name('contact.send');
@@ -60,6 +61,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/show-table', [DashboardController::class, 'data'])->name('dashboard-table');
     Route::post('/changeuserStatus', [DashboardController::class, 'changeUserStatus'])->name('statusChange');
 
+
     // scrap category
     Route::get('/scrapcategory', [ScrapcategoryController::class, 'index'])->name('scrapcategory.index');
     Route::get('/scrapcreate', [ScrapcategoryController::class, 'create'])->name('scrapcategory.create');
@@ -70,7 +72,8 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::post('/update-scrap', [ScrapcategoryController::class, 'update'])->name('scrapcategory.update');
     Route::post('/delete-scrap', [ScrapcategoryController::class, 'delete'])->name('scrapcategory.delete');
 
-    // pincode 
+
+    // pincode routes
     Route::get('/pincode', [PincodeController::class, 'index'])->name('pincode.index');
     Route::get('/pincodecreate', [PincodeController::class, 'create'])->name('pincode.create');
     Route::post('/pincodecreate', [PincodeController::class, 'store'])->name('pincode.store');
@@ -81,6 +84,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::post('/delete-pincode', [PincodeController::class,'delete'])->name('pincode.delete');
 
     
+    // card routes
     Route::get('/card', [CardController::class, 'index'])->name('card.index');
     Route::get('/cardcreate', [CardController::class, 'create'])->name('card.create');
     Route::post('/cardcreate', [CardController::class, 'store'])->name('card.store');
@@ -89,6 +93,17 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('card.edit');
     Route::post('/update-card', [CardController::class, 'update'])->name('card.update');
     Route::post('/delete-card', [CardController::class, 'delete'])->name('card.delete');
+
+
+    // driver routes
+    Route::get('/driver', [DriverController::class, 'index'])->name('driver.index');
+    Route::get('/drivercreate', [DriverController::class, 'create'])->name('driver.create');
+    Route::post('/drivercreate', [DriverController::class, 'store'])->name('driver.store');
+    Route::get('/driverdata', [DriverController::class, 'driverdata'])->name('driver.record');
+    Route::post('/driverstatuschange', [DriverController::class, 'driverstatuschange'])->name('driver.status');
+    Route::get('/edit-driver/{id}', [DriverController:: class, 'edit'])->name('driver.edit');
+    Route::post('/update-driver', [DriverController::class, 'update'])->name('driver.update');
+    Route::post('/delete-driver', [DriverController::class, 'delete'])->name('driver.delete');
 
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');

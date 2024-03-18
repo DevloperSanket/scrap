@@ -3,7 +3,7 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h3 class="text"><ins>Rates Of</ins> All Scrap </h3>
+                <h2 class="text">Rates Of All Scrap</h2>
             </div>
         </div>
     </div>

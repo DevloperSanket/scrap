@@ -1,5 +1,5 @@
 <x-frontend-header />
-<section class="py-5">
+<section>
     <div class="container" style="padding: 40px;">
         <div class="row">
             <div class="col-md-12 contact_main">
@@ -8,58 +8,16 @@
             </div>
         </div>
     </div>
-    <!-- 
- <div class="container mt-5 border-bottom">
-    <div class="row">
-        <div class="col-md-4 text-center mb-3">
-            <div class="contact-card">
-                <div class="card-body">
-                    <img class="rounded" src="{{ asset('frontend/theam/assets/images/contact/call.png') }}"
-                        width="30px" alt="">
-                    <h4 class="mt-4">
-                        Call
-                    </h4>
-                    <span class="text-success mt-3">+91 983 3526 722</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 text-center mb-3">
-            <div class="">
-                <div class="card-body">
-                    <img class="rounded" src="{{ asset('frontend/theam/assets/images/contact/mail.png') }}"
-                        width="35px" alt="">
-                    <h4 class="mt-3">
-                        Email
-                    </h4>
-                    <span class="text-success mt-3">Example@gmail.com</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div class="">
-                <div class="card-body">
-                    <img class="rounded" src="{{ asset('frontend/theam/assets/images/contact/location1.png') }}"
-                        width="30px" alt="">
-                    <h4 class="mt-3">
-                        Address
-                    </h4>
-                    <span class="text-success mt-3">
-                        B 224, Pranik Chambers Sakinaka Junction , Mumbai- 400 072
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 
-    <div class="container-fluid ">
-        <div class="container ">
+    {{-- <div class="container-fluid"> --}}
+        <div class="container mb-5">
             <div class="row contact_box">
                 <div class="col-lg-6 mb-3 contact_box1 pt-5">
-                    <h3 class="text-light">Contact Details...</h3>
-                    <p style="">
+                   <div>
+                    <h3 class="text-light">Contact Information</h3>
+                    <p>
                         Fill Up the form For Your queries...
                     </p>
                     <hr>
@@ -73,8 +31,9 @@
                     </h4>
                     <h4 class="mt-4 text-light ">
                         <i class="fa-solid fa-location-dot text-light" style="margin-right:5px;"></i><span class="text-light contact-area-text">
-                            B 224, Pranik Chambers Sakinaka Junction , Mumbai- 400 072</span>
+                        B 224, Pranik Chambers Sakinaka Junction , Mumbai- 400 072</span>
                     </h4>
+                   </div>
                 </div>
                 <div class="col-lg-6 mb-3 contact_box2">
                     <h3 class="mb-3">Send Enquiry</h3>
@@ -100,6 +59,11 @@
                 </div>
             </div>
         </div>
+    {{-- </div> --}}
+
+
+    <div class="container-fluid mb-5">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15080.72918901834!2d72.87535868586048!3d19.09965699035979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8773cb2f051%3A0x40576ac944236b34!2sSaki%20Naka%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710746060826!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
 </section>

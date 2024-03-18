@@ -85,11 +85,11 @@
                                 <li class="d-block d-xl-none"><a href="{{route('electronic-scrap')}}">Electronics Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('appliances')}}">Appliances Scrap</a></li>
                                 <li class="d-block d-xl-none"><a href="{{route('furniture')}}">Furniture Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('itscrap')}}">Paper Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('collage')}}">Plastics Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('bank-scrap')}}">Steel Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Iron Scrap</a></li>
-                                <li class="d-block d-xl-none"><a href="{{route('socity-scrap')}}">Other Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('papar')}}">Paper Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('plastic')}}">Plastics Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('steel')}}">Steel Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="{{route('iron-scrap')}}">Iron Scrap</a></li>
+                                <li class="d-block d-xl-none"><a href="#">Other Scrap</a></li>
                             </ul>
                         </li>
                         <li>
@@ -120,17 +120,17 @@
                     </h6>
                     <h6><a class="text-dark" href="{{route('appliances')}}">Appliances Scrap</a></h6>
                     <h6><a class="text-dark" href="{{route('furniture')}}">Furniture Scrap</a></h6>
-                    <h6><a class="text-dark" href="{{route('itscrap')}}">Paper Scrap</a></h6>
+                    <h6><a class="text-dark" href="{{route('papar')}}">Paper Scrap</a></h6>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="mega-menu__item">
                     <div class="mega-menu__item">
-                        <h6><a class="text-dark" href="{{route('collage')}}">Plastics Scrap</a>
+                        <h6><a class="text-dark" href="{{route('plastic')}}">Plastics Scrap</a>
                         </h6>
-                        <h6><a class="text-dark" href="{{route('bank-scrap')}}">Steel Scrap</a></h6>
-                        <h6><a class="text-dark" href="{{route('gov-scrap')}}">Iron Scrap</a></h6>
-                        <h6><a class="text-dark" href="{{route('socity-scrap')}}">Other Scrap</a>
+                        <h6><a class="text-dark" href="{{route('steel')}}">Steel Scrap</a></h6>
+                        <h6><a class="text-dark" href="{{route('iron-scrap')}}">Iron Scrap</a></h6>
+                        <h6><a class="text-dark" href="#">Other Scrap</a>
                         </h6>
                     </div>
                 </div>

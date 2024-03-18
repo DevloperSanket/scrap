@@ -1,4 +1,5 @@
 /* css add by Mahesh Start */
+
 .card-img-top {
     padding: 10px;
 }
@@ -8,28 +9,38 @@
     margin-top: 20px;
     border-radius: 10px;
 }
+
 .contact_h3 {
     font-size: 35px;
     padding-bottom: 7px;
     padding-top: 30px;
 }
+
 .contact_box {
     background-color: #f7f7f7;
     padding: 30px;
     border-radius: 10px;
     /* height: 610px; */
 }
+
 .contact_box1 {
     background: #4baf48;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 20px 20px 68px;
     color: white;
     height: 402px;
     margin-top: 10px;
 }
+
 .contact_box2 {
     padding: 50px;
 }
+
+.map {
+    height: 400px;
+    width: 100%;
+}
+
 .contact-area-text {
     padding-left: 25px;
     padding-top: 10px;
@@ -46,66 +57,89 @@
     border: 1px solid #eee;
     padding: 10px;
 }
+
 .card-border {
     border: 2px;
     padding: 20px;
     color: black;
     margin-top: 5px;
 }
+
 .scrap-sectioin {
     background-color: #f8f9fb;
     padding-bottom: 50px;
 }
+
 .card-rounded {
     border-radius: 15px;
-
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 15px;
     visibility: visible;
     animation-duration: 1500ms;
     animation-delay: 0ms;
     animation-name: fadeInLeft;
 }
+
 .product-form {
     margin-top: -30px;
     padding: 15px;
     padding-bottom: 20px;
     text-align: center;
 }
+
+
 /* call icon css start */
+
 .txt {
     color: white;
     padding: 0px;
 }
+
 .theme-btn1 {
     background-color: #222222;
     padding: 5px 20px 5px 20px !important;
     border-radius: 30px;
 }
+
+
 /*  call icon css end */
+
+
 /* whatsup icon css start */
+
 .theme-btn2 {
     background-color: #56ad38;
     padding: 5px 20px 5px 20px !important;
     border-radius: 30px;
 }
+
 .txt1 {
     color: white;
     padding: 0px;
 }
 
+
 /* whatsup icon css end */
+
+
 /* buy icon css start */
+
 .theme-btn3 {
     background-color: #222222;
     padding: 5px 20px 5px 20px !important;
     border-radius: 30px;
 }
+
+
 /* buy icon css end */
+
 .theme-btn {
     color: white;
     background-color: #22943a;
 }
+
 .theme-btn:hover {
     background-color: black;
 }
+
+
 /* css add by Mahesh end */

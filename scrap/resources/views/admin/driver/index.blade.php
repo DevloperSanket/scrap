@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Cards</li>
+                <li class="breadcrumb-item active">Drivers</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12 text-end">
-                <a href="{{ route('card.create') }}" class="btn btn-primary ">Add</a>
+                <a href="{{ route('driver.create') }}" class="btn btn-primary ">Add</a>
             </div>
         </div>
 
@@ -32,13 +32,10 @@
                                     Status
                                 </th>
                                 <th>
-                                    Category Name
+                                    Name
                                 </th>
                                 <th>
-                                    Image
-                                </th>
-                                <th>
-                                    Price
+                                    Mobile
                                 </th>
                             </tr>
                         </thead>
@@ -58,7 +55,7 @@
         var table = $('#users-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('card.record') }}",
+            ajax: "{{ route('driver.record') }}",
             columns: [{
                     render: function(data, type, row, meta) {
                         return i++;
@@ -75,34 +72,25 @@
                     name: 'status',
                 },
                 {
-                    data: 'category_id',
-                    name: 'category_id',
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'image',
-                    name: 'image',
-                    render: function(data, type, row, meta) {
-                        var imagePath = '{{asset('')}}' + data;
-                        return '<img src="' + imagePath +
-                            '" alt="Card Image" style="max-width: 100px; max-height: 50px;">';
-                    }
-                },
-                {
-                    data: 'price',
-                    name: 'price'
+                    date: 'mobile',
+                    name: 'mobile'
                 }
             ]
         });
 
     });
 
-    function cardStatusChange(scrapId) {
+    function DriverStatusChange(scrapId) {
         console.log(scrapId);
         var checkbox = document.querySelector('input[data-id="' + scrapId + '"]');
         var status = checkbox.checked ? 1 : 0;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('card.status') }}",
+            url: "{{ route('driver.status') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -137,11 +125,11 @@
 
 
     function deletefunction(deleteId) {
-        console.log(deleteId);
+    console.log(deleteId);
         var id = deleteId;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('card.delete') }}",
+            url: "{{ route('driver.delete') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -153,9 +141,9 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',
-                    text: 'Card Deleted successfully.'
+                    text: 'Driver Deleted successfully.'
                 }).then(() => {
-                    window.location.href = "{{ route('card.index') }}";
+                    window.location.href = "{{ route('driver.index') }}";
                 });
             },
             error: function(xhr, status, error) {

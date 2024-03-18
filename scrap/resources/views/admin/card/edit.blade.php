@@ -18,7 +18,7 @@
                             <h4 class="text-center">Edit Cards</h4>
                             <form id="myForm" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" value="{{ $card_edit->id }}" id="editID">
+                                <input type="hidden" value="{{ $card_edit->id }}" id="editId">
                                 <select class="form-select" name="categoryName" aria-label="Default select example">
                                     <option selected disabled>Select Category</option>
                                     @foreach ($category as $categories)
@@ -29,9 +29,10 @@
                                     @endforeach
                                 </select>
                                 <div class="form-group mt-3">
-                                    <input type="file" name="image" id="fileUpload" value="{{ $card_edit->image }}"
-                                        class="form-control">
-                                    <div id="image-holder"></div>
+                                    <input class="form-control" name="image" type="file" id="image-input"
+                                        onchange="previewImage()">
+                                    <img id="output" src="{{ asset('') . $card_edit->image }}" alt="preview Image"
+                                        style="width: 100px; height: 100px;">
                                     <span class="text-danger error-text image_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
@@ -62,7 +63,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             };
 
-            var id = $("#editID").val();
+            var id = $("#editId").val();
             $('.error-text').text('');
 
             $.ajax({
@@ -102,30 +103,14 @@
     //  
 
 
-    function previewImage(input, imageHolder) {
-        if (typeof FileReader != "undefined") {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $(imageHolder).empty();
-                    $("<img />", {
-                        "src": e.target.result,
-                        "class": "thumb-image",
-                        "style": "height:120px;width:145px;margin-10px 0px 0px 10px;"
-                    }).appendTo(imageHolder);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        } else {
-            alert("This browser does not support FileReader.");
-        }
+    function previewImage() {
+        var input = document.getElementById('image-input');
+        var preview = document.getElementById('output');
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
     }
-
-    // Call the previewImage function on change of file input
-    $(document).ready(function() {
-        $("#fileUpload").on('change', function() {
-            var image_holder = $("#image-holder");
-            previewImage(this, image_holder);
-        });
-    });
 </script>

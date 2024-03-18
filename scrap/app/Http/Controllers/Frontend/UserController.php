@@ -28,10 +28,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
-            'mobile' => 'required',
+            'mobile' => 'required|max:10',
             'city' => 'required',
             'pincode' => 'required',
             'address' => 'required',
@@ -62,6 +63,7 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->password = Hash::make($validateData['password']);
         $user->save();
+        // dd($user);
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
             if ($user->role == 1) {

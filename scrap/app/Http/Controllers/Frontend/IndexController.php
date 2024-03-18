@@ -47,15 +47,15 @@ class IndexController extends Controller
         return view('frontend.furniture');
     }
 
-    public function itscrap(){
+    public function papar(){
         return view('frontend.papar');
     }
 
-    public function collage(){
+    public function plastic(){
         return view('frontend.plastic');
     }
 
-    public function bankscrap(){
+    public function steel(){
         return view('frontend.steel');
     }
 
@@ -63,8 +63,8 @@ class IndexController extends Controller
         return view('frontend.gov');
     }
 
-    public function socity(){
-        return view('frontend.socity');
+    public function Ironscrap(){
+        return view('frontend.iron');
     }
 
     public function savegreen(){
@@ -74,43 +74,5 @@ class IndexController extends Controller
     public function service(){
         return view('frontend.service');
     }
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
