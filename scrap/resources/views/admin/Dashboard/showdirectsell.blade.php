@@ -185,4 +185,16 @@
     //         }
     //     });
     // }
+
+
+  
+
+    $(document).ready(function() {
+        $('.view-image').click(function() {
+            var imageUrl = $(this).data('image');
+            $('#exampleModal .modal-body').html('<img src="' + imageUrl + '" class="img-fluid" alt="Image">');
+        });
+    });
+
+
 </script>

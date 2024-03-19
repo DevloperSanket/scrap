@@ -109,7 +109,8 @@ class DashboardController extends Controller
                 return $directselluser->address;
             })
             ->addColumn('image', function ($directselluser) {
-                        $image = '<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">View</a>';
+                        // $image = '<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">View</a>';
+                        $image = '<a href="#" class="view-image" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-image="' . $directselluser->image_url . '"   onclick="imagemodelfunction(' . $directselluser->id . ')">View</a>';
                         return $image;
                     })
         //     ->addColumn('status', function ($users) {
