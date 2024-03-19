@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class RegisterdSell extends Model
 {
-    use HasFactory;
+    protected $table = 'registerd_sells';
+
+    protected $fillable = ['date','time','category','status','driver'];
+
+    public function registredimages(){
+        return $this->hasMany(RegistredImage::class,'registerd_sells_id');
+    }
 }

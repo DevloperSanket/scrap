@@ -78,7 +78,7 @@ class CardController extends Controller
         ];
         $validatedData = $request->validate($rules, $messages);
         if ($image = $request->file('image')){
-            $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalName();
             $imagePath = $image->storeAs('card', $imageName, 'public');
             $imagePath = 'storage/' . $imagePath;
         }

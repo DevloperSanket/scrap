@@ -32,14 +32,19 @@
                                     Status
                                 </th>
                                 <th>
-                                    City
+                                    Category
                                 </th>
                                 <th>
-                                    Area
+                                    Collection Date
                                 </th>
                                 <th>
-                                    Pincode
+                                    Collection Time
                                 </th>
+                                <th>
+                                    Scrap Images
+                                </th>
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -51,4 +56,48 @@
         </div>
     </section>
 </main><!-- End #main -->
-<x-admin-header />
+<x-admin-footer />
+<script>
+     $(function() {
+        var i = 1;
+        var table = $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('card.record') }}",
+            columns: [{
+                    render: function(data, type, row, meta) {
+                        return i++;
+                    }
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: true,
+                    searchable: true
+                },
+                {
+                    data: 'status',
+                    name: 'status',
+                },
+                {
+                    data: 'category_id',
+                    name: 'category_id',
+                },
+                {
+                    data: 'image',
+                    name: 'image',
+                    render: function(data, type, row, meta) {
+                        var imagePath = '{{asset('')}}' + data;
+                        return '<img src="' + imagePath +
+                            '" alt="Card Image" style="max-width: 100px; max-height: 50px;">';
+                    }
+                },
+                {
+                    data: 'price',
+                    name: 'price'
+                }
+            ]
+        });
+
+    });
+</script>

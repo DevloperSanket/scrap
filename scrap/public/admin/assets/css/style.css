@@ -1238,4 +1238,16 @@ h6 {
   float: right;
 }
 
+#image-preview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.preview-image {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  object-fit: cover;
+}
+
 /* sanket css end */

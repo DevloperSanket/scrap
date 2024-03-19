@@ -116,5 +116,6 @@ Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     // sell scrap routes
     Route::get('userAdmin-sellscrap',[SellScrapController::class,'index'])->name('scrap.index');
     Route::get('userAdmin-create',[SellScrapController::class,'create'])->name('scrap.create');
+    Route::post('userAdmin-store',[SellScrapController::class,'store'])->name('scrap.store');
 });
 
