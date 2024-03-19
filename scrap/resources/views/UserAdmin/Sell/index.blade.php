@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Pincode</li>
+                <li class="breadcrumb-item active">Sell Scrap</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12 text-end">
-                <a href="{{ route('scrap.create') }}" class="btn btn-primary ">Add</a>
+                <a href="{{ route('scrap.create') }}" class="btn btn-primary ">Sell Scrap</a>
             </div>
         </div>
 

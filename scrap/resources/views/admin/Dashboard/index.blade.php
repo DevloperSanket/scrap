@@ -16,9 +16,7 @@
             <!-- Left side columns -->
             <div class="col-md-12">
                 <div class="row">
-                    <!-- Sales Card -->
                     <div class="col-md-4">
-                    
                         <div class="card info-card sales-card">
                             <div class="card-body pb-0">
                                 <h5 class="card-title">Total Register Users<span></span></h5>
@@ -32,10 +30,10 @@
                                         <h6>{{ $allregisterUser }}</h6>
                                     </div>
                                 </div>
-                                <a class="dashboard-record" href="{{route('dashboard.show')}}">All Records</a>
+                                <a class="dashboard-record" href="{{ route('dashboard.show') }}">All Records</a>
                             </div>
                         </div>
-                    
+
                     </div><!-- End Sales Card -->
 
                     <!-- Revenue Card -->
@@ -60,7 +58,6 @@
 
                     <!-- Customers Card -->
                     <div class="col-md-4">
-
                         <div class="card info-card customers-card">
                             <div class="card-body">
                                 <h5 class="card-title">Deactive Users <span></span></h5>
@@ -78,11 +75,81 @@
                             </div>
                         </div>
 
-                    </div><!-- End Customers Card -->
+                    </div>
                 </div>
-            </div><!-- End Left side columns -->
+            </div>
+        </div>
+    </section>
+    {{-- Direct Enquiry --}}
+    <section class="section dashboard">
+        <div class="row">
+            <!-- Left side columns -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card info-card sales-card">
+                            <div class="card-body pb-0">
+                                <h5 class="card-title">New Enquiry<span></span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>5</h6>
+                                    </div>
+                                </div>
+                                <a class="dashboard-record" href="#">All Records</a>
+                            </div>
+                        </div>
+
+                    </div><!-- End Sales Card -->
+
+                    <!-- Revenue Card -->
+                    <div class="col-md-4 ">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body pb-4">
+                                <h5 class="card-title">Inprocess<span></span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>4</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Revenue Card -->
+
+                    <!-- Customers Card -->
+                    <div class="col-md-4">
+                        <div class="card info-card customers-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Complited<span></span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>4</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-</main><!-- End #main -->
+</main>
 <x-admin-footer />
