@@ -17748,4 +17748,16 @@ CSS TABLE OF CONTENTS
                     padding-top: 155px;
                     color: #00000082;
                 }
+                
+                #image-preview {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                
+                .preview-image {
+                    width: 100px;
+                    height: 100px;
+                    margin: 10px;
+                    object-fit: cover;
+                }
                 /* css added by raksha end*/

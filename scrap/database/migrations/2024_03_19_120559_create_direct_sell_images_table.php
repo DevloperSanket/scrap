@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registerd_sells', function (Blueprint $table) {
+        Schema::create('direct_sell_images', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->nullable();
-            $table->time('time')->nullable();
-            $table->integer('category')->nullable();
-            $table->integer('status')->default(1);
-            $table->integer('driver')->nullable();
+            $table->string('url')->nullable();
+            $table->unsignedBigInteger('direct_sell_id')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registerd_sells');
+        Schema::dropIfExists('direct_sell_images');
     }
 };

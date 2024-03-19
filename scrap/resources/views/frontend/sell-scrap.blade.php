@@ -88,8 +88,9 @@
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label mt-3" for="form3Example4cd">Select Scrap Images
                                                 (Optional) </label>
-                                            <input type="file" id="form3Example4c" class="form-control"
-                                                name="image" placeholder="Enter Pincode" />
+                                            <input type="file" id="image-upload-directsell" class="form-control"
+                                                name="image[]" placeholder="Enter Pincode" accept="image/*"
+                                               ><div id="image-preview-directsell"></div>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-3">
@@ -161,4 +162,18 @@
             });
         });
     });
+
+
+    $('#image-upload-directsell').change(function() {
+            console.log("change");
+            $('#image-preview-directsell').empty();
+            for (var i = 0; i < this.files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
+                    $('#image-preview-directsell').append(img);
+                }
+                reader.readAsDataURL(this.files[i]);
+            }
+        });
 </script>

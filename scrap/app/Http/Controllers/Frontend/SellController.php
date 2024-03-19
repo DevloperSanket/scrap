@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DirectSell;
+use App\Models\DirectSellImage;
 use App\Models\Pincode;
 use App\Models\ScrapCategories;
 use Illuminate\Validation\Rule;
@@ -28,7 +29,7 @@ class SellController extends Controller {
         // dd($query);
         return Datatables::of($query)
             ->addColumn('name', function ($query) {
-                return $query->ScrapCategories->name;
+                return $query->name;
             })
 
             ->addColumn('email', function ($query) {
@@ -40,7 +41,7 @@ class SellController extends Controller {
             })
 
             ->addColumn('city', function ($query) {
-                return $query->ScrapCategories->city;
+                return $query->city;
             })
 
             ->addColumn('pincode', function ($query) {
@@ -56,7 +57,7 @@ class SellController extends Controller {
             })
 
             ->addColumn('time', function ($query) {
-                return $query->ScrapCategories->time;
+                return $query->time;
             })
 
             ->addColumn('image', function ($query) {
@@ -113,17 +114,6 @@ class SellController extends Controller {
         // Validate the request data
         $validatedData = $request->validate( $rules, $messages );
 
-        // Handle image upload
-        if ( $request->hasFile( 'image' ) ) {
-            $image = $request->file( 'image' );
-            $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $imagePath = $image->storeAs( 'DirectSell', $imageName, 'public' );
-            $imagePath = 'storage/' . $imagePath;
-        } else {
-            $imagePath = null;
-            // No image uploaded
-        }
-
         $data = DirectSell::create( [
             'name' => $validatedData[ 'name' ],
             'email' => $validatedData[ 'email' ],
@@ -133,10 +123,25 @@ class SellController extends Controller {
             'scraptype' => $validatedData[ 'scraptype' ],
             'time' => $validatedData[ 'time' ],
             'date' => $validatedData[ 'date' ],
-            'image' => $imagePath,
             'address'=>$validatedData[ 'address' ],
 
         ] );
+
+        // Handle image upload
+        if($request->hasFile('image')){
+            // dd($request->file('images'));
+            foreach ($request->file('image') as $image) {
+                $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalName();
+                $image->storeAs('DirectSell',$imageName,'public');
+                // dd($imageName);
+                DirectSellImage::create([
+                    'direct_sell_id'=>$data->id,
+                    'url'=> 'storage/DirectSell'. $imageName
+                ]);
+            }
+        }
+
+       
 
         // Return a JSON response
         return response()->json( [

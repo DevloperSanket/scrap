@@ -109,8 +109,9 @@ class DashboardController extends Controller
                 return $directselluser->address;
             })
             ->addColumn('image', function ($directselluser) {
-                return $directselluser->image;
-            })
+                        $image = '<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">View</a>';
+                        return $image;
+                    })
         //     ->addColumn('status', function ($users) {
         //         $status = '<div class="form-check form-switch">
         //    <input class="form-check-input text-center" type="checkbox" ' . ($users->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $users->id . '" onchange="ScrapStatusChange(' . $users->id . ')">

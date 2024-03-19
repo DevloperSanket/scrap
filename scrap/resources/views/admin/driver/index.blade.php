@@ -73,7 +73,7 @@
                 },
                 {
                     data: 'name',
-                    name: 'name'
+                    name: 'name',
                 },
                 {
                     data: 'mobile',
