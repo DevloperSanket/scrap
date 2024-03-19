@@ -1,5 +1,5 @@
 <x-frontend-header />
-<section class="py-5" >
+<section class="py-5">
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-lg-12 col-xl-11">
@@ -27,7 +27,7 @@
                                     <div class="d-flex flex-row align-items-center mb-3">
 
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="tetxt" id="form3Example4c" class="form-control"
+                                            <input type="text" id="form3Example4c" class="form-control"
                                                 name="number" placeholder="Enter Contact Number" />
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
 
                                     <div class="d-flex flex-row align-items-center mb-3">
                                         <div class="form-outline flex-fill">
-                                            <select class="form-select" aria-label="Default select example">
+                                            <select class="form-select" name="scraptype" aria-label="Default select example">
                                                 <option selected>Select Scrap Type</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
@@ -58,18 +58,34 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-outline">
+                                                <input type="date" name="date" class="form-control" id="date"
+                                                    placeholder="Select Date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-outline">
+                                                <input type="time" name="time" class="form-control" id="time"
+                                                    placeholder="Select Time">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="d-flex flex-row align-items-center mb-3">
                                         <div class="form-outline flex-fill mb-0">
-                                          <label class="form-label" for="form3Example4cd">Select Scrap Images (Optional) </label>
+                                            <label class="form-label mt-3" for="form3Example4cd">Select Scrap Images
+                                                (Optional) </label>
                                             <input type="file" id="form3Example4c" class="form-control"
-                                                name="file[]" placeholder="Enter Pincode" />
+                                                name="image" placeholder="Enter Pincode" />
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-3">
-                                      <div class="form-outline flex-fill mb-0">
-                                          <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
-                                      </div>
-                                  </div>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <textarea name="address" class="form-control" placeholder="Enter Address"></textarea>
+                                        </div>
+                                    </div>
 
                                     <div class="d-flex justify-content-center mx-4">
                                         <button type="button" class="btn btn-success">Submit</button>
@@ -88,4 +104,7 @@
         </div>
     </div>
 </section>
+
+
+
 <x-frontend-footer />
