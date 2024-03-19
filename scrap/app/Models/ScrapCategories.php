@@ -21,4 +21,8 @@ class ScrapCategories extends Model
     {
         return $this->hasMany(Card::class);
     }
+
+    public function registerdsell(){
+        return $this->hasMany(RegisterdSell::class);
+    }
 }

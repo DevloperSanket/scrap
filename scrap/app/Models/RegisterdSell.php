@@ -14,4 +14,8 @@ class RegisterdSell extends Model
     public function registredimages(){
         return $this->hasMany(RegistredImage::class,'registerd_sells_id');
     }
+
+    public function scrapcategories(){
+        return $this->belongsTo(ScrapCategories::class,'category');
+    }
 }

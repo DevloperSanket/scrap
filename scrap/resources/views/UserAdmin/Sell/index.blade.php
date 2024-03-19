@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-4">
-                    <table id="users-table" class="table table-bordered data-table">
+                    <table id="scrap-table" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th width="10px">
@@ -58,12 +58,12 @@
 </main><!-- End #main -->
 <x-admin-footer />
 <script>
-     $(function() {
+    $(function() {
         var i = 1;
-        var table = $('#users-table').DataTable({
+        var table = $('#scrap-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('card.record') }}",
+            ajax: "{{ route('scrap.getdata') }}",
             columns: [{
                     render: function(data, type, row, meta) {
                         return i++;
@@ -80,21 +80,25 @@
                     name: 'status',
                 },
                 {
-                    data: 'category_id',
-                    name: 'category_id',
+                    data: 'category',
+                    name: 'category',
+                },
+                {
+                    data: 'date',
+                    name: 'date',
+                },
+                {
+                    data: 'time',
+                    name: 'time'
                 },
                 {
                     data: 'image',
                     name: 'image',
                     render: function(data, type, row, meta) {
-                        var imagePath = '{{asset('')}}' + data;
-                        return '<img src="' + imagePath +
+                        // var imagePath = '{{ asset('') }}' + data;
+                        return '<img src="' + data +
                             '" alt="Card Image" style="max-width: 100px; max-height: 50px;">';
                     }
-                },
-                {
-                    data: 'price',
-                    name: 'price'
                 }
             ]
         });
