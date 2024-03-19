@@ -50,10 +50,10 @@
                                     <div class="d-flex flex-row align-items-center mb-3">
                                         <div class="form-outline flex-fill">
                                             <select class="form-select" name="scraptype" aria-label="Default select example">
-                                                <option selected>Select Scrap Type</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option selected disabled>Select Scrap Type</option>
+                                                @foreach ($scrapcategory as $ScrapCategory)
+                                                <option value="{{$ScrapCategory->id}}">{{ $ScrapCategory->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

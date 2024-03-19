@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\DirectSellController;
 
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -51,6 +52,18 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/savegreen', [IndexController::class, 'savegreen'])->name('savegreen');
     Route::get('/service', [IndexController::class, 'service'])->name('service');
     Route::post('/contact/send', [ContactController::class, 'sendEmail'])->name('contact.send');
+
+
+
+     // Direct Sell routes
+     Route::get('/directsell', [DirectSellController::class, 'index'])->name('directsell.index');
+     Route::get('/directsellcreate', [DirectSellController::class, 'create'])->name('directsell.create');
+     Route::post('/directsellcreate', [DirectSellController::class, 'store'])->name('directsell.store');
+     Route::get('directselldata', [DirectSellController::class, 'scrapdata'])->name('directsell.record');
+    //  Route::post('/scrapchangeStatus', [DirectSellController::class, 'scrapchangeStatus'])->name('scrapcategory.status');
+    //  Route::get('/edit-scrap/{id}', [DirectSellController::class, 'edit'])->name('scrapcategory.edit');
+    //  Route::post('/update-scrap', [DirectSellController::class, 'update'])->name('scrapcategory.update');
+    //  Route::post('/delete-scrap', [DirectSellController::class, 'delete'])->name('scrapcategory.delete');
 });
 
 // Authenticated Routes for super Admin
