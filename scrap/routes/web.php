@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
-use App\Http\Controllers\Frontend\DirectSellController;
+use App\Http\Controllers\Frontend\SellController;
 
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DriverController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\SellScrapController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/register', [UserController::class, 'store']);
     Route::get('/about', [IndexController::class, 'about'])->name('about');
     Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
-    Route::get('/sell', [IndexController::class, 'sell'])->name('sell');
+    // Route::get('/sell', [IndexController::class, 'sell'])->name('sell');
     Route::get('/allscrap', [IndexController::class, 'allscrap'])->name('allscrap');
     Route::get('/ElectronicScrap', [IndexController::class, 'ElectronicScrap'])->name('electronic-scrap');
     Route::get('/appliances', [IndexController::class, 'appliances'])->name('appliances');
@@ -54,16 +55,13 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/contact/send', [ContactController::class, 'sendEmail'])->name('contact.send');
 
 
+    // direct sell routes
+    Route::get('index',[SellController::class,'index'])->name('sell.index');
+    Route::post('/index', [SellController::class, 'store'])->name('directsell.store');
+    Route::get('directselldata', [SellController::class, 'directselldata'])->name('directsell.record');
+    
 
-     // Direct Sell routes
-     Route::get('/directsell', [DirectSellController::class, 'index'])->name('directsell.index');
-     Route::get('/directsellcreate', [DirectSellController::class, 'create'])->name('directsell.create');
-     Route::post('/directsellcreate', [DirectSellController::class, 'store'])->name('directsell.store');
-     Route::get('directselldata', [DirectSellController::class, 'scrapdata'])->name('directsell.record');
-    //  Route::post('/scrapchangeStatus', [DirectSellController::class, 'scrapchangeStatus'])->name('scrapcategory.status');
-    //  Route::get('/edit-scrap/{id}', [DirectSellController::class, 'edit'])->name('scrapcategory.edit');
-    //  Route::post('/update-scrap', [DirectSellController::class, 'update'])->name('scrapcategory.update');
-    //  Route::post('/delete-scrap', [DirectSellController::class, 'delete'])->name('scrapcategory.delete');
+
 });
 
 // Authenticated Routes for super Admin
@@ -72,6 +70,8 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/showdata', [DashboardController::class, 'showTable'])->name('dashboard.show');
     Route::get('/show-table', [DashboardController::class, 'data'])->name('dashboard-table');
+    Route::get('/showdirectselldata', [DashboardController::class, 'showdirectselldata'])->name('dashboard.showdirectsell');
+    Route::get('/show-directselltable', [DashboardController::class, 'directselldata'])->name('dashboard-directselltable');
     Route::post('/changeuserStatus', [DashboardController::class, 'changeUserStatus'])->name('statusChange');
 
 

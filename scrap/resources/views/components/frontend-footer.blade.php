@@ -41,7 +41,7 @@
                              <span class="footer__item-title-line"></span><span class="footer__item-title-line2"></span>
                          </div>
                          <ul>
-                             <li class="pb-1"><a href="{{route('sell')}}"><i class="fa-solid fa-chevron-right pe-1 primary-color"></i> Sell Scrap
+                             <li class="pb-1"><a href="{{route('sell.index')}}"><i class="fa-solid fa-chevron-right pe-1 primary-color"></i> Sell Scrap
                                  </a>
                              </li>
                              <li class="pb-1"><a href="{{route('allscrap')}}"><i class="fa-solid fa-chevron-right pe-1 primary-color"></i> Crap Price
@@ -95,6 +95,7 @@
  <!-- Script Js -->
  <script src="{{ asset('frontend/theam/assets/js/script.js') }}"></script>
  <script src="{{ asset('frontend/js/costome.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
  </body>

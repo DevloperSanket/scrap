@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\DirectSell;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use DataTables;
@@ -16,6 +17,10 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::check()) {
+
+            $directsell = DirectSell::get()->count();
+            // dd($directsell);
+
             $allregisterUser = User::where('role', 2)->count();
             // dd($allregisterUser);
 
@@ -25,7 +30,7 @@ class DashboardController extends Controller
 
             $deactiveUser = User::where('status', 0)->where('role', 2)->count();
 
-            return view('admin.dashboard.index', compact('allregisterUser', 'activeUser', 'deactiveUser'));
+            return view('admin.dashboard.index', compact('allregisterUser', 'activeUser', 'deactiveUser','directsell'));
         }
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
@@ -33,6 +38,11 @@ class DashboardController extends Controller
     public function showTable()
     {
         return view('admin.dashboard.show');
+    }
+
+    public function showdirectselldata()
+    {
+        return view('admin.dashboard.showdirectsell');
     }
 
     public function data()
@@ -70,6 +80,47 @@ class DashboardController extends Controller
             ->make(true);
     }
 
+    public function directselldata()
+    {
+        $directselluser = DirectSell::get();
+        return DataTables::of($directselluser)
+            ->addColumn('name', function ($directselluser) {
+                return $directselluser->name;
+            })
+            ->addColumn('email', function ($directselluser) {
+                return $directselluser->email;
+            })
+            ->addColumn('number', function ($directselluser) {
+                return $directselluser->number;
+            })
+            ->addColumn('city', function ($directselluser) {
+                return $directselluser->city;
+            })
+            ->addColumn('pincode', function ($directselluser) {
+                return $directselluser->pincode;
+            })
+            ->addColumn('date', function ($directselluser) {
+                return $directselluser->date;
+            })
+            ->addColumn('time', function ($directselluser) {
+                return $directselluser->time;
+            })
+            ->addColumn('address', function ($directselluser) {
+                return $directselluser->address;
+            })
+            ->addColumn('image', function ($directselluser) {
+                return $directselluser->image;
+            })
+        //     ->addColumn('status', function ($users) {
+        //         $status = '<div class="form-check form-switch">
+        //    <input class="form-check-input text-center" type="checkbox" ' . ($users->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $users->id . '" onchange="ScrapStatusChange(' . $users->id . ')">
+        // </div>';
+        //         return $status;
+        //     })
+            ->rawColumns([ 'status','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image'])
+            ->make(true);
+    }
+
     public function changeUserStatus(Request $request)
     {
         $id = $request->id;
@@ -82,7 +133,7 @@ class DashboardController extends Controller
                 'message' => 'Status updated successfully'
             ], 200);
         } else {
-            return response()->json(['message' => 'Doctor record not found or status unchanged'], 404);
+            return response()->json(['message' => 'Record not found or status unchanged'], 404);
         }
     }
 }
