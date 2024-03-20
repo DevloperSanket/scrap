@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ScrapCategories;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -28,7 +29,10 @@ class IndexController extends Controller
     }
 
     public function sell(){
-        return view('frontend.sell-scrap');
+
+        $scrapcategory = ScrapCategories::get();
+        // dd($scrapcategory);
+        return view('frontend.sell-scrap',compact('scrapcategory'));
     }
 
     public function allscrap(){

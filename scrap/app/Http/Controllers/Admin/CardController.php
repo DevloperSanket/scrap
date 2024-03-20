@@ -77,6 +77,7 @@ class CardController extends Controller
             'price.required' => 'Price is required',
         ];
         $validatedData = $request->validate($rules, $messages);
+        
         if ($image = $request->file('image')){
             $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalName();
             $imagePath = $image->storeAs('card', $imageName, 'public');

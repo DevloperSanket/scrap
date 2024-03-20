@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\DirectSell;
+use App\Models\ScrapCategories;
+use App\Models\DirectSellImage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use DataTables;
@@ -16,6 +19,10 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::check()) {
+
+            $directsell = DirectSell::get()->count();
+            // dd($directsell);
+
             $allregisterUser = User::where('role', 2)->count();
             // dd($allregisterUser);
 
@@ -25,7 +32,7 @@ class DashboardController extends Controller
 
             $deactiveUser = User::where('status', 0)->where('role', 2)->count();
 
-            return view('admin.dashboard.index', compact('allregisterUser', 'activeUser', 'deactiveUser'));
+            return view('admin.dashboard.index', compact('allregisterUser', 'activeUser', 'deactiveUser','directsell'));
         }
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
@@ -33,6 +40,11 @@ class DashboardController extends Controller
     public function showTable()
     {
         return view('admin.dashboard.show');
+    }
+
+    public function showdirectselldata()
+    {
+        return view('admin.dashboard.showdirectsell');
     }
 
     public function data()
@@ -70,6 +82,71 @@ class DashboardController extends Controller
             ->make(true);
     }
 
+
+
+    public function directselldata()
+    {
+        $directselluser = DirectSell::get();
+        // ::with('direct_sell_images')->get();
+
+        // $statuses = [
+        //     0 => 'Pending',
+        //     1 => 'In Process',
+        //     2 => 'Completed'
+        // ];
+
+
+        return DataTables::of($directselluser)
+
+        ->addColumn('status', function ($directselluser)  {
+            $selectedValue = $directselluser->status;
+          $status = '<select class="form-select" onchange="ScrapStatusChange('.$directselluser->id.',this.value)">
+          <option value="1" '. ($selectedValue == 1 ? 'selected' : '') .'>Pending</option>
+          <option value="2" '. ($selectedValue == 2 ? 'selected' : '') .'>Inprocess</option>
+          <option value="3" '. ($selectedValue == 3 ? 'selected' : '') .'>Complited</option>
+        </select>';
+
+          return $status;
+        })
+
+            // ->addColumn('scraptype', function ($directselluser) {
+            //     return $directselluser->ScrapCategories->name;
+            // })
+            ->addColumn('name', function ($directselluser) {
+                return $directselluser->name;
+            })
+            ->addColumn('email', function ($directselluser) {
+                return $directselluser->email;
+            })
+            ->addColumn('number', function ($directselluser) {
+                return $directselluser->number;
+            })
+            ->addColumn('city', function ($directselluser) {
+                return $directselluser->city;
+            })
+            ->addColumn('pincode', function ($directselluser) {
+                return $directselluser->pincode;
+            })
+            ->addColumn('scraptype', function ($directselluser){
+                return $directselluser->scraptype;
+            })
+            ->addColumn('date', function ($directselluser) {
+                return $directselluser->date;
+            })
+            ->addColumn('time', function ($directselluser) {
+                return $directselluser->time;
+            })
+            ->addColumn('address', function ($directselluser) {
+                return $directselluser->address;
+            })
+            ->addColumn('image', function ($directselluser) {
+                        $image = '<a href="#" class="view-image" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-image="' . $directselluser->image_url . '"   onclick="imagemodelfunction(' . $directselluser->image_url . ')">View</a>';
+                        return $image;
+                    })
+            ->rawColumns([ 'status','scraptype','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image'])
+            ->make(true);
+    }
+
     public function changeUserStatus(Request $request)
     {
         $id = $request->id;
@@ -82,7 +159,27 @@ class DashboardController extends Controller
                 'message' => 'Status updated successfully'
             ], 200);
         } else {
-            return response()->json(['message' => 'Doctor record not found or status unchanged'], 404);
+            return response()->json(['message' => 'Record not found or status unchanged'], 404);
+        }
+    }
+
+
+    /// for direct sell 
+    public function directsellStatus(Request $request)
+    {
+        // dd($request);
+        $id = $request->id;
+        $status = $request->status;
+        $query = DirectSell::where('id', $id)->update(['status' => $status]);
+        // dd($query);
+        if ($query) {
+            return response()->json([
+                'success' => true,
+                'data' => $query,
+                'message' => 'Status updated successfully'
+            ], 200);
+        } else {
+            return response()->json(['message' => 'Record not found or status unchanged'], 404);
         }
     }
 }

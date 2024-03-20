@@ -40,7 +40,7 @@
                     <div class="col-md-4 ">
                         <div class="card info-card revenue-card">
                             <div class="card-body pb-4">
-                                <h5 class="card-title">Active Users <span></span></h5>
+                                <h5 class="card-title">Active Users<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div
@@ -96,11 +96,11 @@
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
                                     </div>
-                                    <div class="ps-3">
-                                        <h6>5</h6>
+                                    <div class="ps-3">                                        
+                                        <h6>{{ $directsell }}</h6>                                        
                                     </div>
                                 </div>
-                                <a class="dashboard-record" href="#">All Records</a>
+                                <a class="dashboard-record" href="{{ route('dashboard.showdirectsell') }}">All Records</a>
                             </div>
                         </div>
 
@@ -130,7 +130,7 @@
                     <div class="col-md-4">
                         <div class="card info-card customers-card">
                             <div class="card-body">
-                                <h5 class="card-title">Complited<span></span></h5>
+                                <h5 class="card-title">Completed<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div
