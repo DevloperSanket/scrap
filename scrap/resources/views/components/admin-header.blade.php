@@ -135,7 +135,7 @@
                 </li><!-- End driver Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="{{ route('dashboard.showdirectsell') }}">
                         <i class="bi bi-journal-text"></i><span>Direct Enquiry</span>
                     </a>
                 </li><!-- End Direct Enquiry Nav -->

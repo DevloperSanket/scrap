@@ -26,8 +26,7 @@ class ScrapCategories extends Model
         return $this->hasMany(RegisterdSell::class);
     }
 
-    // public function directSells()
-    // {
-    //     return $this->hasMany(DirectSell::class);
-    // }
+    public function Directsell(){
+        return $this->hasMeny(Directsell::class);
+    }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DirectSell;
 use App\Models\ScrapCategories;
-use App\Models\DirectSellImage;
+use App\Models\Directimage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use DataTables;
@@ -86,16 +86,7 @@ class DashboardController extends Controller
 
     public function directselldata()
     {
-        $directselluser = DirectSell::get();
-        // ::with('direct_sell_images')->get();
-
-        // $statuses = [
-        //     0 => 'Pending',
-        //     1 => 'In Process',
-        //     2 => 'Completed'
-        // ];
-
-
+        $directselluser = DirectSell::with('scrapCategories','Directimage');
         return DataTables::of($directselluser)
 
         ->addColumn('status', function ($directselluser)  {
@@ -109,9 +100,9 @@ class DashboardController extends Controller
           return $status;
         })
 
-            // ->addColumn('scraptype', function ($directselluser) {
-            //     return $directselluser->ScrapCategories->name;
-            // })
+            ->addColumn('category', function ($directselluser) {
+                return $directselluser->ScrapCategories->name;
+            })
             ->addColumn('name', function ($directselluser) {
                 return $directselluser->name;
             })
@@ -140,10 +131,18 @@ class DashboardController extends Controller
                 return $directselluser->address;
             })
             ->addColumn('image', function ($directselluser) {
-                        $image = '<a href="#" class="view-image" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-image="' . $directselluser->image_url . '"   onclick="imagemodelfunction(' . $directselluser->image_url . ')">View</a>';
-                        return $image;
-                    })
-            ->rawColumns([ 'status','scraptype','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image'])
+                $imagesHtml = '';
+                if ($directselluser->Directimage->isNotEmpty()) {
+                    foreach ($directselluser->Directimage as $image) {
+                        $imageUrl = $image->url;
+                        $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
+                    }
+                }else{
+                    $imagesHtml .= '<p>No Images</p>';
+                }
+                return $imagesHtml;
+            })
+            ->rawColumns([ 'status','category','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image'])
             ->make(true);
     }
 

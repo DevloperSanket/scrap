@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('number')->nullable();
             $table->string('city')->nullable();
             $table->string('pincode')->nullable();
-            $table->string('scraptype')->nullable();
+            $table->string('category')->nullable();
             $table->string('date')->nullable();
             $table->string('time')->nullable();
-            $table->text('image')->nullable();
             $table->string('address')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

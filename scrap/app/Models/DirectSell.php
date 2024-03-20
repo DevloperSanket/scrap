@@ -9,16 +9,14 @@ class DirectSell extends Model
 {
     protected $table = "direct_sells";
 
-    protected $fillable = ['name','email','number','city','pincode','scraptype','date','time', 'image','address'];
+    protected $fillable = ['name','email','number','city','pincode','category','date','time', 'image','address'];
 
-
-    public function directsellimage(){
-        return $this->hasMany(DirectSellImage::class, 'direct_sell_id');
+    public function Directimage(){
+        return $this->hasMany(Directimage::class,'direct_sells_id');
     }
 
-    // public function scrapCategory()
-    // {
-    //     return $this->belongsTo(ScrapCategories::class, 'scraptype');
-    // }
+    public function scrapcategories(){
+        return $this->belongsTo(ScrapCategories::class,'category');
+    } 
 
 }
