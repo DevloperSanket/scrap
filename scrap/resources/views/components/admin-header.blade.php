@@ -198,12 +198,13 @@
                 </li><!-- End Components Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('pincode.index') }}">
-                        <i class="bi bi-journal-text"></i><span>Pincode</span>
+                    <a class="nav-link collapsed" href="{{ route('profile.index') }}">
+                        <i class="bi bi-journal-text"></i><span>My Profile</span>
                     </a>
-                </li><!-- End Forms Nav -->
+                </li>
+                <!-- End Profile -->
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse"
                         href="#">
                         <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
@@ -221,7 +222,7 @@
                             </a>
                         </li>
                     </ul>
-                </li><!-- End Tables Nav -->
+                </li><!-- End Tables Nav --> --}}
             </ul>
 
         </aside><!-- End Sidebar-->

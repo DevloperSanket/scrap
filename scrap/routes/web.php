@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DriverController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\SellScrapController;
+use App\Http\Controllers\Admin\MyprofileController;
 
 
 /*
@@ -124,14 +125,25 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
 });
 
+
 // Authenticated Routes for UserAdmin
 Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('userAdmin-dashboard',[UserDashboardController::class,'index'])->name('user.dashboard');
+
 
     // sell scrap routes
     Route::get('userAdmin-sellscrap',[SellScrapController::class,'index'])->name('scrap.index');
     Route::get('userAdmin-create',[SellScrapController::class,'create'])->name('scrap.create');
     Route::post('userAdmin-store',[SellScrapController::class,'store'])->name('scrap.store');
     Route::get('useradmin-getdata',[SellScrapController::class,'scrapRecord'])->name('scrap.getdata');
+
+
+    // user profile routes 
+    Route::get('userProfile-index', [MyprofileController::class, 'index'])->name('profile.index');
+    Route::get('/edit-profile', [MyprofileController::class, 'edit'])->name('profile.edit');
+    Route::post('/update-profile', [MyprofileController::class,'update'])->name('profile.update');
+    // Route::get('userProfile-editpassword', [MyprofileController::class, 'edit'])->name('profile.editpassword');
+//     Route::get('userProfile-editpassword/{id}', [MyprofileController::class, 'edit'])->name('profile.editpassword');
+// Route::post('userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
 });
 

@@ -11,7 +11,7 @@ class RegistredImage extends Model
 
     protected $fillable = ['url','registerd_sells_id'];
 
-    public function registerdsells(){
+    public function registerdSell(){
         return $this->belongsTo(RegisterdSell::class,'registerd_sells_id');
     }
 }

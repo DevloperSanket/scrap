@@ -11,7 +11,7 @@ class RegisterdSell extends Model
 
     protected $fillable = ['date','time','category','status','driver'];
 
-    public function registredimages(){
+    public function registredImages(){
         return $this->hasMany(RegistredImage::class,'registerd_sells_id');
     }
 

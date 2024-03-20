@@ -62,7 +62,7 @@ class SellScrapController extends Controller
                 // dd($imageName);
                 RegistredImage::create([
                     'registerd_sells_id' => $scrap->id,
-                    'url' => 'storage/Registerd' . $imageName
+                    'url' => 'storage/Registerd/' . $imageName
                 ]);
             }
         }
@@ -79,6 +79,8 @@ class SellScrapController extends Controller
     {
         $usersell = RegisterdSell::with('scrapCategories', 'registredImages')->get();
 
+
+        // dd($usersell);
         return DataTables::of($usersell)
             ->addColumn('category', function ($usersell) {
                 return $usersell->ScrapCategories->name;
@@ -90,14 +92,20 @@ class SellScrapController extends Controller
             ->addColumn('time', function ($usersell) {
                 return $usersell->time;
             })
-            ->addColumn('images', function ($usersell) {
-
-                $images = '';
-                foreach ($usersell->registredImages as $image) {
-                    $images .= '<img src="' . asset($image->url) . '" alt="Image" class="img-thumbnail">';
+            ->addColumn('image', function ($usersell) {
+                $imagesHtml = '';
+                if ($usersell->registredImages->isNotEmpty()) {
+                    foreach ($usersell->registredImages as $image) {
+                        $imageUrl = $image->url;
+                        // dd($imageUrl);
+                        $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
+                    }
+                }else{
+                    $imagesHtml .= '<p>No Images</p>';
                 }
-                return $images;
+                return $imagesHtml;
             })
+
             ->addColumn('action', function ($usersell) {
                 $editButton = '<a href="' . route('card.edit', $usersell->id) . '" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
                 $deleteButton = '<a class="delete btn btn-danger btn-sm" onclick="deletefunction(' . $usersell->id . ')"><i class="bi bi-trash3"></i></a>';
@@ -110,7 +118,7 @@ class SellScrapController extends Controller
                 </div>';
                 return $status;
             })
-            ->rawColumns(['action', 'status'])
+            ->rawColumns(['action', 'status', 'category', 'date', 'time', 'image'])
             ->make(true);
     }
 
