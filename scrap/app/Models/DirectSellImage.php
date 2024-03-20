@@ -11,7 +11,7 @@ class DirectSellImage extends Model
 
     protected $fillable = ['url','direct_sell_id'];
 
-    public function directsells(){
-        return $this->belongsTo(DirectSell::class,'direct_sell_id');
-    }
+    // public function directsells(){
+    //     return $this->belongsTo(DirectSell::class,'direct_sell_id');
+    // }
 }

@@ -11,8 +11,14 @@ class DirectSell extends Model
 
     protected $fillable = ['name','email','number','city','pincode','scraptype','date','time', 'image','address'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+
+    public function directsellimage(){
+        return $this->hasMany(DirectSellImage::class, 'direct_sell_id');
     }
+
+    // public function scrapCategory()
+    // {
+    //     return $this->belongsTo(ScrapCategories::class, 'scraptype');
+    // }
 
 }

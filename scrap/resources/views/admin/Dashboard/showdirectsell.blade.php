@@ -25,8 +25,11 @@
                                 <th width="10px">
                                     Id
                                 </th>
-                                <th width="10px">
+                                <th>
                                     Status
+                                </th>
+                                <th>
+                                    Category
                                 </th>
                                 <th>
                                     Name
@@ -42,6 +45,9 @@
                                 </th>
                                 <th>
                                     Pincode
+                                </th>
+                                <th>
+                                    Scrap Type
                                 </th>
                                 <th>
                                     Date
@@ -65,22 +71,25 @@
             </div>
         </div>
 
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">View Image</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <img src="" id="modalImage" class="img-fluid" alt="Image">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
                     </div>
                 </div>
             </div>
         </div>
+
+
     </section>
 </main>
 <x-admin-footer />
@@ -96,15 +105,13 @@
                         return i++;
                     }
                 },
-                // {
-                //     data: 'action',
-                //     name: 'action',
-                //     orderable: true,
-                //     searchable: true
-                // },
                 {
                     data: 'status',
                     name: 'status',
+                },
+                {
+                    data: 'scraptype',
+                    name: 'scraptype',
                 },
                 {
                     data: 'name',
@@ -126,6 +133,10 @@
                     data: 'pincode',
                     name: 'pincode',
                 },
+                 {
+                    data: 'scraptype',
+                    name: 'scraptype',
+                 },
                 {
                     data: 'date',
                     name: 'date',
@@ -138,7 +149,6 @@
                     data: 'address',
                     name: 'address',
                 },
-
                 {
                     data: 'image',
                     name: 'image'
@@ -187,6 +197,47 @@
     // }
 
 
+    function ScrapStatusChange(userid, status) {
+        // console.log(userid);
+    // var select = document.querySelector('select[data-id="' + userid + '"]');
+    // var status = select.value;
+    // console.log(status);
+    var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+    $.ajax({
+        url: "{{ route('directsellstatusChange') }}",
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        },
+        data: {
+            id: userid,
+            status: status
+        },
+        success: function(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Status update successfully.'
+            });
+        },
+        error: function(xhr, status, error) {
+            if (xhr.status === 422) {
+                var errors = xhr.responseJSON.errors;
+                $.each(errors, function(key, value) {
+                    $('.' + key + '_error').text(value[0]);
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please try again later.'
+                });
+            }
+        }
+    });
+}
+
+
   
 
     $(document).ready(function() {
@@ -196,5 +247,13 @@
         });
     });
 
+
+
+function imagemodelfunction(image_url) {
+    // console.log(image_url);
+    var imageUrl = $('.view-image[data-image="' + id + '"]').data('image');
+    $('#modalImage').attr('src', imageUrl);
+    $('#exampleModal').modal('show');
+}
 
 </script>

@@ -59,6 +59,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('index',[SellController::class,'index'])->name('sell.index');
     Route::post('/index', [SellController::class, 'store'])->name('directsell.store');
     Route::get('directselldata', [SellController::class, 'directselldata'])->name('directsell.record');
+   
     
 
 
@@ -73,6 +74,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/showdirectselldata', [DashboardController::class, 'showdirectselldata'])->name('dashboard.showdirectsell');
     Route::get('/show-directselltable', [DashboardController::class, 'directselldata'])->name('dashboard-directselltable');
     Route::post('/changeuserStatus', [DashboardController::class, 'changeUserStatus'])->name('statusChange');
+    Route::post('/changedirectsellStatus', [DashboardController::class, 'directsellStatus'])->name('directsellstatusChange');
 
 
     // scrap category
@@ -130,5 +132,6 @@ Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('userAdmin-sellscrap',[SellScrapController::class,'index'])->name('scrap.index');
     Route::get('userAdmin-create',[SellScrapController::class,'create'])->name('scrap.create');
     Route::post('userAdmin-store',[SellScrapController::class,'store'])->name('scrap.store');
+    Route::get('useradmin-getdata',[SellScrapController::class,'scrapRecord'])->name('scrap.getdata');
 });
 

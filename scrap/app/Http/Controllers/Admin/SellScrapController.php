@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\ScrapCategories;
 use App\Models\RegisterdSell;
 use App\Models\RegistredImage;
+use DataTables;
+
 class SellScrapController extends Controller
 {
     /**
@@ -24,7 +26,7 @@ class SellScrapController extends Controller
     {
         $categories = ScrapCategories::get();
         // dd($categories);
-        return view('UserAdmin.sell.form',compact('categories'));
+        return view('UserAdmin.sell.form', compact('categories'));
     }
 
     /**
@@ -34,34 +36,33 @@ class SellScrapController extends Controller
     {
         // dd($request->all());
         $rules = [
-            'date'=> 'required',
-            'time'=> 'required',
-            'category'=>'required',
+            'date' => 'required',
+            'time' => 'required',
+            'category' => 'required',
         ];
 
         $messages = [
-            'date.required'=> 'Please select a date for colecting scrap',
-            'time.required'=> 'Please select a time for colecting scrap',
-            'category.required'=> 'Please select category',
+            'date.required' => 'Please select a date for colecting scrap',
+            'time.required' => 'Please select a time for colecting scrap',
+            'category.required' => 'Please select category',
         ];
         $validatedData = $request->validate($rules, $messages);
 
         $scrap = RegisterdSell::create([
-            'date'=> $validatedData['date'],
-            'time'=> $validatedData['time'],
+            'date' => $validatedData['date'],
+            'time' => $validatedData['time'],
             'category' => $validatedData['category'],
         ]);
 
-        
-        if($request->hasFile('images')){
+        if ($request->hasFile('images')) {
             // dd($request->file('images'));
             foreach ($request->file('images') as $image) {
-                $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalName();
-                $image->storeAs('Registerd',$imageName,'public');
+                $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
+                $image->storeAs('Registerd', $imageName, 'public');
                 // dd($imageName);
                 RegistredImage::create([
-                    'registerd_sells_id'=>$scrap->id,
-                    'url'=> 'storage/Registerd'. $imageName
+                    'registerd_sells_id' => $scrap->id,
+                    'url' => 'storage/Registerd' . $imageName
                 ]);
             }
         }
@@ -72,6 +73,45 @@ class SellScrapController extends Controller
             'data' => $scrap,
             'message' => 'Form Submitted successfully',
         ]);
+    }
+
+    public function scrapRecord()
+    {
+        $usersell = RegisterdSell::with('scrapCategories', 'registredImages')->get();
+
+        return DataTables::of($usersell)
+            ->addColumn('category', function ($usersell) {
+                return $usersell->ScrapCategories->name;
+            })
+
+            ->addColumn('date', function ($usersell) {
+                return $usersell->date;
+            })
+            ->addColumn('time', function ($usersell) {
+                return $usersell->time;
+            })
+            ->addColumn('images', function ($usersell) {
+
+                $images = '';
+                foreach ($usersell->registredImages as $image) {
+                    $images .= '<img src="' . asset($image->url) . '" alt="Image" class="img-thumbnail">';
+                }
+                return $images;
+            })
+            ->addColumn('action', function ($usersell) {
+                $editButton = '<a href="' . route('card.edit', $usersell->id) . '" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
+                $deleteButton = '<a class="delete btn btn-danger btn-sm" onclick="deletefunction(' . $usersell->id . ')"><i class="bi bi-trash3"></i></a>';
+                return $editButton . ' ' . $deleteButton;
+            })
+
+            ->addColumn('status', function ($usersell) {
+                $status = '<div class="form-check form-switch">
+                <input class="form-check-input text-center" type="checkbox" ' . ($usersell->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $usersell->id . '" onchange="cardStatusChange(' . $usersell->id . ')">
+                </div>';
+                return $status;
+            })
+            ->rawColumns(['action', 'status'])
+            ->make(true);
     }
 
 
