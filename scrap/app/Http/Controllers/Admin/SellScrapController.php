@@ -97,7 +97,6 @@ class SellScrapController extends Controller
                 if ($usersell->registredImages->isNotEmpty()) {
                     foreach ($usersell->registredImages as $image) {
                         $imageUrl = $image->url;
-                        // dd($imageUrl);
                         $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
                     }
                 }else{
