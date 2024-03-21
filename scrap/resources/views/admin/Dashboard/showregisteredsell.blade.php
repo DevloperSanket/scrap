@@ -5,14 +5,14 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">All Direct Sells</li>
+                <li class="breadcrumb-item active">All Registered Sells</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12">
-                <h3>All Direct Sell Enquiry</h3>
+                <h3>All Registered Sell Enquiry</h3>
             </div>
         </div>
 
@@ -21,55 +21,36 @@
             <div class="row">
                 <div class="col-md-12 mt-4">
                     <div style="max-height: 400px; overflow-y: auto;">
-                        <table id="directsell-table" class="table table-bordered data-table">
+                        <table id="scrap-table" class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th width="10px">
                                         Id
                                     </th>
-                                    <th style="padding-right: 80px;">
+                                    <th style="padding-right: 40px;">
                                         Status
                                     </th>
-                                    <th style="padding-right: 80px;">
+                                    <th>
                                         Driver
                                     </th>
                                     <th>
                                         Category
                                     </th>
                                     <th>
-                                        Name
+                                        Collection Date
                                     </th>
                                     <th>
-                                        Email
+                                        Collection Time
                                     </th>
                                     <th>
-                                        Mobile
+                                        Scrap Images
                                     </th>
-                                    <th>
-                                        City
-                                    </th>
-                                    <th>
-                                        Pincode
-                                    </th>
-                                    <th>
-                                        Scrap Type
-                                    </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>
-                                        Time
-                                    </th>
-                                    <th>
-                                        Address
-                                    </th>
-                                    <th>
-                                        Image
-                                    </th>
+    
+    
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Table body content goes here -->
+    
                             </tbody>
                         </table>
                     </div>
@@ -97,7 +78,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -113,22 +94,26 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 </main>
 <x-admin-footer />
 <script type="text/javascript">
-    $(function() {
+$(function() {
         var i = 1;
-        var table = $('#directsell-table').DataTable({
+        var table = $('#scrap-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('dashboard-directselltable') }}",
+            ajax: "{{ route('dashboard-registeredselltable') }}",
             columns: [{
                     render: function(data, type, row, meta) {
                         return i++;
                     }
                 },
+                // {
+                //     orderable: true,
+                //     searchable: true
+                // },
                 {
                     data: 'status',
                     name: 'status',
@@ -142,59 +127,33 @@
                     name: 'category',
                 },
                 {
-                    data: 'name',
-                    name: 'name',
-                },
-                {
-                    data: 'email',
-                    name: 'email',
-                },
-                {
-                    data: 'number',
-                    name: 'number',
-                },
-                {
-                    data: 'city',
-                    name: 'city',
-                },
-                {
-                    data: 'pincode',
-                    name: 'pincode',
-                },
-                {
-                    data: 'category',
-                    name: 'category',
-                },
-                {
                     data: 'date',
                     name: 'date',
                 },
                 {
                     data: 'time',
-                    name: 'time',
-                },
-                {
-                    data: 'address',
-                    name: 'address',
+                    name: 'time'
                 },
                 {
                     data: 'image',
                     name: 'image'
                 }
-               
             ]
         });
 
-
     });
 
-
+    function showData(imageUrl) {
+        var assetUrl = "{{ asset('') }}" + imageUrl; // Concatenating imageUrl with asset root
+        $('#exampleModal .modal-body').html('<img class="col-3" src="' + assetUrl + '" class="img-fluid">');
+        $('#exampleModal').modal('show');
+    }
 
 
     function ScrapStatusChange(userid, status) {
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('directsellstatusChange') }}",
+            url: "{{ route('registeredsellstatusChange') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -228,12 +187,10 @@
     }
 
 
-
-
     function DriverStatusChange(userid, driver) {
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({
-            url: "{{ route('directselldriverChange') }}",
+            url: "{{ route('registeredselldriverChange') }}",
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -243,11 +200,6 @@
                 driver: driver
             },
             success: function(response) {
-                // Swal.fire({
-                //     icon: 'success',
-                //     title: 'Success!',
-                //     text: 'Status update successfully.'
-                // });
 
                 Swal.fire({
                     title: "Are you sure,you want to go with this driver?",
@@ -283,27 +235,4 @@
     }
 
 
-    function showData(imageUrl) {
-        var assetUrl = "{{ asset('') }}" + imageUrl; // Concatenating imageUrl with asset root
-        $('#exampleModal .modal-body').html('<img class="col-3" src="' + assetUrl + '" class="img-fluid">');
-        $('#exampleModal').modal('show');
-    }
-
-
-
-    $(document).ready(function() {
-        $('.view-image').click(function() {
-            var imageUrl = $(this).data('image');
-            $('#exampleModal .modal-body').html('<img src="' + imageUrl +
-                '" class="img-fluid" alt="Image">');
-        });
-    });
-
-
-
-    function imagemodelfunction(image_url) {
-        var imageUrl = $('.view-image[data-image="' + id + '"]').data('image');
-        $('#modalImage').attr('src', imageUrl);
-        $('#exampleModal').modal('show');
-    }
 </script>

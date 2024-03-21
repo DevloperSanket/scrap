@@ -81,7 +81,7 @@
                     <div class="col-md-4">
                         <div class="card info-card customers-card">
                             <div class="card-body">
-                                <h5 class="card-title">Complited Request<span></span></h5>
+                                <h5 class="card-title">Completed Request<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div

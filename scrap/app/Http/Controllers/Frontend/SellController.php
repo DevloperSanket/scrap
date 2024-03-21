@@ -5,7 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DirectSell;
-use App\Models\DirectSellImage;
+use App\Models\Directimage;
 use App\Models\Pincode;
 use App\Models\ScrapCategories;
 use Illuminate\Validation\Rule;
@@ -115,35 +115,28 @@ class SellController extends Controller {
         $validatedData = $request->validate( $rules, $messages );
 
         $data = DirectSell::create( [
-            'name' => $validatedData[ 'name' ],
-            'email' => $validatedData[ 'email' ],
-            'number' => $validatedData[ 'number' ],
-            'city' => $validatedData[ 'city' ],
-            'pincode' => $validatedData[ 'pincode' ],
-            'scraptype' => $validatedData[ 'scraptype' ],
-            'time' => $validatedData[ 'time' ],
-            'date' => $validatedData[ 'date' ],
-            'address'=>$validatedData[ 'address' ],
-
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'number' => $validatedData['number'],
+            'city' => $validatedData['city'],
+            'pincode' => $validatedData['pincode'],
+            'category' => $validatedData['scraptype'],
+            'time' => $validatedData['time'],
+            'date' => $validatedData['date'],
+            'address'=>$validatedData['address'],
         ] );
 
-        // Handle image upload
-        if($request->hasFile('image')){
-            // dd($request->file('images'));
-            foreach ($request->file('image') as $image) {
-                $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalName();
-                $image->storeAs('DirectSell',$imageName,'public');
-                // dd($imageName);
-                DirectSellImage::create([
-                    'direct_sell_id'=>$data->id,
-                    'url'=> 'storage/DirectSell'. $imageName
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
+                $image->storeAs('Directsell', $imageName, 'public');
+                Directimage::create([
+                    'direct_sells_id' => $data->id,
+                    'url' => 'storage/Directsell/' . $imageName
                 ]);
             }
         }
 
-       
-
-        // Return a JSON response
         return response()->json( [
             'success' => true,
             'data' => $data,

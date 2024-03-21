@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -42,65 +43,59 @@ class MyprofileController extends Controller {
         return view( 'UserAdmin.Myprofile.edit',compact('user'));
     }
 
+  
+
     public function update(Request $request)
-    {
-        // dd($request);
-        
-        $updatedata = User::find($request->id);
-        // dd( $updatedata);
-        $updatedata->name = $request->input('name');
-        $updatedata->email = $request->input('email');
-        $updatedata->mobile = $request->input('mobile');
-        $updatedata->name = $request->input('city');
-        $updatedata->email = $request->input('pincode');
-        $updatedata->mobile = $request->input('address');
+{
+    $updatedata = User::find($request->id)->update($request->all());
+
+    $updatedUser = User::find($request->id);
+
+    // Return a JSON response
+    return response()->json([
+        'success' => true,
+        'data' => $updatedUser,
+        'message' => 'Updated successfully',
+    ]);
+}
 
 
-        $updatedata->save();
-
-         // Return a JSON response
-         return response()->json([
-            'success' => true,
-            'data' => $updatedata,
-            'message' => 'Updated successfully',
-        ]);
-    }
-
-
-    /**
-    * Display the specified resource.
-    */
-
-    public function show( string $id ) {
-        //
-    }
 
   
 
-    // public function editpassword() {
+    public function editpassword() {
+
+        if ( Auth::check() ) {
+
+            $userpasswordId = Auth::id();
+            $userpassword = User::findOrFail( $userpasswordId );
+
+        }
       
-    //     return view( 'UserAdmin.Myprofile.form' );
-    // }
+        return view( 'UserAdmin.Myprofile.editpassword',compact('userpassword'));
+    }
 
-  
-    // public function updatePassword( Request $request ) {
-    //     $request->validate( [
-    //         'oldpassword' => 'required',
-    //         'newpassword' => 'required',
-    //         'confirmpassword' => 'required|same:newpassword',
-    //     ] );
 
-    //     $user = Auth::user();
 
-    //     if ( !Hash::check( $request->oldpassword, $user->password ) ) {
-    //         return redirect()->back()->with( 'error', 'The old password is incorrect.' );
-    //     }
+    public function updatePassword(Request $request)
+{
+    $request->validate([
+        'oldpassword' => 'required',
+        'newpassword' => 'required',
+        'confirmpassword' => 'required|same:newpassword',
+    ]);
 
-    //     $user->password = Hash::make( $request->newpassword );
-    //     $user->save();
+    $user = Auth::user();
 
-    //     return redirect()->back()->with( 'success', 'Password updated successfully.' );
-    // }
+    if (!Hash::check($request->oldpassword, $user->password)) {
+        return response()->json(['errors' => ['oldpassword' => ['The old password is incorrect.']]], 422);
+    }
+
+    $user->password = Hash::make($request->newpassword);
+    $user->save();
+
+    return response()->json(['success' => true], 200);
+}
 
    
     public function destroy( string $id ) {

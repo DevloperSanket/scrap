@@ -89,7 +89,7 @@
                                             <label class="form-label mt-3" for="form3Example4cd">Select Scrap Images
                                                 (Optional) </label>
                                             <input type="file" id="image-upload-directsell" class="form-control"
-                                                name="image[]" placeholder="Enter Pincode" accept="image/*"
+                                                name="images[]" placeholder="Enter Pincode" accept="image/*"
                                                ><div id="image-preview-directsell"></div>
                                         </div>
                                     </div>

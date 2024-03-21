@@ -29,12 +29,8 @@ class SellScrapController extends Controller
         return view('UserAdmin.sell.form', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // dd($request->all());
         $rules = [
             'date' => 'required',
             'time' => 'required',
@@ -55,11 +51,9 @@ class SellScrapController extends Controller
         ]);
 
         if ($request->hasFile('images')) {
-            // dd($request->file('images'));
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
                 $image->storeAs('Registerd', $imageName, 'public');
-                // dd($imageName);
                 RegistredImage::create([
                     'registerd_sells_id' => $scrap->id,
                     'url' => 'storage/Registerd/' . $imageName
@@ -97,7 +91,6 @@ class SellScrapController extends Controller
                 if ($usersell->registredImages->isNotEmpty()) {
                     foreach ($usersell->registredImages as $image) {
                         $imageUrl = $image->url;
-                        // dd($imageUrl);
                         $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
                     }
                 }else{

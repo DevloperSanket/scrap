@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\RegisterdSell;
+use App\Models\RegisterdImage;
 use App\Models\DirectSell;
+use App\Models\Driver;
 use App\Models\ScrapCategories;
-use App\Models\DirectSellImage;
+use App\Models\Directimage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use DataTables;
@@ -40,11 +43,6 @@ class DashboardController extends Controller
     public function showTable()
     {
         return view('admin.dashboard.show');
-    }
-
-    public function showdirectselldata()
-    {
-        return view('admin.dashboard.showdirectsell');
     }
 
     public function data()
@@ -82,18 +80,18 @@ class DashboardController extends Controller
             ->make(true);
     }
 
+    public function showdirectselldata()
+    {
+        return view('admin.dashboard.showdirectsell');
+    }
 
 
     public function directselldata()
     {
-        $directselluser = DirectSell::get();
-        // ::with('direct_sell_images')->get();
+        $directselluser = DirectSell::with('scrapCategories','Directimage');
 
-        // $statuses = [
-        //     0 => 'Pending',
-        //     1 => 'In Process',
-        //     2 => 'Completed'
-        // ];
+          // Fetch all drivers
+         $drivers = Driver::all();
 
 
         return DataTables::of($directselluser)
@@ -101,17 +99,17 @@ class DashboardController extends Controller
         ->addColumn('status', function ($directselluser)  {
             $selectedValue = $directselluser->status;
           $status = '<select class="form-select" onchange="ScrapStatusChange('.$directselluser->id.',this.value)">
-          <option value="1" '. ($selectedValue == 1 ? 'selected' : '') .'>Pending</option>
-          <option value="2" '. ($selectedValue == 2 ? 'selected' : '') .'>Inprocess</option>
-          <option value="3" '. ($selectedValue == 3 ? 'selected' : '') .'>Complited</option>
+          <option value="1" '. ($selectedValue == 1 ? 'selected' : '') .' style="background-color:#dfdfdf;">Pending</option>
+          <option value="2" '. ($selectedValue == 2 ? 'selected' : '') .' style="background-color:#dfdfdf;">Accepted</option>
+          <option value="3" '. ($selectedValue == 3 ? 'selected' : '') .' style="background-color:#dfdfdf;">Completed</option>
         </select>';
 
           return $status;
         })
 
-            // ->addColumn('scraptype', function ($directselluser) {
-            //     return $directselluser->ScrapCategories->name;
-            // })
+            ->addColumn('category', function ($directselluser) {
+                return $directselluser->ScrapCategories->name;
+            })
             ->addColumn('name', function ($directselluser) {
                 return $directselluser->name;
             })
@@ -140,12 +138,116 @@ class DashboardController extends Controller
                 return $directselluser->address;
             })
             ->addColumn('image', function ($directselluser) {
-                        $image = '<a href="#" class="view-image" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-image="' . $directselluser->image_url . '"   onclick="imagemodelfunction(' . $directselluser->image_url . ')">View</a>';
-                        return $image;
-                    })
-            ->rawColumns([ 'status','scraptype','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image'])
+                $imagesHtml = '';
+                if ($directselluser->Directimage->isNotEmpty()) {
+                    foreach ($directselluser->Directimage as $image) {
+                        $imageUrl = $image->url;
+                        $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
+                    }
+                }else{
+                    $imagesHtml .= '<p>No Images</p>';
+                }
+                return $imagesHtml;
+            })
+
+        
+
+            ->addColumn('driver', function ($directselluser) {
+                $driverSelect = '<select class="form-select" onchange="DriverStatusChange('.$directselluser->id.',this.value)">';
+                
+                $driverSelect .= '<option style="background-color:#dfdfdf; value="">Select Driver</option>';
+            
+                $drivers = Driver::all();
+            
+                foreach ($drivers as $driver) {
+                    $selected = $directselluser->driver == $driver->id ? 'selected' : '';
+            
+                    $driverSelect .= '<option style="background-color:#dfdfdf; value="' . $driver->id . '" ' . $selected . '>' . $driver->name . '</option>';
+                }
+            
+                $driverSelect .= '</select>';
+            
+                return $driverSelect;
+            })
+
+
+            ->rawColumns([ 'status','category','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image', 'driver'])
             ->make(true);
     }
+
+
+    public function showregisteredselldata()
+    {
+        return view('admin.dashboard.showregisteredsell');
+    }
+
+
+    public function scrapRecord()
+    {
+        $usersell = RegisterdSell::with('scrapCategories', 'registredImages')->get();
+
+        // dd($usersell);
+        return DataTables::of($usersell)
+
+      
+            ->addColumn('category', function ($usersell) {
+                return $usersell->ScrapCategories->name;
+            })
+
+            ->addColumn('date', function ($usersell) {
+                return $usersell->date;
+            })
+            ->addColumn('time', function ($usersell) {
+                return $usersell->time;
+            })
+            ->addColumn('image', function ($usersell) {
+                $imagesHtml = '';
+                if ($usersell->registredImages->isNotEmpty()) {
+                    foreach ($usersell->registredImages as $image) {
+                        $imageUrl = $image->url;
+                        $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
+                    }
+                }else{
+                    $imagesHtml .= '<p>No Images</p>';
+                }
+                return $imagesHtml;
+            })
+
+
+            ->addColumn('status', function ($usersell)  {
+                $selectedValue = $usersell->status;
+              $status = '<select class="form-select" onchange="ScrapStatusChange('.$usersell->id.',this.value)">
+              <option value="1" '. ($selectedValue == 1 ? 'selected' : '') .' style="background-color:#dfdfdf;">Pending</option>
+              <option value="2" '. ($selectedValue == 2 ? 'selected' : '') .' style="background-color:#dfdfdf;">Accepted</option>
+              <option value="3" '. ($selectedValue == 3 ? 'selected' : '') .' style="background-color:#dfdfdf;">Completed</option>
+            </select>';
+    
+              return $status;
+            })
+
+            ->addColumn('driver', function ($usersell) {
+                $driverSelectR = '<select class="form-select" onchange="DriverStatusChange(' . $usersell->id . ', this.value, this.options[this.selectedIndex].getAttribute(\'data-driver-id\'))">';
+            
+                $driverSelectR .= '<option style="background-color:#dfdfdf;" value="">Select Driver</option>';
+            
+                $drivers = Driver::all();
+            
+                foreach ($drivers as $driver) {
+                    $selected = $usersell->driver == $driver->id ? 'selected' : '';
+            
+                    $driverSelectR .= '<option style="background-color:#dfdfdf;" value="' . $driver->id . '" data-driver-id="' . $driver->id . '" ' . $selected . '>' . $driver->name . '</option>';
+                }
+            
+                $driverSelectR .= '</select>';
+            
+                return $driverSelectR;
+            })
+            
+
+
+            ->rawColumns([ 'status' ,'driver','category', 'date', 'time', 'image'])
+            ->make(true);
+    } 
 
     public function changeUserStatus(Request $request)
     {
@@ -164,7 +266,7 @@ class DashboardController extends Controller
     }
 
 
-    /// for direct sell 
+    /// for direct sell status
     public function directsellStatus(Request $request)
     {
         // dd($request);
@@ -182,4 +284,65 @@ class DashboardController extends Controller
             return response()->json(['message' => 'Record not found or status unchanged'], 404);
         }
     }
+
+
+     ///  driver assign for direct sell
+     public function directsellDriver(Request $request)
+     {
+         // dd($request);
+         $id = $request->id;
+         $driver = $request->driver;
+         $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
+         // dd($query);
+         if ($query) {
+             return response()->json([
+                 'success' => true,
+                 'data' => $query,
+                 'message' => 'Status updated successfully'
+             ], 200);
+         } else {
+             return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+         }
+     }
+
+
+      /// for registered status
+    public function registeredsellStatus(Request $request)
+    {
+        // dd($request);
+        $id = $request->id;
+        $status = $request->status;
+        $query = RegisterdSell::where('id', $id)->update(['status' => $status]);
+        // dd($query);
+        if ($query) {
+            return response()->json([
+                'success' => true,
+                'data' => $query,
+                'message' => 'Status updated successfully'
+            ], 200);
+        } else {
+            return response()->json(['message' => 'Record not found or status unchanged'], 404);
+        }
+    }
+
+
+     /// driver status for registered sell
+     public function registeredsellDriver(Request $request)
+     {
+         $id = $request->id;
+         $driver = $request->driver;
+         $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
+         // dd($query);
+         if ($query) {
+             return response()->json([
+                 'success' => true,
+                 'data' => $query,
+                 'message' => 'Status updated successfully'
+             ], 200);
+         } else {
+             return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+         }
+     }
+
+
 }

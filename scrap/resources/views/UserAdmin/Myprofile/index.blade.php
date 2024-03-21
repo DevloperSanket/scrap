@@ -10,10 +10,9 @@
         </nav>
     </div><!-- End Page Title -->
     <section>
+
         <div class="container">
-            <div class="col-12 text-end">
-                <a href="" class="btn btn-primary ">Change Password</a>
-            </div>
+            <h3 class="text-center"><b>User Data</b></h3>
         </div>
 
         <div class="container">
@@ -75,7 +74,19 @@
                                     <p class="text-muted mb-0">{{ $user->address }}</p>
                                 </div>
                             </div>
-                            <a href="{{ route('profile.edit')}}" class="btn btn-primary ">Edit</a>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="{{ route('profile.edit')}}" class="btn btn-primary mt-3 float-right">Edit</a>
+                                    <a href="{{ route('profile.editpassword' )}}" class="btn btn-primary mt-3">Change Password</a>
+                                </div>
+                            </div>
+                            {{-- <div class="row mt-3">
+                                <div class="col-sm-6">
+                                    <a href="{{ route('profile.editpassword' )}}" class="btn btn-primary ">Change Password</a>
+                                </div>                
+                            </div>
+                            --}}
+                           
                         </div>
                     </div>
                 </div>
