@@ -104,7 +104,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/cardcreate', [CardController::class, 'create'])->name('card.create');
     Route::post('/cardcreate', [CardController::class, 'store'])->name('card.store');
     Route::get('/carddata', [CardController::class, 'carddata'])->name('card.record');
-    Route::post('/cardstatuschange', [CardController::class, 'cardstatuschange'])->name('card.status');
+    Route::post('/card-Status', [CardController::class, 'cardchangeStatus'])->name('card.status');
     Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('card.edit');
     Route::post('/update-card', [CardController::class, 'update'])->name('card.update');
     Route::post('/delete-card', [CardController::class, 'delete'])->name('card.delete');

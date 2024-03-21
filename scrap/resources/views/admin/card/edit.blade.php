@@ -16,32 +16,28 @@
                     <div class="card p-4 border border-3">
                         <div class="card-body">
                             <h4 class="text-center">Edit Cards</h4>
-                            <form id="myForm" enctype="multipart/form-data">
+                            <form id="editCard" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" value="{{ $card_edit->id }}" id="editId">
-                                <select class="form-select" name="categoryName" aria-label="Default select example">
-                                    <option selected disabled>Select Category</option>
-                                    @foreach ($category as $categories)
-                                        <option value="{{ $categories->id }}"
-                                            {{ $card_edit->category_id == $categories->id ? 'selected' : '' }}>
-                                            {{ $categories->name }}
-                                        </option>
+                                <input type="hidden" id="cardId" name="cardId" value="{{$card->id}}">
+                                <select class="form-select" name="category_id" aria-label="Default select example">
+                                    @foreach ($categories as $category)
+                                        <option {{ $card->category_id == $category->id ? 'selected' : '' }} value="{{$category->id}}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="form-group mt-3">
                                     <input class="form-control" name="image" type="file" id="image-input"
                                         onchange="previewImage()">
-                                    <img id="output" src="{{ asset('') . $card_edit->image }}" alt="preview Image"
-                                        style="width: 100px; height: 100px;">
+                                    <img id="output" src="" alt="preview Image"
+                                        style="width: 100px; height:100px;">
                                     <span class="text-danger error-text image_error"></span>
                                 </div>
+
                                 <div class="form-group mt-3">
-                                    <input type="text" name="price" class="form-control"
-                                        value="{{ $card_edit->price }}" placeholder="Enter Price">
+                                    <input type="text" name="price" value="{{$card->price}}" class="form-control" placeholder="Enter Price">
                                     <span class="text-danger error-text price_error"></span>
                                 </div>
                                 <div class="form-group mt-4 text-center">
-                                    <button class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -53,56 +49,51 @@
 </main>
 <x-admin-footer />
 <script>
-    $(document).ready(function() {
-        $('#myForm').submit(function(e) {
-            e.preventDefault();
-            var formData = $(this).serialize(); // Serialize form data
+   $(document).ready(function() {
+    $('#editCard').submit(function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize(); // Serialize form data
 
-            // Include CSRF token in the headers
-            var headers = {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            };
+        // Include CSRF token in the headers
+        var headers = {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        };
 
-            var id = $("#editId").val();
-            $('.error-text').text('');
+        var id = $("#cardId").val();
+        $('.error-text').text('');
 
-            $.ajax({
-                type: "POST",
-                url: "{{ route('card.update') }}",
-                headers: headers, // Include CSRF token
-                data: formData + '&id=' + id, // Include ID in serialized form data
-                success: function(response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: 'Updated successfully.'
-                    }).then(() => {
-                        window.location.href = "{{ route('card.index') }}";
+        $.ajax({
+            type: "POST",
+            url: "{{ route('card.update') }}",
+            headers: headers, 
+            data: formData + '&id=' + id,
+            success: function(response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Updated successfully.'
+                }).then(() => {
+                    window.location.href = "{{ route('card.index') }}";
+                });
+                $('#editCard')[0].reset();
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function(key, value) {
+                        $('.' + key + '_error').text(value[0]);
                     });
-                    $('#myForm')[0].reset();
-                },
-                error: function(xhr, status, error) {
-                    if (xhr.status === 422) {
-                        var errors = xhr.responseJSON.errors;
-                        $.each(errors, function(key, value) {
-                            $('.' + key + '_error').text(value[0]);
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Something went wrong! Please try again later.'
-                        });
-                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! Please try again later.'
+                    });
                 }
-            });
+            }
         });
     });
-
-
-    //  
-
-
+});
     function previewImage() {
         var input = document.getElementById('image-input');
         var preview = document.getElementById('output');
