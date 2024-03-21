@@ -6,98 +6,139 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\pincode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
-class MyprofileController extends Controller {
+class MyprofileController extends Controller
+{
     /**
-    * Display a listing of the resource.
-    */
+     * Display a listing of the resource.
+     */
 
-    public function index() {
+    public function index()
+    {
 
-        if ( Auth::check() ) {
+        if (Auth::check()) {
 
             $userId = Auth::id();
-            $user = User::findOrFail( $userId );
-
+            $user = User::findOrFail($userId);
         }
-        return view( 'UserAdmin.Myprofile.index', compact( 'user' ) );
+        return view('UserAdmin.Myprofile.index', compact('user'));
     }
 
     /**
-    * Show the form for creating a new resource.
-    */
+     * Show the form for creating a new resource.
+     */
 
-    public function edit() {
+    public function edit()
+    {
 
-        if ( Auth::check() ) {
-
+        if (Auth::check()) {
             $userId = Auth::id();
-            $user = User::findOrFail( $userId );
-            // $user_edit = $user->id;
-            // dd($user_edit);
-
+            $user = User::findOrFail($userId);
         }
-        return view( 'UserAdmin.Myprofile.edit',compact('user'));
+        return view('UserAdmin.Myprofile.edit', compact('user'));
     }
 
-  
+
+
+
 
     public function update(Request $request)
-{
-    $updatedata = User::find($request->id)->update($request->all());
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $request->id,
+            'mobile' => 'required|max:10',
+            'city' => 'required',
+            'pincode' => 'required|digits:6|exists:pincodes,pincode',
+            'address' => 'required',
+        ];
 
-    $updatedUser = User::find($request->id);
+        $message = [
+            'name.required' => 'Name is required',
+            'email.required' => 'Email is required',
+            'email.email' => 'Please Enter Valid Email Address',
+            'email.unique' => 'Email already in use',
+            'mobile.required' => 'Contact is required',
+            'city.required' => 'City is required',
+            'pincode.required' => 'Pincode is required',
+            'address.required' => 'Address is required',
+        ];
+        $validateData = $request->validate($rules, $message);
 
-    // Return a JSON response
-    return response()->json([
-        'success' => true,
-        'data' => $updatedUser,
-        'message' => 'Updated successfully',
-    ]);
-}
+
+
+        $user = User::find($request->id);
+
+        $user->name = $validateData['name'];
+        $user->email = $validateData['email'];
+        $user->mobile = $validateData['mobile'];
+        $user->city = $validateData['city'];
+        $user->pincode = $validateData['pincode'];
+        $user->address = $validateData['address'];
+
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+            'message' => 'Updated successfully',
+        ]);
+    }
 
 
 
-  
 
-    public function editpassword() {
 
-        if ( Auth::check() ) {
+
+    public function editpassword()
+    {
+
+        if (Auth::check()) {
 
             $userpasswordId = Auth::id();
-            $userpassword = User::findOrFail( $userpasswordId );
-
+            $userpassword = User::findOrFail($userpasswordId);
         }
-      
-        return view( 'UserAdmin.Myprofile.editpassword',compact('userpassword'));
+
+        return view('UserAdmin.Myprofile.editpassword', compact('userpassword'));
     }
 
 
 
     public function updatePassword(Request $request)
-{
-    $request->validate([
-        'oldpassword' => 'required',
-        'newpassword' => 'required',
-        'confirmpassword' => 'required|same:newpassword',
-    ]);
+    {
+        $rules = [
+            'oldpassword' => 'required',
+            'newpassword' => 'required|confirmed',
+        ];
 
-    $user = Auth::user();
+        $messages = [
+            'oldpassword.required' => 'The current password is required.',
+            'newpassword.required' => 'The new password is required.',
+            'newpassword.min' => 'The new password must be at least 8 characters.',
+            'newpassword.confirmed' => 'The new password confirmation does not match.',
+        ];
 
-    if (!Hash::check($request->oldpassword, $user->password)) {
-        return response()->json(['errors' => ['oldpassword' => ['The old password is incorrect.']]], 422);
-    }
+        $validatedData = $request->validate($rules, $messages);
 
-    $user->password = Hash::make($request->newpassword);
-    $user->save();
+        $user = User::find(auth()->user()->id);
 
-    return response()->json(['success' => true], 200);
-}
+        if (!Hash::check($validatedData['oldpassword'], $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The current password is incorrect.',
+            ], 422);
+        }
 
-   
-    public function destroy( string $id ) {
-        //
+        $user->password = Hash::make($validatedData['newpassword']);
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Password updated successfully.',
+        ]);
     }
 }

@@ -18,28 +18,27 @@
                             <h4 class="text-center">Edit Password</h4>
                             <form id="userpasswordedit">
                                 @csrf
-            
-                                <input type="hidden" value="{{$userpassword->id}}" id="userpasswordId">
+                                <input type="hidden" value="{{ $userpassword->id }}" id="userpasswordId">
                                 <div class="form-group mt-3">
-                                    <input type="text" name="oldpassword" class="form-control"  
+                                    <input type="password" name="oldpassword" class="form-control"
                                         placeholder="Enter Old Password">
                                     <span class="text-danger error-text oldpassword_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="newpassword" class="form-control" value=""
+                                    <input type="password" name="newpassword" class="form-control" value=""
                                         placeholder="New Password">
                                     <span class="text-danger error-text newpassword_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="confirmpassword" class="form-control" value=""
-                                        placeholder="Confirm Password">
-                                    <span class="text-danger error-text confirmpassword_error"></span>
+                                    <input type="password" name="newpassword_confirmation" class="form-control"
+                                        value="" placeholder="Confirm Password">
+                                    <span class="text-danger error-text newpassword_confirmation_error"></span>
                                 </div>
-                               
                                 <div class="form-group mt-4 text-center">
-                                    <button class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -49,90 +48,51 @@
 </main>
 <x-admin-footer />
 <script>
-//    $(document).ready(function() {
-//     $('#userpasswordedit').submit(function(e) {
-//         e.preventDefault();
-//         var formData = $(this).serialize(); // Serialize form data
+    $(document).ready(function() {
+        $('#userpasswordedit').submit(function(e) {
+            e.preventDefault();
+            var formData = $(this).serialize(); // Serialize form data
+            var id = $("#userpasswordId").val();
+            $('.error-text').text('');
 
-//         // Include CSRF token in the headers
-//         var headers = {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         };
-
-//         var id = $("#userpasswordId").val();
-//         $('.error-text').text('');
-
-//         $.ajax({
-//             type: "POST",
-//             url: "{{ route('profile.update') }}",
-//             headers: headers, // Include CSRF token
-//             data: formData + '&id=' + id, // Include ID in serialized form data
-//             success: function(response) {
-//                 Swal.fire({
-//                     icon: 'success',
-//                     title: 'Success!',
-//                     text: 'Password Updated successfully.'
-//                 }).then(() => {
-//                     window.location.href = "{{ route('profile.index') }}";
-//                 });
-//                 $('#userpasswordedit')[0].reset();
-//             },
-//             error: function(xhr, status, error) {
-//                 if (xhr.status === 422) {
-//                     var errors = xhr.responseJSON.errors;
-//                     $.each(errors, function(key, value) {
-//                         $('.' + key + '_error').text(value[0]);
-//                     });
-//                 } else {
-//                     Swal.fire({
-//                         icon: 'error',
-//                         title: 'Oops...',
-//                         text: 'Something went wrong! Please try again later.'
-//                     });
-//                 }
-//             }
-//         });
-//     });
-// });
-
-
-
-$(document).ready(function() {
-    $('#userpasswordedit').submit(function(e) {
-        e.preventDefault();
-        var formData = $(this).serialize(); // Serialize form data
-        var id = $("#userpasswordId").val();
-        $('.error-text').text('');
-
-        $.ajax({
-            type: "POST",
-            url: "{{ route('profile.updatepassword') }}",
-            data: formData + '&id=' + id, // Include ID in serialized form data
-            success: function(response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Password Updated successfully.'
-                }).then(() => {
-                    window.location.href = "{{ route('profile.index') }}";
-                });
-                $('#userpasswordedit')[0].reset();
-            },
-            error: function(xhr, status, error) {
-                if (xhr.status === 422) {
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function(key, value) {
-                        $('.' + key + '_error').text(value[0]);
-                    });
-                } else {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('profile.updatepassword') }}",
+                data: formData + '&id=' + id, // Include ID in serialized form data
+                success: function(response) {
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong! Please try again later.'
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Password Updated successfully.'
+                    }).then(() => {
+                        window.location.href = "{{ route('profile.index') }}";
                     });
+                    $('#userpasswordedit')[0].reset();
+                },
+                error: function(xhr, status, error) {
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON;
+                        if (errors.message) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: errors.message
+                            });
+                        } else {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('.' + key + '_error').text(value[0]);
+                            });
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong! Please try again later.'
+                        });
+                    }
                 }
-            }
+            });
         });
     });
-});
 </script>
