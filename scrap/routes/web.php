@@ -72,10 +72,18 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/showdata', [DashboardController::class, 'showTable'])->name('dashboard.show');
     Route::get('/show-table', [DashboardController::class, 'data'])->name('dashboard-table');
+    // direct sell
     Route::get('/showdirectselldata', [DashboardController::class, 'showdirectselldata'])->name('dashboard.showdirectsell');
     Route::get('/show-directselltable', [DashboardController::class, 'directselldata'])->name('dashboard-directselltable');
     Route::post('/changeuserStatus', [DashboardController::class, 'changeUserStatus'])->name('statusChange');
     Route::post('/changedirectsellStatus', [DashboardController::class, 'directsellStatus'])->name('directsellstatusChange');
+    Route::post('/changedirectselldriver', [DashboardController::class, 'directsellDriver'])->name('directselldriverChange');
+    // registered sell
+    Route::get('/showregisteredselldata', [DashboardController::class, 'showregisteredselldata'])->name('dashboard.showregisteredsell');
+    Route::get('/show-registeredselltable', [DashboardController::class, 'scrapRecord'])->name('dashboard-registeredselltable');
+    Route::post('/changeregisteredsellStatus', [DashboardController::class, 'registeredsellStatus'])->name('registeredsellstatusChange');
+    Route::post('/changeregisteredselldriver', [DashboardController::class, 'registeredsellDriver'])->name('registeredselldriverChange');
+
 
 
     // scrap category
@@ -142,8 +150,7 @@ Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('userProfile-index', [MyprofileController::class, 'index'])->name('profile.index');
     Route::get('/edit-profile', [MyprofileController::class, 'edit'])->name('profile.edit');
     Route::post('/update-profile', [MyprofileController::class,'update'])->name('profile.update');
-    // Route::get('userProfile-editpassword', [MyprofileController::class, 'edit'])->name('profile.editpassword');
-//     Route::get('userProfile-editpassword/{id}', [MyprofileController::class, 'edit'])->name('profile.editpassword');
-// Route::post('userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
+    Route::get('/userProfile-editpassword', [MyprofileController::class, 'editpassword'])->name('profile.editpassword');
+Route::post('/userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
 });
 

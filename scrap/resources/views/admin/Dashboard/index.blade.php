@@ -110,7 +110,7 @@
                     <div class="col-md-4 ">
                         <div class="card info-card revenue-card">
                             <div class="card-body pb-4">
-                                <h5 class="card-title">Inprocess<span></span></h5>
+                                <h5 class="card-title">Accepted<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div

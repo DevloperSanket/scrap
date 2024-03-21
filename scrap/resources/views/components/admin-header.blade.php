@@ -76,8 +76,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            <h6>{{ Auth::user()->name }}</h6>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -141,7 +140,7 @@
                 </li><!-- End Direct Enquiry Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="{{ route('dashboard.showregisteredsell')}}">
                         <i class="bi bi-journal-text"></i><span>Registerd Enquiry</span>
                     </a>
                 </li><!-- End Direct Enquiry Nav -->

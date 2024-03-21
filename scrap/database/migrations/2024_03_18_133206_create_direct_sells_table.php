@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('date')->nullable();
             $table->string('time')->nullable();
             $table->string('address')->nullable();
+            $table->string('driver')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
