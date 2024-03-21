@@ -64,4 +64,7 @@ class User extends Authenticatable
     public function ScrapCategory(){
         return $this->hasMany(ScrapCategories::class);
     }
+
+
+ 
 }
