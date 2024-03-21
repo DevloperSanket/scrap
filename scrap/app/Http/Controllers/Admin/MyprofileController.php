@@ -37,7 +37,6 @@ class MyprofileController extends Controller {
             // $user_edit = $user->id;
             // dd($user_edit);
 
-
         }
         return view( 'UserAdmin.Myprofile.edit',compact('user'));
     }

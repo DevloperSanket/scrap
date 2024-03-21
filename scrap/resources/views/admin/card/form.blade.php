@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <input type="text" name="price" value="{{$card->price}}" class="form-control" placeholder="Enter Price">
+                                    <input type="text" name="price" class="form-control" placeholder="Enter Price">
                                     <span class="text-danger error-text price_error"></span>
                                 </div>
                                 <div class="form-group mt-4 text-center">
@@ -56,13 +56,13 @@
             e.preventDefault();
             $('.error-text').text('');
 
-            var formData = new FormData(this); 
+            var formData = new FormData(this); // Create FormData object to handle file uploads
             $.ajax({
                 type: "POST",
                 url: "{{ route('card.store') }}",
                 data: formData,
-                processData: false, 
-                contentType: false, 
+                processData: false, // Prevent jQuery from automatically processing the data
+                contentType: false, // Prevent jQuery from automatically setting the content type
                 success: function(response) {
                     Swal.fire({
                         icon: 'success',

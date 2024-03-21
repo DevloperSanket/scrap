@@ -8,6 +8,7 @@ use App\Models\ScrapCategories;
 use App\Models\Card;
 
 use DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
@@ -103,12 +104,12 @@ class CardController extends Controller
 
         $categories = ScrapCategories::get();
         $card = Card::find($id);
-        return view('admin.card.edit', compact('card', 'categories'));
+        return view('admin.card.edit',compact('card', 'categories'));
     }
 
     public function update(Request $request)
     {
-        dd($request);
+        // dd($request);
         $rules = [
             'category_id' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -121,17 +122,32 @@ class CardController extends Controller
             'price.required' => 'Price is required',
         ];
         $validatedData = $request->validate($rules, $messages);
-        
 
+        $editcard = Card::find($request->id);
+        
+        $editcard->category_id = $validatedData['category_id'];
+        $editcard->price = $validatedData['price'];
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '-' . uniqid() . '.' . $request->file('image')->getClientOriginalExtension();
+            $imagePath = $request->file('image')->storeAs('card', $imageName, 'public');
+            $editcard->image = 'storage/' . $imagePath;
+        }
+    
+        $editcard->save();
+
+        return response()->json([
+            'success' => true,
+            'data' => $editcard,
+            'message' => 'Form Submitted successfully',
+        ]);
     }
 
 
 
     public function delete(Request $request)
     {
-        // dd($request);
         $deleterecord = Card::find($request->id);
-        // dd($deleterecord);
         $deleterecord->delete();
 
         return response()->json([
