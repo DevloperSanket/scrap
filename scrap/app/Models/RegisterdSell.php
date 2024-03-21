@@ -18,4 +18,9 @@ class RegisterdSell extends Model
     public function scrapcategories(){
         return $this->belongsTo(ScrapCategories::class,'category');
     }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class, 'driver'); // Assuming 'driver' is the foreign key
+    }
 }

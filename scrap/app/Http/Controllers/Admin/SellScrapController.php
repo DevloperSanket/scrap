@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ScrapCategories;
 use App\Models\RegisterdSell;
+use App\Models\Driver;
 use App\Models\RegistredImage;
 use DataTables;
 
@@ -69,51 +70,60 @@ class SellScrapController extends Controller
         ]);
     }
 
+
+
     public function scrapRecord()
-    {
-        $usersell = RegisterdSell::with('scrapCategories', 'registredImages')->get();
+{
+    $usersell = RegisterdSell::with('scrapcategories', 'registredImages','driver')->get();
 
-
-        // dd($usersell);
-        return DataTables::of($usersell)
-            ->addColumn('category', function ($usersell) {
-                return $usersell->ScrapCategories->name;
-            })
-
-            ->addColumn('date', function ($usersell) {
-                return $usersell->date;
-            })
-            ->addColumn('time', function ($usersell) {
-                return $usersell->time;
-            })
-            ->addColumn('image', function ($usersell) {
-                $imagesHtml = '';
-                if ($usersell->registredImages->isNotEmpty()) {
-                    foreach ($usersell->registredImages as $image) {
-                        $imageUrl = $image->url;
-                        $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
-                    }
-                }else{
-                    $imagesHtml .= '<p>No Images</p>';
+    return DataTables::of($usersell)
+        ->addColumn('category', function ($usersell) {
+            return $usersell->scrapcategories->name ?? 'No Category';
+        })
+        ->addColumn('date', function ($usersell) {
+            return $usersell->date;
+        })
+        ->addColumn('time', function ($usersell) {
+            return $usersell->time;
+        })
+        ->addColumn('image', function ($usersell) {
+            $imagesHtml = '';
+            if ($usersell->registredImages->isNotEmpty()) {
+                foreach ($usersell->registredImages as $image) {
+                    $imageUrl = $image->url;
+                    $imagesHtml .= '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showData(\'' . $imageUrl . '\')">View</a>';
                 }
-                return $imagesHtml;
-            })
+            } else {
+                $imagesHtml .= '<p>No Images</p>';
+            }
+            return $imagesHtml;
+        })
+       
+        ->addColumn('status', function ($usersell) {
+            $status = $usersell->status == '1' ? 'Pending' : ($usersell->status == '2' ? 'In process' : ($usersell->status == '3' ? 'Completed' : 'No Update'));
+            return $status;
+        })
 
-            ->addColumn('action', function ($usersell) {
-                $editButton = '<a href="' . route('card.edit', $usersell->id) . '" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
-                $deleteButton = '<a class="delete btn btn-danger btn-sm" onclick="deletefunction(' . $usersell->id . ')"><i class="bi bi-trash3"></i></a>';
-                return $editButton . ' ' . $deleteButton;
-            })
+        ->addColumn('action', function ($usersell) {
+            $editButton = '<a href="#" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
+            $deleteButton = '<a class="delete btn btn-danger btn-sm" onclick="deletefunction(' . $usersell->id . ')"><i class="bi bi-trash3"></i></a>';
+            
+            if ($usersell->status != '1') {
+                $editButton = '<button class="edit btn btn-warning btn-sm" disabled><i class="bi bi-pencil-fill"></i></button>';
+                $deleteButton = '<button class="delete btn btn-danger btn-sm" disabled><i class="bi bi-trash3"></i></button>';
+            }
+            
+            return $editButton . ' ' . $deleteButton;
+        })
 
-            ->addColumn('status', function ($usersell) {
-                $status = '<div class="form-check form-switch">
-                <input class="form-check-input text-center" type="checkbox" ' . ($usersell->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $usersell->id . '" onchange="cardStatusChange(' . $usersell->id . ')">
-                </div>';
-                return $status;
-            })
-            ->rawColumns(['action', 'status', 'category', 'date', 'time', 'image'])
-            ->make(true);
-    }
+        ->addColumn('driver', function ($usersell) {
+            return $usersell->Driver->name ?? 'No Driver';
+        })
+
+        ->rawColumns(['action', 'status', 'category', 'date', 'time', 'image', 'driver'])
+        ->make(true);
+}
+
 
 
     /**
@@ -129,7 +139,7 @@ class SellScrapController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**

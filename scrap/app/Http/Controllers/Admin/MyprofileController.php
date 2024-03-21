@@ -49,12 +49,12 @@ class MyprofileController extends Controller {
 {
     $updatedata = User::find($request->id)->update($request->all());
 
-    $updatedUser = User::find($request->id);
+    // $updatedUser = User::find($request->id);
 
     // Return a JSON response
     return response()->json([
         'success' => true,
-        'data' => $updatedUser,
+        'data' => $updatedata,
         'message' => 'Updated successfully',
     ]);
 }
@@ -97,8 +97,5 @@ class MyprofileController extends Controller {
     return response()->json(['success' => true], 200);
 }
 
-   
-    public function destroy( string $id ) {
-        //
-    }
+  
 }

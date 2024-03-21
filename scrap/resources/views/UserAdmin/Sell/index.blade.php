@@ -31,6 +31,9 @@
                                 <th width="10px">
                                     Status
                                 </th>
+                                <th width="10px">
+                                    Assigned Driver
+                                </th>
                                 <th>
                                     Category
                                 </th>
@@ -95,6 +98,10 @@
                 {
                     data: 'status',
                     name: 'status',
+                },
+                {
+                    data: 'driver',
+                    name: 'driver',
                 },
                 {
                     data: 'category',

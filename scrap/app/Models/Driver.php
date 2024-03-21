@@ -14,4 +14,9 @@ class Driver extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function registeredSells() // Renamed method to follow Laravel convention
+    {
+        return $this->hasMany(RegisterdSell::class, 'driver');
+    }
 }
