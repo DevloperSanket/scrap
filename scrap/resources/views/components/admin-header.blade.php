@@ -116,26 +116,26 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{ route('pincode.index') }}">
-                        <i class="bi bi-journal-text"></i><span>Pincode</span>
+                        <i class="bi bi-pin"></i><span>Pincode</span>
                     </a>
                 </li><!-- End Pincode Nav -->
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{ route('card.index') }}">
-                        <i class="bi bi-journal-text"></i><span>Cards</span>
+                        <i class="bi bi-card-list"></i><span>Cards</span>
                     </a>
                 </li><!-- End Card Nav -->
 
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{ route('driver.index') }}">
-                        <i class="bi bi-journal-text"></i><span>Drivers</span>
+                        <i class="bi bi-car-front-fill"></i></i><span>Drivers</span>
                     </a>
                 </li><!-- End driver Nav -->
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{ route('dashboard.showdirectsell') }}">
-                        <i class="bi bi-journal-text"></i><span>Direct Enquiry</span>
+                        <i class="bi bi-box-arrow-in-right"></i><span>Direct Enquiry</span>
                     </a>
                 </li><!-- End Direct Enquiry Nav -->
 
@@ -146,29 +146,6 @@
                 </li><!-- End Direct Enquiry Nav -->
 
             
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse"
-                        href="#">
-                        <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="icons-bootstrap.html">
-                                <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="icons-remix.html">
-                                <i class="bi bi-circle"></i><span>Remix Icons</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="icons-boxicons.html">
-                                <i class="bi bi-circle"></i><span>Boxicons</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
                 
                 <!-- End Icons Nav -->
 
@@ -198,30 +175,12 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{ route('profile.index') }}">
-                        <i class="bi bi-journal-text"></i><span>My Profile</span>
+                        <i class="bi bi-person-square"></i><span>My Profile</span>
                     </a>
                 </li>
                 <!-- End Profile -->
 
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse"
-                        href="#">
-                        <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
-                            class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="tables-general.html">
-                                <i class="bi bi-circle"></i><span>General Tables</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tables-data.html">
-                                <i class="bi bi-circle"></i><span>Data Tables</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li><!-- End Tables Nav --> --}}
+            
             </ul>
 
         </aside><!-- End Sidebar-->

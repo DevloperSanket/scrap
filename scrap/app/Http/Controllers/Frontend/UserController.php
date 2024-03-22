@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Pincode;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Auth;
@@ -28,13 +29,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
             'mobile' => 'required|max:10',
             'city' => 'required',
-            'pincode' => 'required',
+            'pincode' => 'required|digits:6|exists:pincodes,pincode',
             'address' => 'required',
             'password' => 'required'
         ];

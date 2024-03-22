@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\ScrapCategories;
 use Illuminate\Http\Request;
+use App\Models\Card;
 
 class IndexController extends Controller
 {
@@ -36,7 +37,9 @@ class IndexController extends Controller
     }
 
     public function allscrap(){
-        return view('frontend.all-scrap');
+        $cards = Card::with('scrapCategories')->get();
+        // dd($cards);
+        return view('frontend.all-scrap',compact('cards'));
     }
 
     public function ElectronicScrap(){

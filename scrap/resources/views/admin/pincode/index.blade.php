@@ -132,7 +132,7 @@
 
 
     function deletefunction(deleteId) {
-    console.log(deleteId);
+    // console.log(deleteId);
         var id = deleteId;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({

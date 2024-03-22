@@ -18,40 +18,38 @@
                             <h4 class="text-center">Edit Details</h4>
                             <form id="useredit">
                                 @csrf
-            
-                                <input type="hidden" value="{{$user->id}}" id="userId">
+                                <input type="hidden" value="{{ $user->id }}" id="userId">
                                 <div class="form-group mt-3">
-                                    <input type="text" name="name" class="form-control"  value="{{ $user->name }}"
-                                        placeholder="Enter Name">
-                                    <span class="text-danger error-text name_error"></span>
+                                    <input type="text" name="name" class="form-control"
+                                        value="{{ $user->name }}" placeholder="Enter Name">
+                                    <span class="text-danger name_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}"
-                                        placeholder="Enter Email">
+                                    <input type="email" name="email" class="form-control"
+                                        value="{{ $user->email }}" placeholder="Enter Email">
                                     <span class="text-danger error-text email_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="mobile" class="form-control" value="{{ $user->mobile }}"
-                                        placeholder="Enter Mobile no.">
+                                    <input type="text" name="mobile" class="form-control"
+                                        value="{{ $user->mobile }}" placeholder="Enter Mobile no.">
                                     <span class="text-danger error-text mobile_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="city" class="form-control"  value="{{ $user->city }}"
-                                        placeholder="Enter Name">
+                                    <input type="text" name="city" class="form-control"
+                                        value="{{ $user->city }}" placeholder="Enter Name">
                                     <span class="text-danger error-text city_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="pincode" class="form-control" value="{{ $user->pincode }}"
-                                        placeholder="Enter Pincode">
+                                    <input type="text" name="pincode" class="form-control"
+                                        value="{{ $user->pincode }}" placeholder="Enter Pincode">
                                     <span class="text-danger error-text pincode_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" name="address" class="form-control" value="{{ $user->address }}"
-                                        placeholder="Enter Address">
+                                    <textarea name="address" class="form-control" placeholder="Enter Address">{{ $user->address }}</textarea>
                                     <span class="text-danger error-text address_error"></span>
                                 </div>
                                 <div class="form-group mt-4 text-center">
-                                    <button class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -63,49 +61,50 @@
 </main>
 <x-admin-footer />
 <script>
-   $(document).ready(function() {
-    $('#useredit').submit(function(e) {
-        e.preventDefault();
-        var formData = $(this).serialize(); // Serialize form data
+    $(document).ready(function() {
+        $('#useredit').submit(function(e) {
+            e.preventDefault();
+            var formData = $(this).serialize();
 
-        // Include CSRF token in the headers
-        var headers = {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        };
+            var headers = {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            };
 
-        var id = $("#userId").val();
-        $('.error-text').text('');
+            var id = $("#userId").val();
+            $('.error-text').text('');
 
-        $.ajax({
-            type: "POST",
-            url: "{{ route('profile.update') }}",
-            headers: headers, // Include CSRF token
-            data: formData + '&id=' + id, // Include ID in serialized form data
-            success: function(response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Updated successfully.'
-                }).then(() => {
-                    window.location.href = "{{ route('profile.index') }}";
-                });
-                $('#useredit')[0].reset();
-            },
-            error: function(xhr, status, error) {
-                if (xhr.status === 422) {
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function(key, value) {
-                        $('.' + key + '_error').text(value[0]);
-                    });
-                } else {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('profile.update') }}",
+                headers: headers,
+                data: formData + '&id=' + id,
+                success: function(response) {
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong! Please try again later.'
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Updated successfully.'
+                    }).then(() => {
+                        window.location.href = "{{ route('profile.index') }}";
                     });
+                    $('#useredit')[0].reset();
+                },
+                error: function(xhr, status, error) {
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('.' + key + '_error').text(value[
+                                0]);
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong! Please try again later.'
+                        });
+                    }
                 }
-            }
+
+            });
         });
     });
-});
 </script>

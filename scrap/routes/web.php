@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/cardcreate', [CardController::class, 'create'])->name('card.create');
     Route::post('/cardcreate', [CardController::class, 'store'])->name('card.store');
     Route::get('/carddata', [CardController::class, 'carddata'])->name('card.record');
-    Route::post('/cardstatuschange', [CardController::class, 'cardstatuschange'])->name('card.status');
+    Route::post('/card-Status', [CardController::class, 'cardchangeStatus'])->name('card.status');
     Route::get('/edit-card/{id}', [CardController::class, 'edit'])->name('card.edit');
     Route::post('/update-card', [CardController::class, 'update'])->name('card.update');
     Route::post('/delete-card', [CardController::class, 'delete'])->name('card.delete');
@@ -139,11 +139,15 @@ Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('userAdmin-dashboard',[UserDashboardController::class,'index'])->name('user.dashboard');
 
 
-    // sell scrap routes
+    // registered sell scrap routes
     Route::get('userAdmin-sellscrap',[SellScrapController::class,'index'])->name('scrap.index');
     Route::get('userAdmin-create',[SellScrapController::class,'create'])->name('scrap.create');
     Route::post('userAdmin-store',[SellScrapController::class,'store'])->name('scrap.store');
     Route::get('useradmin-getdata',[SellScrapController::class,'scrapRecord'])->name('scrap.getdata');
+    Route::get('/edit-userAdmin/{id}', [SellScrapController:: class, 'edit'])->name('scrap.edit');
+    Route::post('/update-userAdmin', [SellScrapController::class, 'update'])->name('scrap.update');
+    Route::post('/delete-userAdmin', [SellScrapController::class, 'delete'])->name('scrap.delete');
+
 
 
     // user profile routes 
@@ -151,6 +155,6 @@ Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('/edit-profile', [MyprofileController::class, 'edit'])->name('profile.edit');
     Route::post('/update-profile', [MyprofileController::class,'update'])->name('profile.update');
     Route::get('/userProfile-editpassword', [MyprofileController::class, 'editpassword'])->name('profile.editpassword');
-Route::post('/userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
+    Route::post('/userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
 });
 

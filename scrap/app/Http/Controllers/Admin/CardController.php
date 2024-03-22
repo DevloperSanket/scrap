@@ -8,6 +8,7 @@ use App\Models\ScrapCategories;
 use App\Models\Card;
 
 use DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
@@ -77,13 +78,13 @@ class CardController extends Controller
             'price.required' => 'Price is required',
         ];
         $validatedData = $request->validate($rules, $messages);
-        
-        if ($image = $request->file('image')){
-            $imageName = time().'-'.uniqid().'.'.$image->getClientOriginalName();
+
+        if ($image = $request->file('image')) {
+            $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
             $imagePath = $image->storeAs('card', $imageName, 'public');
             $imagePath = 'storage/' . $imagePath;
         }
-        
+
         $data = Card::create([
             'category_id' => $validatedData['categoryName'],
             'price' => $validatedData['price'],
@@ -101,53 +102,52 @@ class CardController extends Controller
     public function edit(string $id)
     {
 
-        $category = ScrapCategories::get();
-        $card_edit = Card::find($id);
-        // dd($card_edit);
-        return view('admin.card.edit', compact('card_edit', 'category'));
+        $categories = ScrapCategories::get();
+        $card = Card::find($id);
+        return view('admin.card.edit',compact('card', 'categories'));
     }
 
     public function update(Request $request)
     {
+        // dd($request);
         $rules = [
-            'categoryName' => 'required',
+            'category_id' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'price' => 'required',
         ];
 
         $messages = [
-            'categoryName.required' => 'Category Name is required',
+            'category_id.required' => 'Category Name is required',
             'image.required' => 'Image is required',
             'price.required' => 'Price is required',
         ];
-
         $validatedData = $request->validate($rules, $messages);
 
-        $updatedata = Card::findOrFail($request->id);
-        $updatedata->fill($request->only(['category_id', 'price']));
+        $editcard = Card::find($request->id);
+        
+        $editcard->category_id = $validatedData['category_id'];
+        $editcard->price = $validatedData['price'];
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $imagePath = $image->storeAs('card', $imageName);
-            $updatedata->image = $imagePath;
+            $imageName = time() . '-' . uniqid() . '.' . $request->file('image')->getClientOriginalExtension();
+            $imagePath = $request->file('image')->storeAs('card', $imageName, 'public');
+            $editcard->image = 'storage/' . $imagePath;
         }
+    
+        $editcard->save();
 
-        $updatedata->save();
-
-        // Return a JSON response
         return response()->json([
             'success' => true,
-            'data' => $updatedata,
-            'message' => 'Updated successfully',
+            'data' => $editcard,
+            'message' => 'Form Submitted successfully',
         ]);
     }
 
+
+
     public function delete(Request $request)
     {
-        // dd($request);
         $deleterecord = Card::find($request->id);
-        // dd($deleterecord);
         $deleterecord->delete();
 
         return response()->json([

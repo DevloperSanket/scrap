@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('category_id')->nullable();
             $table->text('image')->nullable();
-            $table->integer('price')->nullable();
+            $table->string('price')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

@@ -181,13 +181,12 @@
                     data: 'image',
                     name: 'image'
                 }
-               
+
             ]
+
         });
 
-
     });
-
 
 
 
@@ -228,60 +227,53 @@
     }
 
 
-
-
-    function DriverStatusChange(userid, driver) {
+    function DriverStatusChange(userid, driver, driverId) {
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
-        $.ajax({
-            url: "{{ route('directselldriverChange') }}",
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken
-            },
-            data: {
-                id: userid,
-                driver: driver
-            },
-            success: function(response) {
-                // Swal.fire({
-                //     icon: 'success',
-                //     title: 'Success!',
-                //     text: 'Status update successfully.'
-                // });
 
-                Swal.fire({
-                    title: "Are you sure,you want to go with this driver?",
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "Yes",
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
+        // Show confirmation dialog
+        Swal.fire({
+            title: "Are you sure you want to go with this driver?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User confirmed, perform the driver change
+                $.ajax({
+                    url: "{{ route('directselldriverChange') }}",
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    data: {
+                        id: userid,
+                        driver: driver
+                    },
+                    success: function(response) {
                         Swal.fire("Driver Changed!", "", "success");
-                    } else if (result.isDenied) {
-                        Swal.fire("Driver Not Changed", "", "info");
+                    },
+                    error: function(xhr, driver, error) {
+                        if (xhr.driver === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('.' + key + '_error').text(value[0]);
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! Please try again later.'
+                            });
+                        }
                     }
                 });
-            },
-            error: function(xhr, driver, error) {
-                if (xhr.driver === 422) {
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function(key, value) {
-                        $('.' + key + '_error').text(value[0]);
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong! Please try again later.'
-                    });
-
-
-                }
+            } else if (result.isDenied) {
+                // User denied, revert the selection
+                $("#" + driverId).val('').change(); // Reset dropdown to default
+                Swal.fire("Driver Not Changed", "", "info");
             }
         });
     }
-
 
     function showData(imageUrl) {
         var assetUrl = "{{ asset('') }}" + imageUrl; // Concatenating imageUrl with asset root

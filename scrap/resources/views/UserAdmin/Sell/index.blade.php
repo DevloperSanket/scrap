@@ -124,9 +124,51 @@
 
     });
 
+
     function showData(imageUrl) {
         var assetUrl = "{{ asset('') }}" + imageUrl; // Concatenating imageUrl with asset root
         $('#exampleModal .modal-body').html('<img class="col-3" src="' + assetUrl + '" class="img-fluid">');
         $('#exampleModal').modal('show');
+    }
+
+
+    
+    function deletefunction(deleteId) {
+        console.log(deleteId);
+        var id = deleteId;
+        var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+        $.ajax({
+            url: "{{ route('scrap.delete') }}",
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            data: {
+                id: id,
+            },
+            success: function(response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Scrap Deleted successfully.'
+                }).then(() => {
+                    window.location.href = "{{ route('scrap.index') }}";
+                });
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 422) {
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function(key, value) {
+                        $('.' + key + '_error').text(value[0]);
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! Please try again later.'
+                    });
+                }
+            }
+        });
     }
 </script>

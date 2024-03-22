@@ -23,11 +23,15 @@ class DashboardController extends Controller
     {
         if (Auth::check()) {
 
-            $directsell = DirectSell::get()->count();
-            // dd($directsell);
+            // dashboard 
+            $directSellPending = DirectSell::where('status', 1)->count();
+            $directSellAccepted = DirectSell::where('status', 2)->count();
+            $directSellCompleted = DirectSell::where('status', 3)->count();
+            $registeredSellPending = RegisterdSell::where('status', 1)->count();
+            $registeredSellAccepted = RegisterdSell::where('status', 2)->count();
+            $registeredSellCompleted = RegisterdSell::where('status', 3)->count();
 
             $allregisterUser = User::where('role', 2)->count();
-            // dd($allregisterUser);
 
             $activeUser = User::where('status', 1)
                 ->where('role', 2)
@@ -35,7 +39,9 @@ class DashboardController extends Controller
 
             $deactiveUser = User::where('status', 0)->where('role', 2)->count();
 
-            return view('admin.dashboard.index', compact('allregisterUser', 'activeUser', 'deactiveUser','directsell'));
+            return view('admin.dashboard.index', compact('allregisterUser', 'activeUser', 'deactiveUser',
+            'directSellPending','directSellAccepted','directSellCompleted','registeredSellPending',
+            'registeredSellAccepted','registeredSellCompleted'));
         }
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
@@ -150,19 +156,18 @@ class DashboardController extends Controller
                 return $imagesHtml;
             })
 
-        
 
             ->addColumn('driver', function ($directselluser) {
-                $driverSelect = '<select class="form-select" onchange="DriverStatusChange('.$directselluser->id.',this.value)">';
-                
-                $driverSelect .= '<option style="background-color:#dfdfdf; value="">Select Driver</option>';
+                $driverSelect = '<select class="form-select" onchange="DriverStatusChange(' . $directselluser->id . ', this.value, this.options[this.selectedIndex].getAttribute(\'data-driver-id\'))">';
+            
+                $driverSelect .= '<option style="background-color:#dfdfdf;" value="">Select Driver</option>';
             
                 $drivers = Driver::all();
             
                 foreach ($drivers as $driver) {
                     $selected = $directselluser->driver == $driver->id ? 'selected' : '';
             
-                    $driverSelect .= '<option style="background-color:#dfdfdf; value="' . $driver->id . '" ' . $selected . '>' . $driver->name . '</option>';
+                    $driverSelect .= '<option style="background-color:#dfdfdf;" value="' . $driver->id . '" data-driver-id="' . $driver->id . '" ' . $selected . '>' . $driver->name . '</option>';
                 }
             
                 $driverSelect .= '</select>';
@@ -170,6 +175,7 @@ class DashboardController extends Controller
                 return $driverSelect;
             })
 
+           
 
             ->rawColumns([ 'status','category','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image', 'driver'])
             ->make(true);

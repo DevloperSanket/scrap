@@ -70,18 +70,18 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-outline">
-                                                <input type="date" name="date" class="form-control" id="date"
+                                                <input type="date" name="date" class="form-control" id="datePicker"
                                                     placeholder="Select Date">
                                                 <span class="text-danger error-text date_error"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-outline">
-                                                <input type="time" name="time" class="form-control" id="time"
-                                                    placeholder="Select Time">
-                                                <span class="text-danger error-text time_error"></span>
+                                              <input type="time" name="time" class="form-control" id="time"
+                                                     placeholder="Select Time">
+                                              <span class="text-danger error-text time_error"></span>
                                             </div>
-                                        </div>
+                                        </div>  
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-3">
@@ -164,6 +164,7 @@
     });
 
 
+    // image preview 
     $('#image-upload-directsell').change(function() {
             console.log("change");
             $('#image-preview-directsell').empty();
@@ -176,4 +177,13 @@
                 reader.readAsDataURL(this.files[i]);
             }
         });
+
+
+
+        // Get only current and future dates in calander
+    var currentDate = new Date().toISOString().split('T')[0];
+    document.getElementById("datePicker").setAttribute('min', currentDate);
+
+
+
 </script>

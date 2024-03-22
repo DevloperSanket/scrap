@@ -82,7 +82,7 @@
                     data: 'image',
                     name: 'image',
                     render: function(data, type, row, meta) {
-                        var imagePath = '{{asset('')}}' + data;
+                        var imagePath = '{{ asset('') }}' + data;
                         return '<img src="' + imagePath +
                             '" alt="Card Image" style="max-width: 100px; max-height: 50px;">';
                     }
@@ -97,7 +97,6 @@
     });
 
     function cardStatusChange(scrapId) {
-        console.log(scrapId);
         var checkbox = document.querySelector('input[data-id="' + scrapId + '"]');
         var status = checkbox.checked ? 1 : 0;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;

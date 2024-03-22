@@ -12,17 +12,13 @@ use DataTables;
 
 class SellScrapController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        return view('UserAdmin.Sell.index');
+        return view('UserAdmin.sell.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
         $categories = ScrapCategories::get();
@@ -105,7 +101,7 @@ class SellScrapController extends Controller
         })
 
         ->addColumn('action', function ($usersell) {
-            $editButton = '<a href="#" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
+            $editButton = '<a href="' . route('scrap.edit', $usersell->id) . '" class="edit btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>';
             $deleteButton = '<a class="delete btn btn-danger btn-sm" onclick="deletefunction(' . $usersell->id . ')"><i class="bi bi-trash3"></i></a>';
             
             if ($usersell->status != '1') {
@@ -125,36 +121,58 @@ class SellScrapController extends Controller
 }
 
 
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
+        $registered_edit = RegisterdSell::find($id);
+
+        $categories = ScrapCategories::get();
+        return view('UserAdmin.sell.edit',compact('registered_edit','categories'));
+    }
+
+
+  
+
+    public function update(Request $request)
+{
+    $updatedata = RegisterdSell::find($request->id);
+    
+    if ($request->hasFile('image')) {
+        if ($updatedata->image) {
+            Storage::delete($updatedata->image);
+        }
         
+        $imagePath = $request->file('images')->store('public/images');
+        $updatedata->image = $imagePath;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    $updatedata->date = $request->input('date');
+    $updatedata->time = $request->input('time');
+    $updatedata->category = $request->input('category');
+    $updatedata->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    
+
+    // Return a JSON response
+    return response()->json([
+        'success' => true,
+        'data' => $updatedata,
+        'message' => 'Updated successfully',
+    ]);
+}
+
+
+    public function delete(Request $request)
     {
-        //
+        //  dd($request);
+         $deleterecord = RegisterdSell::find($request->id);
+        //  dd($deleterecord);
+         $deleterecord->delete();
+         
+           return response()->json([
+             'success' => true,
+             'data' => $deleterecord,
+             'message' => 'Deleted successfully',
+         ]);
     }
+    
 }
