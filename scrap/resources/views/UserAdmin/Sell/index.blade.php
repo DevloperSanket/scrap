@@ -1,18 +1,18 @@
 <x-admin-header />
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>Scraps</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Sell Scrap</li>
+                <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item active">All Scrap</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
         <div class="container">
             <div class="col-12 text-end">
-                <a href="{{ route('scrap.create') }}" class="btn btn-primary ">Sell Scrap</a>
+                <a href="{{ route('scrap.create') }}" class="btn btn-primary ">Add Scrap</a>
             </div>
         </div>
 

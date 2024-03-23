@@ -133,6 +133,7 @@ class SellScrapController extends Controller
   
 
     public function update(Request $request)
+    
 {
     $updatedata = RegisterdSell::find($request->id);
     
@@ -174,5 +175,5 @@ class SellScrapController extends Controller
              'message' => 'Deleted successfully',
          ]);
     }
-    
+
 }

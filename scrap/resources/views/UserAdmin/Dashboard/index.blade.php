@@ -5,7 +5,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">User Dashboard</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -18,7 +18,6 @@
                 <div class="row">
                     <!-- Sales Card -->
                     <div class="col-md-4">
-                    
                         <div class="card info-card sales-card">
                             <div class="card-body pb-0">
                                 <h5 class="card-title">Total Scrap<span></span></h5>
@@ -26,31 +25,30 @@
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cart-check-fill"></i>
+                                        <i class="bi bi-trash2-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>22</h6>
+                                        <h6>{{ $allScrap }}</h6>
                                     </div>
                                 </div>
-                                <a class="dashboard-record" href="#">All Records</a>
+                                <a class="dashboard-record" href="{{ route('scrap.index') }}">All Records</a>
                             </div>
                         </div>
-                    
+
                     </div><!-- End Sales Card -->
 
                     <!-- Revenue Card -->
-                    <div class="col-md-4 ">
-                        <div class="card info-card revenue-card">
+                    <div class="col-md-4">
+                        <div class="card info-card sales-card">
                             <div class="card-body pb-4">
                                 <h5 class="card-title">Pending Request<span></span></h5>
-
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cart-check-fill"></i>
+                                        <i class="bi bi-arrow-counterclockwise"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>12</h6>
+                                        <h6>{{ $pendingScrap }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -68,28 +66,28 @@
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cart-check-fill"></i>
+                                        <i class="bi bi-check"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>322</h6>
+                                        <h6>{{ $acceptedScrap }}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div><!-- End Customers Card -->
-                    <div class="col-md-4">
-                        <div class="card info-card customers-card">
-                            <div class="card-body">
+                    <div class="col-md-4 ">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body pb-4">
                                 <h5 class="card-title">Completed Request<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div
                                         class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cart-check-fill"></i>
+                                        <i class="bi bi-check-circle-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>222</h6>
+                                        <h6>{{ $completedScrap }}</h6>
                                     </div>
                                 </div>
                             </div>
