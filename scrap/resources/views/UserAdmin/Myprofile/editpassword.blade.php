@@ -51,14 +51,13 @@
     $(document).ready(function() {
         $('#userpasswordedit').submit(function(e) {
             e.preventDefault();
-            var formData = $(this).serialize(); // Serialize form data
+            var formData = $(this).serialize();
             var id = $("#userpasswordId").val();
             $('.error-text').text('');
-
             $.ajax({
                 type: "POST",
                 url: "{{ route('profile.updatepassword') }}",
-                data: formData + '&id=' + id, // Include ID in serialized form data
+                data: formData + '&id=' + id,
                 success: function(response) {
                     Swal.fire({
                         icon: 'success',
