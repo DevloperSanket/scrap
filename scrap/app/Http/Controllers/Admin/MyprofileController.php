@@ -79,7 +79,7 @@ class MyprofileController extends Controller
         $user->city = $validateData['city'];
         $user->pincode = $validateData['pincode'];
         $user->address = $validateData['address'];
-
+ 
         $user->save();
 
         return response()->json([

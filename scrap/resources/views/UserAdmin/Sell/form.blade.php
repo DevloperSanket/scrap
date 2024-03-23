@@ -16,21 +16,54 @@
                     <div class="card p-4 border border-3">
                         <div class="card-body">
                             <h4 class="text-center mb-5">Sell Scrap</h4>
+
+                            {{-- <form id="sellscrap" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group mb-4">
+                                    <label for="file">Add Multiple Images (optional)</label>
+                                    <input type="file" id="image-upload" class="form-control" accept="image/*" name="images[]">
+                                    <div id="image-preview"></div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="form-group col-md-6">
+                                        <input type="date" class="form-control" name="date" id="datePicker">
+                                        <span class="text-danger error-text date_error"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="time" class="form-control" name="time" i>
+                                        <span class="text-danger error-text time_error"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select name="category" class="form-select">
+                                        <option selected value="">Open this select menu</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text category_error"></span>
+                                </div>
+                                <div class="form-group mt-4 text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form> --}}
+
                             <form id="sellscrap" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-4">
                                     <label for="file">Add Multiple Images (optional)</label>
                                     <input type="file" id="image-upload" class="form-control" accept="image/*"
                                         name="images[]">
-                                        <div id="image-preview"></div>
+                                    <div id="image-preview"></div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="form-group col-md-6">
-                                        <input type="date" class="form-control" name="date">
+                                        <input type="date" class="form-control" name="date" id="datePicker">
                                         <span class="text-danger error-text date_error"></span>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="time" class="form-control" name="time">
+                                        <input type="time" class="form-control" name="time" id="time"
+                                            step="60">
                                         <span class="text-danger error-text time_error"></span>
                                     </div>
                                 </div>
@@ -97,16 +130,24 @@
         });
     });
 
-        $('#image-upload').change(function() {
-            console.log("change");
-            $('#image-preview').empty();
-            for (var i = 0; i < this.files.length; i++) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
-                    $('#image-preview').append(img);
-                }
-                reader.readAsDataURL(this.files[i]);
+    $('#image-upload').change(function() {
+        console.log("change");
+        $('#image-preview').empty();
+        for (var i = 0; i < this.files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
+                $('#image-preview').append(img);
             }
-        });
+            reader.readAsDataURL(this.files[i]);
+        }
+    });
+
+
+    // Get future date in calander
+    var currentDate = new Date().toISOString().split('T')[0];
+    document.getElementById("datePicker").setAttribute('min', currentDate);
+
+
+   
 </script>

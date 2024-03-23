@@ -16,7 +16,7 @@
                     <div class="card p-4 border border-3">
                         <div class="card-body">
                             <h4 class="text-center">Edit Password</h4>
-                            <form id="userpasswordedit">
+                            {{-- <form id="userpasswordedit">
                                 @csrf
                                 <input type="hidden" value="{{ $userpassword->id }}" id="userpasswordId">
                                 <div class="form-group mt-3">
@@ -37,7 +37,44 @@
                                 <div class="form-group mt-4 text-center">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+                            </form> --}}
+
+                            <form id="userpasswordedit">
+                                @csrf
+                                <input type="hidden" value="{{ $userpassword->id }}" id="userpasswordId">
+                                <div class="form-group mt-3">
+                                    <div class="input-group">
+                                        <input type="password" name="oldpassword" class="form-control" placeholder="Enter Old Password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger error-text oldpassword_error"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <div class="input-group">
+                                        <input type="password" name="newpassword" class="form-control" value="" placeholder="New Password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger error-text newpassword_error"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <div class="input-group">
+                                        <input type="password" name="newpassword_confirmation" class="form-control" value="" placeholder="Confirm Password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger error-text newpassword_confirmation_error"></span>
+                                </div>
+                                <div class="form-group mt-4 text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
+                            
+                            
 
                         </div>
                     </div>

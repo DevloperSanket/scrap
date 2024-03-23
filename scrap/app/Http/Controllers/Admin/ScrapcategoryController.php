@@ -131,6 +131,8 @@ class ScrapcategoryController extends Controller
             'message' => 'Category Updated successfully',
         ]);
     }
+
+    
     public function delete(Request $request)
     {
         // dd($request);
