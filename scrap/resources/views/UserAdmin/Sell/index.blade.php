@@ -19,19 +19,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-4">
+                    <select id='status' class="form-select" style="width: 200px">
+                        <option value="" selected>Select</option>
+                        <option value="1">Pending</option>
+                        <option value="2">In Proccess</option>
+                        <option value="3">Completed</option>
+                    </select>
                     <table id="scrap-table" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th width="10px">
                                     Id
                                 </th>
-                                <th width="10px">
+                                <th style="padding-right: 80px;">
                                     Action
                                 </th>
-                                <th width="10px">
+                                <th style="padding-right: 80px;">
                                     Status
                                 </th>
-                                <th width="10px">
+                                <th style="padding-right: 80px;">
                                     Assigned Driver
                                 </th>
                                 <th>
@@ -80,10 +86,24 @@
         var table = $('#scrap-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('scrap.getdata') }}",
+            responsive: true,
+            ajax: {
+                url: "{{ route('scrap.getdata') }}",
+                data: function(d) {
+                    status = $('#status').val();
+                    if (status) {
+                        d.status = status;
+                    }
+                }
+            },
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
+            scrollX: true,
+            scrollY: 300,
             columns: [{
                     render: function(data, type, row, meta) {
-                        return i++;
+                        return meta.row + 1;
                     }
                 },
                 {
@@ -118,7 +138,9 @@
                 }
             ]
         });
-
+        $('#status').change(function() {
+            table.ajax.reload();
+        });
     });
 
 
@@ -130,7 +152,7 @@
     }
 
 
-    
+
     function deletefunction(deleteId) {
         console.log(deleteId);
         var id = deleteId;

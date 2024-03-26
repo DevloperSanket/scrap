@@ -68,9 +68,13 @@ class SellScrapController extends Controller
 
 
 
-    public function scrapRecord()
+    public function scrapRecord(Request $request)
     {
         $usersell = RegisterdSell::with('scrapcategories', 'registredImages', 'driver')->get();
+
+        if (!empty($request->get('status'))) {
+            $usersell = $usersell->where('status', $request->get('status'));
+        }
 
         return DataTables::of($usersell)
             ->addColumn('category', function ($usersell) {
