@@ -46,8 +46,6 @@
                                 <th>
                                     Scrap Images
                                 </th>
-
-
                             </tr>
                         </thead>
                         <tbody>

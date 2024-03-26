@@ -92,9 +92,6 @@
         // Form submission handling
         $('#userpasswordedit').submit(function(e) {
             e.preventDefault();
-<<<<<<< HEAD
-            var formData = $(this).serialize();
-=======
             var newPassword = $('#form3Example5').val();
             var confirmPassword = $('#form3Example6').val();
 
@@ -106,7 +103,6 @@
             }
 
             var formData = $(this).serialize(); // Serialize form data
->>>>>>> f640977d5ae6f971e0a7272854ab03f789240333
             var id = $("#userpasswordId").val();
             $('.error-text').text('');
             $.ajax({

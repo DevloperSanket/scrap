@@ -163,7 +163,6 @@
 
     // image preview 
     $('#image-upload-directsell').change(function() {
-        console.log("change");
         $('#image-preview-directsell').empty();
         for (var i = 0; i < this.files.length; i++) {
             var reader = new FileReader();
