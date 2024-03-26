@@ -163,6 +163,13 @@
                 {
                     data: 'date',
                     name: 'date',
+                    render: function(data, type, row) {
+                    var date = new Date(data);
+                    var day = date.getDate();
+                    var month = date.getMonth() + 1;
+                    var year = date.getFullYear().toString().substr(-2); 
+                    return (day < 10 ? '0' + day : day) + '/' + (month < 10 ? '0' + month : month) + '/' + year;
+                  }
                 },
                 {
                     data: 'time',
@@ -245,6 +252,7 @@
                     },
                     success: function(response) {
                         Swal.fire("Driver Changed!", "", "success");
+                        location.reload();
                     },
                     error: function(xhr, driver, error) {
                         if (xhr.driver === 422) {

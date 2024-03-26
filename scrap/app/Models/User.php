@@ -65,6 +65,9 @@ class User extends Authenticatable
         return $this->hasMany(ScrapCategories::class);
     }
 
-
+    public function registeredSells()
+    {
+        return $this->hasMany(RegisterdSell::class);
+    }
  
 }

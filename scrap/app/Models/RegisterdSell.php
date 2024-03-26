@@ -9,7 +9,7 @@ class RegisterdSell extends Model
 {
     protected $table = 'registerd_sells';
 
-    protected $fillable = ['date','time','category','status','driver'];
+    protected $fillable = ['date','time','category','status','driver','user_id'];
 
     public function registredImages(){
         return $this->hasMany(RegistredImage::class,'registerd_sells_id');
@@ -21,6 +21,11 @@ class RegisterdSell extends Model
 
     public function driver()
     {
-        return $this->belongsTo(Driver::class, 'driver'); // Assuming 'driver' is the foreign key
+        return $this->belongsTo(Driver::class, 'driver'); 
+    }
+
+    public function registereduserdata()
+    {
+        return $this->belongsTo(User::class, 'user_id'); 
     }
 }

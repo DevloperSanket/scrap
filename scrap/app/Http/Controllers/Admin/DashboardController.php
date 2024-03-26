@@ -12,6 +12,8 @@ use App\Models\ScrapCategories;
 use App\Models\Directimage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 use DataTables;
 
 class DashboardController extends Controller
@@ -174,7 +176,7 @@ class DashboardController extends Controller
             
                 return $driverSelect;
             })
-
+         
            
 
             ->rawColumns([ 'status','category','name', 'email', 'number', 'city', 'pincode','date','time', 'address','image', 'driver'])
@@ -190,7 +192,7 @@ class DashboardController extends Controller
 
     public function scrapRecord()
     {
-        $usersell = RegisterdSell::with('scrapCategories', 'registredImages')->get();
+        $usersell = RegisterdSell::with('scrapCategories', 'registredImages','registereduserdata')->get();
 
         // dd($usersell);
         return DataTables::of($usersell)
@@ -248,10 +250,22 @@ class DashboardController extends Controller
             
                 return $driverSelectR;
             })
+
+            ->addColumn('details', function ($usersell) {
+                // dd($usersell->user->id);
+
+                return $usersell->registereduserdata->name;
+                // if ($usersell->user) {
+                //     return $usersell->user->id;
+                // } else {
+                //     return 'User not found';
+                // }
+
+            })
             
 
 
-            ->rawColumns([ 'status' ,'driver','category', 'date', 'time', 'image'])
+            ->rawColumns(['status' ,'driver','category', 'date', 'time', 'image','details'])
             ->make(true);
     } 
 
@@ -295,12 +309,29 @@ class DashboardController extends Controller
      ///  driver assign for direct sell
      public function directsellDriver(Request $request)
      {
-         // dd($request);
+        //  dd($request);
          $id = $request->id;
          $driver = $request->driver;
          $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
          // dd($query);
-         if ($query) {
+         $driverData = Driver::findOrFail($driver);
+         $name = DirectSell::where('id', $id)->value('name');
+         $email = DirectSell::where('id', $id)->value('email');
+
+
+         if ($query) { 
+
+            $title = 'Scrap Take Out Details';
+
+            $body = "Hi, $name <br><br> Your Scrap Collecting Request is Approved , 
+            Our driver will pick the scrap for you. Below are the details of the driver.<br>
+            Driver Name: $driverData->name <br> Driver Mobile No: $driverData->mobile <br><br> Thank you For Choosing Us !!!<br>For any query contact us at : 1234567891<br>
+            <img src='{{ ../images/logo/logo.png }}'>";
+                
+
+            Mail::to($email)->send(new WelcomeMail($title,$body));
+
+        
              return response()->json([
                  'success' => true,
                  'data' => $query,

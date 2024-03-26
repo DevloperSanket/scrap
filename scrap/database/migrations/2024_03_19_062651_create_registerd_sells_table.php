@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('category')->nullable();
             $table->integer('status')->default(1);
             $table->integer('driver')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

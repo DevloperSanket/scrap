@@ -8,6 +8,7 @@ use App\Models\ScrapCategories;
 use App\Models\RegisterdSell;
 use App\Models\Driver;
 use App\Models\RegistredImage;
+use Illuminate\Support\Facades\Auth;
 use DataTables;
 
 class SellScrapController extends Controller
@@ -45,6 +46,7 @@ class SellScrapController extends Controller
             'date' => $validatedData['date'],
             'time' => $validatedData['time'],
             'category' => $validatedData['category'],
+            'user_id' => $validatedData['user_id'],
         ]);
 
         if ($request->hasFile('images')) {
@@ -71,6 +73,8 @@ class SellScrapController extends Controller
     public function scrapRecord()
     {
         $usersell = RegisterdSell::with('scrapcategories', 'registredImages', 'driver')->get();
+
+       
 
         return DataTables::of($usersell)
             ->addColumn('category', function ($usersell) {
@@ -115,6 +119,7 @@ class SellScrapController extends Controller
             ->addColumn('driver', function ($usersell) {
                 return $usersell->Driver->name ?? 'No Driver';
             })
+          
 
             ->rawColumns(['action', 'status', 'category', 'date', 'time', 'image', 'driver'])
             ->make(true);

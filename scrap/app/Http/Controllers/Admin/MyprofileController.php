@@ -141,4 +141,13 @@ class MyprofileController extends Controller
             'message' => 'Password updated successfully.',
         ]);
     }
+
+    // public function show($id)
+    // {
+    //     $user = User::find($id);
+    //     if (!$user) {
+    //         return response()->json(['error' => 'User not found'], 404);
+    //     }
+    //     return response()->json($user);
+    // }
 }

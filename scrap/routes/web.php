@@ -86,8 +86,9 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/show-registeredselltable', [DashboardController::class, 'scrapRecord'])->name('dashboard-registeredselltable');
     Route::post('/changeregisteredsellStatus', [DashboardController::class, 'registeredsellStatus'])->name('registeredsellstatusChange');
     Route::post('/changeregisteredselldriver', [DashboardController::class, 'registeredsellDriver'])->name('registeredselldriverChange');
+    
 
-
+    Route::get('/send-email', [DashboardController::class, 'sendEmail'])->name('sendemail');
 
     // scrap category
     Route::get('/scrapcategory', [ScrapcategoryController::class, 'index'])->name('scrapcategory.index');
@@ -143,7 +144,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
 
 
 // Authenticated Routes for UserAdmin
-Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
+    Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::get('userAdmin-dashboard',[UserDashboardController::class,'index'])->name('user.dashboard');
 
 
@@ -164,5 +165,6 @@ Route::group(['middleware'=> 'auth', 'UserAdmin'], function (){
     Route::post('/update-profile', [MyprofileController::class,'update'])->name('profile.update');
     Route::get('/userProfile-editpassword', [MyprofileController::class, 'editpassword'])->name('profile.editpassword');
     Route::post('/userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
+    // Route::get('myprofile/{id}', [MyprofileController::class, 'show'])->name('dashboard.showregistereduserdata');
 });
 
