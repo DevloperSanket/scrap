@@ -67,7 +67,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -126,7 +125,8 @@
 
 
     function showData(imageUrl) {
-        var assetUrl = "{{ asset('') }}" + imageUrl; // Concatenating imageUrl with asset root
+        var assetUrl = "{{ asset('') }}" + imageUrl;
+        console.log(assetUrl);
         $('#exampleModal .modal-body').html('<img class="col-3" src="' + assetUrl + '" class="img-fluid">');
         $('#exampleModal').modal('show');
     }

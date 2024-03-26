@@ -8,7 +8,6 @@ use App\Models\ScrapCategories;
 use App\Models\Card;
 
 use DataTables;
-use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
@@ -109,7 +108,8 @@ class CardController extends Controller
 
     public function update(Request $request)
     {
-        // dd($request);
+        // dd($request->all());
+        
         $rules = [
             'category_id' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -122,8 +122,9 @@ class CardController extends Controller
             'price.required' => 'Price is required',
         ];
         $validatedData = $request->validate($rules, $messages);
-
-        $editcard = Card::find($request->id);
+        
+        $editcard = Card::find($request->cardId);
+        // print_r($editcard);
         
         $editcard->category_id = $validatedData['category_id'];
         $editcard->price = $validatedData['price'];

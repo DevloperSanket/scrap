@@ -70,18 +70,17 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-outline">
-                                                <input type="date" name="date" class="form-control" id="datePicker"
-                                                    placeholder="Select Date">
+                                                <input type="date" name="date" class="form-control"
+                                                    id="datePicker" placeholder="Select Date">
                                                 <span class="text-danger error-text date_error"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-outline">
-                                              <input type="time" name="time" class="form-control" id="time"
-                                                     placeholder="Select Time">
-                                              <span class="text-danger error-text time_error"></span>
+                                            <div class="form-outline mt-1">
+                                                <input name="time" class="form-control" id="timepicker" style="box-shadow:none;">
+                                                <span class="text-danger error-text time_error"></span>
                                             </div>
-                                        </div>  
+                                        </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-3">
@@ -89,8 +88,8 @@
                                             <label class="form-label mt-3" for="form3Example4cd">Select Scrap Images
                                                 (Optional) </label>
                                             <input type="file" id="image-upload-directsell" class="form-control"
-                                                name="images[]" placeholder="Enter Pincode" accept="image/*"
-                                               ><div id="image-preview-directsell"></div>
+                                                name="images[]" placeholder="Enter Pincode" accept="image/*">
+                                            <div id="image-preview-directsell"></div>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row align-items-center mb-3">
@@ -120,14 +119,12 @@
 
 <x-frontend-footer />
 <script type="text/javascript">
-
-
     $(document).ready(function() {
         $('#directSell').submit(function(e) {
             e.preventDefault();
             $('.error-text').text('');
 
-            var formData = new FormData(this); 
+            var formData = new FormData(this);
             $.ajax({
                 type: "POST",
                 url: "{{ route('directsell.store') }}",
@@ -166,24 +163,29 @@
 
     // image preview 
     $('#image-upload-directsell').change(function() {
-            console.log("change");
-            $('#image-preview-directsell').empty();
-            for (var i = 0; i < this.files.length; i++) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
-                    $('#image-preview-directsell').append(img);
-                }
-                reader.readAsDataURL(this.files[i]);
+        console.log("change");
+        $('#image-preview-directsell').empty();
+        for (var i = 0; i < this.files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
+                $('#image-preview-directsell').append(img);
             }
-        });
+            reader.readAsDataURL(this.files[i]);
+        }
+    });
 
 
 
-        // Get only current and future dates in calander
+    // Get only current and future dates in calander
     var currentDate = new Date().toISOString().split('T')[0];
     document.getElementById("datePicker").setAttribute('min', currentDate);
 
-
-
+    $('#timepicker').timepicker({
+        timeFormat: 'h:mm p',
+            interval: 15,
+            dynamic: false, 
+            dropdown: true,
+            scrollbar: true,
+    });
 </script>

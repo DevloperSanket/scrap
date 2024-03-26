@@ -18,12 +18,16 @@
                             <h4 class="text-center">Edit Cards</h4>
                             <form id="editCard" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" id="cardId" name="cardId" value="{{$card->id}}">
-                                <select class="form-select" name="category_id" aria-label="Default select example">
-                                    @foreach ($categories as $category)
-                                        <option {{ $card->category_id == $category->id ? 'selected' : '' }} value="{{$category->id}}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="hidden" id="cardId" name="cardId" value="{{ $card->id }}">
+                                <div class="form-group">
+                                    <select class="form-select" name="category_id" aria-label="Default select example">
+                                        @foreach ($categories as $category)
+                                            <option {{ $card->category_id == $category->id ? 'selected' : '' }}
+                                                value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger error-text category_id_error"></span>
+                                </div>
                                 <div class="form-group mt-3">
                                     <input class="form-control" name="image" type="file" id="image-input"
                                         onchange="previewImage()">
@@ -33,13 +37,15 @@
                                 </div>
 
                                 <div class="form-group mt-3">
-                                    <input type="text" name="price" value="{{$card->price}}" class="form-control" placeholder="Enter Price">
+                                    <input type="text" name="price" value="{{ old('price', $card->price) }}"
+                                        class="form-control" placeholder="Enter Price">
                                     <span class="text-danger error-text price_error"></span>
                                 </div>
                                 <div class="form-group mt-4 text-center">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -49,51 +55,57 @@
 </main>
 <x-admin-footer />
 <script>
-   $(document).ready(function() {
-    $('#editCard').submit(function(e) {
-        e.preventDefault();
-        var formData = $(this).serialize(); // Serialize form data
+    $(document).ready(function() {
+        $('#editCard').submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
 
-        // Include CSRF token in the headers
-        var headers = {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        };
+            var headers = {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            };
 
-        var id = $("#cardId").val();
-        $('.error-text').text('');
+            var id = $("#cardId").val();
+            $('.error-text').text('');
 
-        $.ajax({
-            type: "POST",
-            url: "{{ route('card.update') }}",
-            headers: headers, 
-            data: formData + '&id=' + id,
-            success: function(response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Updated successfully.'
-                }).then(() => {
-                    window.location.href = "{{ route('card.index') }}";
-                });
-                $('#editCard')[0].reset();
-            },
-            error: function(xhr, status, error) {
-                if (xhr.status === 422) {
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function(key, value) {
-                        $('.' + key + '_error').text(value[0]);
-                    });
-                } else {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('card.update') }}",
+                headers: headers,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong! Please try again later.'
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Updated successfully.'
+                    }).then(() => {
+                        window.location.href = "{{ route('card.index') }}";
                     });
+                    $('#editCard')[0].reset();
+                },
+                error: function(xhr, status, error) {
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('.' + key + '_error').text(value[0]);
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong! Please try again later.'
+                        });
+                    }
                 }
-            }
+            });
         });
     });
-});
+
+
+
+
+
     function previewImage() {
         var input = document.getElementById('image-input');
         var preview = document.getElementById('output');
