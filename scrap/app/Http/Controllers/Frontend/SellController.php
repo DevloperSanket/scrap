@@ -68,14 +68,6 @@ class SellController extends Controller {
                 return $query->address;
             }) 
 
-            ->addColumn('status', function ($query) {
-        //        $status = '<div class="form-check form-switch">
-        //    <input class="form-check-input text-center" type="checkbox" ' . ($query->status == 1 ? 'checked' : '') . ' role="switch" data-id="' . $query->id . '" onchange="cardStatusChange(' . $query->id . ')">
-        // </div>';
-                return $status;
-            })
-
-
             ->rawColumns(['name','email','number','city','pincode','scraptype','date','time','image','address'])
             ->make(true);
     }
@@ -145,35 +137,5 @@ class SellController extends Controller {
 
     }
 
-    /**
-    * Display the specified resource.
-    */
-
-    public function show( string $id ) {
-        
-    }
-
-    /**
-    * Show the form for editing the specified resource.
-    */
-
-    public function edit( string $id ) {
-        //
-    }
-
-    /**
-    * Update the specified resource in storage.
-    */
-
-    public function update( Request $request, string $id ) {
-        //
-    }
-
-    /**
-    * Remove the specified resource from storage.
-    */
-
-    public function destroy( string $id ) {
-        //
-    }
+  
 }

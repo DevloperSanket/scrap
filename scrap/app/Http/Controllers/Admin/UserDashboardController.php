@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\RegisterdSell;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
@@ -14,7 +15,12 @@ class UserDashboardController extends Controller
     public function index()
     {
         if(Auth::check()){
-        return view('UserAdmin.Dashboard.index');
+
+            $allScrap = RegisterdSell::get()->count();
+            $pendingScrap = RegisterdSell::where('status', 1)->count();
+            $acceptedScrap = RegisterdSell::where('status', 2)->count();
+            $completedScrap = RegisterdSell::where('status', 3)->count();
+        return view('UserAdmin.Dashboard.index',compact('allScrap','pendingScrap','acceptedScrap','completedScrap'));
         }
         return redirect("login")->withSuccess('Opps! You do not have access');
     }

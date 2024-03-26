@@ -16,55 +16,37 @@
                     <div class="card p-4 border border-3">
                         <div class="card-body">
                             <h4 class="text-center">Edit Password</h4>
-                            {{-- <form id="userpasswordedit">
-                                @csrf
-                                <input type="hidden" value="{{ $userpassword->id }}" id="userpasswordId">
-                                <div class="form-group mt-3">
-                                    <input type="password" name="oldpassword" class="form-control"
-                                        placeholder="Enter Old Password">
-                                    <span class="text-danger error-text oldpassword_error"></span>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <input type="password" name="newpassword" class="form-control" value=""
-                                        placeholder="New Password">
-                                    <span class="text-danger error-text newpassword_error"></span>
-                                </div>
-                                <div class="form-group mt-3">
-                                    <input type="password" name="newpassword_confirmation" class="form-control"
-                                        value="" placeholder="Confirm Password">
-                                    <span class="text-danger error-text newpassword_confirmation_error"></span>
-                                </div>
-                                <div class="form-group mt-4 text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form> --}}
+
 
                             <form id="userpasswordedit">
                                 @csrf
                                 <input type="hidden" value="{{ $userpassword->id }}" id="userpasswordId">
                                 <div class="form-group mt-3">
                                     <div class="input-group">
-                                        <input type="password" name="oldpassword" class="form-control" placeholder="Enter Old Password">
+                                        <input type="password" name="oldpassword" class="form-control" placeholder="Enter Old Password" id="form3Example4">
                                         <div class="input-group-append">
-                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                            <span class="input-group-text toggle-password1"><i
+                                                class="bi bi-eye-slash-fill"></i></span>
                                         </div>
                                     </div>
                                     <span class="text-danger error-text oldpassword_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class="input-group">
-                                        <input type="password" name="newpassword" class="form-control" value="" placeholder="New Password">
+                                        <input type="password" name="newpassword" class="form-control" placeholder="New Password" id="form3Example5">
                                         <div class="input-group-append">
-                                            <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                                            <span class="input-group-text toggle-password2"><i
+                                                class="bi bi-eye-slash-fill"></i></span>
                                         </div>
                                     </div>
                                     <span class="text-danger error-text newpassword_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class="input-group">
-                                        <input type="password" name="newpassword_confirmation" class="form-control" value="" placeholder="Confirm Password">
+                                        <input type="password" name="newpassword_confirmation" class="form-control" placeholder="Confirm Password" id="form3Example6">
                                         <div class="input-group-append">
-                                            <span class="input-group-text"><i class="bi bi-eye-slash-fill"></i></span>
+                                            <span class="input-group-text toggle-password3"><i
+                                                class="bi bi-eye-slash-fill"></i></span>
                                         </div>
                                     </div>
                                     <span class="text-danger error-text newpassword_confirmation_error"></span>
@@ -73,9 +55,6 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-                            
-                            
-
                         </div>
                     </div>
                 </div>
@@ -86,13 +65,52 @@
 <x-admin-footer />
 <script>
     $(document).ready(function() {
+        // Function to toggle password visibility for old password field
+        $('.toggle-password1').click(function() {
+            const $passwordField = $('#form3Example4');
+            const type = $passwordField.attr('type') === 'password' ? 'text' : 'password';
+            $passwordField.attr('type', type);
+            $(this).find('i').toggleClass('bi-eye-slash-fill bi-eye-fill');
+        });
+
+        // Function to toggle password visibility for new password field
+        $('.toggle-password2').click(function() {
+            const $passwordField = $('#form3Example5');
+            const type = $passwordField.attr('type') === 'password' ? 'text' : 'password';
+            $passwordField.attr('type', type);
+            $(this).find('i').toggleClass('bi-eye-slash-fill bi-eye-fill');
+        });
+
+        // Function to toggle password visibility for confirm password field
+        $('.toggle-password3').click(function() {
+            const $passwordField = $('#form3Example6');
+            const type = $passwordField.attr('type') === 'password' ? 'text' : 'password';
+            $passwordField.attr('type', type);
+            $(this).find('i').toggleClass('bi-eye-slash-fill bi-eye-fill');
+        });
+
+        // Form submission handling
         $('#userpasswordedit').submit(function(e) {
             e.preventDefault();
+<<<<<<< HEAD
             var formData = $(this).serialize();
+=======
+            var newPassword = $('#form3Example5').val();
+            var confirmPassword = $('#form3Example6').val();
+
+            $('.confirmpassword_error').text('');
+
+            if (newPassword !== confirmPassword) {
+                $('.confirmpassword_error').text('The new password confirmation does not match.');
+                return;
+            }
+
+            var formData = $(this).serialize(); // Serialize form data
+>>>>>>> f640977d5ae6f971e0a7272854ab03f789240333
             var id = $("#userpasswordId").val();
             $('.error-text').text('');
             $.ajax({
-                type: "POST",
+                type: 'POST',
                 url: "{{ route('profile.updatepassword') }}",
                 data: formData + '&id=' + id,
                 success: function(response) {
@@ -132,3 +150,4 @@
         });
     });
 </script>
+

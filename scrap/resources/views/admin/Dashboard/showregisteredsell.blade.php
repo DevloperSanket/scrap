@@ -1,21 +1,16 @@
 <x-admin-header />
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>All Registered Sells Requests</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item active">All Registered Sells</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <section>
-        <div class="container">
-            <div class="col-12">
-                <h3>All Registered Sell Enquiry</h3>
-            </div>
-        </div>
-
+      
 
         <div class="container">
             <div class="row">
@@ -196,9 +191,8 @@
 
     // Show confirmation dialog
     Swal.fire({
-        title: "Are you sure you want to go with this driver?",
+        title: "Are you sure you want to go with this driver ?",
         showDenyButton: true,
-        showCancelButton: true,
         confirmButtonText: "Yes",
     }).then((result) => {
         if (result.isConfirmed) {
@@ -235,6 +229,7 @@
             // User denied, revert the selection
             $("#" + driverId).val('').change(); // Reset dropdown to default
             Swal.fire("Driver Not Changed", "", "info");
+            location.reload();
         }
     });
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\SellController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserDashboardController;
 use App\Http\Controllers\Admin\SellScrapController;
 use App\Http\Controllers\Admin\MyprofileController;
+
+use App\Http\Controllers\MailController;
 
 
 /*
@@ -128,6 +131,11 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/edit-driver/{id}', [DriverController:: class, 'edit'])->name('driver.edit');
     Route::post('/update-driver', [DriverController::class, 'update'])->name('driver.update');
     Route::post('/delete-driver', [DriverController::class, 'delete'])->name('driver.delete');
+
+
+    // email send
+    Route::get ('/send-mail',[MailController::class,'mailform']);
+    Route::post ('/send-mail',[MailController::class,'maildata'])->name('send_mail');
 
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');

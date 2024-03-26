@@ -5,7 +5,7 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('send_mail')}}">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
@@ -85,14 +85,15 @@
     {{-- Direct Enquiry --}}
     <section class="section dashboard">
         <div class="row">
-            <!-- Left side columns -->
+            <div class="pagetitle">
+                <h1>Direct Sell Requests</h1>
+            </div>
             <div class="col-md-12">
                 <div class="row">
-                    <h2>Direct Sell Enquiries</h2>
                     <div class="col-md-4">
                         <div class="card info-card sales-card">
                             <div class="card-body pb-0">
-                                <h5 class="card-title">New Enquiry<span></span></h5>
+                                <h5 class="card-title">New Requests<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div
@@ -157,14 +158,15 @@
     {{-- Registered Enquiry --}}
     <section class="section dashboard">
         <div class="row">
-            <!-- Left side columns -->
+            <div class="pagetitle">
+                <h1>Registered Sell Requests</h1>
+            </div>
             <div class="col-md-12">
                 <div class="row">
-                    <h2>Registered Sell Enquiries</h2>
                     <div class="col-md-4">
                         <div class="card info-card sales-card">
                             <div class="card-body pb-0">
-                                <h5 class="card-title">New Enquiry<span></span></h5>
+                                <h5 class="card-title">New Requests<span></span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div

@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <input type="text" name="city" class="form-control"
-                                        value="{{ $user->city }}" placeholder="Enter Name">
+                                        value="{{ $user->city }}" placeholder="Enter City">
                                     <span class="text-danger error-text city_error"></span>
                                 </div>
                                 <div class="form-group mt-3">
