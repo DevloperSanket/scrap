@@ -9,6 +9,7 @@ use App\Models\RegisterdSell;
 use App\Models\Driver;
 use App\Models\RegistredImage;
 use Illuminate\Support\Facades\Auth;
+
 use DataTables;
 
 class SellScrapController extends Controller
@@ -42,12 +43,11 @@ class SellScrapController extends Controller
         ];
         $validatedData = $request->validate($rules, $messages);
 
-        $scrap = RegisterdSell::create([
-            'date' => $validatedData['date'],
-            'time' => $validatedData['time'],
-            'category' => $validatedData['category'],
-            'user_id' => $validatedData['user_id'],
-        ]);
+        $scrap = new RegisterdSell();
+        $scrap->date = $validatedData['date'];
+        $scrap->time =  $validatedData['time'];
+        $scrap->category = $validatedData['category'];
+        $scrap->user_id = Auth::id();
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -59,6 +59,8 @@ class SellScrapController extends Controller
                 ]);
             }
         }
+
+        $scrap->save();
 
         // Return a JSON response
         return response()->json([
