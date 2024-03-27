@@ -23,7 +23,7 @@ class SellScrapController extends Controller
 
     public function create()
     {
-        $categories = ScrapCategories::get();
+        $categories = ScrapCategories::where('status', 1)->get();
         // dd($categories);
         return view('UserAdmin.sell.form', compact('categories'));
     }

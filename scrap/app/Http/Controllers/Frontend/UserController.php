@@ -34,7 +34,18 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users')],
             'mobile' => 'required|max:10',
             'city' => 'required',
-            'pincode' => 'required|digits:6|exists:pincodes,pincode',
+            'pincode' => [
+                'required',
+                'digits:6',
+                'exists:pincodes,pincode',
+                function ($attribute, $value, $fail) {
+                    // Check if the pincode status is 1
+                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
+                    if ($pincodeStatus != 1) {
+                        $fail('Pincode is not serviceable.');
+                    }
+                },
+            ],
             'address' => 'required',
             'password' => 'required'
         ];

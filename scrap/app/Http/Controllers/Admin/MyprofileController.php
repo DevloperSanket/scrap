@@ -53,7 +53,18 @@ class MyprofileController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $request->id,
             'mobile' => 'required|max:10',
             'city' => 'required',
-            'pincode' => 'required|digits:6|exists:pincodes,pincode',
+            'pincode' =>  [
+                'required',
+                'digits:6',
+                'exists:pincodes,pincode',
+                function ($attribute, $value, $fail) {
+                    // Check if the pincode status is 1
+                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
+                    if ($pincodeStatus != 1) {
+                        $fail('Pincode is not serviceable.');
+                    }
+                },
+            ],
             'address' => 'required',
         ];
 
@@ -142,12 +153,5 @@ class MyprofileController extends Controller
         ]);
     }
 
-    // public function show($id)
-    // {
-    //     $user = User::find($id);
-    //     if (!$user) {
-    //         return response()->json(['error' => 'User not found'], 404);
-    //     }
-    //     return response()->json($user);
-    // }
+  
 }

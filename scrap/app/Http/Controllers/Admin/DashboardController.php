@@ -12,9 +12,13 @@ use App\Models\ScrapCategories;
 use App\Models\Directimage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use DataTables;
+
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
-use DataTables;
+use Illuminate\Mail\Message;
+use Swift_Image;
+
 
 class DashboardController extends Controller
 {
@@ -242,6 +246,7 @@ class DashboardController extends Controller
                 return $status;
             })
 
+
             ->addColumn('driver', function ($usersell) {
                 $driverSelectR = '<select class="form-select" onchange="DriverStatusChange(' . $usersell->id . ', this.value, this.options[this.selectedIndex].getAttribute(\'data-driver-id\'))">';
 
@@ -312,6 +317,7 @@ class DashboardController extends Controller
     }
 
 
+<<<<<<< HEAD
     ///  driver assign for direct sell
     public function directsellDriver(Request $request)
     {
@@ -326,9 +332,36 @@ class DashboardController extends Controller
 
 
         if ($query) {
+=======
+     /////////  driver assign for direct sell
+    //  public function directsellDriver(Request $request)
+    //  {
+    //     //  dd($request);
+    //      $id = $request->id;
+    //      $driver = $request->driver;
+    //      $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
+    //      // dd($query);
+    //      $driverData = Driver::findOrFail($driver);
+    //      $name = DirectSell::where('id', $id)->value('name');
+    //      $email = DirectSell::where('id', $id)->value('email');
 
-            $title = 'Scrap Take Out Details';
 
+    //      if ($query) { 
+    //         $imagePath = public_path('frontend/theam/assets/images/logo/logo.png');
+    //         $imageData = base64_encode(file_get_contents($imagePath));
+    //         $imageUrl = 'data:image/png;base64,' . $imageData; 
+    //         $imageHeight = 80; 
+    //         $imageWidth = 170; 
+>>>>>>> 5a4bfb250306dcb8642277815581582aed5807f7
+
+    //         $title = 'Scrap Take Out Details';
+    //         $body = "Hi, $name <br><br> Your Scrap Collecting Request is Approved , 
+    //         Our driver will pick the scrap for you. Below are the details of the driver who will pick up the scrap.<br>
+    //         Driver Name: $driverData->name <br> Driver Mobile No: $driverData->mobile <br><br> Thank you For Choosing Us !!!<br>
+    //         For any query Contact Us at : <br> Mobile no. - 1234567891<br>Email Us at : example@gmail.com<br> Website url : scrap24x7.com <br>
+    //         <img src='$imageUrl' height='$imageHeight' width='$imageWidth'>";
+
+<<<<<<< HEAD
             $body = "Hi, $name <br><br> Your Scrap Collecting Request is Approved , 
             Our driver will pick the scrap for you. Below are the details of the driver.<br>
             Driver Name: $driverData->name <br> Driver Mobile No: $driverData->mobile <br><br> Thank you For Choosing Us !!!<br>For any query contact us at : 1234567891<br>
@@ -347,6 +380,71 @@ class DashboardController extends Controller
             return response()->json(['message' => 'Record not found or driver unchanged'], 404);
         }
     }
+=======
+    //         Mail::to($email)->send(new WelcomeMail($title,$body));
+
+
+
+
+
+    //          return response()->json([
+    //              'success' => true,
+    //              'data' => $query,
+    //              'message' => 'Status updated successfully'
+    //          ], 200);
+    //      } else {
+    //          return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+    //      }
+    //  }
+
+    public function directsellDriver(Request $request)
+{
+    $id = $request->id;
+    $driver = $request->driver;
+    $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
+
+    if ($query) {
+        $driverData = Driver::findOrFail($driver);
+        $name = DirectSell::where('id', $id)->value('name');
+        $email = DirectSell::where('id', $id)->value('email');
+
+        $imageUrl = asset('frontend/theam/assets/images/logo/logo.png');
+        $imageHeight = 80;
+        $imageWidth = 170;
+
+        // Construct the email body with embedded image
+        $title = 'Scrap Take Out Details';
+        $body = "<html>
+                    <body>
+                        <p>Hi, $name,</p>
+                        <p>Your Scrap Collecting Request is Approved. Our driver will pick the scrap for you.</p>
+                        <p>Below are the details of the driver who will pick up the scrap:</p>
+                        <p>Driver Name: $driverData->name</p>
+                        <p>Driver Mobile No: $driverData->mobile</p>
+                        <p>Thank you for choosing us!</p>
+                        <p>For any queries, contact us at:</p>
+                        <ul>
+                            <li>Mobile no. - 1234567891</li>
+                            <li>Email us at: example@gmail.com</li>
+                            <li>Website URL: scrap24x7.com</li>
+                        </ul>
+                        <img src='$imageUrl' alt='Logo' height='$imageHeight' width='$imageWidth'>
+                    </body>
+                </html>";
+
+        // Send email
+        Mail::to($email)->send(new WelcomeMail($title, $body));
+
+        return response()->json([
+            'success' => true,
+            'data' => $query,
+            'message' => 'Status updated successfully'
+        ], 200);
+    } else {
+        return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+    }
+}
+>>>>>>> 5a4bfb250306dcb8642277815581582aed5807f7
 
 
     /// for registered status
@@ -357,7 +455,11 @@ class DashboardController extends Controller
         $status = $request->status;
         $query = RegisterdSell::where('id', $id)->update(['status' => $status]);
         // dd($query);
+      
+
         if ($query) {
+
+
             return response()->json([
                 'success' => true,
                 'data' => $query,
@@ -369,6 +471,7 @@ class DashboardController extends Controller
     }
 
 
+<<<<<<< HEAD
     /// driver status for registered sell
     public function registeredsellDriver(Request $request)
     {
@@ -386,4 +489,29 @@ class DashboardController extends Controller
             return response()->json(['message' => 'Record not found or driver unchanged'], 404);
         }
     }
+=======
+     /// driver status for registered sell
+     public function registeredsellDriver(Request $request)
+     {
+         $id = $request->id;
+         $driver = $request->driver;
+         $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
+         // dd($query);
+         $driverData = Driver::findOrFail($driver);
+      
+ 
+
+         if ($query) {
+             return response()->json([
+                 'success' => true,
+                 'data' => $query,
+                 'message' => 'Status updated successfully'
+             ], 200);
+         } else {
+             return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+         }
+     }
+
+
+>>>>>>> 5a4bfb250306dcb8642277815581582aed5807f7
 }
