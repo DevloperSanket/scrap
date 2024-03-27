@@ -23,7 +23,6 @@ class WelcomeMail extends Mailable
     public function __construct($emaildata)
     {
         $this->data = $emaildata;
-
     }
 
     /**

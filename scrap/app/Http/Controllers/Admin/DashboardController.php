@@ -444,11 +444,15 @@ class DashboardController extends Controller
          // Access user data related to the registered sell
          $userName = $registerdSellUserData->user->name;
          $userEmail = $registerdSellUserData->user->email;
+         $date = $registerdSellUserData->date;
+         $time = $registerdSellUserData->time;
 
 
          $emaildata = new Request([
             'email' => $userEmail,
             'name' => $userName,
+            'date' => $date,
+            'time' => $time,
             'driver_name' => $driverData->name,
             'driver_mobile' => $driverData->mobile,
             ]);
