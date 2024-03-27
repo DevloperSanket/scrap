@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\MyprofileController;
 
 use App\Http\Controllers\MailController;
 
+use App\Http\Controllers\Frontend\ForgetpasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +64,15 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('index',[SellController::class,'index'])->name('sell.index');
     Route::post('/index', [SellController::class, 'store'])->name('directsell.store');
     Route::get('directselldata', [SellController::class, 'directselldata'])->name('directsell.record');
-   
-    
 
+
+    // Forget Password
+    Route::get('/forget',[ForgetpasswordController::class,'index'])->name('forget.name');
+    Route::post('/forget-post',[ForgetpasswordController::class,'create'])->name('forget.post');
+    Route::get('/getotp',[ForgetpasswordController::class,'setotp'])->name('forget.setotp');
+    Route::post('/matchotp',[ForgetpasswordController::class,'matchotp'])->name('forget.matchotp');
+    Route::get('/passwordcheck',[ForgetpasswordController::class,'chengePassword'])->name('forget.password');
+    Route::post('/restepassword',[ForgetpasswordController::class,'Resetpassword'])->name('resetpassword');
 
 });
 

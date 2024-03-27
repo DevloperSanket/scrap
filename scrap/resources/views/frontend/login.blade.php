@@ -41,10 +41,12 @@
                             @enderror
                         </div>
                         <div class="text-center text-lg-start mt-3 pt-2">
-                            <button type="submit" class="btn btn-success"
+                            <button type="submit" class="btn btn-success mr-1"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            <a href="{{ route('forget.name') }}" class="link-danger ml-10">Forget Password</a>
                             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a
                                     href="{{ route('register') }}" class="link-danger">Register</a></p>
+
                         </div>
                     </form>
                 </div>
@@ -53,5 +55,4 @@
 
     </section>
 </div>
-<x-frontend-footer/>
-
+<x-frontend-footer />
