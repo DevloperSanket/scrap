@@ -101,7 +101,7 @@ class CardController extends Controller
     public function edit(string $id)
     {
 
-        $categories = ScrapCategories::get();
+        $categories = ScrapCategories::where('status', 1)->get();
         $card = Card::find($id);
         return view('admin.card.edit',compact('card', 'categories'));
     }

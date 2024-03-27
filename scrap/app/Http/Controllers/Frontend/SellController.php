@@ -17,7 +17,7 @@ class SellController extends Controller {
     */
 
     public function index() {
-        $scrapcategory = ScrapCategories::get();
+        $scrapcategory = ScrapCategories::where('status', 1)->get();
         return view( 'frontend.sell-scrap',compact('scrapcategory'));
     }
 
@@ -76,20 +76,95 @@ class SellController extends Controller {
     * Store a newly created resource in storage.
     */
 
-    public function store( Request $request ) {
+    // public function store( Request $request ) {
+    //     // Validation rules
+    //     $rules = [
+    //         'name' => 'required',
+    //         'email'=>'required',
+    //         'number' => 'required',
+    //         'city'=>'required',
+    //         'pincode' => 'required|digits:6|exists:pincodes,pincode',
+    //         'scraptype'=>'required',
+    //         'date' => 'required',
+    //         'time'=>'required',
+    //         'address'=>'required',
+    //     ];
+
+    //     // Custom error messages
+    //     $messages = [
+    //         'name.required' => 'Name is required',
+    //         'email.required' => 'Email is required',
+    //         'number.required' => 'Number is required',
+    //         'city.required' => 'City is required',
+    //         'pincode.required' => 'Pincode is invalid',
+    //         'scraptype.required' => 'Scrap Type is required',
+    //         'date.required' => 'Date is required',
+    //         'time.required' => 'Time is required',
+    //         'address.required' => 'Address is required',
+    //     ];
+
+    //     // Validate the request data
+    //     $validatedData = $request->validate( $rules, $messages );
+
+    //     $data = DirectSell::create( [
+    //         'name' => $validatedData['name'],
+    //         'email' => $validatedData['email'],
+    //         'number' => $validatedData['number'],
+    //         'city' => $validatedData['city'],
+    //         'pincode' => $validatedData['pincode'],
+    //         'category' => $validatedData['scraptype'],
+    //         'time' => $validatedData['time'],
+    //         'date' => $validatedData['date'],
+    //         'address'=>$validatedData['address'],
+    //     ] );
+
+    //     if ($request->hasFile('images')) {
+    //         foreach ($request->file('images') as $image) {
+    //             $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
+    //             $image->storeAs('Directsell', $imageName, 'public');
+    //             Directimage::create([
+    //                 'direct_sells_id' => $data->id,
+    //                 'url' => 'storage/Directsell/' . $imageName
+    //             ]);
+    //         }
+    //     }
+
+    //     return response()->json( [
+    //         'success' => true,
+    //         'data' => $data,
+    //         'message' => 'Submitted Successfully',
+    //     ] );
+
+    // }
+
+
+
+    public function store(Request $request)
+    {
         // Validation rules
         $rules = [
             'name' => 'required',
-            'email'=>'required',
+            'email' => 'required',
             'number' => 'required',
-            'city'=>'required',
-            'pincode' => 'required|digits:6|exists:pincodes,pincode',
-            'scraptype'=>'required',
+            'city' => 'required',
+            'pincode' => [
+                'required',
+                'digits:6',
+                'exists:pincodes,pincode',
+                function ($attribute, $value, $fail) {
+                    // Check if the pincode status is 1
+                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
+                    if ($pincodeStatus != 1) {
+                        $fail('Pincode is not serviceable.');
+                    }
+                },
+            ],
+            'scraptype' => 'required',
             'date' => 'required',
-            'time'=>'required',
-            'address'=>'required',
+            'time' => 'required',
+            'address' => 'required',
         ];
-
+    
         // Custom error messages
         $messages = [
             'name.required' => 'Name is required',
@@ -102,11 +177,12 @@ class SellController extends Controller {
             'time.required' => 'Time is required',
             'address.required' => 'Address is required',
         ];
-
+    
         // Validate the request data
-        $validatedData = $request->validate( $rules, $messages );
-
-        $data = DirectSell::create( [
+        $validatedData = $request->validate($rules, $messages);
+    
+        // Create DirectSell record
+        $data = DirectSell::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'number' => $validatedData['number'],
@@ -115,9 +191,10 @@ class SellController extends Controller {
             'category' => $validatedData['scraptype'],
             'time' => $validatedData['time'],
             'date' => $validatedData['date'],
-            'address'=>$validatedData['address'],
-        ] );
-
+            'address' => $validatedData['address'],
+        ]);
+    
+        // Upload images if present
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
@@ -128,14 +205,14 @@ class SellController extends Controller {
                 ]);
             }
         }
-
-        return response()->json( [
+    
+        return response()->json([
             'success' => true,
             'data' => $data,
             'message' => 'Submitted Successfully',
-        ] );
-
+        ]);
     }
+    
 
   
 }
