@@ -59,13 +59,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
         {{-- image model  --}}
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -83,6 +76,81 @@
                 </div>
             </div>
         </div>
+
+        {{-- Details Model --}}
+        <div class="modal fade" id="Detailsmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">View Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card mb-4"  style="padding: 40px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Name</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0" id="name"></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Email</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0" id="email"></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Mobile</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0" id="mobile"></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">City</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0" id="city"></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Pincode</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0" id="pincode"></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Address</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0" id="address"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 </main>
 <x-admin-footer />
@@ -128,12 +196,13 @@
                     data: 'date',
                     name: 'date',
                     render: function(data, type, row) {
-                    var date = new Date(data);
-                    var day = date.getDate();
-                    var month = date.getMonth() + 1;
-                    var year = date.getFullYear().toString().substr(-2); 
-                    return (day < 10 ? '0' + day : day) + '/' + (month < 10 ? '0' + month : month) + '/' + year;
-                  }
+                        var date = new Date(data);
+                        var day = date.getDate();
+                        var month = date.getMonth() + 1;
+                        var year = date.getFullYear().toString().substr(-2);
+                        return (day < 10 ? '0' + day : day) + '/' + (month < 10 ? '0' + month :
+                            month) + '/' + year;
+                    }
                 },
                 {
                     data: 'time',
@@ -146,7 +215,7 @@
                 {
                     data: 'details',
                     name: 'details',
-                  
+
                 }
             ]
         });
@@ -158,34 +227,10 @@
 
     ///// image model show /////
     function showData(imageUrl) {
-        var assetUrl = "{{ asset('') }}" + imageUrl; 
+        var assetUrl = "{{ asset('') }}" + imageUrl;
         $('#exampleModal .modal-body').html('<img class="col-3" src="' + assetUrl + '" class="img-fluid">');
         $('#exampleModal').modal('show');
     }
-
-
-
-//     ///// details model show /////
-//     function showData(userId) {
-
-//     // Fetch user profile data via AJAX
-//     $.ajax({
-//         url: "{{ url('myprofile') }}/" + userId,
-//         type: "GET",
-//         success: function(response) {
-//             // Populate modal with user profile data
-//             $('#exampleModal1 .modal-body').append('<p>Name: ' + response.name + '</p>');
-//             $('#exampleModal1 .modal-body').append('<p>Email: ' + response.email + '</p>');
-//             // Add other profile fields as needed
-//         },
-//         error: function(xhr, status, error) {
-//             console.error(error);
-//             // Handle error
-//         }
-//     });
-
-//     $('#exampleModal1').modal('show');
-// }
 
 
     //// scrap status change //////
@@ -249,6 +294,7 @@
                     },
                     success: function(response) {
                         Swal.fire("Driver Changed!", "", "success");
+                        location.reload();
                     },
                     error: function(xhr, driver, error) {
                         if (xhr.driver === 422) {
@@ -273,4 +319,17 @@
             }
         });
     }
+
+    function UserDetails(details) {
+    console.log("User details:", details);
+    $('#name').text(details.name);
+    $('#email').text(details.email);
+    $('#mobile').text(details.mobile);
+    $('#city').text(details.city);
+    $('#pincode').text(details.pincode);
+    $('#address').text(details.address);
+
+    $('#Detailsmodel').modal('show');
+}
+
 </script>

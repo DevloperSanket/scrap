@@ -18,3 +18,12 @@ $(document).ready(function () {
         $(this).find('i').toggleClass('fa-eye-slash fa-eye');
     });
 });
+
+$(document).ready(function () {
+    $('.toggle-password-icon').click(function () {
+        const $passwordField = $('#form3Example5');
+        const type = $passwordField.attr('type') === 'password' ? 'text' : 'password';
+        $passwordField.attr('type', type);
+        $(this).find('i').toggleClass('fa-eye-slash fa-eye');
+    });
+});

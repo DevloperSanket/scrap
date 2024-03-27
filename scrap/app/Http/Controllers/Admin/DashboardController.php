@@ -191,7 +191,7 @@ class DashboardController extends Controller
             ->rawColumns(['status', 'category', 'name', 'email', 'number', 'city', 'pincode', 'date', 'time', 'address', 'image', 'driver'])
             ->make(true);
 
-            return view('admin.showdirectsell');
+        return view('admin.showdirectsell');
     }
 
 
@@ -203,12 +203,11 @@ class DashboardController extends Controller
 
     public function scrapRecord(Request $request)
     {
-        $usersell = RegisterdSell::with('scrapCategories', 'registredImages','registereduserdata')->get();
+        $usersell = RegisterdSell::with('scrapCategories', 'registredImages', 'user')->get();
 
         if (!empty($request->get('status'))) {
             $usersell = $usersell->where('status', $request->get('status'));
         }
-        // dd($usersell);
         return DataTables::of($usersell)
 
 
@@ -266,9 +265,18 @@ class DashboardController extends Controller
                 return $driverSelectR;
             })
 
+            ->addColumn('details', function ($usersell) {
+                // Create a link to trigger the modal and pass user details to JavaScript function
+                $details = '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#Detailsmodel" onclick="UserDetails(' . htmlspecialchars(json_encode($usersell->user), ENT_QUOTES, 'UTF-8') . ')">View Details</a>';
+                return $details;
+            })
+            
+            
+            
 
 
-            ->rawColumns(['status', 'driver', 'category', 'date', 'time', 'image'])
+
+            ->rawColumns(['status', 'driver', 'category', 'date', 'time', 'image', 'details'])
             ->make(true);
     }
 
@@ -339,9 +347,6 @@ class DashboardController extends Controller
     //         Mail::to($email)->send(new WelcomeMail($title,$body));
 
 
-
-
-
     //          return response()->json([
     //              'success' => true,
     //              'data' => $query,
@@ -351,6 +356,7 @@ class DashboardController extends Controller
     //          return response()->json(['message' => 'Record not found or driver unchanged'], 404);
     //      }
     //  }
+
 
     public function directsellDriver(Request $request)
 {
@@ -401,6 +407,7 @@ class DashboardController extends Controller
 }
 
 
+
     /// for registered status
     public function registeredsellStatus(Request $request)
     {
@@ -408,11 +415,9 @@ class DashboardController extends Controller
         $id = $request->id;
         $status = $request->status;
         $query = RegisterdSell::where('id', $id)->update(['status' => $status]);
-        // dd($query);
-      
+        // dd($query);  
 
         if ($query) {
-
 
             return response()->json([
                 'success' => true,
@@ -431,12 +436,43 @@ class DashboardController extends Controller
          $id = $request->id;
          $driver = $request->driver;
          $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
-         // dd($query);
+
+         // get driver data
          $driverData = Driver::findOrFail($driver);
-      
- 
+        // Retrieve the registered sell data along with the related user data
+         $registerdSellUserData = RegisterdSell::with('user')->findOrFail($id);
+         // Access user data related to the registered sell
+         $userName = $registerdSellUserData->user->name;
+         $userEmail = $registerdSellUserData->user->email;
+
+
+         $emaildata = new Request([
+            'email' => $userEmail,
+            'name' => $userName,
+            'driver_name' => $driverData->name,
+            'driver_mobile' => $driverData->mobile,
+            ]);
+
 
          if ($query) {
+
+            // $imagePath = public_path('frontend/theam/assets/images/logo/logo.png');
+            // $imageData = base64_encode(file_get_contents($imagePath));
+            // $imageUrl = 'data:image/png;base64,' . $imageData; 
+            // $imageHeight = 80; 
+            // $imageWidth = 170; 
+
+            // $title = 'Scrap Take Out Details';
+            // $body = "Hi, $userName <br><br> Your Scrap Collecting Request is Approved , 
+            // Our driver will pick the scrap for you. Below are the details of the driver who will pick up the scrap.<br>
+            // Driver Name: $driverData->name <br> Driver Mobile No: $driverData->mobile <br><br> Thank you For Choosing Us !!!<br>
+            // For any query Contact Us at : <br> Mobile no. - 1234567891<br>Email Us at : example@gmail.com<br> Website url : scrap24x7.com <br>
+            // <img src='$imageUrl' height='$imageHeight' width='$imageWidth'>";
+
+            Mail::to($userEmail)->send(new WelcomeMail($emaildata));
+
+
+
              return response()->json([
                  'success' => true,
                  'data' => $query,
