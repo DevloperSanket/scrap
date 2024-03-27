@@ -270,9 +270,9 @@ class DashboardController extends Controller
                 $details = '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#Detailsmodel" onclick="UserDetails(' . htmlspecialchars(json_encode($usersell->user), ENT_QUOTES, 'UTF-8') . ')">View Details</a>';
                 return $details;
             })
-            
-            
-            
+
+
+
 
 
 
@@ -317,7 +317,7 @@ class DashboardController extends Controller
     }
 
 
-     /////////  driver assign for direct sell
+    /////////  driver assign for direct sell
     //  public function directsellDriver(Request $request)
     //  {
     //     //  dd($request);
@@ -361,52 +361,55 @@ class DashboardController extends Controller
     //  }
 
     public function directsellDriver(Request $request)
-{
-    $id = $request->id;
-    $driver = $request->driver;
-    $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
+    {
+        $id = $request->id;
+        $driver = $request->driver;
+        $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
 
-    if ($query) {
-        $driverData = Driver::findOrFail($driver);
-        $name = DirectSell::where('id', $id)->value('name');
-        $email = DirectSell::where('id', $id)->value('email');
+        if ($query) {
+            $driverData = Driver::findOrFail($driver);
 
-        $imageUrl = asset('frontend/theam/assets/images/logo/logo.png');
-        $imageHeight = 80;
-        $imageWidth = 170;
+            $directSell = DirectSell::findOrFail($id);
+            $name = $directSell->name;
+            $email = $directSell->email;
 
-        // Construct the email body with embedded image
-        $title = 'Scrap Take Out Details';
-        $body = "<html>
-                    <body>
-                        <p>Hi, $name,</p>
-                        <p>Your Scrap Collecting Request is Approved. Our driver will pick the scrap for you.</p>
-                        <p>Below are the details of the driver who will pick up the scrap:</p>
-                        <p>Driver Name: $driverData->name</p>
-                        <p>Driver Mobile No: $driverData->mobile</p>
-                        <p>Thank you for choosing us!</p>
-                        <p>For any queries, contact us at:</p>
-                        <ul>
-                            <li>Mobile no. - 1234567891</li>
-                            <li>Email us at: example@gmail.com</li>
-                            <li>Website URL: scrap24x7.com</li>
-                        </ul>
-                        <img src='$imageUrl' alt='Logo' height='$imageHeight' width='$imageWidth'>
-                    </body>
-                </html>";
+            $imagePath = public_path('admin/assets/img/logo-small.png');
+            $imageUrl = 'data:image/png;base64,' . base64_encode(file_get_contents($imagePath));
+            $imageHeight = 80;
+            $imageWidth = 170;
 
-        // Send email
-        Mail::to($email)->send(new WelcomeMail($title, $body));
+            // Construct the email body with embedded image
+            $title = 'Scrap Take Out Details';
+            $body = "<html>
+            <body>
+            <p>Hi, $name,</p>
+            <p>Your Scrap Collecting Request is Approved. Our driver will pick the scrap for you.</p>
+            <p>Below are the details of the driver who will pick up the scrap:</p>
+            <p>Driver Name: $driverData->name</p>
+            <p>Driver Mobile No: $driverData->mobile</p>
+            <p>Thank you for choosing us!</p>
+            <p>For any queries, contact us at:</p>
+            <ul>
+                <li>Mobile no. - 1234567891</li>
+                <li>Email us at: example@gmail.com</li>
+                <li>Website URL: scrap24x7.com</li>
+            </ul>
+            <img src='$imageUrl' alt='Logo' height='$imageHeight' width='$imageWidth'>
+            </body>
+            </html>";
 
-        return response()->json([
-            'success' => true,
-            'data' => $query,
-            'message' => 'Status updated successfully'
-        ], 200);
-    } else {
-        return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+            // Send email
+            Mail::to($email)->send(new WelcomeMail($title, $body));
+
+            return response()->json([
+                'success' => true,
+                'data' => $query,
+                'message' => 'Status updated successfully'
+            ]);
+        } else {
+            return response()->json(['message' => 'Record not found or driver unchanged']);
+        }
     }
-}
 
 
     /// for registered status
@@ -417,7 +420,7 @@ class DashboardController extends Controller
         $status = $request->status;
         $query = RegisterdSell::where('id', $id)->update(['status' => $status]);
         // dd($query);
-      
+
 
         if ($query) {
 
@@ -433,27 +436,25 @@ class DashboardController extends Controller
     }
 
 
-     /// driver status for registered sell
-     public function registeredsellDriver(Request $request)
-     {
-         $id = $request->id;
-         $driver = $request->driver;
-         $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
-         // dd($query);
-         $driverData = Driver::findOrFail($driver);
-      
- 
-
-         if ($query) {
-             return response()->json([
-                 'success' => true,
-                 'data' => $query,
-                 'message' => 'Status updated successfully'
-             ], 200);
-         } else {
-             return response()->json(['message' => 'Record not found or driver unchanged'], 404);
-         }
-     }
+    /// driver status for registered sell
+    public function registeredsellDriver(Request $request)
+    {
+        $id = $request->id;
+        $driver = $request->driver;
+        $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
+        // dd($query);
+        $driverData = Driver::findOrFail($driver);
 
 
+
+        if ($query) {
+            return response()->json([
+                'success' => true,
+                'data' => $query,
+                'message' => 'Status updated successfully'
+            ], 200);
+        } else {
+            return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+        }
+    }
 }
