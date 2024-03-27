@@ -294,6 +294,7 @@
                     },
                     success: function(response) {
                         Swal.fire("Driver Changed!", "", "success");
+                        location.reload();
                     },
                     error: function(xhr, driver, error) {
                         if (xhr.driver === 422) {

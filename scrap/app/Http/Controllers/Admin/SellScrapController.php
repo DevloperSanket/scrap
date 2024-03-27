@@ -35,33 +35,35 @@ class SellScrapController extends Controller
             'time' => 'required',
             'category' => 'required',
         ];
-
+    
         $messages = [
-            'date.required' => 'Please select a date for colecting scrap',
-            'time.required' => 'Please select a time for colecting scrap',
+            'date.required' => 'Please select a date for collecting scrap',
+            'time.required' => 'Please select a time for collecting scrap',
             'category.required' => 'Please select category',
         ];
+    
         $validatedData = $request->validate($rules, $messages);
-
+    
         $scrap = new RegisterdSell();
         $scrap->date = $validatedData['date'];
-        $scrap->time =  $validatedData['time'];
+        $scrap->time = $validatedData['time'];
         $scrap->category = $validatedData['category'];
         $scrap->user_id = Auth::id();
-
+        $scrap->save(); 
+    
+        $scrapId = $scrap->id;
+    
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalName();
                 $image->storeAs('Registerd', $imageName, 'public');
                 RegistredImage::create([
-                    'registerd_sells_id' => $scrap->id,
+                    'registerd_sells_id' => $scrapId, // Use the retrieved ID here
                     'url' => 'storage/Registerd/' . $imageName
                 ]);
             }
         }
-
-        $scrap->save();
-
+    
         // Return a JSON response
         return response()->json([
             'success' => true,
@@ -69,6 +71,7 @@ class SellScrapController extends Controller
             'message' => 'Form Submitted successfully',
         ]);
     }
+    
 
 
 

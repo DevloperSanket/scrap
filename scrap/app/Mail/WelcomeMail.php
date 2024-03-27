@@ -11,12 +11,19 @@ use Illuminate\Queue\SerializesModels;
 class WelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $data;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(private string $title, private string  $body)
+    // public function __construct(private string $title, private string  $body)
+    // {
+    // }
+
+    public function __construct($emaildata)
     {
+        $this->data = $emaildata;
+
     }
 
     /**
@@ -25,7 +32,7 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Scrap Take Out Details',
+            subject: 'Scrap 24x7',
         );
     }
 
@@ -36,10 +43,10 @@ class WelcomeMail extends Mailable
     {
         return new Content(
             view: 'emails.welcome',
-            with: [
-                'title' => $this->title,
-                'body' => $this->body,
-            ],
+            // with: [
+            //     'title' => $this->title,
+            //     'body' => $this->body,
+            // ],
         );
     }
 

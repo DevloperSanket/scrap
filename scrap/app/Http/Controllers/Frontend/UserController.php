@@ -111,6 +111,8 @@ class UserController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
+    // if(Auth::attempt(['phone' => request('phone'), 'password' => request('password')]) || Auth::attempt(['email' => request('email'), 'password' => request('password')]) || Auth::attempt(['name' => request('name'), 'password' => request('password')]) ||  Auth::attempt(['anyOtherField' => request('anyOtherField'), 'password' => request('password')]) ){....Action...}
+
     /**
      * Display the specified resource.
      */
@@ -150,3 +152,4 @@ class UserController extends Controller
         return Redirect('login');
     }
 }
+
