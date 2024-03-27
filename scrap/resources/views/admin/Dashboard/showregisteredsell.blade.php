@@ -10,21 +10,27 @@
         </nav>
     </div><!-- End Page Title -->
     <section>
-      
+
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-4">
                     <div style="max-height: 400px; overflow-y: auto;">
+                        <select id='status' class="form-select" style="width: 200px">
+                            <option value="" selected>Select</option>
+                            <option value="1">Pending</option>
+                            <option value="2">Accepted</option>
+                            <option value="3">Completed</option>
+                        </select>
                         <table id="scrap-table" class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th width="10px">
                                         Id
                                     </th>
-                                    <th style="padding-right: 40px;">
+                                    <th style="padding-right: 90px;">
                                         Status
-                                    </th>
+                                    </th style="padding-right: 90px;">
                                     <th>
                                         Driver
                                     </th>
@@ -77,27 +83,6 @@
                 </div>
             </div>
         </div>
-
-
-        {{-- details model --}}
-        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel1">View Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-     
     </section>
 </main>
 <x-admin-footer />
@@ -107,16 +92,26 @@
         var table = $('#scrap-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('dashboard-registeredselltable') }}",
+            responsive: true,
+            ajax: {
+                url: "{{ route('dashboard-registeredselltable') }}",
+                data: function(d) {
+                    status = $('#status').val();
+                    if (status) {
+                        d.status = status;
+                    }
+                }
+            },
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
+            scrollX: true,
+            scrollY: 300,
             columns: [{
                     render: function(data, type, row, meta) {
-                        return i++;
+                        return meta.row + 1;
                     }
                 },
-                // {
-                //     orderable: true,
-                //     searchable: true
-                // },
                 {
                     data: 'status',
                     name: 'status',
@@ -155,7 +150,9 @@
                 }
             ]
         });
-
+        $('#status').change(function() {
+            table.ajax.reload();
+        });
     });
 
 
@@ -230,50 +227,50 @@
 
 
     function DriverStatusChange(userid, driver, driverId) {
-    var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+        var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-    // Show confirmation dialog
-    Swal.fire({
-        title: "Are you sure you want to go with this driver ?",
-        showDenyButton: true,
-        confirmButtonText: "Yes",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User confirmed, perform the driver change
-            $.ajax({
-                url: "{{ route('registeredselldriverChange') }}",
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                data: {
-                    id: userid,
-                    driver: driver
-                },
-                success: function(response) {
-                    Swal.fire("Driver Changed!", "", "success");
-                },
-                error: function(xhr, driver, error) {
-                    if (xhr.driver === 422) {
-                        var errors = xhr.responseJSON.errors;
-                        $.each(errors, function(key, value) {
-                            $('.' + key + '_error').text(value[0]);
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Something went wrong! Please try again later.'
-                        });
+        // Show confirmation dialog
+        Swal.fire({
+            title: "Are you sure you want to go with this driver ?",
+            showDenyButton: true,
+            confirmButtonText: "Yes",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // User confirmed, perform the driver change
+                $.ajax({
+                    url: "{{ route('registeredselldriverChange') }}",
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    data: {
+                        id: userid,
+                        driver: driver
+                    },
+                    success: function(response) {
+                        Swal.fire("Driver Changed!", "", "success");
+                    },
+                    error: function(xhr, driver, error) {
+                        if (xhr.driver === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('.' + key + '_error').text(value[0]);
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! Please try again later.'
+                            });
+                        }
                     }
-                }
-            });
-        } else if (result.isDenied) {
-            // User denied, revert the selection
-            $("#" + driverId).val('').change(); // Reset dropdown to default
-            Swal.fire("Driver Not Changed", "", "info");
-            location.reload();
-        }
-    });
-}
+                });
+            } else if (result.isDenied) {
+                // User denied, revert the selection
+                $("#" + driverId).val('').change(); // Reset dropdown to default
+                Swal.fire("Driver Not Changed", "", "info");
+                location.reload();
+            }
+        });
+    }
 </script>

@@ -10,57 +10,34 @@
         </nav>
     </div><!-- End Page Title -->
     <section>
-      
+
 
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mt-4">
-                    <div style="max-height: 400px; overflow-y: auto;">
-                        <table id="directsell-table" class="table table-bordered data-table">
+                    <div>
+                        <select id='status' class="form-select" style="width: 200px">
+                            <option value="" selected>Select</option>
+                            <option value="1">Pending</option>
+                            <option value="2">Accepted</option>
+                            <option value="3">Completed</option>
+                        </select>
+                        <table id="directsell-table" class="table table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th width="10px">
-                                        Id
-                                    </th>
-                                    <th style="padding-right: 88px;">
-                                        Status
-                                    </th>
-                                    <th style="padding-right: 80px;">
-                                        Driver
-                                    </th>
-                                    <th>
-                                        Category
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
-                                    <th>
-                                        Mobile
-                                    </th>
-                                    <th>
-                                        City
-                                    </th>
-                                    <th>
-                                        Pincode
-                                    </th>
-                                    <th>
-                                        Scrap Type
-                                    </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>
-                                        Time
-                                    </th>
-                                    <th>
-                                        Address
-                                    </th>
-                                    <th>
-                                        Image
-                                    </th>
+                                    <th width="10px">Id</th>
+                                    <th style="padding-right: 80px;">Status</th>
+                                    <th style="padding-right: 80px;">Driver</th>
+                                    <th>Category</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>City</th>
+                                    <th>Pincode</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Address</th>
+                                    <th>Image</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,6 +45,7 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -114,31 +92,49 @@
 <x-admin-footer />
 <script type="text/javascript">
     $(function() {
-        var i = 1;
         var table = $('#directsell-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('dashboard-directselltable') }}",
+            responsive: true,
+            ajax: {
+                url: "{{ route('dashboard-directselltable') }}",
+                data: function(d) {
+                    status = $('#status').val();
+                    if (status) {
+                        d.status = status;
+                    }
+                }
+            },
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
+            scrollX: true,
+            scrollY: 300,
             columns: [{
                     render: function(data, type, row, meta) {
-                        return i++;
+                        return meta.row + 1;
                     }
                 },
                 {
                     data: 'status',
                     name: 'status',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'driver',
                     name: 'driver',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'category',
                     name: 'category',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'name',
                     name: 'name',
+                    searchable: true
                 },
                 {
                     data: 'email',
@@ -155,10 +151,6 @@
                 {
                     data: 'pincode',
                     name: 'pincode',
-                },
-                {
-                    data: 'category',
-                    name: 'category',
                 },
                 {
                     data: 'date',
@@ -183,11 +175,11 @@
                     data: 'image',
                     name: 'image'
                 }
-
             ]
-
         });
-
+        $('#status').change(function() {
+            table.ajax.reload();
+        });
     });
 
 

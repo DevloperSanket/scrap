@@ -25,12 +25,8 @@
                                     @endforeach
                                 </select>
                                 <div class="form-group mt-3">
-                                    {{-- <input type="file" name="image" id="fileUpload" class="form-control"> --}}
-                                    {{-- <div id="image-holder"> </div> --}}
-                                    <input class="form-control" name="image" type="file" id="image-input"
-                                        onchange="previewImage()">
-                                    <img id="output" src="" alt="preview Image"
-                                        style="width: 100px; height:100px;">
+                                    <input class="form-control" name="image" type="file" id="image-upload-card">
+                                    <div id="image-preview-card"></div>
                                     <span class="text-danger error-text image_error"></span>
                                 </div>
 
@@ -91,15 +87,14 @@
         });
     });
 
-
-    function previewImage() {
-        var input = document.getElementById('image-input');
-        var preview = document.getElementById('output');
-        var file = input.files[0];
+    // image preview 
+    $('#image-upload-card').change(function() {
+        $('#image-preview-card').empty();
         var reader = new FileReader();
         reader.onload = function(e) {
-            preview.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
+            var img = $('<img>').addClass('preview-image').attr('src', e.target.result);
+            $('#image-preview-card').append(img);
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
 </script>
