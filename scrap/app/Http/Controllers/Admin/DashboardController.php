@@ -440,6 +440,7 @@ class DashboardController extends Controller
          $driver = $request->driver;
          $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
 
+         
          // get driver data
          $driverData = Driver::findOrFail($driver);
         // Retrieve the registered sell data along with the related user data
@@ -447,11 +448,15 @@ class DashboardController extends Controller
          // Access user data related to the registered sell
          $userName = $registerdSellUserData->user->name;
          $userEmail = $registerdSellUserData->user->email;
+         $date = $registerdSellUserData->date;
+         $time = $registerdSellUserData->time;
 
 
          $emaildata = new Request([
             'email' => $userEmail,
             'name' => $userName,
+            'date' => $date,
+            'time' => $time,
             'driver_name' => $driverData->name,
             'driver_mobile' => $driverData->mobile,
             ]);
