@@ -41,7 +41,7 @@ class WelcomeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.welcome',
+            view: 'emails.registeredsellemail',
             // with: [
             //     'title' => $this->title,
             //     'body' => $this->body,

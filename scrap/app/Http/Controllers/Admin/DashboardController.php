@@ -271,9 +271,9 @@ class DashboardController extends Controller
                 $details = '<a href="#" class="view-image text-center" data-bs-toggle="modal" data-bs-target="#Detailsmodel" onclick="UserDetails(' . htmlspecialchars(json_encode($usersell->user), ENT_QUOTES, 'UTF-8') . ')">View Details</a>';
                 return $details;
             })
-            
-            
-            
+
+
+
 
 
 
@@ -321,10 +321,10 @@ class DashboardController extends Controller
   
 
     public function directsellDriver(Request $request)
-{
-    $id = $request->id;
-    $driver = $request->driver;
-    $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
+    {
+        $id = $request->id;
+        $driver = $request->driver;
+        $query = DirectSell::where('id', $id)->update(['driver' => $driver]);
 
     $driverData = Driver::findOrFail($driver);
     $userName = DirectSell::where('id', $id)->value('name');
@@ -348,15 +348,18 @@ class DashboardController extends Controller
         // Send email
         Mail::to($userEmail)->send(new DirectSellEmail($emaildata));
 
-        return response()->json([
-            'success' => true,
-            'data' => $query,
-            'message' => 'Status updated successfully'
-        ], 200);
-    } else {
-        return response()->json(['message' => 'Record not found or driver unchanged'], 404);
+            // Send email
+            Mail::to($email)->send(new WelcomeMail($title, $body));
+
+            return response()->json([
+                'success' => true,
+                'data' => $query,
+                'message' => 'Status updated successfully'
+            ]);
+        } else {
+            return response()->json(['message' => 'Record not found or driver unchanged']);
+        }
     }
-}
 
 
 
