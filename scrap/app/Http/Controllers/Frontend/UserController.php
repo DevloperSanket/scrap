@@ -32,19 +32,18 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
-            'mobile' => 'required|max:10',
+            'mobile' => [
+                'required',
+                'max:10',
+                'regex:/^\d{10}$/',
+                Rule::unique('users')
+            ],
             'city' => 'required',
             'pincode' => [
                 'required',
                 'digits:6',
                 'exists:pincodes,pincode',
-                function ($attribute, $value, $fail) {
-                    // Check if the pincode status is 1
-                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
-                    if ($pincodeStatus != 1) {
-                        $fail('Pincode is not serviceable.');
-                    }
-                },
+                'valid_pincode',
             ],
             'address' => 'required',
             'password' => 'required'
@@ -92,13 +91,19 @@ class UserController extends Controller
     public function signin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $username = $request->input('username');
+        $password = $request->input('password');
 
-        if (Auth::attempt($credentials)) {
+        // Attempt to authenticate using either email or mobile
+        if (
+            Auth::attempt(['email' => $username, 'password' => $password]) ||
+            Auth::attempt(['mobile' => $username, 'password' => $password])
+        ) {
+
             $user = Auth::user();
 
             if ($user->role == 1) {
@@ -112,6 +117,7 @@ class UserController extends Controller
     }
 
   
+
 
 
 
