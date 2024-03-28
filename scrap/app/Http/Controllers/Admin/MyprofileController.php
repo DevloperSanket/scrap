@@ -51,19 +51,18 @@ class MyprofileController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required|string|email|max:255|unique:users,email,' . $request->id,
-            'mobile' => 'required|max:10',
+            'mobile' => [
+                'required',
+                'max:10',
+                'regex:/^\d{10}$/',
+                Rule::unique('users')->ignore($request->id, 'id'),
+            ],
             'city' => 'required',
-            'pincode' =>  [
+            'pincode' => [
                 'required',
                 'digits:6',
                 'exists:pincodes,pincode',
-                function ($attribute, $value, $fail) {
-                    // Check if the pincode status is 1
-                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
-                    if ($pincodeStatus != 1) {
-                        $fail('Pincode is not serviceable.');
-                    }
-                },
+                'valid_pincode',
             ],
             'address' => 'required',
         ];

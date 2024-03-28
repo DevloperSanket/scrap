@@ -32,19 +32,18 @@ class UserController extends Controller
         $rules = [
             'name' => 'required',
             'email' => ['required', 'email', Rule::unique('users')],
-            'mobile' => 'required|max:10',
+            'mobile' => [
+                'required',
+                'max:10',
+                'regex:/^\d{10}$/',
+                Rule::unique('users')
+            ],
             'city' => 'required',
             'pincode' => [
                 'required',
                 'digits:6',
                 'exists:pincodes,pincode',
-                function ($attribute, $value, $fail) {
-                    // Check if the pincode status is 1
-                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
-                    if ($pincodeStatus != 1) {
-                        $fail('Pincode is not serviceable.');
-                    }
-                },
+                'valid_pincode',
             ],
             'address' => 'required',
             'password' => 'required'
@@ -118,24 +117,16 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        // $username = $request->input('username');
-        // $password = $request->input('password');
+        $username = $request->input('username');
+        $password = $request->input('password');
 
-        // Check if the username is an email or mobile number
-        // $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+        // Attempt to authenticate using either email or mobile
+        if (
+            Auth::attempt(['email' => $username, 'password' => $password]) ||
+            Auth::attempt(['mobile' => $username, 'password' => $password])
+        ) {
 
-        // $credentials = [
-        //     $field     => $username,
-        //     'password' => $password,
-        // ];
-        $credentials = $request->only('username','password');
-
-        // Add some debugging
-        dd($credentials); 
-
-        if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            dd($user);
 
             if ($user->role == 1) {
                 return redirect()->route('dashboard')->withSuccess('You have signed in.');
@@ -146,6 +137,7 @@ class UserController extends Controller
 
         return redirect("login")->withSuccess('Login details are not valid');
     }
+
 
 
 

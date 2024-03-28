@@ -151,13 +151,7 @@ class SellController extends Controller {
                 'required',
                 'digits:6',
                 'exists:pincodes,pincode',
-                function ($attribute, $value, $fail) {
-                    // Check if the pincode status is 1
-                    $pincodeStatus = Pincode::where('pincode', $value)->value('status');
-                    if ($pincodeStatus != 1) {
-                        $fail('Pincode is not serviceable.');
-                    }
-                },
+                'valid_pincode',
             ],
             'scraptype' => 'required',
             'date' => 'required',
