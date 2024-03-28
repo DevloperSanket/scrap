@@ -80,13 +80,6 @@
                                     <a href="{{ route('profile.editpassword' )}}" class="btn btn-primary mt-3">Change Password</a>
                                 </div>
                             </div>
-                            {{-- <div class="row mt-3">
-                                <div class="col-sm-6">
-                                    <a href="{{ route('profile.editpassword' )}}" class="btn btn-primary ">Change Password</a>
-                                </div>                
-                            </div>
-                            --}}
-                           
                         </div>
                     </div>
                 </div>

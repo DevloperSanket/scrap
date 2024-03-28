@@ -158,9 +158,7 @@ class CardController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function cardchangeStatus(Request $request)
     {
         $id = $request->id;

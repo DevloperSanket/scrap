@@ -120,9 +120,8 @@ class DriverController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
+    /// for status value chnage of driver
     public function DriverchangeStatus(Request $request)
     {
         $id = $request->id;

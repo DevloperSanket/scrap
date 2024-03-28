@@ -224,14 +224,13 @@
     function DriverStatusChange(userid, driver, driverId) {
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
 
-        // Show confirmation dialog
+      
         Swal.fire({
             title: "Are you sure you want to go with this driver?",
             showDenyButton: true,
             confirmButtonText: "Yes",
         }).then((result) => {
             if (result.isConfirmed) {
-                // User confirmed, perform the driver change
                 $.ajax({
                     url: "{{ route('directselldriverChange') }}",
                     method: 'POST',
@@ -262,8 +261,7 @@
                     }
                 });
             } else if (result.isDenied) {
-                // User denied, revert the selection
-                $("#" + driverId).val('').change(); // Reset dropdown to default
+                $("#" + driverId).val('').change();
                 Swal.fire("Driver Not Changed", "", "info");
                 location.reload();
             }
@@ -271,7 +269,7 @@
     }
 
     function showData(imageUrl) {
-        var assetUrl = "{{ asset('') }}" + imageUrl; // Concatenating imageUrl with asset root
+        var assetUrl = "{{ asset('') }}" + imageUrl;
         $('#exampleModal .modal-body').html('<img class="col-3" src="' + assetUrl + '" class="img-fluid">');
         $('#exampleModal').modal('show');
     }

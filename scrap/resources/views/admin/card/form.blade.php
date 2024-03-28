@@ -52,13 +52,13 @@
             e.preventDefault();
             $('.error-text').text('');
 
-            var formData = new FormData(this); // Create FormData object to handle file uploads
+            var formData = new FormData(this);
             $.ajax({
                 type: "POST",
                 url: "{{ route('card.store') }}",
                 data: formData,
-                processData: false, // Prevent jQuery from automatically processing the data
-                contentType: false, // Prevent jQuery from automatically setting the content type
+                processData: false, 
+                contentType: false,
                 success: function(response) {
                     Swal.fire({
                         icon: 'success',

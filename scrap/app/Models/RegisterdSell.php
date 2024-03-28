@@ -26,11 +26,6 @@ class RegisterdSell extends Model
         return $this->belongsTo(Driver::class, 'driver');
     }
 
-    // public function registereduserdata()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id');
-    // }
-
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');

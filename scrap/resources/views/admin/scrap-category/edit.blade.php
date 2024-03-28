@@ -37,47 +37,7 @@
 </main>
 <x-admin-footer />
 <script>
-    // $(document).ready(function() {
-    //     $('#myForm').submit(function(e) {
-    //         e.preventDefault();
-    //         var id = $("#editID").val();
-    //         console.log("abx",id);
-    //         $('.error-text').text('');
-    //         var formData = $(this).serialize();
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "{{ route('scrapcategory.update') }}",
-    //             data:{
-    //                 formData:formData,
-    //                 id:id
-    //             }
-    //             success: function(response) {
-    //                 Swal.fire({
-    //                     icon: 'success',
-    //                     title: 'Success!',
-    //                     text: 'Form submitted successfully.'
-    //                 }).then(() => {
-    //                     window.location.href = "{{ route('scrapcategory.index') }}";
-    //                 });
-    //                 $('#myForm')[0].reset();
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 if (xhr.status === 422) {
-    //                     var errors = xhr.responseJSON.errors;
-    //                     $.each(errors, function(key, value) {
-    //                         $('.' + key + '_error').text(value[0]);
-    //                     });
-    //                 } else {
-    //                     Swal.fire({
-    //                         icon: 'error',
-    //                         title: 'Oops...',
-    //                         text: 'Something went wrong! Please try again later.'
-    //                     });
-    //                 }
-    //             }
-    //         });
-    //     });
-    // });
+  
     $(document).ready(function() {
     $('#myForm').submit(function(e) {
         e.preventDefault();

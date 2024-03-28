@@ -24,7 +24,6 @@ class SellScrapController extends Controller
     public function create()
     {
         $categories = ScrapCategories::where('status', 1)->get();
-        // dd($categories);
         return view('UserAdmin.sell.form', compact('categories'));
     }
 
@@ -64,7 +63,6 @@ class SellScrapController extends Controller
             }
         }
     
-        // Return a JSON response
         return response()->json([
             'success' => true,
             'data' => $scrap,
@@ -198,9 +196,7 @@ class SellScrapController extends Controller
 
     public function delete(Request $request)
     {
-        //  dd($request);
         $deleterecord = RegisterdSell::find($request->id);
-        //  dd($deleterecord);
         $deleterecord->delete();
 
         return response()->json([

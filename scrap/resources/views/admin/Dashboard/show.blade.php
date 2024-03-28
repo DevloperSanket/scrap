@@ -71,12 +71,6 @@
                         return i++;
                     }
                 },
-                // {
-                //     data: 'action',
-                //     name: 'action',
-                //     orderable: true,
-                //     searchable: true
-                // },
                 {
                     data: 'status',
                     name: 'status',

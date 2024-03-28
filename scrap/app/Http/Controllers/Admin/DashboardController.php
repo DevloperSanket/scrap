@@ -18,7 +18,7 @@ use App\Mail\WelcomeMail;
 use App\Mail\DirectSellEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Message;
-use Swift_Image;
+
 
 
 class DashboardController extends Controller
@@ -319,6 +319,7 @@ class DashboardController extends Controller
 
   
 
+    /// for driver status for direct sell
     public function directsellDriver(Request $request)
     {
         $id = $request->id;
@@ -347,9 +348,6 @@ class DashboardController extends Controller
         // Send email
         Mail::to($userEmail)->send(new DirectSellEmail($emaildata));
 
-            // Send email
-            Mail::to($email)->send(new WelcomeMail($title, $body));
-
             return response()->json([
                 'success' => true,
                 'data' => $query,
@@ -362,14 +360,12 @@ class DashboardController extends Controller
 
 
 
-    /// for registered status
+    /// for registered  sell status
     public function registeredsellStatus(Request $request)
     {
-        // dd($request);
         $id = $request->id;
         $status = $request->status;
-        $query = RegisterdSell::where('id', $id)->update(['status' => $status]);
-        // dd($query);  
+        $query = RegisterdSell::where('id', $id)->update(['status' => $status]); 
 
         if ($query) {
 

@@ -9,17 +9,13 @@ use App\Models\Card;
 
 class IndexController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         return view('welcome');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function about()
     {
         return view('frontend.about');
@@ -32,13 +28,11 @@ class IndexController extends Controller
     public function sell(){
 
         $scrapcategory = ScrapCategories::get();
-        // dd($scrapcategory);
         return view('frontend.sell-scrap',compact('scrapcategory'));
     }
 
     public function allscrap(){
         $cards = Card::with('scrapCategories')->get();
-        // dd($cards);
         return view('frontend.all-scrap',compact('cards'));
     }
 

@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MyprofileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
+    
     public function index()
     {
 
@@ -28,9 +25,7 @@ class MyprofileController extends Controller
         return view('UserAdmin.Myprofile.index', compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+  
 
     public function edit()
     {

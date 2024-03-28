@@ -171,6 +171,5 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::post('/update-profile', [MyprofileController::class,'update'])->name('profile.update');
     Route::get('/userProfile-editpassword', [MyprofileController::class, 'editpassword'])->name('profile.editpassword');
     Route::post('/userProfile-updatepassword', [MyprofileController::class, 'updatePassword'])->name('profile.updatepassword');
-    // Route::get('myprofile/{id}', [MyprofileController::class, 'show'])->name('dashboard.showregistereduserdata');
 });
 

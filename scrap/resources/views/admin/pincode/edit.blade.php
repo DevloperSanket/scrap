@@ -53,7 +53,6 @@
         e.preventDefault();
         var formData = $(this).serialize(); // Serialize form data
 
-        // Include CSRF token in the headers
         var headers = {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         };
@@ -64,8 +63,8 @@
         $.ajax({
             type: "POST",
             url: "{{ route('pincode.update') }}",
-            headers: headers, // Include CSRF token
-            data: formData + '&id=' + id, // Include ID in serialized form data
+            headers: headers, 
+            data: formData + '&id=' + id, 
             success: function(response) {
                 Swal.fire({
                     icon: 'success',

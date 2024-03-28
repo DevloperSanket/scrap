@@ -80,9 +80,7 @@ class PincodeController extends Controller
             'city' => $validatedData['city'],
             'area' => $validatedData['area'],
             'status' => '1',
-        ]);
-
-        
+        ]);      
 
         // Return a JSON response
         return response()->json([
@@ -133,9 +131,7 @@ class PincodeController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // for status value change of pincode
     public function pincodechangeStatus(Request $request)
     {
         $id = $request->id;

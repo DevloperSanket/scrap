@@ -12,9 +12,7 @@ use Illuminate\Validation\Rule;
 use DataTables;
 
 class SellController extends Controller {
-    /**
-    * Display a listing of the resource.
-    */
+   
 
     public function index() {
         $scrapcategory = ScrapCategories::where('status', 1)->get();
@@ -26,7 +24,6 @@ class SellController extends Controller {
 
         $query = DirectSell::query();
 
-        // dd($query);
         return Datatables::of($query)
             ->addColumn('name', function ($query) {
                 return $query->name;
@@ -76,7 +73,7 @@ class SellController extends Controller {
 
     public function store(Request $request)
     {
-        // Validation rules
+      
         $rules = [
             'name' => 'required',
             'email' => 'required',
@@ -94,7 +91,6 @@ class SellController extends Controller {
             'address' => 'required',
         ];
     
-        // Custom error messages
         $messages = [
             'name.required' => 'Name is required',
             'email.required' => 'Email is required',

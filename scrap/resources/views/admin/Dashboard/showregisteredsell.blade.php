@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active">All Registered Sells</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
     <section>
 
 

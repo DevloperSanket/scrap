@@ -11,17 +11,13 @@ use DataTables;
 
 class ScrapcategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         return view('admin.scrap-category.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+  
     public function create()
     {
         return view('admin.scrap-category.form');
@@ -55,9 +51,7 @@ class ScrapcategoryController extends Controller
             ->make(true);
     }
 
-    /*
-     * Store a newly created resource in storage.
-     */
+  
     public function store(Request $request)
     {
         // Validation rules
@@ -93,35 +87,20 @@ class ScrapcategoryController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
+    
     public function edit(string $id)
     {
 
         $category_edit = ScrapCategories::find($id);
-        // dd($category_edit);
         return view('admin.scrap-category.edit',compact('category_edit'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
     {
         
         $updatedata = ScrapCategories::find($request->id);
-        // dd( $updatedata);
         $updatedata->name = $request->input('name');
-
         $updatedata->save();
 
          // Return a JSON response
@@ -135,9 +114,7 @@ class ScrapcategoryController extends Controller
     
     public function delete(Request $request)
     {
-        // dd($request);
         $deleterecord = ScrapCategories::find($request->id);
-        // dd($deleterecord);
         $deleterecord->delete();
         
           return response()->json([
@@ -147,9 +124,7 @@ class ScrapcategoryController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // for status value change of scrap
     public function scrapchangeStatus(Request $request)
     {
         $id = $request->id;
@@ -161,7 +136,7 @@ class ScrapcategoryController extends Controller
                 'data'=>$query,
                 'message' => 'Status updated successfully'], 200);
         }else{
-            return response()->json(['message' => 'Doctor record not found or status unchanged'], 404);
+            return response()->json(['message' => 'Record not found or status unchanged'], 404);
         }
     }
 }
