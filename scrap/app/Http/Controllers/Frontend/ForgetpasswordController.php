@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
-use App\Mail\WelcomeMail;
+use App\Mail\ForgetPassword;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -82,8 +82,13 @@ class ForgetpasswordController extends Controller
         $title = "Reset Your Password";
         $body = "Hi {$validatedData['email']},<br><br>Your new OTP is $otp.";
 
+        $sendData = new Request([
+            'email'=>$validatedData['email'],
+            'otp'=>$otp,
+
+        ]);
         // Send email
-        Mail::to($validatedData['email'])->send(new WelcomeMail($title, $body));
+        Mail::to($validatedData['email'])->send(new ForgetPassword($sendData));
 
         return response()->json([
             'success' => true,

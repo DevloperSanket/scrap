@@ -19,7 +19,7 @@
                     <form method="post" action="{{ route('login') }}">
                         @csrf
                         <div class="form-outline mb-4">
-                            <input type="email" id="form3Example3" name="username" class="form-control"
+                            <input type="text" id="form3Example3" name="username" class="form-control"
                                 placeholder="Enter a valid email address or mobile number" />
                             @error('username')
                                 <p class="text-danger">

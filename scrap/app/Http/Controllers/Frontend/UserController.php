@@ -118,19 +118,24 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $username = $request->input('username');
-        $password = $request->input('password');
+        // $username = $request->input('username');
+        // $password = $request->input('password');
 
         // Check if the username is an email or mobile number
-        $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+        // $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
 
-        $credentials = [
-            $field     => $username,
-            'password' => $password,
-        ];
+        // $credentials = [
+        //     $field     => $username,
+        //     'password' => $password,
+        // ];
+        $credentials = $request->only('username','password');
+
+        // Add some debugging
+        dd($credentials); 
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            dd($user);
 
             if ($user->role == 1) {
                 return redirect()->route('dashboard')->withSuccess('You have signed in.');
@@ -141,6 +146,7 @@ class UserController extends Controller
 
         return redirect("login")->withSuccess('Login details are not valid');
     }
+
 
 
     /**
