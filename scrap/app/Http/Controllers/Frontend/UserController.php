@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Models\User;
-use App\Mail\ForgetPassword;
+use App\Mail\RegisterMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Pincode;
 use Illuminate\Support\Facades\Session;
@@ -77,20 +77,29 @@ class UserController extends Controller
         $unique_id = User::count() + 1;
         $user->unique_id = 'USR-' . str_pad($unique_id, 3, '0', STR_PAD_LEFT);
 
-        Mail::to($validateData['email'])->send(new ForgetPassword($sendData));
-        $user->save();
+        
 
         
 
-        // dd($user);
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $user = Auth::user();
-            if ($user->role == 1) {
-                return redirect()->route('dashboard')->withSuccess('You have signed in.');
-            } else {
-                return redirect()->route('user.dashboard')->withSuccess('You have signed in.');
-            }
-        }
+       
+        $user->save();
+
+        $otp = rand(100000, 999999);
+
+        $user->id;
+        $request->session()->put('otp', $otp);
+        $request->session()->put('userid', $user->id);
+        $sendData = new Request([
+            'email'=> $validateData['email'],
+            'otp'=> $otp,
+            'name'=> $validateData['name'],
+
+        ]);
+        Mail::to($validateData['email'])->send(new RegisterMail($sendData));
+
+        return redirect()->route('verify-user')->withSuccess('We send OTP on your email id Please Verify you email.');
+
+       
     }
 
     public function signin(Request $request)

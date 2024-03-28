@@ -50,7 +50,7 @@
                     <tr>
                         <td bgcolor="#FFFFFF" align="left"
                             style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: center;">
-                            <p style="margin: 0; color: #000000;"> Hello, {{ $data['userName']}} <br><br> Your otp for email verification is  : {{ $data['otp'] }}<br> </p>
+                            <p style="margin: 0; color: #000000;"> Hello, {{ $data['name']}} <br><br> Your otp for email verification is  : {{ $data['otp'] }}<br> </p>
                         </td>
                     </tr>
                 </table>

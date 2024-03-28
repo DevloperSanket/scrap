@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Session;
 
 class ForgetpasswordController extends Controller
 {
-  
+
     public function index()
     {
         return view('frontend.forget');
@@ -81,9 +81,9 @@ class ForgetpasswordController extends Controller
 
 
         $sendData = new Request([
-            'email'=> $validatedData['email'],
-            'otp'=> $otp,
-            'userName'=> $userName,
+            'email' => $validatedData['email'],
+            'otp' => $otp,
+            'userName' => $userName,
 
         ]);
         // Send email
@@ -156,6 +156,56 @@ class ForgetpasswordController extends Controller
             'success' => true,
             'message' => 'Password updated successfully.',
         ]);
-        
+    }
+
+    public function verifyUserOTP(Request $request)
+    {
+        if ($request->session()->has('otp')) {
+            return view('frontend.verifyotp');
+        } else {
+            return view('frontend.login');
+        }
+    }
+
+    public function VerifyUserIs(Request $request)
+    {
+        $rules = [
+            'otp' => 'required|digits:6',
+        ];
+
+        $messages = [
+            'otp.required' => 'OTP is required.',
+            'otp.digits' => 'Please enter a valid 6-digit OTP.',
+        ];
+
+        $validatedData = $request->validate($rules, $messages);
+
+
+
+        $storedOtp = $request->session()->get('otp');
+
+        if ($storedOtp == $validatedData['otp']) {
+
+            $getUseris   = User::where('id', $request->session()->get('userid'))->first();
+            // print_r($getUseris);
+            $getUseris->is_verified = '1';
+
+            $getUseris->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Your email is verified',
+            ]);
+            $request->session()->forget('userid');
+
+            $request->session()->forget('otp');
+        } else {
+            return response()->json([
+                'success' => false,
+                'errors' => [
+                    'otp' => ['Invalid OTP. Please try again.']
+                ]
+            ], 422);
+        }
     }
 }

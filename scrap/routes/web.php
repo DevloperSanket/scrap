@@ -74,6 +74,10 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/passwordcheck',[ForgetpasswordController::class,'chengePassword'])->name('forget.password');
     Route::post('/restepassword',[ForgetpasswordController::class,'Resetpassword'])->name('resetpassword');
 
+    //verify user with otp
+    Route::get('/verify-isuser',[ForgetpasswordController::class, 'verifyUserOTP'])->name('verify-user');
+    Route::post('/verify-isuser',[ForgetpasswordController::class,'VerifyUserIs'])->name('verify');
+
 });
 
 // Authenticated Routes for super Admin
@@ -138,11 +142,6 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/edit-driver/{id}', [DriverController:: class, 'edit'])->name('driver.edit');
     Route::post('/update-driver', [DriverController::class, 'update'])->name('driver.update');
     Route::post('/delete-driver', [DriverController::class, 'delete'])->name('driver.delete');
-
-
-    // email send
-    Route::get ('/send-mail',[MailController::class,'mailform']);
-    Route::post ('/send-mail',[MailController::class,'maildata'])->name('send_mail');
 
 
     Route::get('/signout', [UserController::class, 'logout'])->name('signout');
