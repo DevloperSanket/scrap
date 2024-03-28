@@ -14,16 +14,22 @@ class UserDashboardController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
+            $userId = Auth::id();
 
-            $allScrap = RegisterdSell::get()->count();
-            $pendingScrap = RegisterdSell::where('status', 1)->count();
-            $acceptedScrap = RegisterdSell::where('status', 2)->count();
-            $completedScrap = RegisterdSell::where('status', 3)->count();
-        return view('UserAdmin.Dashboard.index',compact('allScrap','pendingScrap','acceptedScrap','completedScrap'));
+            
+            $userScrap = RegisterdSell::where('user_id', $userId)->get();
+
+            $allScrap = $userScrap->count();
+            $pendingScrap = $userScrap->where('status', 1)->count();
+            $acceptedScrap = $userScrap->where('status', 2)->count();
+            $completedScrap = $userScrap->where('status', 3)->count();
+
+            return view('UserAdmin.Dashboard.index', compact('allScrap', 'pendingScrap', 'acceptedScrap', 'completedScrap'));
         }
-        return redirect("login")->withSuccess('Opps! You do not have access');
+        return redirect("login")->withSuccess('Oops! You do not have access');
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -91,7 +91,7 @@ class UserController extends Controller
     public function signin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
