@@ -180,11 +180,32 @@
     var currentDate = new Date().toISOString().split('T')[0];
     document.getElementById("datePicker").setAttribute('min', currentDate);
 
+
+    /// time picker
+    // $('#timepicker').timepicker({
+    //     timeFormat: 'h:mm p',
+    //         interval: 15,
+    //         dynamic: false, 
+    //         dropdown: true,
+    //         scrollbar: true,
+    // });
+
+    $(document).ready(function(){
     $('#timepicker').timepicker({
-        timeFormat: 'h:mm p',
-            interval: 15,
-            dynamic: false, 
-            dropdown: true,
-            scrollbar: true,
+      timeFormat: 'h:mm p', // This sets the time format to display AM/PM
+      interval: 15,
+      dynamic: false, 
+      dropdown: true,
+      scrollbar: true
     });
+
+    // Handle time selection
+    $('#timepicker').on('changeTime', function() {
+      // Get the selected time
+      var selectedTime = $(this).val();
+      // Display the selected time in the console (for testing)
+      console.log(selectedTime);
+    });
+  });
+  
 </script>

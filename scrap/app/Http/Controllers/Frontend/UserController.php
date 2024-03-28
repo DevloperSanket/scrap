@@ -89,45 +89,14 @@ class UserController extends Controller
         }
     }
 
-    // public function signin(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required',
-    //     ]);
-
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         $user = Auth::user();
-
-    //         if ($user->role == 1) {
-    //             return redirect()->route('dashboard')->withSuccess('You have signed in.');
-    //         } else {
-    //             return redirect()->route('user.dashboard')->withSuccess('You have signed in.');
-    //         }
-    //     }
-
-    //     return redirect("login")->withSuccess('Login details are not valid');
-    // }
-
     public function signin(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        // Check if the username is an email or mobile number
-        $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
-
-        $credentials = [
-            $field     => $username,
-            'password' => $password,
-        ];
+        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
@@ -141,6 +110,9 @@ class UserController extends Controller
 
         return redirect("login")->withSuccess('Login details are not valid');
     }
+
+  
+
 
 
     /**

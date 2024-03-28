@@ -395,9 +395,9 @@ class DashboardController extends Controller
 
          // get driver data
          $driverData = Driver::findOrFail($driver);
-        // Retrieve the registered sell data along with the related user data
+        
          $registerdSellUserData = RegisterdSell::with('user')->findOrFail($id);
-         // Access user data related to the registered sell
+         
          $userName = $registerdSellUserData->user->name;
          $userEmail = $registerdSellUserData->user->email;
          $date = $registerdSellUserData->date;
