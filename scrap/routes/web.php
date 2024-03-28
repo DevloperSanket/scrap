@@ -134,7 +134,7 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::get('/drivercreate', [DriverController::class, 'create'])->name('driver.create');
     Route::post('/drivercreate', [DriverController::class, 'store'])->name('driver.store');
     Route::get('/driverdata', [DriverController::class, 'driverdata'])->name('driver.record');
-    Route::post('/driverstatuschange', [DriverController::class, 'driverstatuschange'])->name('driver.status');
+    Route::post('/driverstatuschange', [DriverController::class, 'DriverchangeStatus'])->name('driver.status');
     Route::get('/edit-driver/{id}', [DriverController:: class, 'edit'])->name('driver.edit');
     Route::post('/update-driver', [DriverController::class, 'update'])->name('driver.update');
     Route::post('/delete-driver', [DriverController::class, 'delete'])->name('driver.delete');

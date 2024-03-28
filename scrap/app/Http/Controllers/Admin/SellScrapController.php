@@ -77,7 +77,8 @@ class SellScrapController extends Controller
 
     public function scrapRecord(Request $request)
     {
-        $usersell = RegisterdSell::with('scrapcategories', 'registredImages', 'driver')->get();
+        $userId = Auth::id();
+        $usersell = RegisterdSell::with('scrapcategories', 'registredImages', 'driver')->where('user_id',$userId);
 
         if (!empty($request->get('status'))) {
             $usersell = $usersell->where('status', $request->get('status'));
@@ -130,6 +131,7 @@ class SellScrapController extends Controller
 
             ->rawColumns(['action', 'status', 'category', 'date', 'time', 'image', 'driver'])
             ->make(true);
+       
     }
 
 

@@ -172,10 +172,9 @@ class DashboardController extends Controller
 
             ->addColumn('driver', function ($directselluser) {
                 $driverSelect = '<select class="form-select" onchange="DriverStatusChange(' . $directselluser->id . ', this.value, this.options[this.selectedIndex].getAttribute(\'data-driver-id\'))">';
-
                 $driverSelect .= '<option selected disabled>Select</option>';
 
-                $drivers = Driver::all();
+                $drivers = Driver::where('status', 1)->get();
 
                 foreach ($drivers as $driver) {
                     $selected = $directselluser->driver == $driver->id ? 'selected' : '';
@@ -253,7 +252,7 @@ class DashboardController extends Controller
 
                 $driverSelectR .= '<option style="background-color:#dfdfdf;" selected disabled>Select</option>';
 
-                $drivers = Driver::all();
+                $drivers = Driver::where('status', 1)->get();
 
                 foreach ($drivers as $driver) {
                     $selected = $usersell->driver == $driver->id ? 'selected' : '';
@@ -415,19 +414,6 @@ class DashboardController extends Controller
 
 
          if ($query) {
-
-            // $imagePath = public_path('frontend/theam/assets/images/logo/logo.png');
-            // $imageData = base64_encode(file_get_contents($imagePath));
-            // $imageUrl = 'data:image/png;base64,' . $imageData; 
-            // $imageHeight = 80; 
-            // $imageWidth = 170; 
-
-            // $title = 'Scrap Take Out Details';
-            // $body = "Hi, $userName <br><br> Your Scrap Collecting Request is Approved , 
-            // Our driver will pick the scrap for you. Below are the details of the driver who will pick up the scrap.<br>
-            // Driver Name: $driverData->name <br> Driver Mobile No: $driverData->mobile <br><br> Thank you For Choosing Us !!!<br>
-            // For any query Contact Us at : <br> Mobile no. - 1234567891<br>Email Us at : example@gmail.com<br> Website url : scrap24x7.com <br>
-            // <img src='$imageUrl' height='$imageHeight' width='$imageWidth'>";
 
             Mail::to($userEmail)->send(new WelcomeMail($emaildata));
 

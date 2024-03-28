@@ -50,12 +50,14 @@
     $(function() {
         var i = 1;
         var table = $('#users-table').DataTable({
-            processing: true,
-            serverSide: true,
+            responsive: true,
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
             ajax: "{{ route('scrapcategory.record') }}",
             columns: [{
                     render: function(data, type, row, meta) {
-                        return i++;
+                        return meta.row + 1;
                     }
                 },
                 {

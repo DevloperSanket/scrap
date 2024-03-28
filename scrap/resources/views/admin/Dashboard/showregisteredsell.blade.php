@@ -17,7 +17,7 @@
                 <div class="col-md-12 mt-4">
                     <div style="max-height: 400px; overflow-y: auto;">
                         <select id='status' class="form-select" style="width: 200px">
-                            <option value="" selected>Select</option>
+                            <option value="" selected >All</option>
                             <option value="1">Pending</option>
                             <option value="2">Accepted</option>
                             <option value="3">Completed</option>
