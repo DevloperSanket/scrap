@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('is_verified')->default(0);
             $table->string('mobile')->nullable();
             $table->string('city')->nullable();
             $table->string('pincode')->nullable();

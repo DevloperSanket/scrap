@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 $(document).ready(function () {
     $('.toggle-password').click(function () {
-        const $passwordField = $('#form3Example4');
+        const $passwordField = $('#password');
         const type = $passwordField.attr('type') === 'password' ? 'text' : 'password';
         $passwordField.attr('type', type);
         $(this).find('i').toggleClass('fa-eye-slash fa-eye');

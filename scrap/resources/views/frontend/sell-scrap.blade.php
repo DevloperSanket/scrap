@@ -77,8 +77,9 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-outline mt-1">
-                                                <input name="time" class="form-control" id="timepicker" style="box-shadow:none;">
-                                                <span class="text-danger error-text time_error"></span>
+                                                <input id="timepicker1" type="text" class="form-control input-small">
+                                                <span class="input-group-addon"><i
+                                                        class="glyphicon glyphicon-time"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -174,38 +175,25 @@
         }
     });
 
-
-
-    // Get only current and future dates in calander
     var currentDate = new Date().toISOString().split('T')[0];
     document.getElementById("datePicker").setAttribute('min', currentDate);
 
-
-    /// time picker
-    // $('#timepicker').timepicker({
-    //     timeFormat: 'h:mm p',
-    //         interval: 15,
-    //         dynamic: false, 
+    // $(document).ready(function() {
+    //     $('#timepicker').timepicker({
+    //         timeFormat: 'h:mm p',
+    //                     interval: 15,
+    //         dynamic: false,
     //         dropdown: true,
-    //         scrollbar: true,
+    //         scrollbar: true
+    //     });
+
+    //     // Handle time selection
+    //     $('#timepicker').on('changeTime', function() {
+    //         // Get the selected time
+    //         var selectedTime = $(this).val();
+    //         // Display the selected time in the console (for testing)
+    //         console.log(selectedTime);
+    //     });
     // });
-
-    $(document).ready(function(){
-    $('#timepicker').timepicker({
-      timeFormat: 'h:mm p', // This sets the time format to display AM/PM
-      interval: 15,
-      dynamic: false, 
-      dropdown: true,
-      scrollbar: true
-    });
-
-    // Handle time selection
-    $('#timepicker').on('changeTime', function() {
-      // Get the selected time
-      var selectedTime = $(this).val();
-      // Display the selected time in the console (for testing)
-      console.log(selectedTime);
-    });
-  });
-  
+    $('#timepicker1').timepicker();
 </script>

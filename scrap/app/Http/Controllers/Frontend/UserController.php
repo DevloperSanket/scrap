@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Mail\ForgetPassword;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Pincode;
 use Illuminate\Support\Facades\Session;
 
@@ -24,9 +26,8 @@ class UserController extends Controller
     {
         return view('frontend.register');
     }
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
     public function store(Request $request)
     {
         $rules = [
@@ -76,7 +77,11 @@ class UserController extends Controller
         $unique_id = User::count() + 1;
         $user->unique_id = 'USR-' . str_pad($unique_id, 3, '0', STR_PAD_LEFT);
 
+        Mail::to($validateData['email'])->send(new ForgetPassword($sendData));
         $user->save();
+
+        
+
         // dd($user);
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
@@ -116,7 +121,7 @@ class UserController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
-  
+
 
 
 

@@ -50,14 +50,6 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        {{-- <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div> --}}
-        <!-- End Search Bar -->
-
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
@@ -142,48 +134,51 @@
                 </li><!-- End Direct Enquiry Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('dashboard.showregisteredsell')}}">
+                    <a class="nav-link collapsed" href="{{ route('dashboard.showregisteredsell') }}">
                         <i class="bi bi-journal-text"></i><span>Registerd Enquiry</span>
                     </a>
                 </li><!-- End Direct Enquiry Nav -->
 
-            
-                
+
+
                 <!-- End Icons Nav -->
 
             </ul>
 
         </aside><!-- End Sidebar-->
     @else
-        <aside id="sidebar" class="sidebar">
+        @if (Auth::user()->is_verified == '1')
+            <aside id="sidebar" class="sidebar">
 
-            <ul class="sidebar-nav" id="sidebar-nav">
+                <ul class="sidebar-nav" id="sidebar-nav">
 
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ route('user.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li><!-- End Dashboard Nav -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('user.dashboard') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('scrap.index') }}">
-                        <i class="bi bi-menu-button-wide"></i>
-                        <span>Sell Scrap</span>
-                        {{-- <i class="bi bi-chevron-down ms-auto"></i> --}}
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="{{ route('scrap.index') }}">
+                            <i class="bi bi-menu-button-wide"></i>
+                            <span>Sell Scrap</span>
+                            {{-- <i class="bi bi-chevron-down ms-auto"></i> --}}
+                        </a>
 
-                </li><!-- End Components Nav -->
+                    </li><!-- End Components Nav -->
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{ route('profile.index') }}">
-                        <i class="bi bi-person-square"></i><span>My Profile</span>
-                    </a>
-                </li>
-                <!-- End Profile -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="{{ route('profile.index') }}">
+                            <i class="bi bi-person-square"></i><span>My Profile</span>
+                        </a>
+                    </li>
+                    <!-- End Profile -->
 
-            
-            </ul>
 
-        </aside><!-- End Sidebar-->
+                </ul>
+
+            </aside><!-- End Sidebar-->
+        @endif
+
     @endif
