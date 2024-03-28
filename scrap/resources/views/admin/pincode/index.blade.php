@@ -56,12 +56,14 @@
     $(function() {
         var i = 1;
         var table = $('#users-table').DataTable({
-            processing: true,
-            serverSide: true,
+            responsive: true,
             ajax: "{{ route('pincode.record') }}",
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
             columns: [{
-                    render: function(data, type, row, meta) {
-                        return i++;
+                render: function(data, type, row, meta) {
+                        return meta.row + 1;
                     }
                 },
                 {

@@ -172,10 +172,9 @@ class DashboardController extends Controller
 
             ->addColumn('driver', function ($directselluser) {
                 $driverSelect = '<select class="form-select" onchange="DriverStatusChange(' . $directselluser->id . ', this.value, this.options[this.selectedIndex].getAttribute(\'data-driver-id\'))">';
-
                 $driverSelect .= '<option selected disabled>Select</option>';
 
-                $drivers = Driver::all();
+                $drivers = Driver::where('status', 1)->get();
 
                 foreach ($drivers as $driver) {
                     $selected = $directselluser->driver == $driver->id ? 'selected' : '';
@@ -253,7 +252,7 @@ class DashboardController extends Controller
 
                 $driverSelectR .= '<option style="background-color:#dfdfdf;" selected disabled>Select</option>';
 
-                $drivers = Driver::all();
+                $drivers = Driver::where('status', 1)->get();
 
                 foreach ($drivers as $driver) {
                     $selected = $usersell->driver == $driver->id ? 'selected' : '';

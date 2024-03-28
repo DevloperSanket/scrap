@@ -53,12 +53,14 @@
     $(function() {
         var i = 1;
         var table = $('#driver-table').DataTable({
-            processing: true,
-            serverSide: true,
+            responsive: true,
             ajax: "{{ route('driver.record') }}",
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
             columns: [{
                     render: function(data, type, row, meta) {
-                        return i++;
+                        return meta.row + 1;
                     }
                 },
                 {
@@ -70,6 +72,8 @@
                 {
                     data: 'status',
                     name: 'status',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'name',
@@ -125,7 +129,7 @@
 
 
     function deletefunction(deleteId) {
-    console.log(deleteId);
+        console.log(deleteId);
         var id = deleteId;
         var csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         $.ajax({

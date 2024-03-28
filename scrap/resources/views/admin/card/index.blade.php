@@ -58,10 +58,15 @@
         var table = $('#users-table').DataTable({
             processing: true,
             serverSide: true,
+            responsive: true,
             ajax: "{{ route('card.record') }}",
+            fixedColumns: true,
+            paging: true,
+            scrollCollapse: true,
+          
             columns: [{
-                    render: function(data, type, row, meta) {
-                        return i++;
+                render: function(data, type, row, meta) {
+                        return meta.row + 1;
                     }
                 },
                 {
@@ -73,6 +78,8 @@
                 {
                     data: 'status',
                     name: 'status',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'category_id',
@@ -89,7 +96,9 @@
                 },
                 {
                     data: 'price',
-                    name: 'price'
+                    name: 'price',
+                    orderable: true,
+                    searchable: true
                 }
             ]
         });
