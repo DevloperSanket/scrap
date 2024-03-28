@@ -437,6 +437,7 @@ class DashboardController extends Controller
          $driver = $request->driver;
          $query = RegisterdSell::where('id', $id)->update(['driver' => $driver]);
 
+         
          // get driver data
          $driverData = Driver::findOrFail($driver);
         // Retrieve the registered sell data along with the related user data
