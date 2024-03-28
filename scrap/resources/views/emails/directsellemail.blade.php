@@ -37,7 +37,7 @@
                             style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
                             <img src="{{ "data:image/png;base64,".base64_encode(file_get_contents($image_url )) }}" height='80' width='180'
                                 style="display: block; border: 0px;" />
-                            <h1 style="font-size: 43px; font-weight: 600; margin: 2; text-align: center;">Reset Your Password
+                            <h1 style="font-size: 43px; font-weight: 600; margin: 2; text-align: center;">Scrap Pick Up Details
                             </h1>
                         </td>
                     </tr>
@@ -50,7 +50,15 @@
                     <tr>
                         <td bgcolor="#FFFFFF" align="left"
                             style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: center;">
-                            <p style="margin: 0; color: #000000;"> Hello, {{ $data['userName']}} <br><br> Your new otp is : {{ $data['otp'] }}<br> </p>
+                            <p style="margin: 0; color: #000000;"> Hello, {{ $data['name'] }}!<br> As requested,  Your Scrap Collecting Request is Approved , 
+                                Our driver will pick the scrap for you. Below are the details of the driver and time who will pick up the scrap.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF" align="left"
+                            style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px; text-align: center;">
+                            <p style="margin: 0; color: #000000;">Driver Name: {{$data['driver_name']}} <br> Driver Mobile No: {{$data['driver_mobile']}}<br> Date : {{ $data['date'] }}<br> Time : {{ $data['time'] }}<br><br> Thank you For Choosing Us !!!<br>
+                                For any query Contact Us at : <br> Mobile no. - 1234567891<br>Email Us at : example@gmail.com<br></p>
                         </td>
                     </tr>
                 </table>

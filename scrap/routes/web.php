@@ -95,7 +95,6 @@ Route::group(['middleware' => 'auth','superadmin'], function () {
     Route::post('/changeregisteredselldriver', [DashboardController::class, 'registeredsellDriver'])->name('registeredselldriverChange');
     
 
-    Route::get('/send-email', [DashboardController::class, 'sendEmail'])->name('sendemail');
 
     // scrap category
     Route::get('/scrapcategory', [ScrapcategoryController::class, 'index'])->name('scrapcategory.index');

@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Session;
 
 class ForgetpasswordController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
     public function index()
     {
         return view('frontend.forget');
@@ -69,22 +67,23 @@ class ForgetpasswordController extends Controller
 
 
         $userId = $user->id;
+        $userName = $user->name;
 
 
         // Generate OTP
         $otp = rand(100000, 999999);
 
+
         // Store OTP in the session
         $request->session()->put('otp', $otp);
         $request->session()->put('userid', $userId);
+        $request->session()->put('userName', $userName);
 
-        // Compose email content
-        $title = "Reset Your Password";
-        $body = "Hi {$validatedData['email']},<br><br>Your new OTP is $otp.";
 
         $sendData = new Request([
-            'email'=>$validatedData['email'],
-            'otp'=>$otp,
+            'email'=> $validatedData['email'],
+            'otp'=> $otp,
+            'userName'=> $userName,
 
         ]);
         // Send email

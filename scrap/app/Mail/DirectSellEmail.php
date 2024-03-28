@@ -3,12 +3,13 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class DirectSellEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
@@ -16,11 +17,7 @@ class WelcomeMail extends Mailable
     /**
      * Create a new message instance.
      */
-    // public function __construct(private string $title, private string  $body)
-    // {
-    // }
-
-    public function __construct($emaildata)
+   public function __construct($emaildata)
     {
         $this->data = $emaildata;
     }
@@ -31,7 +28,7 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Scrap 24x7',
+            subject: 'scrap24x7',
         );
     }
 
@@ -41,11 +38,7 @@ class WelcomeMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.registeredsellemail',
-            // with: [
-            //     'title' => $this->title,
-            //     'body' => $this->body,
-            // ],
+            view: 'emails.directsellemail',
         );
     }
 

@@ -19,9 +19,9 @@
                     <form method="post" action="{{ route('login') }}">
                         @csrf
                         <div class="form-outline mb-4">
-                            <input type="text" id="form3Example3" name="username" class="form-control"
+                            <input type="email" id="form3Example3" name="email" class="form-control"
                                 placeholder="Enter a valid email address or mobile number" />
-                            @error('username')
+                            @error('email')
                                 <p class="text-danger">
                                     {{ $message }}
                                 </p>
