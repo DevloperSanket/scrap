@@ -55,7 +55,7 @@ class UserController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Please Enter Valid Email Address',
             'email.unique' => 'Email already in use',
-            'mobile.required'=> 'Contact is required',
+            'mobile.required' => 'Contact is required',
             'city.required' => 'City is required',
             'pincode.required' => 'Pincode is required',
             'address.required' => 'Address is required',
@@ -74,9 +74,9 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->password = Hash::make($validateData['password']);
 
-        $unique_id = User::count()+1;
+        $unique_id = User::count() + 1;
         $user->unique_id = 'USR-' . str_pad($unique_id, 3, '0', STR_PAD_LEFT);
-        
+
         $user->save();
         // dd($user);
         if (Auth::attempt($request->only('email', 'password'))) {
@@ -89,14 +89,45 @@ class UserController extends Controller
         }
     }
 
+    // public function signin(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //     ]);
+
+    //     $credentials = $request->only('email', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         $user = Auth::user();
+
+    //         if ($user->role == 1) {
+    //             return redirect()->route('dashboard')->withSuccess('You have signed in.');
+    //         } else {
+    //             return redirect()->route('user.dashboard')->withSuccess('You have signed in.');
+    //         }
+    //     }
+
+    //     return redirect("login")->withSuccess('Login details are not valid');
+    // }
+
     public function signin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        // Check if the username is an email or mobile number
+        $field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+
+        $credentials = [
+            $field     => $username,
+            'password' => $password,
+        ];
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
@@ -111,7 +142,6 @@ class UserController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
-    // if(Auth::attempt(['phone' => request('phone'), 'password' => request('password')]) || Auth::attempt(['email' => request('email'), 'password' => request('password')]) || Auth::attempt(['name' => request('name'), 'password' => request('password')]) ||  Auth::attempt(['anyOtherField' => request('anyOtherField'), 'password' => request('password')]) ){....Action...}
 
     /**
      * Display the specified resource.
@@ -152,4 +182,3 @@ class UserController extends Controller
         return Redirect('login');
     }
 }
-
